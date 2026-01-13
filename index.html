@@ -3,37 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>セコンドペンギン企画 | 伴走型総合サポート</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>セコンドペンギン企画 | 外国人雇用・油絵資産・Web作成</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --main-blue: #005bac;
             --accent-green: #006400;
-            --sky-blue: #f0faff; /* より洗練された空色 */
-            --light-blue: #e1effa;
+            --sky-blue: #e0f4ff;
+            --text-color: #333;
             --white: #ffffff;
-            --text-dark: #2d3436;
-            --text-gray: #636e72;
         }
 
-        /* Base Styles */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: 'Noto Sans JP', sans-serif;
-            color: var(--text-dark);
-            background-color: var(--white);
-            line-height: 1.7;
+            line-height: 1.8;
+            color: var(--text-color);
+            background-color: var(--sky-blue);
             overflow-x: hidden;
         }
-        a { text-decoration: none; transition: 0.3s; }
-        ul { list-style: none; }
 
-        /* Animations */
+        /* アニメーション用クラス */
         .fade-in {
             opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.9s ease-out;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
+
         .fade-in.visible {
             opacity: 1;
             transform: translateY(0);
@@ -41,100 +42,162 @@
 
         /* Header */
         header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(5px);
-            height: 80px;
+            background: var(--white);
+            padding: 20px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 5%;
-            position: fixed;
-            width: 100%;
+            position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
-        .logo { font-size: 1.4rem; font-weight: 700; color: var(--main-blue); letter-spacing: 1px; }
-        nav a { margin-left: 25px; color: var(--text-dark); font-size: 0.95rem; font-weight: 500; }
-        nav a:hover { color: var(--main-blue); }
+
+        .logo {
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: var(--main-blue);
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-color);
+            margin-left: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
 
         /* Hero Section */
         .hero {
-            height: 100vh;
-            background: linear-gradient(135deg, rgba(224, 244, 255, 0.8) 0%, rgba(255, 255, 255, 0.8) 100%), 
-                        ('28812.jpg');
-            background-size: cover;
-            background-position: center;
+            height: 80vh;
+            background: linear-gradient(rgba(0,91,172,0.1), rgba(0,91,172,0.1)), url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=2073') center/cover;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 0 20px;
+            padding: 0 5%;
         }
-        .hero-content { max-width: 900px; }
-        .hero h1 { font-size: 3rem; color: var(--main-blue); margin-bottom: 25px; line-height: 1.3; }
-        .hero p { font-size: 1.2rem; margin-bottom: 35px; color: var(--text-gray); }
-        .hero .tags { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 30px; }
-        .hero .tag { background: var(--white); padding: 5px 15px; border-radius: 20px; font-size: 0.85rem; border: 1px solid var(--main-blue); color: var(--main-blue); }
 
-        /* Sections */
-        section { padding: 120px 10%; }
-        .section-bg { background-color: var(--sky-blue); }
-        h2 { font-size: 2.2rem; text-align: center; margin-bottom: 60px; color: var(--main-blue); position: relative; }
-        h2::after { content: ''; display: block; width: 60px; height: 4px; background: var(--accent-green); margin: 15px auto; }
+        .hero h1 {
+            font-size: 2.5rem;
+            color: var(--main-blue);
+            margin-bottom: 20px;
+            background: rgba(255,255,255,0.8);
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
 
-        /* Business Section */
-        .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
-        .service-card { background: var(--white); padding: 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border-top: 5px solid var(--main-blue); }
-        .service-card h3 { margin-bottom: 20px; color: var(--main-blue); }
-        .service-card ul li { margin-bottom: 10px; position: relative; padding-left: 20px; }
-        .service-card ul li::before { content: '✓'; position: absolute; left: 0; color: var(--accent-green); font-weight: bold; }
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
 
-        /* Pricing Table */
-        .price-table { width: 100%; border-collapse: collapse; background: var(--white); border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
-        .price-table th, .price-table td { padding: 20px; border-bottom: 1px solid #eee; text-align: left; }
-        .price-table th { background: var(--main-blue); color: var(--white); }
-        .price-table tr:last-child td { border: none; }
+        /* Section Commons */
+        section {
+            padding: 100px 10%;
+            background: var(--white);
+            margin: 20px 0;
+        }
 
-        /* Q&A Section */
-        .qa-item { margin-bottom: 20px; background: var(--white); border-radius: 10px; padding: 25px; border-left: 4px solid var(--accent-green); }
-        .qa-item strong { color: var(--main-blue); display: block; margin-bottom: 10px; font-size: 1.1rem; }
+        h2 {
+            text-align: center;
+            color: var(--main-blue);
+            margin-bottom: 50px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background: var(--accent-green);
+        }
+
+        /* Grid System */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--sky-blue);
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 5px solid var(--main-blue);
+        }
 
         /* Buttons */
         .btn {
             display: inline-block;
-            padding: 18px 45px;
+            padding: 12px 30px;
             background: var(--main-blue);
-            color: var(--white);
+            color: white;
+            text-decoration: none;
             border-radius: 50px;
-            font-weight: 700;
-            box-shadow: 0 4px 15px rgba(0,91,172,0.3);
+            transition: 0.3s;
+            margin-top: 20px;
+            font-weight: bold;
         }
-        .btn:hover { transform: translateY(-3px); background: var(--accent-green); box-shadow: 0 6px 20px rgba(0,100,0,0.3); }
-        .btn-sub { background: var(--white); color: var(--main-blue); border: 2px solid var(--main-blue); box-shadow: none; margin-left: 15px; }
 
-        /* Company Table */
-        .company-info { display: flex; flex-wrap: wrap; gap: 50px; align-items: flex-start; }
-        .info-table { flex: 1; min-width: 300px; }
-        .info-table dl { display: grid; grid-template-columns: 150px 1fr; gap: 20px; padding: 20px 0; border-bottom: 1px solid #ddd; }
-        .info-table dt { font-weight: bold; color: var(--main-blue); }
-        .map-area { flex: 1; min-width: 300px; background: #eee; height: 350px; border-radius: 20px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .btn:hover {
+            background: var(--accent-green);
+            transform: scale(1.05);
+        }
 
-        /* Transition Area */
-        .transition-banner { background: var(--main-blue); color: var(--white); text-align: center; padding: 80px 20px; }
-        .transition-banner h3 { font-size: 1.8rem; margin-bottom: 20px; }
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--main-blue);
+            color: var(--main-blue);
+        }
 
-        footer { background: #1e272e; color: #ced4da; text-align: center; padding: 40px; font-size: 0.9rem; }
+        /* Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
 
-        /* Responsive */
+        table th, table td {
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+
+        table th {
+            width: 30%;
+            color: var(--main-blue);
+        }
+
+        /* Footer Area Link */
+        .transition-area {
+            background: var(--accent-green);
+            color: white;
+            text-align: center;
+            padding: 40px;
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Mobile Adjustments */
         @media (max-width: 768px) {
-            header { height: auto; padding: 15px; flex-direction: column; }
-            nav { margin-top: 10px; }
+            .hero h1 { font-size: 1.8rem; }
+            header { flex-direction: column; }
+            nav { margin-top: 15px; }
             nav a { margin: 0 10px; font-size: 0.8rem; }
-            .hero h1 { font-size: 2rem; }
-            section { padding: 80px 5%; }
-            .btn-sub { margin-left: 0; margin-top: 15px; }
         }
     </style>
 </head>
@@ -143,186 +206,123 @@
 <header>
     <div class="logo">セコンドペンギン企画</div>
     <nav>
-        <a href="#business">企業様支援</a>
-        <a href="#art">油絵・Web</a>
-        <a href="#price">報酬</a>
+        <a href="#business">企業様</a>
+        <a href="#foreign">Foreigner</a>
+        <a href="#art">油絵</a>
         <a href="#company">会社概要</a>
     </nav>
 </header>
 
-<main>
-    <section class="hero">
-        <div class="hero-content fade-in">
-            <div class="tags">
-                <span class="tag">法務の専門家</span>
-                <span class="tag">採用の即戦力</span>
-                <span class="tag">クリエイティブ支援</span>
-            </div>
-            <h1>架け橋となり、価値を紡ぐ。</h1>
-            <p>企業の外国人雇用、外国人の日本生活支援、<br>油絵の100年資産構築から、ホームページ作成まで。</p>
-            <div class="hero-btns">
-                <a href="#contact" class="btn">無料相談を予約する</a>
-                <a href="#business" class="btn btn-sub">サービス詳細</a>
-            </div>
-        </div>
-    </section>
-
-    <section id="business" class="fade-in">
-        <h2>Corporate Support</h2>
-        <p style="text-align:center; max-width:700px; margin: -30px auto 50px;">貴社の外国人雇用を、法務・実務・定着の3つの側面からトータルでバックアップ。リスクを最小化し、可能性を最大化します。</p>
-        <div class="service-grid">
-            <div class="service-card">
-                <h3>外国人雇用・法務</h3>
-                <ul>
-                    <li>雇用前の事前相談・リスク診断</li>
-                    <li>特定技能外国人の受入れ支援</li>
-                    <li>入管法に基づいた適正運用アドバイス</li>
-                    <li>雇用トラブルの未然防止コンサル</li>
-                </ul>
-                <a href="#" class="btn" style="padding: 10px 25px; font-size: 0.9rem; margin-top: 20px;">詳しく見る</a>
-            </div>
-            <div class="service-card">
-                <h3>Foreigner Life Support</h3>
-                <p style="font-size: 0.9rem; color: #666; margin-bottom: 20px;">Visa and consulting services for living in Japan.</p>
-                <ul>
-                    <li>Lifestyle Support in Japan</li>
-                    <li>Visa Consulting Service</li>
-                    <li>Career Counseling</li>
-                </ul>
-                <a href="#" class="btn btn-sub" style="padding: 10px 25px; font-size: 0.9rem; margin-top: 20px;">External Site ↗</a>
-            </div>
-        </div>
-    </section>
-
-    <section id="art" class="section-bg fade-in">
-        <h2>Art & Web Creative</h2>
-        <div class="service-grid">
-            <div class="service-card" style="border-top-color: var(--accent-green);">
-                <h3>油絵の100年資産</h3>
-                <p>油絵の技能評価制度を推進中。100年先まで価値が継承される仕組みを構築しています。あなたの作品の価値を証明し、次世代へ繋ぎます。</p>
-                <p style="margin-top: 15px; font-weight: bold; color: var(--accent-green);">現在、登録作品を募集中です。</p>
-                <a href="#" class="btn" style="background: var(--accent-green); border:none; margin-top: 20px;">評価制度の詳細</a>
-            </div>
-            <div class="service-card" style="border-top-color: var(--accent-green);">
-                <h3>ホームページ作成</h3>
-                <p>「想いが伝わる」シンプルでモダンなサイトを制作。レスポンシブ対応はもちろん、運用しやすい設計をご提案します。</p>
-                <ul style="margin-top: 15px;">
-                    <li>LP（ランディングページ）制作</li>
-                    <li>コーポレートサイト構築</li>
-                    <li>保守・運用サポート</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <section id="price" class="fade-in">
-        <h2>報酬一覧</h2>
-        <div style="overflow-x: auto;">
-            <table class="price-table">
-                <thead>
-                    <tr>
-                        <th>サービス内容</th>
-                        <th>目安料金（税込）</th>
-                        <th>備考</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>外国人雇用 事前相談</td>
-                        <td>¥11,000 / 60分</td>
-                        <td>オンライン対応可</td>
-                    </tr>
-                    <tr>
-                        <td>特定技能受入れ支援（月額）</td>
-                        <td>¥33,000 〜</td>
-                        <td>人数や支援内容により変動</td>
-                    </tr>
-                    <tr>
-                        <td>ホームページ作成（基本構成）</td>
-                        <td>¥165,000 〜</td>
-                        <td>5ページ構成目安</td>
-                    </tr>
-                    <tr>
-                        <td>油絵技能評価・登録</td>
-                        <td>個別見積り</td>
-                        <td>作品数による</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </section>
-
-    <section id="qa" class="section-bg fade-in">
-        <h2>よくあるご質問</h2>
-        <div class="qa-item">
-            <strong>Q. 神戸以外の地域でも対応可能ですか？</strong>
-            <p>A. はい、全国対応しております。Zoom等のオンラインツールを活用したご相談が可能ですので、遠方の企業様もご安心ください。</p>
-        </div>
-        <div class="qa-item">
-            <strong>Q. 個人事業主でもホームページ制作を依頼できますか？</strong>
-            <p>A. もちろんです。セコンドペンギン企画も個人事業からスタートしております。小規模ならではの柔軟な対応でサポートいたします。</p>
-        </div>
-        <div class="qa-item">
-            <strong>Q. 油絵の評価制度とは具体的に何ですか？</strong>
-            <p>A. 油絵の技術的背景や保存状態を客観的に評価し、データとして登録することで、長期的な資産価値を証明する仕組みです。詳細は個別にお問い合わせください。</p>
-        </div>
-    </section>
-
-    <section id="company" class="fade-in">
-        <h2>会社概要</h2>
-        <div class="company-info">
-            <div class="info-table">
-                <dl><dt>屋号</dt><dd>セコンドペンギン企画</dd></dl>
-                <dl><dt>設立年月日</dt><dd>2024年6月13日</dd></dl>
-                <dl><dt>代表事務所</dt><dd>兵庫県神戸市</dd></dl>
-                <dl><dt>所在地</dt><dd>神戸ファッションマート内</dd></dl>
-                <dl><dt>業務内容</dt><dd>外国人雇用支援、入管業務コンサルティング、油絵資産評価、Web制作</dd></dl>
-            </div>
-            <div class="map-area">
-                <div style="text-align:center; color: var(--text-gray);">
-                    <p>神戸ファッションマート</p>
-                    <p style="font-size: 0.8rem;">[ Google Map 等の埋め込みエリア ]</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div class="transition-banner fade-in">
-        <h3>変化を恐れず、最初に飛び込む。</h3>
-        <p>セコンドペンギン企画は、あなたの挑戦に寄り添うパートナーです。</p>
-        <a href="#" class="btn" style="background: var(--white); color: var(--main-blue); margin-top: 30px;">
-            個人事業 セコンドペンギン企画の取り組みを見る
-        </a>
+<section class="hero">
+    <div class="fade-in">
+        <h1>架け橋となり、価値を紡ぐ。</h1>
+        <p>企業の外国人雇用、外国人の日本就業/生活支援、<br>個人の油絵の100年資産、皆様のホームページ作成</p>
+        <p style="font-size: 1rem; color: #555;">法務の専門性とクリエイティブな視点で、あなたの「挑戦」を伴走支援します。</p>
+        <a href="#contact" class="btn">お問合せはこちら</a>
     </div>
-</main>
+</section>
+
+<section id="business" class="fade-in">
+    <h2>企業様向けサポート</h2>
+    <p style="text-align: center; margin-bottom: 40px;">法務の専門家、採用の即戦力、定着の伴奏者の面から貴社の外国人雇用をトータルでバックアップします。</p>
+    <div class="grid">
+        <div class="card">
+            <h3>1. 事前相談・リスク確認</h3>
+            <p>外国人雇用に関する不安や法的リスクを、雇用前にクリアにします。</p>
+        </div>
+        <div class="card">
+            <h3>2. 特定技能・入管対応</h3>
+            <p>煩雑な受入れ支援手続きや入管への申請をスムーズに代行します。</p>
+        </div>
+        <div class="card">
+            <h3>3. トラブル予防サポート</h3>
+            <p>在留資格や雇用に関するトラブルを未然に防ぐ体制を構築します。</p>
+        </div>
+    </div>
+    <div style="text-align: center; margin-top: 40px;">
+        <a href="#" class="btn">問合せ・相談する</a>
+    </div>
+</section>
+
+<section id="foreign" style="background-color: var(--sky-blue);" class="fade-in">
+    <div style="background: white; padding: 50px; border-radius: 20px; text-align: center;">
+        <h2>For Foreigners</h2>
+        <p>Visa and consulting life in Japan. We support your career and daily life.</p>
+        <a href="#" class="btn btn-outline">Visit our specialized site ↗</a>
+    </div>
+</section>
+
+<section id="art" class="fade-in">
+    <h2>油絵の100年資産</h2>
+    <div style="display: flex; flex-wrap: wrap; gap: 40px; align-items: center;">
+        <div style="flex: 1; min-width: 300px;">
+            <p>現在、油絵の技能評価制度を進めています。あなたの作品に100年続く価値の証明を。<br>現在、<strong>登録作品を募集中</strong>です。</p>
+            <a href="#" class="btn">詳細・作品登録はこちら</a>
+        </div>
+        <div style="flex: 1; min-width: 300px; background: #eee; height: 200px; display: flex; align-items: center; justify-content: center; border-radius: 10px;">
+            [ 油絵イメージ画像 ]
+        </div>
+    </div>
+</section>
+
+<section id="web" style="background-color: #f9f9f9;" class="fade-in">
+    <h2>ホームページ作成</h2>
+    <p style="text-align: center;">セコンドペンギン企画では、本サイトのような「シンプル・モダン・伝わる」Webサイト制作を承ります。個人事業主様から中小企業様まで、最適なプランをご提案します。</p>
+</section>
+
+<section id="company" class="fade-in">
+    <h2>会社概要</h2>
+    <table>
+        <tr><th>屋号</th><td>セコンドペンギン企画</td></tr>
+        <tr><th>設立年月日</th><td>2024年6月13日</td></tr>
+        <tr><th>事務所</th><td>神戸市</td></tr>
+        <tr><th>業務エリア</th><td>全国</td></tr>
+        <tr><th>所在地</th><td>神戸ファッションマート（アクセスは下記ボタンより）</td></tr>
+    </table>
+    <div style="text-align: center; margin-top: 30px;">
+        <a href="#" class="btn btn-outline">アクセス詳細</a>
+        <a href="#" class="btn" style="margin-left: 10px;">お問合せ</a>
+    </div>
+</section>
+
+<section id="qa" class="fade-in">
+    <h2>Q＆A</h2>
+    <div class="card" style="margin-bottom: 10px;">
+        <p><strong>Q. 全国対応は可能ですか？</strong><br>A. はい、オンライン相談を含め全国の企業様・個人様に対応しております。</p>
+    </div>
+</section>
+
+<div class="transition-area">
+    <p>あなたの「次の一歩」を支えるセコンドペンギン。</p>
+    <a href="#" class="btn" style="background: white; color: var(--accent-green);">個人事業 セコンドペンギン企画について</a>
+</div>
 
 <footer>
-    <p>&copy; 2024-2025 Second Penguin Kikaku. All Rights Reserved.</p>
+    <p>&copy; 2024 Second Penguin Kikaku. All Rights Reserved.</p>
 </footer>
 
 <script>
-    // Intersection Observer for animations
-    const observerOptions = { threshold: 0.15 };
+    // スクロール連動アニメーション
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
             }
         });
-    }, observerOptions);
+    }, { threshold: 0.1 });
 
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-    // Smooth scroll for nav links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
-            });
-        });
+    document.querySelectorAll('.fade-in').forEach(section => {
+        observer.observe(section);
     });
 </script>
 
 </body>
 </html>
+💡 納品後のアドバイス
+画像について: <img>タグの場所（油絵セクションなど）には、実際の作品写真や神戸の風景写真を当てはめると、よりオリジナリティが高まります。
+
+リンクの設定: 各ボタンの href="#" の部分に、実際のフォームのURLや別サイトのURLを記入してください。
+
+報酬一覧: 料金体系が決まりましたら、会社概要セクションの下に同様のテーブル形式で追加するのがおすすめです。
+
+このコードをベースに、さらに詳細なテキストの調整や、Q&Aの内容追加などをお手伝いしましょうか？
