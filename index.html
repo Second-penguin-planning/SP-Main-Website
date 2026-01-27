@@ -43,7 +43,7 @@
         /* Header */
         header {
             background: var(--white);
-            padding: 15px 5%; /* 高さを少し調整 */
+            padding: 15px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -53,21 +53,19 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
-        /* ロゴ周りのスタイル修正 */
         .logo {
-            display: flex;       /* 画像と文字を横並びにする */
-            align-items: center; /* 垂直方向の中央揃え */
-            gap: 10px;           /* 画像と文字の間隔 */
+            display: flex;
+            align-items: center;
+            gap: 10px;
             font-weight: bold;
             font-size: 1.5rem;
             color: var(--main-blue);
-            text-decoration: none; /* リンクにした場合の下線消去 */
+            text-decoration: none;
         }
 
-        /* ロゴ画像のサイズ指定 */
         .logo img {
-            height: 40px; /* ヘッダーに収まる高さに設定 */
-            width: auto;  /* 横幅は比率を維持 */
+            height: 40px;
+            width: auto;
         }
 
         nav a {
@@ -81,7 +79,6 @@
         /* Hero Section */
         .hero {
             height: 80vh;
-            /* 背景画像を「未来・ネットワーク・光」のイメージに変更 */
             background: linear-gradient(rgba(0,91,172,0.6), rgba(0,91,172,0.4)), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop') center/cover;
             display: flex;
             flex-direction: column;
@@ -89,14 +86,14 @@
             align-items: center;
             text-align: center;
             padding: 0 5%;
-            color: white; /* 背景が暗くなったので文字色を白系に調整 */
+            color: white;
         }
 
         .hero h1 {
             font-size: 2.5rem;
             color: var(--main-blue);
             margin-bottom: 20px;
-            background: rgba(255,255,255,0.9); /* 透過度を下げて視認性アップ */
+            background: rgba(255,255,255,0.9);
             padding: 15px 30px;
             border-radius: 5px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
@@ -107,14 +104,13 @@
             max-width: 800px;
             margin-bottom: 30px;
             font-weight: bold;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* 白文字の視認性確保 */
-            color: white; /* ここを白に変更 */
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+            color: white;
         }
         
-        /* サブテキスト用のスタイル上書き */
         .hero .sub-text {
             font-size: 1rem;
-            color: #f0f0f0 !important; /* 薄いグレーに変更 */
+            color: #f0f0f0 !important;
             font-weight: normal;
         }
 
@@ -144,7 +140,6 @@
             background: var(--accent-green);
         }
 
-        /* Grid System */
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -226,7 +221,7 @@
         @media (max-width: 768px) {
             .hero h1 { font-size: 1.8rem; }
             header { flex-direction: column; }
-            .logo { margin-bottom: 15px; } /* スマホ時の余白 */
+            .logo { margin-bottom: 15px; }
             nav { margin-top: 0; }
             nav a { margin: 0 10px; font-size: 0.8rem; }
         }
@@ -270,7 +265,7 @@
         </div>
         <div class="card">
             <h3>3. トラブル予防サポート</h3>
-            <p>在留資格や雇用に関するトラブルを未然に防ぐ体制を構築します。</p>
+            <p>冒頭の在留資格や雇用に関するトラブルを未然に防ぐ体制を構築します。</p>
         </div>
     </div>
     <div style="text-align: center; margin-top: 40px;">
@@ -282,7 +277,7 @@
     <div style="background: white; padding: 50px; border-radius: 20px; text-align: center;">
         <h2>For Foreigners</h2>
         <p>Visa and consulting life in Japan. We support your career and daily life.</p>
-        <a href="#" class="btn btn-outline">Visit our specialized site ↗</a>
+        <a href="https://second-penguin-lanning.github.io/Foreigners-Website/" class="btn btn-outline" target="_blank" rel="noopener noreferrer">Visit our specialized site ↗</a>
     </div>
 </section>
 
@@ -336,7 +331,6 @@
 </footer>
 
 <script>
-    // スクロール連動アニメーション
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
