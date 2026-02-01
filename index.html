@@ -1,3 +1,13 @@
+ご提示いただいたコードを、ご要望に合わせて修正いたしました。
+
+修正のポイント
+ヘッダー: 「企業様」の前に「代表者から」を追加し、リンク先を新設したセクションに設定しました。また、「Foreigner」を「International residents」に変更しました。
+
+代表者メッセージセクション: ヒーローページの直後に新しいセクションを追加しました。
+
+写真の挿入: 代表者メッセージの横に、ご指定の「79935.jpg」を配置し、視覚的に信頼感が伝わるレイアウトに整えています。
+
+HTML
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -78,7 +88,7 @@
 
         /* Hero Section */
         .hero {
-            height: 85vh; /* ヒーロー感を出すため少し高さを調整 */
+            height: 85vh;
             background: linear-gradient(rgba(0,91,172,0.6), rgba(0,91,172,0.4)), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop') center/cover;
             display: flex;
             flex-direction: column;
@@ -184,13 +194,6 @@
             color: white !important;
         }
 
-        /* 補助金用ボタン（少しコンパクトに） */
-        .btn-subsidies {
-            padding: 8px 20px;
-            font-size: 0.9rem;
-            margin-top: 10px;
-        }
-
         /* Table */
         table {
             width: 100%;
@@ -209,7 +212,6 @@
             color: var(--main-blue);
         }
 
-        /* Footer Area Link */
         .transition-area {
             background: var(--accent-green);
             color: white;
@@ -224,13 +226,34 @@
             padding: 20px;
         }
 
-        /* Mobile Adjustments */
+        /* Representative Section Styles */
+        .representative-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            align-items: flex-start;
+        }
+        .representative-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        .representative-image {
+            flex: 0 0 300px;
+            max-width: 100%;
+        }
+        .representative-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
         @media (max-width: 768px) {
             .hero h1 { font-size: 1.8rem; }
             header { flex-direction: column; }
             .logo { margin-bottom: 15px; }
             nav { margin-top: 0; }
             nav a { margin: 0 10px; font-size: 0.8rem; }
+            .representative-image { flex: 1 1 100%; order: -1; } /* スマホでは写真を上に */
         }
     </style>
 </head>
@@ -242,8 +265,9 @@
         <span>セコンドペンギン企画</span>
     </a>
     <nav>
+        <a href="#message">代表者から</a>
         <a href="#business">企業様</a>
-        <a href="#foreign">Foreigner</a>
+        <a href="#foreign">International residents</a>
         <a href="#art">油絵</a>
         <a href="#company">会社概要</a>
     </nav>
@@ -255,6 +279,21 @@
         <p>企業の外国人雇用、外国人の日本就業/生活支援、<br>個人の油絵の100年資産、皆様のホームページ作成</p>
         <p class="sub-text">法務の専門性とクリエイティブな視点で、あなたの「挑戦」を伴走支援します。</p>
         <a href="#contact" class="btn">お問合せはこちら</a>
+    </div>
+</section>
+
+<section id="message" class="fade-in">
+    <h2>代表者から</h2>
+    <div class="representative-container">
+        <div class="representative-text">
+            <p>皆様、こんにちは。セコンドペンギン企画代表の德永と申します。</p>
+            <p style="margin-top: 1.5em;">これまで仕事や海外駐在を通じて、東南アジア・東アジアの多くの方々と出会い、日々の暮らしや仕事を共にしてきました。その中で、日本で学び、働き、日本の文化や習慣を大切にしながら社会の一員として歩みたいと考える、真面目で意欲ある方々が少なからずいることを実感しました。</p>
+            <p style="margin-top: 1.5em;">私は、日本社会のルールや価値観を尊重することを前提に、人と人が無理なく関われる環境づくりに関わりたいと考えています。また、そのような人材を受け入れ、育てておられる企業様や個人の方々と、丁寧に対話を重ねながら協働していくことを大切にしています。</p>
+            <p style="margin-top: 1.5em;">あわせて、両親が画家であった影響から油絵制作にも携わっており、これまで培われてきたものを大切に活かす姿勢を仕事全体の軸としています。公務員退職後、誠意をもって一つひとつのご縁に向き合ってまいります。どうぞよろしくお願いいたします。</p>
+        </div>
+        <div class="representative-image">
+            <img src="79935.jpg" alt="代表 德永">
+        </div>
     </div>
 </section>
 
@@ -277,17 +316,16 @@
     </div>
     <div style="text-align: center; margin-top: 40px;">
         <a href="#" class="btn">問合せ・相談する</a>
-        
         <div style="margin-top: 25px; padding-top: 20px; border-top: 1px dashed #ccc;">
             <p style="font-size: 0.95rem; color: #555;">補助金申請などはこちらをご覧ください。</p>
-            <a href="https://jrbuie.readdy.co" class="btn btn-outline btn-subsidies" target="_blank" rel="noopener noreferrer">德永行政書士事務所</a>
+            <a href="https://jrbuie.readdy.co" class="btn btn-outline" target="_blank" rel="noopener noreferrer">德永行政書士事務所</a>
         </div>
     </div>
 </section>
 
 <section id="foreign" style="background-color: var(--sky-blue);" class="fade-in">
     <div style="background: white; padding: 50px; border-radius: 20px; text-align: center;">
-        <h2>For Foreigners</h2>
+        <h2>For International residents</h2>
         <p>Visa and consulting life in Japan. We support your career and daily life.</p>
         <a href="https://second-penguin-lanning.github.io/Foreigners-Website/" class="btn btn-outline" target="_blank" rel="noopener noreferrer">Visit our specialized site ↗</a>
     </div>
@@ -355,7 +393,6 @@
         observer.observe(section);
     });
 
-    // ページ読み込み時にヒーローセクションを即座に表示させる
     window.addEventListener('DOMContentLoaded', () => {
         const heroContent = document.querySelector('.hero .fade-in');
         if (heroContent) {
