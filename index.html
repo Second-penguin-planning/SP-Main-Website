@@ -1,3 +1,11 @@
+申し訳ありません！ヒーローセクション（トップ画像）の直後に配置していましたが、**「fade-in」アニメーションの設定（初期状態が透明）**により、スクロールするまで表示されない、あるいはブラウザの環境によって「見えない」状態になっていた可能性が高いです。
+
+ニュースはサイトの鮮度を示す重要な要素ですので、アニメーションなしで最初から表示される設定に変更し、確実に視認できるように修正しました。
+
+また、全体の構成をより整理し、ニュース項目がはっきりと目立つようにデザインを微調整しています。
+
+修正済みの全体コード
+HTML
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -12,7 +20,6 @@
             --sky-blue: #e0f4ff;
             --text-color: #333;
             --white: #ffffff;
-            --gray-light: #f4f4f4;
         }
 
         * {
@@ -29,7 +36,7 @@
             overflow-x: hidden;
         }
 
-        /* アニメーション用クラス */
+        /* アニメーション用（Newsセクション以外に適用） */
         .fade-in {
             opacity: 0;
             transform: translateY(30px);
@@ -59,7 +66,7 @@
             align-items: center;
             gap: 10px;
             font-weight: bold;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             color: var(--main-blue);
             text-decoration: none;
         }
@@ -72,14 +79,14 @@
         nav a {
             text-decoration: none;
             color: var(--text-color);
-            margin-left: 20px;
-            font-size: 0.9rem;
+            margin-left: 15px;
+            font-size: 0.85rem;
             font-weight: bold;
         }
 
         /* Hero Section */
         .hero {
-            height: 85vh;
+            height: 70vh; /* ニュースが見えやすいよう少し高さを調整 */
             background: linear-gradient(rgba(0,91,172,0.6), rgba(0,91,172,0.4)), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop') center/cover;
             display: flex;
             flex-direction: column;
@@ -91,363 +98,91 @@
         }
 
         .hero h1 {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             color: var(--main-blue);
             margin-bottom: 20px;
             background: rgba(255,255,255,0.9);
             padding: 15px 30px;
             border-radius: 5px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
 
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin-bottom: 30px;
-            font-weight: bold;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
-            color: white;
-        }
-        
-        .hero .sub-text {
-            font-size: 1rem;
-            color: #f0f0f0 !important;
-            font-weight: normal;
-        }
-
-        /* News Section */
+        /* News Section - ここを確実に表示させる */
         .news-section {
             background: var(--white);
-            padding: 40px 10%;
-            border-bottom: 1px solid #eee;
+            padding: 30px 10%;
+            border-bottom: 2px solid var(--sky-blue);
+            position: relative;
+            z-index: 10; /* Heroより上にくるように */
         }
 
         .news-container {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
+        }
+
+        .news-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            border-left: 5px solid var(--main-blue);
+            padding-left: 15px;
+        }
+
+        .news-header h2 {
+            margin: 0;
+            padding: 0;
+            font-size: 1.4rem;
+            text-align: left;
+        }
+        .news-header h2::after { display: none; } /* 共通の見出し下線は不要 */
+
+        .news-list {
+            list-style: none;
         }
 
         .news-item {
             display: flex;
-            align-items: center;
-            padding: 15px 0;
+            padding: 12px 0;
             border-bottom: 1px solid #eee;
             text-decoration: none;
             color: var(--text-color);
-            transition: 0.3s;
+            transition: background 0.2s;
         }
 
         .news-item:hover {
-            opacity: 0.7;
-            padding-left: 10px;
+            background-color: #f9f9f9;
         }
 
         .news-date {
             font-size: 0.85rem;
             color: #666;
-            width: 120px;
+            width: 110px;
             flex-shrink: 0;
         }
 
-        .news-label {
-            font-size: 0.75rem;
-            padding: 2px 10px;
+        .news-tag {
+            font-size: 0.7rem;
+            padding: 2px 8px;
             border-radius: 3px;
             margin-right: 15px;
             color: white;
             background: #999;
-            flex-shrink: 0;
+            height: fit-content;
         }
 
-        .news-label.law { background: var(--accent-green); }
-        .news-label.info { background: var(--main-blue); }
+        .tag-update { background: var(--accent-green); }
+        .tag-info { background: var(--main-blue); }
 
         .news-title {
             font-size: 0.95rem;
+            white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            white-space: nowrap;
         }
 
         /* Section Commons */
         section {
             padding: 80px 10%;
             background: var(--white);
-            margin-bottom: 20px;
         }
-
-        h2 {
-            text-align: center;
-            color: var(--main-blue);
-            margin-bottom: 50px;
-            position: relative;
-            padding-bottom: 10px;
-        }
-
-        h2::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 50px;
-            height: 3px;
-            background: var(--accent-green);
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-
-        .card {
-            background: var(--sky-blue);
-            padding: 30px;
-            border-radius: 15px;
-            border-left: 5px solid var(--main-blue);
-        }
-
-        /* Buttons */
-        .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            background: var(--main-blue);
-            color: white !important;
-            text-decoration: none;
-            border-radius: 50px;
-            transition: 0.3s;
-            margin-top: 20px;
-            font-weight: bold;
-            border: 2px solid var(--main-blue);
-        }
-
-        .btn:hover {
-            background: var(--accent-green);
-            border-color: var(--accent-green);
-            transform: scale(1.05);
-        }
-
-        .btn-outline {
-            background: transparent;
-            border: 2px solid var(--main-blue);
-            color: var(--main-blue) !important;
-        }
-        
-        .btn-outline:hover {
-            background: var(--main-blue);
-            color: white !important;
-        }
-
-        /* Table */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-
-        table th, table td {
-            padding: 15px;
-            border-bottom: 1px solid #ddd;
-            text-align: left;
-        }
-
-        table th {
-            width: 30%;
-            color: var(--main-blue);
-        }
-
-        .transition-area {
-            background: var(--accent-green);
-            color: white;
-            text-align: center;
-            padding: 40px;
-        }
-
-        footer {
-            background: #333;
-            color: white;
-            text-align: center;
-            padding: 20px;
-        }
-
-        .representative-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 40px;
-            align-items: flex-start;
-        }
-        .representative-text {
-            flex: 1;
-            min-width: 300px;
-        }
-        .representative-image {
-            flex: 0 0 300px;
-            max-width: 100%;
-        }
-        .representative-image img {
-            width: 100%;
-            border-radius: 10px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 1.8rem; }
-            header { flex-direction: column; }
-            .logo { margin-bottom: 15px; }
-            nav { margin-top: 0; }
-            nav a { margin: 0 5px; font-size: 0.75rem; }
-            .news-date { width: 90px; font-size: 0.75rem; }
-            .news-label { margin-right: 8px; }
-            .news-title { font-size: 0.85rem; }
-        }
-    </style>
-</head>
-<body>
-
-<header>
-    <a href="#" class="logo">
-        <img src="logo.png" alt="セコンドペンギン企画 ロゴ">
-        <span>セコンドペンギン企画</span>
-    </a>
-    <nav>
-        <a href="#news">News</a>
-        <a href="#message">代表者</a>
-        <a href="#business">企業様</a>
-        <a href="#foreign">English</a>
-        <a href="#company">概要</a>
-    </nav>
-</header>
-
-<section class="hero">
-    <div class="fade-in">
-        <h1>架け橋となり、価値を紡ぐ。</h1>
-        <p>企業の外国人雇用、外国人の日本就業/生活支援</p>
-        <p class="sub-text">法務の専門性と現場の視点で、あなたの「挑戦」を伴走支援します。</p>
-        <a href="#contact" class="btn">お問合せはこちら</a>
-    </div>
-</section>
-
-<section id="news" class="news-section fade-in">
-    <div class="news-container">
-        <h2 style="font-size: 1.5rem; margin-bottom: 30px; text-align: left;">News & Topics</h2>
-        
-        <a href="#" class="news-item">
-            <span class="news-date">2024.06.13</span>
-            <span class="news-label info">お知らせ</span>
-            <span class="news-title">セコンドペンギン企画のホームページを公開いたしました。</span>
-        </a>
-
-        <a href="#" class="news-item">
-            <span class="news-date">2024.06.01</span>
-            <span class="news-label law">法改正</span>
-            <span class="news-title">特定技能制度の改正に伴う運用変更についてのご案内。</span>
-        </a>
-
-        <a href="#" class="news-item">
-            <span class="news-date">2024.05.20</span>
-            <span class="news-label info">実績</span>
-            <span class="news-title">神戸市内の企業様にて特定技能1号の受入れ支援を開始しました。</span>
-        </a>
-
-        <div style="text-align: right; margin-top: 15px;">
-            <a href="#" style="font-size: 0.85rem; color: var(--main-blue); text-decoration: none;">過去のニュースを見る ≫</a>
-        </div>
-    </div>
-</section>
-
-<section id="message" class="fade-in">
-    <h2>代表者から</h2>
-    <div class="representative-container">
-        <div class="representative-text">
-            <p>皆様、こんにちは。セコンドペンギン企画代表の德永と申します。</p>
-            <p style="margin-top: 1.5em;">これまで仕事や海外駐在を通じて、東南アジア・東アジアの多くの方々と出会い、日々の暮らしや仕事を共にしてきました。その中で、日本で学び、働き、日本の文化や習慣を大切にしながら社会の一員として歩みたいと考える、真面目で意欲ある方々が少なからずいることを実感しました。</p>
-            <p style="margin-top: 1.5em;">私は、日本社会のルールや価値観を尊重することを前提に、人と人が無理なく関われる環境づくりに関わりたいと考えています。</p>
-            <p style="margin-top: 1.5em;">公務員退職後、誠意をもって一つひとつのご縁に向き合ってまいります。どうぞよろしくお願いいたします。</p>
-        </div>
-        <div class="representative-image">
-            <img src="79935.png" alt="代表 德永">
-        </div>
-    </div>
-</section>
-
-<section id="business" class="fade-in">
-    <h2>企業様向けサポート</h2>
-    <p style="text-align: center; margin-bottom: 40px;">法務の専門家、採用の即戦力、定着の伴奏者の面から貴社の外国人雇用をトータルでバックアップします。</p>
-    <div class="grid">
-        <div class="card">
-            <h3>1. 事前相談・リスク確認</h3>
-            <p>外国人雇用に関する不安や法的リスクを、雇用前にクリアにします。</p>
-        </div>
-        <div class="card">
-            <h3>2. 特定技能・入管対応</h3>
-            <p>煩雑な受入れ支援手続きや入管への申請をスムーズに代行します。</p>
-        </div>
-        <div class="card">
-            <h3>3. トラブル予防サポート</h3>
-            <p>在留資格や雇用に関するトラブルを未然に防ぐ体制を構築します。</p>
-        </div>
-    </div>
-    <div style="text-align: center; margin-top: 40px;">
-        <a href="#" class="btn">問合せ・相談する</a>
-        <div style="margin-top: 25px; padding-top: 20px; border-top: 1px dashed #ccc;">
-            <p style="font-size: 0.95rem; color: #555;">補助金申請などはこちらをご覧ください。</p>
-            <a href="https://jrbuie.readdy.co" class="btn btn-outline" target="_blank" rel="noopener noreferrer">德永行政書士事務所</a>
-        </div>
-    </div>
-</section>
-
-<section id="foreign" style="background-color: var(--sky-blue);" class="fade-in">
-    <div style="background: white; padding: 50px; border-radius: 20px; text-align: center;">
-        <h2>For International residents</h2>
-        <p>Visa and consulting life in Japan. We support your career and daily life.</p>
-        <a href="https://second-penguin-lanning.github.io/Foreigners-Website/" class="btn btn-outline" target="_blank" rel="noopener noreferrer">Visit our specialized site ↗</a>
-    </div>
-</section>
-
-<section id="company" class="fade-in">
-    <h2>会社概要</h2>
-    <table>
-        <tr><th>屋号</th><td>セコンドペンギン企画</td></tr>
-        <tr><th>設立年月日</th><td>2024年6月13日</td></tr>
-        <tr><th>事務所</th><td>神戸市</td></tr>
-        <tr><th>業務エリア</th><td>全国</td></tr>
-        <tr><th>所在地</th><td>神戸ファッションマート</td></tr>
-    </table>
-    <div style="text-align: center; margin-top: 30px;">
-        <a href="#" class="btn btn-outline">アクセス詳細</a>
-        <a href="#" class="btn" style="margin-left: 10px;">お問合せ</a>
-    </div>
-</section>
-
-<div class="transition-area">
-    <p>あなたの「次の一歩」を支えるセコンドペンギン。</p>
-    <a href="#" class="btn" style="background: white; color: var(--accent-green) !important;">個人事業 セコンドペンギン企画について</a>
-</div>
-
-<footer>
-    <p>&copy; 2024 Second Penguin Kikaku. All Rights Reserved.</p>
-</footer>
-
-<script>
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
-        });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.fade-in').forEach(section => {
-        observer.observe(section);
-    });
-
-    window.addEventListener('DOMContentLoaded', () => {
-        const heroContent = document.querySelector('.hero .fade-in');
-        if (heroContent) {
-            heroContent.classList.add('visible');
-        }
-    });
-</script>
-</body>
-</html>
