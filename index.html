@@ -12,6 +12,7 @@
             --sky-blue: #e0f4ff;
             --text-color: #333;
             --white: #ffffff;
+            --gray-light: #f4f4f4;
         }
 
         * {
@@ -58,7 +59,7 @@
             align-items: center;
             gap: 10px;
             font-weight: bold;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             color: var(--main-blue);
             text-decoration: none;
         }
@@ -114,11 +115,65 @@
             font-weight: normal;
         }
 
+        /* News Section */
+        .news-section {
+            background: var(--white);
+            padding: 40px 10%;
+            border-bottom: 1px solid #eee;
+        }
+
+        .news-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .news-item {
+            display: flex;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+            text-decoration: none;
+            color: var(--text-color);
+            transition: 0.3s;
+        }
+
+        .news-item:hover {
+            opacity: 0.7;
+            padding-left: 10px;
+        }
+
+        .news-date {
+            font-size: 0.85rem;
+            color: #666;
+            width: 120px;
+            flex-shrink: 0;
+        }
+
+        .news-label {
+            font-size: 0.75rem;
+            padding: 2px 10px;
+            border-radius: 3px;
+            margin-right: 15px;
+            color: white;
+            background: #999;
+            flex-shrink: 0;
+        }
+
+        .news-label.law { background: var(--accent-green); }
+        .news-label.info { background: var(--main-blue); }
+
+        .news-title {
+            font-size: 0.95rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
         /* Section Commons */
         section {
-            padding: 100px 10%;
+            padding: 80px 10%;
             background: var(--white);
-            margin: 20px 0;
+            margin-bottom: 20px;
         }
 
         h2 {
@@ -216,7 +271,6 @@
             padding: 20px;
         }
 
-        /* Representative Section Styles */
         .representative-container {
             display: flex;
             flex-wrap: wrap;
@@ -242,8 +296,10 @@
             header { flex-direction: column; }
             .logo { margin-bottom: 15px; }
             nav { margin-top: 0; }
-            nav a { margin: 0 10px; font-size: 0.8rem; }
-            .representative-image { flex: 1 1 100%; order: -1; } 
+            nav a { margin: 0 5px; font-size: 0.75rem; }
+            .news-date { width: 90px; font-size: 0.75rem; }
+            .news-label { margin-right: 8px; }
+            .news-title { font-size: 0.85rem; }
         }
     </style>
 </head>
@@ -255,10 +311,11 @@
         <span>セコンドペンギン企画</span>
     </a>
     <nav>
-        <a href="#message">代表者から</a>
+        <a href="#news">News</a>
+        <a href="#message">代表者</a>
         <a href="#business">企業様</a>
-        <a href="#foreign">International residents</a>
-        <a href="#company">会社概要</a>
+        <a href="#foreign">English</a>
+        <a href="#company">概要</a>
     </nav>
 </header>
 
@@ -271,13 +328,41 @@
     </div>
 </section>
 
+<section id="news" class="news-section fade-in">
+    <div class="news-container">
+        <h2 style="font-size: 1.5rem; margin-bottom: 30px; text-align: left;">News & Topics</h2>
+        
+        <a href="#" class="news-item">
+            <span class="news-date">2024.06.13</span>
+            <span class="news-label info">お知らせ</span>
+            <span class="news-title">セコンドペンギン企画のホームページを公開いたしました。</span>
+        </a>
+
+        <a href="#" class="news-item">
+            <span class="news-date">2024.06.01</span>
+            <span class="news-label law">法改正</span>
+            <span class="news-title">特定技能制度の改正に伴う運用変更についてのご案内。</span>
+        </a>
+
+        <a href="#" class="news-item">
+            <span class="news-date">2024.05.20</span>
+            <span class="news-label info">実績</span>
+            <span class="news-title">神戸市内の企業様にて特定技能1号の受入れ支援を開始しました。</span>
+        </a>
+
+        <div style="text-align: right; margin-top: 15px;">
+            <a href="#" style="font-size: 0.85rem; color: var(--main-blue); text-decoration: none;">過去のニュースを見る ≫</a>
+        </div>
+    </div>
+</section>
+
 <section id="message" class="fade-in">
     <h2>代表者から</h2>
     <div class="representative-container">
         <div class="representative-text">
             <p>皆様、こんにちは。セコンドペンギン企画代表の德永と申します。</p>
             <p style="margin-top: 1.5em;">これまで仕事や海外駐在を通じて、東南アジア・東アジアの多くの方々と出会い、日々の暮らしや仕事を共にしてきました。その中で、日本で学び、働き、日本の文化や習慣を大切にしながら社会の一員として歩みたいと考える、真面目で意欲ある方々が少なからずいることを実感しました。</p>
-            <p style="margin-top: 1.5em;">私は、日本社会のルールや価値観を尊重することを前提に、人と人が無理なく関われる環境づくりに関わりたいと考えています。また、そのような人材を受け入れ、育てておられる企業様や個人の方々と、丁寧に対話を重ねながら協働していくことを大切にしています。</p>
+            <p style="margin-top: 1.5em;">私は、日本社会のルールや価値観を尊重することを前提に、人と人が無理なく関われる環境づくりに関わりたいと考えています。</p>
             <p style="margin-top: 1.5em;">公務員退職後、誠意をもって一つひとつのご縁に向き合ってまいります。どうぞよろしくお願いいたします。</p>
         </div>
         <div class="representative-image">
@@ -327,18 +412,11 @@
         <tr><th>設立年月日</th><td>2024年6月13日</td></tr>
         <tr><th>事務所</th><td>神戸市</td></tr>
         <tr><th>業務エリア</th><td>全国</td></tr>
-        <tr><th>所在地</th><td>神戸ファッションマート（アクセスは下記ボタンより）</td></tr>
+        <tr><th>所在地</th><td>神戸ファッションマート</td></tr>
     </table>
     <div style="text-align: center; margin-top: 30px;">
         <a href="#" class="btn btn-outline">アクセス詳細</a>
         <a href="#" class="btn" style="margin-left: 10px;">お問合せ</a>
-    </div>
-</section>
-
-<section id="qa" class="fade-in">
-    <h2>Q＆A</h2>
-    <div class="card" style="margin-bottom: 10px;">
-        <p><strong>Q. 全国対応は可能ですか？</strong><br>A. はい、オンライン相談を含め全国の企業様・個人様に対応しております。</p>
     </div>
 </section>
 
