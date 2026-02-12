@@ -13,6 +13,12 @@
             --text-color: #333;
             --white: #ffffff;
             --accent-orange: #ff8c00;
+            /* カテゴリーカラー */
+            --cat-policy: #e74c3c;
+            --cat-procedure: #3498db;
+            --cat-study: #2ecc71;
+            --cat-event: #f39c12;
+            --cat-other: #95a5a6;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -31,15 +37,12 @@
             transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
 
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
 
-        /* Header */
+        /* Header & Lang Switcher */
         header {
             background: var(--white);
-            padding: 15px 5%;
+            padding: 10px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -54,131 +57,121 @@
             align-items: center;
             gap: 10px;
             font-weight: bold;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             color: var(--main-blue);
             text-decoration: none;
         }
 
-        .logo img { height: 40px; width: auto; }
+        .logo img { height: 35px; width: auto; }
 
-        nav a {
-            text-decoration: none;
-            color: var(--text-color);
-            margin-left: 20px;
-            font-size: 0.9rem;
-            font-weight: bold;
+        .nav-container { display: flex; align-items: center; gap: 20px; }
+        nav a { text-decoration: none; color: var(--text-color); font-size: 0.85rem; font-weight: bold; }
+
+        .lang-switcher {
+            display: flex;
+            gap: 5px;
+            background: #f0f0f0;
+            padding: 3px;
+            border-radius: 20px;
         }
+
+        .lang-btn {
+            border: none;
+            padding: 4px 10px;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 0.75rem;
+            font-weight: bold;
+            background: transparent;
+            color: #666;
+            transition: 0.3s;
+        }
+
+        .lang-btn.active { background: var(--main-blue); color: white; }
 
         /* Hero Section */
         .hero {
             height: 85vh;
-            background: linear-gradient(rgba(0,91,172,0.6), rgba(0,91,172,0.4)), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop') center/cover;
+            background: linear-gradient(rgba(0,91,172,0.5), rgba(0,91,172,0.3)), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop') center/cover;
             display: flex;
             position: relative;
-            justify-content: center;
+            justify-content: flex-start; /* 左寄せにしてお知らせ窓とのバランスを取る */
             align-items: center;
-            text-align: center;
             padding: 0 5%;
             color: white;
         }
 
-        .hero-content { z-index: 2; }
-
+        .hero-content { z-index: 2; text-align: left; max-width: 600px; }
         .hero h1 {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             color: var(--main-blue);
             margin-bottom: 20px;
             background: rgba(255,255,255,0.9);
-            padding: 15px 30px;
+            padding: 15px 25px;
             border-radius: 5px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            display: inline-block;
         }
+        .hero p { font-size: 1.1rem; margin-bottom: 10px; font-weight: bold; text-shadow: 1px 1px 3px rgba(0,0,0,0.5); }
 
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin-bottom: 30px;
-            font-weight: bold;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
-        }
-        
-        /* News Box */
+        /* --- News Box (Right Positioned) --- */
         .news-box {
             position: absolute;
-            bottom: 30px;
-            right: 5%;
-            background: rgba(255, 255, 255, 0.95);
+            right: 2%; /* さらに右へ移動 */
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.98);
             color: var(--text-color);
-            padding: 15px;
-            border-radius: 10px;
-            width: 300px;
-            text-align: left;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            border-left: 5px solid var(--accent-orange);
+            padding: 20px;
+            border-radius: 12px;
+            width: 350px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border-top: 5px solid var(--accent-orange);
             z-index: 10;
         }
 
-        .news-box h3 {
-            font-size: 0.9rem;
-            margin-bottom: 8px;
-            color: var(--accent-orange);
-        }
+        .news-box h3 { font-size: 1rem; margin-bottom: 10px; color: var(--main-blue); }
 
-        .news-item {
-            font-size: 0.85rem;
-            cursor: pointer;
-            text-decoration: underline;
-            color: var(--main-blue);
-            display: block;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
+        .filter-container { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 12px; }
+        .filter-tag { font-size: 0.65rem; padding: 2px 8px; border: 1px solid #ddd; border-radius: 10px; cursor: pointer; background: #fff; }
+        .filter-tag.active { background: var(--main-blue); color: #fff; border-color: var(--main-blue); }
+
+        #news-list { max-height: 200px; overflow-y: auto; }
+        .news-item { padding: 8px 0; border-bottom: 1px solid #f0f0f0; display: flex; flex-direction: column; cursor: pointer; }
+        .news-meta { display: flex; gap: 8px; margin-bottom: 2px; }
+        .cat-label { font-size: 0.6rem; padding: 1px 5px; border-radius: 3px; color: #fff; font-weight: bold; }
+        .news-date { color: #888; font-size: 0.7rem; }
+        .news-title { font-size: 0.8rem; font-weight: bold; color: var(--main-blue); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+        /* Category Colors */
+        .policy { background: var(--cat-policy); }
+        .procedure { background: var(--cat-procedure); }
+        .study { background: var(--cat-study); }
+        .event { background: var(--cat-event); }
+        .other { background: var(--cat-other); }
 
         /* Sections */
-        section { padding: 100px 10%; background: var(--white); margin: 20px 0; }
-        h2 { text-align: center; color: var(--main-blue); margin-bottom: 50px; position: relative; padding-bottom: 10px; }
+        section { padding: 80px 10%; background: var(--white); margin: 20px 0; }
+        h2 { text-align: center; color: var(--main-blue); margin-bottom: 40px; position: relative; padding-bottom: 10px; }
         h2::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 50px; height: 3px; background: var(--accent-green); }
-        
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-        .card { background: var(--sky-blue); padding: 30px; border-radius: 15px; border-left: 5px solid var(--main-blue); }
 
-        /* Buttons */
-        .btn { display: inline-block; padding: 12px 30px; background: var(--main-blue); color: white !important; text-decoration: none; border-radius: 50px; transition: 0.3s; margin-top: 20px; font-weight: bold; border: 2px solid var(--main-blue); cursor: pointer; }
-        .btn:hover { background: var(--accent-green); border-color: var(--accent-green); transform: scale(1.05); }
-        .btn-outline { background: transparent; border: 2px solid var(--main-blue); color: var(--main-blue) !important; }
-        .btn-outline:hover { background: var(--main-blue); color: white !important; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .card { background: var(--sky-blue); padding: 25px; border-radius: 15px; border-left: 5px solid var(--main-blue); }
+
+        .btn { display: inline-block; padding: 10px 25px; background: var(--main-blue); color: white !important; text-decoration: none; border-radius: 50px; font-weight: bold; transition: 0.3s; margin-top: 15px; border: none; cursor: pointer; }
+        .btn:hover { background: var(--accent-green); transform: scale(1.03); }
 
         /* Modal */
-        .modal-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.7);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 2000;
-        }
-        .modal-content { background: white; padding: 40px; border-radius: 15px; max-width: 600px; width: 90%; max-height: 80vh; overflow-y: auto; position: relative; }
-        .modal-close { position: absolute; top: 15px; right: 15px; font-size: 1.5rem; cursor: pointer; }
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); display: none; justify-content: center; align-items: center; z-index: 2000; }
+        .modal-content { background: white; padding: 30px; border-radius: 15px; max-width: 500px; width: 90%; position: relative; }
+        .modal-close { position: absolute; top: 10px; right: 15px; font-size: 1.5rem; cursor: pointer; }
 
-        /* Footer & Others */
-        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-        table th, table td { padding: 15px; border-bottom: 1px solid #ddd; text-align: left; }
-        table th { width: 30%; color: var(--main-blue); }
-        footer { background: #333; color: white; text-align: center; padding: 20px; }
-        .representative-container { display: flex; flex-wrap: wrap; gap: 40px; }
-        .representative-text { flex: 1; min-width: 300px; }
-        .representative-image { flex: 0 0 300px; }
-        .representative-image img { width: 100%; border-radius: 10px; }
+        footer { background: #333; color: white; text-align: center; padding: 20px; font-size: 0.8rem; }
 
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 1.8rem; }
-            .news-box { width: 90%; right: 5%; bottom: 20px; }
-            header { flex-direction: column; }
-            nav { margin-top: 10px; }
-            nav a { margin: 0 10px; font-size: 0.8rem; }
-            .representative-image { flex: 1 1 100%; order: -1; }
+        @media (max-width: 992px) {
+            .hero { justify-content: center; text-align: center; height: auto; padding: 100px 5%; }
+            .hero-content { margin-bottom: 300px; }
+            .news-box { position: relative; right: 0; top: 0; transform: none; width: 100%; margin: 20px 0; }
+            header { flex-direction: column; gap: 10px; }
         }
     </style>
 </head>
@@ -186,27 +179,38 @@
 
 <header>
     <a href="#" class="logo">
-        <img src="logo.png" alt="セコンドペンギン企画 ロゴ">
-        <span>セコンドペンギン企画</span>
+        <img src="logo.png" alt="Logo">
+        <span class="tr" data-jp="セコンドペンギン企画" data-en="Second Penguin Kikaku" data-in="Second Penguin Kikaku">セコンドペンギン企画</span>
     </a>
-    <nav>
-        <a href="#message">代表者から</a>
-        <a href="#business">企業様</a>
-        <a href="#foreign">International</a>
-        <a href="#company">会社概要</a>
-    </nav>
+    <div class="nav-container">
+        <nav>
+            <a href="#message" class="tr" data-jp="代表者から" data-en="Message" data-in="Pesan">代表者から</a>
+            <a href="#business" class="tr" data-jp="企業様" data-en="For Business" data-in="Untuk Bisnis">企業様</a>
+            <a href="#foreign" class="tr" data-jp="International" data-en="International" data-in="Internasional">International</a>
+        </nav>
+        <div class="lang-switcher">
+            <button class="lang-btn active" onclick="switchLang('jp')">JP</button>
+            <button class="lang-btn" onclick="switchLang('en')">EN</button>
+            <button class="lang-btn" onclick="switchLang('in')">IN</button>
+        </div>
+    </div>
 </header>
 
 <section class="hero">
     <div class="hero-content fade-in">
-        <h1>架け橋となり、価値を紡ぐ。</h1>
-        <p>企業の外国人雇用、外国人の日本就業/生活支援</p>
-        <p style="color: #f0f0f0; font-weight: normal;">法務の専門性と現場の視点で、あなたの「挑戦」を伴走支援します。</p>
-        <a href="#contact" class="btn">お問合せはこちら</a>
+        <h1 class="tr" data-jp="架け橋となり、価値を紡ぐ。" data-en="Bridging people, Creating value." data-in="Menjadi jembatan, Menghasilkan nilai.">架け橋となり、価値を紡ぐ。</h1>
+        <p class="tr" data-jp="企業の外国人雇用、外国人の日本就業/生活支援" data-en="Support for foreign employment & life in Japan" data-in="Dukungan untuk pekerjaan & kehidupan di Jepang">企業の外国人雇用、外国人の日本就業/生活支援</p>
+        <a href="#contact" class="btn tr" data-jp="お問合せはこちら" data-en="Contact Us" data-in="Hubungi Kami">お問合せはこちら</a>
     </div>
 
     <div class="news-box fade-in">
-        <h3>📢 お知らせ</h3>
+        <h3 class="tr" data-jp="📢 お知らせ" data-en="📢 News" data-in="📢 Berita">📢 お知らせ</h3>
+        <div class="filter-container">
+            <span class="filter-tag active tr" data-jp="すべて" data-en="All" data-in="Semua" onclick="filterNews('all', this)">すべて</span>
+            <span class="filter-tag tr" data-jp="政策" data-en="Policy" data-in="Kebijakan" onclick="filterNews('policy', this)">政策</span>
+            <span class="filter-tag tr" data-jp="手続き" data-en="Visa" data-in="Visa" onclick="filterNews('procedure', this)">手続き</span>
+            <span class="filter-tag tr" data-jp="学習" data-en="Study" data-in="Belajar" onclick="filterNews('study', this)">学習</span>
+        </div>
         <div id="news-list"></div>
     </div>
 </section>
@@ -214,68 +218,19 @@
 <div id="newsModal" class="modal-overlay">
     <div class="modal-content">
         <span class="modal-close" onclick="closeModal()">&times;</span>
-        <div id="modalDate" style="color:#888; font-size:0.9rem;"></div>
-        <h2 id="modalTitle" style="text-align:left; margin:10px 0; color:var(--main-blue);"></h2>
-        <div id="modalBody" style="line-height:1.6;"></div>
+        <div id="modalDate" style="color:#888; font-size:0.8rem;"></div>
+        <h2 id="modalTitle" style="text-align:left; margin:10px 0; color:var(--main-blue); font-size: 1.2rem;"></h2>
+        <div id="modalBody" style="line-height:1.6; font-size: 0.9rem;"></div>
     </div>
 </div>
 
 <section id="message" class="fade-in">
-    <h2>代表者から</h2>
-    <div class="representative-container">
-        <div class="representative-text">
-            <p>皆様、こんにちは。セコンドペンギン企画代表の德永と申します。</p>
-            <p style="margin-top: 1.5em;">これまで仕事や海外駐在を通じて、東南アジア・東アジアの多くの方々と出会い、日々の暮らしや仕事を共にしてきました。その中で、日本で学び、働き、日本の文化や習慣を大切にしながら社会の一員として歩みたいと考える、真面目で意欲ある方々が少なからずいることを実感しました。</p>
-            <p style="margin-top: 1.5em;">公務員退職後、誠意をもって一つひとつのご縁に向き合ってまいります。どうぞよろしくお願いいたします。</p>
-        </div>
-        <div class="representative-image">
-            <img src="79935.png" alt="代表 德永">
-        </div>
-    </div>
-</section>
-
-<section id="business" class="fade-in">
-    <h2>企業様向けサポート</h2>
-    <div class="grid">
-        <div class="card">
-            <h3>1. 事前相談・リスク確認</h3>
-            <p>外国人雇用に関する不安や法的リスクを、雇用前にクリアにします。</p>
-        </div>
-        <div class="card">
-            <h3>2. 特定技能・入管対応</h3>
-            <p>煩雑な受入れ支援手続きや入管への申請をスムーズに代行します。</p>
-        </div>
-        <div class="card">
-            <h3>3. トラブル予防サポート</h3>
-            <p>在留資格や雇用に関するトラブルを未然に防ぐ体制を構築します。</p>
-        </div>
-    </div>
-</section>
-
-<section id="foreign" class="fade-in" style="background-color: var(--sky-blue);">
-    <div style="background: white; padding: 60px 40px; border-radius: 20px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
-        <h2 style="margin-bottom: 30px;">For International Residents</h2>
-        <p style="max-width: 700px; margin: 0 auto 20px; font-size: 1.1rem; color: #555;">
-            日本での生活や仕事をスタートさせる皆さまを、専門的な視点からサポートします。<br>
-            在留資格（ビザ）の申請・更新手続きから、日本での就職・転職、学校への入学手続き、そして日々の暮らしの困りごとまで、安心してお任せください。
-        </p>
-        <p style="color: var(--main-blue); font-weight: bold; margin-bottom: 30px;">
-            We support your Visa application, Career, and Life in Japan.
-        </p>
-        <a href="https://second-penguin-lanning.github.io/Foreigners-Website/" class="btn" target="_blank" rel="noopener noreferrer">
-            Visit our English/Multilingual Site ↗
-        </a>
-    </div>
-</section>
-
-<section id="company" class="fade-in">
-    <h2>会社概要</h2>
-    <table>
-        <tr><th>屋号</th><td>セコンドペンギン企画</td></tr>
-        <tr><th>設立年月日</th><td>2024年6月13日</td></tr>
-        <tr><th>事務所</th><td>神戸市</td></tr>
-        <tr><th>業務エリア</th><td>全国</td></tr>
-    </table>
+    <h2 class="tr" data-jp="代表者から" data-en="Message from Representative" data-in="Pesan dari Perwakilan">代表者から</h2>
+    <p class="tr" data-jp="皆様、こんにちは。代表の德永と申します。日本で挑戦する方々を伴走支援いたします。" 
+       data-en="Hello, I'm Tokunaga, the representative. We support those who take on challenges in Japan."
+       data-in="Halo, saya Tokunaga, perwakilan. Kami mendukung mereka yang berani mengambil tantangan di Jepang.">
+       皆様、こんにちは。代表の德永と申します。日本で挑戦する方々を伴走支援いたします。
+    </p>
 </section>
 
 <footer>
@@ -283,50 +238,104 @@
 </footer>
 
 <script>
+    let currentLang = 'jp';
+
+    // ニュースデータの翻訳対応版
     const newsData = [
         {
+            category: "policy",
+            catNames: {jp: "外国人政策", en: "Policy", in: "Kebijakan"},
             date: "2024.06.15",
-            title: "【重要】技能実習制度から「育成就労制度」への移行について",
-            content: `
-                <p>2024年6月、改正出入国管理法が成立し、従来の「技能実習制度」を廃止し、新たに「育成就労制度」が創設されることが決定しました。</p><br>
-                <strong>■ 主な変更点：</strong>
-                <ul>
-                    <li><strong>目的：</strong> 人材確保と育成。</li>
-                    <li><strong>転籍制限の緩和：</strong> 一定条件下で転籍が可能に。</li>
-                    <li><strong>特定技能への接続：</strong> スムーズな移行ルートが構築。</li>
-                </ul><br>
-                <p>セコンドペンギン企画では、最新の政省令に基づき、制度移行をサポートいたします。</p>
-            `
+            titles: {
+                jp: "育成就労制度への移行について",
+                en: "Transition to New Training System",
+                in: "Transisi ke Sistem Pelatihan Baru"
+            },
+            contents: {
+                jp: "<p>育成就労制度が新設されることが決定しました。詳細はお問合せください。</p>",
+                en: "<p>The new training system has been decided. Contact us for details.</p>",
+                in: "<p>Sistem pelatihan baru telah diputuskan. Hubungi kami untuk detailnya.</p>"
+            }
+        },
+        {
+            category: "procedure",
+            catNames: {jp: "入管手続き", en: "Visa", in: "Visa"},
+            date: "2024.06.10",
+            titles: {
+                jp: "オンライン申請の利用手順",
+                en: "Online Application Guide",
+                in: "Panduan Aplikasi Online"
+            },
+            contents: {
+                jp: "<p>マイナンバーカードでの申請が可能になりました。</p>",
+                en: "<p>Applications with My Number Card are now possible.</p>",
+                in: "<p>Aplikasi dengan kartu My Number sekarang dimungkinkan.</p>"
+            }
         }
     ];
 
-    function renderNews() {
-        const list = document.getElementById('news-list');
-        newsData.forEach((news, index) => {
-            const item = document.createElement('a');
-            item.className = 'news-item';
-            item.innerText = `${news.date} ${news.title}`;
-            item.onclick = () => openModal(index);
-            list.appendChild(item);
+    // 言語切り替え
+    function switchLang(lang) {
+        currentLang = lang;
+        // ボタンの見た目更新
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.classList.remove('active');
+            if(btn.innerText.toLowerCase() === lang) btn.classList.add('active');
         });
+
+        // テキストの置換
+        document.querySelectorAll('.tr').forEach(el => {
+            el.innerText = el.getAttribute(`data-${lang}`);
+        });
+
+        renderNews(); // ニュースリストも再描画
+    }
+
+    // ニュース表示
+    function renderNews(filter = 'all') {
+        const list = document.getElementById('news-list');
+        list.innerHTML = '';
+        newsData.forEach((news, index) => {
+            if (filter === 'all' || news.category === filter) {
+                const item = document.createElement('div');
+                item.className = 'news-item';
+                item.onclick = () => openModal(index);
+                item.innerHTML = `
+                    <div class="news-meta">
+                        <span class="cat-label ${news.category}">${news.catNames[currentLang]}</span>
+                        <span class="news-date">${news.date}</span>
+                    </div>
+                    <div class="news-title">${news.titles[currentLang]}</div>
+                `;
+                list.appendChild(item);
+            }
+        });
+    }
+
+    function filterNews(category, element) {
+        document.querySelectorAll('.filter-tag').forEach(tag => tag.classList.remove('active'));
+        element.classList.add('active');
+        renderNews(category);
     }
 
     function openModal(index) {
         const news = newsData[index];
         document.getElementById('modalDate').innerText = news.date;
-        document.getElementById('modalTitle').innerText = news.title;
-        document.getElementById('modalBody').innerHTML = news.content;
+        document.getElementById('modalTitle').innerText = news.titles[currentLang];
+        document.getElementById('modalBody').innerHTML = news.contents[currentLang];
         document.getElementById('newsModal').style.display = 'flex';
     }
 
     function closeModal() { document.getElementById('newsModal').style.display = 'none'; }
     window.onclick = (e) => { if(e.target == document.getElementById('newsModal')) closeModal(); }
 
+    // フェードイン制御
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
     }, { threshold: 0.1 });
 
     document.querySelectorAll('.fade-in').forEach(s => observer.observe(s));
+
     window.addEventListener('DOMContentLoaded', () => {
         renderNews();
         document.querySelector('.hero-content').classList.add('visible');
