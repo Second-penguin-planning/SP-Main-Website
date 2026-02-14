@@ -331,6 +331,29 @@
             nav a { margin: 0 10px; font-size: 0.8rem; }
             .representative-image { flex: 1 1 100%; order: -1; }
         }
+/* Language Buttons */
+.lang-switch {
+    display: flex;
+    gap: 8px;
+    margin-left: 20px;
+}
+
+.lang-switch button {
+    font-size: 0.7rem;
+    padding: 4px 10px;
+    border: 1px solid var(--main-blue);
+    background: white;
+    color: var(--main-blue);
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.lang-switch button:hover {
+    background: var(--main-blue);
+    color: white;
+}
+
     </style>
 </head>
 <body>
@@ -347,6 +370,10 @@
         <a href="#company">会社概要</a>
         <a href="#contact">お問合せ</a>
     </nav>
+<div class="lang-switch">
+    <button onclick="translatePage('en')">EN</button>
+    <button onclick="translatePage('id')">IN</button>
+</div>
 </header>
 
 <section class="hero">
@@ -716,5 +743,28 @@
     }, 3000);
 
 </script>
+<!-- Google Translate Element -->
+<div id="google_translate_element" style="display:none;"></div>
+
+<script>
+function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+        pageLanguage: 'ja',
+        includedLanguages: 'en,id',
+        autoDisplay: false
+    }, 'google_translate_element');
+}
+
+function translatePage(lang) {
+    const select = document.querySelector(".goog-te-combo");
+    if (select) {
+        select.value = lang;
+        select.dispatchEvent(new Event("change"));
+    }
+}
+</script>
+
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
 </body>
 </html>
