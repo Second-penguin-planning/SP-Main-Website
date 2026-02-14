@@ -63,6 +63,18 @@
             color: var(--main-blue);
             text-decoration: none;
         }
+.logo-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.header-status-inline {
+    font-size: 0.75rem;
+    font-weight: bold;
+    color: #fff9c4; /* 薄い黄色 */
+    line-height: 1.4;
+    margin-top: 4px;
+}
         .logo img { height: 40px; width: auto; }
 
         nav a {
@@ -103,18 +115,7 @@
             flex-wrap: wrap;
             gap: 30px;
         }
-.header-status-bar {
-    width: 100%;
-    background: linear-gradient(rgba(0,91,172,0.6), rgba(0,91,172,0.6)),
-                url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop') center/cover;
-    color: #fff9c4; /* 薄い黄色 */
-    font-size: 0.95rem;
-    font-weight: bold;
-    text-align: center;
-    padding: 12px 10px;
-    line-height: 1.6;
-    letter-spacing: 1px;
-}        .hero-content { flex: 1; min-width: 300px; color: white; text-align: left; }
+        .hero-content { flex: 1; min-width: 300px; color: white; text-align: left; }
         .hero h1 {
             font-size: 2.2rem;
             color: var(--main-blue);
@@ -200,10 +201,13 @@
 <body>
 
 <header>
-    <a href="#" class="logo">
-        <img src="logo.png" alt="Logo">
-        <span>セコンドペンギン企画</span>
-    </a>
+
+    <div class="logo-wrapper">
+        <a href="#" class="logo">
+            <img src="logo.png" alt="Logo">
+            <span>セコンドペンギン企画</span>
+        </a>     
+    </div>
     <nav>
         <a href="#message">代表から</a>
         <a href="#business">企業様</a>
