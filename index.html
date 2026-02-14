@@ -345,6 +345,7 @@
         <a href="#business">企業様</a>
         <a href="#foreign">International</a>
         <a href="#company">会社概要</a>
+        <a href="#contact">お問合せ</a>
     </nav>
 </header>
 
@@ -516,6 +517,47 @@
         <tr><th>事務所</th><td>神戸市</td></tr>
         <tr><th>業務エリア</th><td>全国</td></tr>
     </table>
+</section>
+
+<section id="contact" class="fade-in">
+    <h2>お問合せ</h2>
+
+    <div style="max-width:600px; margin:0 auto;">
+        <form action="https://formsubmit.co/info@second-penguin.com" method="POST">
+
+            <!-- スパム対策 -->
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_subject" value="セコンドペンギン企画 ホームページからのお問合せ">
+            <input type="hidden" name="_next" value="https://second-penguin-lanning.github.io/thanks.html">
+
+            <div style="margin-bottom:20px;">
+                <label>お名前（必須）</label><br>
+                <input type="text" name="お名前" required
+                       style="width:100%; padding:10px; border:1px solid #ccc; border-radius:5px;">
+            </div>
+
+            <div style="margin-bottom:20px;">
+                <label>会社名</label><br>
+                <input type="text" name="会社名"
+                       style="width:100%; padding:10px; border:1px solid #ccc; border-radius:5px;">
+            </div>
+
+            <div style="margin-bottom:20px;">
+                <label>メールアドレス（必須）</label><br>
+                <input type="email" name="メールアドレス" required
+                       style="width:100%; padding:10px; border:1px solid #ccc; border-radius:5px;">
+            </div>
+
+            <div style="margin-bottom:20px;">
+                <label>ご相談内容（必須）</label><br>
+                <textarea name="ご相談内容" rows="5" required
+                          style="width:100%; padding:10px; border:1px solid #ccc; border-radius:5px;"></textarea>
+            </div>
+
+            <button type="submit" class="btn">送信する</button>
+
+        </form>
+    </div>
 </section>
 
 <footer>
