@@ -475,6 +475,7 @@
         <p>We support your Visa application, Career, and Life in Japan.</p>
         <a href="https://second-penguin-lanning.github.io/Foreigners-Website/" class="btn" target="_blank" style="margin-top: 20px;">Multilingual Site ↗</a>
     </div>
+</section>
 
 <section id="company" class="fade-in">
        <h2>会社概要</h2>
@@ -735,10 +736,14 @@ function filterNews(category, element) {
 
 function openModal(index) {
     const news = newsData[index];
-    document.getElementById('modalDate').innerText = news.date;
-    document.getElementById('modalTitle').innerText = news.title;
+    if (!news) return;
+
+    document.getElementById('modalDate').textContent = news.date;
+    document.getElementById('modalTitle').textContent = news.title;
     document.getElementById('modalBody').innerHTML = news.content;
-    document.getElementById('newsModal').style.display = 'flex';
+
+    const modal = document.getElementById('newsModal');
+    modal.style.display = 'flex';
 }
 
 function closeModal() { document.getElementById('newsModal').style.display = 'none'; }
@@ -804,10 +809,13 @@ window.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 });
 
-// モーダル外クリックで閉じる
-window.onclick = (e) => {
-    if (e.target == document.getElementById('newsModal')) closeModal();
-};
+// モーダル外クリックで閉じる（修正版）
+window.addEventListener("click", function(e) {
+    const modal = document.getElementById("newsModal");
+    if (e.target === modal) {
+        closeModal();
+    }
+});
 </script>
 <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
