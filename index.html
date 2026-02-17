@@ -312,13 +312,14 @@
             <span class="filter-tag" onclick="filterNews('policy', this)">外国人政策</span>
             <span class="filter-tag" onclick="filterNews('procedure', this)">入管手続き</span>
             <span class="filter-tag" onclick="filterNews('study', this)">日本語学習</span>
+            <span class="filter-tag" onclick="filterNews('other', this)">その他</span>    
         </div>
         <div id="news-list"></div>
     </div>
 </section>
 
 <section id="message" class="fade-in">
-    <h2>代表者から</h2>
+    <h2>代者から</h2>
     <div class="representative-container">
         <div class="representative-text">
             <p>
@@ -673,6 +674,31 @@ const newsData = [
     { category: "policy", catName: "外国人政策", date: "2026.02.14", title: "育成就労制度への移行について", content: "<p>2027年開始予定の新制度に関する最新情報です。</p>" },
     { category: "procedure", catName: "入管手続き", date: "2024.06.10", title: "オンライン申請ガイド", content: "<p>手続きの効率化についての解説です。</p>" }
 ];
+{
+    category: "other",
+    catName: "その他",
+    date: "2026.02.18",
+    title: "セコンドペンギンの名前について",
+    content: `
+        <p>
+        セコンドペンギンは2024年5月、事業を始める時、息子から
+        「ファーストペンギン（開拓者）がいいのでは」と提案がありました。
+        </p>
+        <p>
+        調べると「セカンドペンギン（開拓者の次）」という言葉もありました。
+        しかしファーストペンギンだけでなく、セカンドペンギンもウェブ上では
+        よく見られるネーミングでした。
+        </p>
+        <p>
+        仕事の主な内容が、主役である企業様と外国籍の若者を支える立場であることから、
+        「セカンド」をあえて「セコンド」と呼び変えることとしました。
+        </p>
+        <p>
+        主役を支える“第二の存在”として、誠実に伴走していきたいという思いを込めています。
+        </p>
+    `
+}
+
 
 function renderNews(filter = 'all') {
     const list = document.getElementById('news-list');
