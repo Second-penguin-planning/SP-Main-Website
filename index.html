@@ -158,6 +158,28 @@
         
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
         .card { background: var(--sky-blue); padding: 30px; border-radius: 15px; border-left: 5px solid var(--main-blue); }
+/* おすすめプラン強調 */
+.card.recommend {
+    background: linear-gradient(135deg, #ffffff, #e6f2ff);
+    border: 2px solid var(--accent-orange);
+    transform: scale(1.05);
+    position: relative;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.card.recommend::before {
+    content: "おすすめ";
+    position: absolute;
+    top: -12px;
+    right: -12px;
+    background: var(--accent-orange);
+    color: white;
+    font-size: 0.7rem;
+    font-weight: bold;
+    padding: 6px 12px;
+    border-radius: 20px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+}
 
         /* Representative Section */
         .representative-container { display: flex; flex-wrap: wrap; gap: 40px; }
@@ -275,24 +297,50 @@
 
 <section class="advisor-section fade-in">
     <h2>外国人雇用 顧問・支援サービス</h2>
-    <div class="feature-box">
-        <h3>書類作成の先にある「安心」を</h3>
-        <p>AIで書類が作れる時代だからこそ、「どの在留資格が最適か」「現場のトラブルをどう防ぐか」という人間の判断が重要です。当事務所は、雇用が円滑に続くための“かかりつけ医”のような存在を目指します。</p>
+   <div class="feature-box">
+    <h3>外国人雇用をお考えの企業様・雇用中の企業様へ</h3>
+    <p>
+        現在、外国人の雇用を考える企業様だけでなく、雇用中の企業様のお力になります。<br>
+        国籍はフィリピン、インドネシアについて豊富な経験がございます。<br>
+        他の国の方々につきましてもお気軽にご相談下さい。
+    </p>
+</div>
+
+   <div class="grid">
+    <div class="card recommend">
+        <h4>顧問プラン</h4>
+        <p>
+            外国人の求人、各種手続き、入国対応、生活支援まで一気通貫でサポートいたします。
+        </p>
+        <p style="margin-top:10px; font-weight:bold;">
+            月額 33,000円～
+        </p>
     </div>
-    <div class="grid">
-        <div class="card">
-            <h4>① 採用前診断</h4>
-            <p>リスクを見える化し、不許可を未然に防ぎます。</p>
-        </div>
-        <div class="card">
-            <h4>② フィリピン対応</h4>
-            <p>実績豊富なフィリピン人支援、英語・やさしい日本語対応。</p>
-        </div>
+
+    <div class="card">
+        <h4>定額プラン</h4>
+        <p>
+            フィリピン大使館の申請サポート、各種支援、生活・日本語教育、
+            課題解決など個別にサポートいたします。
+        </p>
+        <p style="margin-top:10px; font-weight:bold;">
+            定額 25,000円～
+        </p>
     </div>
-    <div class="price-box" style="margin-top: 30px;">
-        <p>顧問プラン：月額 33,000円〜（税込）</p>
-        <a href="#contact" class="btn" style="margin-top: 15px;">まずは相談する</a>
-    </div>
+</div>
+
+   <div class="price-box" style="margin-top: 30px;">
+    <p style="font-weight:bold; font-size:1.1rem;">
+        初回のご相談無料
+    </p>
+    <p style="margin-top:10px;">
+        お気軽にお問合せフォームでご連絡ください。
+    </p>
+    <a href="#contact" class="btn" style="margin-top:15px;">
+        お問合せはこちら
+    </a>
+</div>
+
 </section>
 
 <section id="business" class="fade-in">
