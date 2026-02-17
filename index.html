@@ -508,28 +508,46 @@
 <section id="contact" class="fade-in">
     <h2>お問合せ</h2>
     <div style="max-width:600px; margin:0 auto;">
-        <form action="https://formsubmit.co/info@second-penguin.com" method="POST">
-            <input type="hidden" name="_captcha" value="false">
-            <input type="hidden" name="_next" value="https://あなたのURL/#top">
-            <div style="margin-bottom:15px;">
-                <label>お名前（必須）</label><br>
-                <input type="text" name="name" required style="width:100%; padding:10px; border:1px solid #ccc; border-radius:5px;">
-            </div>
-<div style="margin-bottom:15px;">
-    <label>都道府県名 市町村名</label><br>
-    <input type="text" name="prefecture" 
-           style="width:100%; padding:10px; border:1px solid #ccc; border-radius:5px;">
-</div>
-            <div style="margin-bottom:15px;">
-                <label>メールアドレス（必須）</label><br>
-                <input type="email" name="email" required style="width:100%; padding:10px; border:1px solid #ccc; border-radius:5px;">
-            </div>
-            <div style="margin-bottom:15px;">
-                <label>内容（必須）</label><br>
-                <textarea name="message" rows="5" required style="width:100%; padding:10px; border:1px solid #ccc; border-radius:5px;"></textarea>
-            </div>
-            <button type="submit" class="btn">送信する</button>
-        </form>
+       <form action="https://formsubmit.co/info@second-penguin.com" method="POST">
+
+    <!-- 迷惑メール防止 -->
+    <input type="hidden" name="_captcha" value="false">
+
+    <!-- 送信後トップへ戻る -->
+    <input type="hidden" name="_next" value="https://second-penguin-lanning.github.io/#top">
+
+    <!-- 件名を分かりやすく -->
+    <input type="hidden" name="_subject" value="【HP】お問い合わせがありました">
+
+    <!-- 送信者名をメールに表示 -->
+    <input type="hidden" name="_template" value="table">
+
+    <div style="margin-bottom:15px;">
+        <label>お名前（必須）</label><br>
+        <input type="text" name="name" required
+               style="width:100%; padding:10px; border:1px solid #ccc; border-radius:5px;">
+    </div>
+
+    <div style="margin-bottom:15px;">
+        <label>都道府県名 市町村名</label><br>
+        <input type="text" name="prefecture"
+               style="width:100%; padding:10px; border:1px solid #ccc; border-radius:5px;">
+    </div>
+
+    <div style="margin-bottom:15px;">
+        <label>メールアドレス（必須）</label><br>
+        <input type="email" name="email" required
+               style="width:100%; padding:10px; border:1px solid #ccc; border-radius:5px;">
+    </div>
+
+    <div style="margin-bottom:15px;">
+        <label>内容（必須）</label><br>
+        <textarea name="message" rows="5" required
+                  style="width:100%; padding:10px; border:1px solid #ccc; border-radius:5px;"></textarea>
+    </div>
+
+    <button type="submit" class="btn">送信する</button>
+</form>
     </div>
 </section>
 
