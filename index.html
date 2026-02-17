@@ -221,7 +221,44 @@
             .hero-content { text-align: center; }
             .representative-image { order: -1; margin: 0 auto; }
         }
-    </style>
+  /* ヒーロー上部 横並びラッパー */
+.hero-top-line {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* 流れるメッセージ */
+.hero-marquee {
+    overflow: hidden;
+    white-space: nowrap;
+    flex: 1;
+}
+
+.hero-marquee span {
+    display: inline-block;
+    padding-left: 100%;
+    font-size: 1.1rem; /* 登録支援機関より1つ大きく */
+    font-weight: bold;
+    color: white;
+    animation: marqueeMove 12s linear infinite;
+}
+
+@keyframes marqueeMove {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+}
+
+/* スマホ調整 */
+@media (max-width: 768px) {
+    .hero-marquee span {
+        font-size: 1rem;
+        animation-duration: 18s;
+    }
+}
+
+  </style>
 </head>
 <body>
 
@@ -247,8 +284,19 @@
 
 <section class="hero" id="top">
     <div class="hero-content">
-<div class="hero-status">
-    登録支援機関（3月登録予定）｜有料職業紹介事業（3月登録予定）
+<div class="hero-top-line">
+
+    <div class="hero-status">
+        登録支援機関（3月登録予定）｜有料職業紹介事業（3月登録予定）
+    </div>
+
+    <div class="hero-marquee">
+        <span>
+            私の時間を使っていただけるお客様を探しています！　
+            私の時間を使っていただけるお客様を探しています！　
+        </span>
+    </div>
+
 </div>
 
         <h1 id="hero-title">フィリピンなどの優秀な人材を繋ぎます</h1>
