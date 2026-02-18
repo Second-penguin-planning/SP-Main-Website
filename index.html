@@ -257,6 +257,53 @@
         animation-duration: 18s;
     }
 }
+/* ===== Hamburger Menu ===== */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.menu-toggle span {
+    width: 25px;
+    height: 2px;
+    background: var(--text-main);
+    transition: 0.3s;
+}
+
+/* Mobile Menu */
+@media (max-width: 768px) {
+
+    .menu-toggle {
+        display: flex;
+    }
+
+    nav {
+        position: absolute;
+        top: 70px;
+        right: 5%;
+        background: var(--white);
+        width: 220px;
+        flex-direction: column;
+        padding: 20px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        display: none;
+    }
+
+    nav.active {
+        display: flex;
+    }
+
+    nav a {
+        margin: 10px 0;
+        font-size: 0.8rem;
+    }
+
+    .lang-switch {
+        display: none; /* スマホでは言語ボタンをメニュー内に入れるなら後で移動可能 */
+    }
+}
 
   </style>
 </head>
@@ -267,14 +314,20 @@
         <img src="logo.png" alt="Logo">
         <span>セコンドペンギン企画</span>
     </a>
-    <nav>
-        <a href="#message">代表から</a>
-        <a href="#business">企業様</a>
-        <a href="#foreign">International</a>
-        <a href="#company">会社概要</a>
-        <a href="#links">関連リンク</a>
-        <a href="#contact">お問合せ</a>
-    </nav>
+   <div class="menu-toggle" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+
+<nav id="mainNav">
+    <a href="#message">MESSAGE</a>
+    <a href="#business">SERVICE</a>
+    <a href="#foreign">INTERNATIONAL</a>
+    <a href="#company">COMPANY</a>
+    <a href="#contact">CONTACT</a>
+</nav>
+
     <div class="lang-switch">
         <button onclick="translatePage('ja')">JP</button>
         <button onclick="translatePage('en')">EN</button>
@@ -816,6 +869,11 @@ window.addEventListener("click", function(e) {
         closeModal();
     }
 });
+function toggleMenu() {
+    const nav = document.getElementById("mainNav");
+    nav.classList.toggle("active");
+}
+
 </script>
 <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
