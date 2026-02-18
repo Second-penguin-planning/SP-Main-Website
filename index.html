@@ -313,53 +313,6 @@
         animation-duration: 18s;
     }
 }
-/* ===== Hamburger Menu ===== */
-.menu-toggle {
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    cursor: pointer;
-}
-
-.menu-toggle span {
-    width: 25px;
-    height: 2px;
-    background: var(--text-main);
-    transition: 0.3s;
-}
-
-/* Mobile Menu */
-@media (max-width: 768px) {
-
-    .menu-toggle {
-        display: flex;
-    }
-
-    nav {
-        position: absolute;
-        top: 70px;
-        right: 5%;
-        background: var(--white);
-        width: 220px;
-        flex-direction: column;
-        padding: 20px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-        display: none;
-    }
-
-    nav.active {
-        display: flex;
-    }
-
-    nav a {
-        margin: 10px 0;
-        font-size: 0.8rem;
-    }
-
-    .lang-switch {
-        display: none; /* スマホでは言語ボタンをメニュー内に入れるなら後で移動可能 */
-    }
-}
 
   </style>
 </head>
