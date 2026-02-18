@@ -214,13 +214,69 @@
         .goog-te-banner-frame.skiptranslate, .goog-te-gadget-icon { display: none !important; }
         body { top: 0px !important; }
 
-        @media (max-width: 768px) {
-            header { flex-direction: column; gap: 10px; }
-            nav { display: flex; flex-wrap: wrap; justify-content: center; }
-            .hero { text-align: center; }
-            .hero-content { text-align: center; }
-            .representative-image { order: -1; margin: 0 auto; }
-        }
+/* ===== Hamburger Menu ===== */
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background: var(--text-color); /* 修正 */
+    transition: 0.3s;
+}
+
+/* ===== Mobile Layout ===== */
+@media (max-width: 768px) {
+
+    header {
+        flex-direction: row;   /* ←縦並びをやめる */
+    }
+
+    nav {
+        position: absolute;
+        top: 70px;
+        right: 5%;
+        background: white;
+        width: 220px;
+        flex-direction: column;
+        padding: 20px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        display: none;
+        border-radius: 10px;
+    }
+
+    nav a {
+        margin: 10px 0;
+    }
+
+    nav.active {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+
+    .lang-switch {
+        display: none;
+    }
+
+    .hero,
+    .hero-content {
+        text-align: center;
+    }
+
+    .representative-image {
+        order: -1;
+        margin: 0 auto;
+    }
+}
+
   /* ヒーロー上部 横並びラッパー */
 .hero-top-line {
     display: flex;
