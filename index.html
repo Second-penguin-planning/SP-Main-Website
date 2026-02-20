@@ -91,46 +91,19 @@
             background: var(--main-blue);
             color: white;
         }
-/* ===== Hero Section 修正版 ===== */
-.hero {
-    position: relative;
-    min-height: 55vh;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 60px 5%;
-    flex-wrap: wrap;
-    gap: 30px;
-    overflow: hidden;
-}
 
-/* 背景レイヤー */
-.hero::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background:
-        linear-gradient(rgba(255,255,255,0.9), rgba(240,248,255,0.9)),
-        url("airport.jpg") center/cover no-repeat;
-    opacity: 0.4;
-    z-index: 0;
-}
+        /* Hero Section */
+        .hero {
+            min-height: 55vh;
+            background: linear-gradient(rgba(0,91,172,0.5), rgba(0,91,172,0.3)), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop') center/cover;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 60px 5%;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
 
-/* 前面コンテンツ */
-.hero-content,
-.news-box {
-    position: relative;
-    z-index: 1;
-}
-
-/* hero 内文字は黒系に戻す */
-.hero-content {
-    flex: 1;
-    min-width: 300px;
-    color: var(--text-color);
-    text-align: left;
-}
-       
         .hero-content { flex: 1; min-width: 300px; color: white; text-align: left; }
 /* Hero 上部ステータス表示 */
 .hero-status {
@@ -391,8 +364,8 @@
 
     <div class="hero-marquee">
         <span>
-            外食、介護、製造、建設、農業、自動車などの分野でのお客様のチャレンジをセコンドペンギンが全力で支援いたします！　
-            外食、介護、製造、建設、農業、自動車などの分野でのお客様のチャレンジをセコンドペンギンが全力で支援いたします！
+            お客様のチャレンジをセコンドペンギンが全力で支援いたします！　
+            お客様のチャレンジをセコンドペンギンが全力で支援いたします！　
         </span>
     </div>
 
@@ -720,15 +693,6 @@
    <input type="hidden" name="_next" value="https://second-penguin-lanning.github.io/SP-Main-Website/#top">
 <input type="hidden" name="_captcha" value="false">
 <input type="hidden" name="_template" value="table">
-<input type="hidden" name="_autoresponse" 
-value="この度はセコンドペンギン企画へお問い合わせいただき、誠にありがとうございます。
-内容を確認のうえ、2営業日以内にご連絡いたします。
-今しばらくお待ちください。
-
-※このメールは自動送信です。
-セコンドペンギン企画
-徳永 良雄
-info@second-penguin.com">
 
 
     <div style="margin-bottom:15px;">
@@ -755,9 +719,6 @@ info@second-penguin.com">
                   style="width:100%; padding:10px; border:1px solid #ccc; border-radius:5px;"></textarea>
     </div>
 
-<p style="font-size:0.8rem; margin-bottom:15px;">
-送信いただくことで、<a href="privacy.html" target="_blank">プライバシーポリシー</a>に同意したものとみなします。
-</p>
     <button type="submit" class="btn">送信する</button>
 </form>
     </div>
@@ -765,11 +726,6 @@ info@second-penguin.com">
 
 <footer>
     <p>&copy; 2024-2026 Second Penguin Kikaku. All Rights Reserved.</p>
-    <p style="margin-top:10px;">
-        <a href="privacy.html" style="color:#fff; text-decoration:underline;">
-            プライバシーポリシー
-        </a>
-    </p>
 </footer>
 
 <div id="newsModal" class="modal-overlay">
