@@ -95,16 +95,33 @@
         /* Hero Section */
        .hero {
     min-height: 55vh;
-    background:
-        linear-gradient(rgba(0,91,172,0.75), rgba(0,91,172,0.65)),
-        url('https://images.unsplash.com/photo-1581090700227-1e8a3c0b5f4e?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat;
-    background-blend-mode: overlay;
+  .hero {
+    position: relative;
+    min-height: 55vh;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 60px 5%;
     flex-wrap: wrap;
     gap: 30px;
+    overflow: hidden;
+}
+
+/* 背景画像レイヤー */
+.hero::before {
+    background:
+        linear-gradient(rgba(255,255,255,0.9), rgba(240,248,255,0.9)),
+        url("airport.jpg") center/cover no-repeat;
+    opacity: 0.4;
+}
+
+やや青み
+
+/* コンテンツは前面へ */
+.hero-content,
+.news-box {
+    position: relative;
+    z-index: 1;
 }
         .hero-content { flex: 1; min-width: 300px; color: white; text-align: left; }
 /* Hero 上部ステータス表示 */
