@@ -351,7 +351,26 @@
         animation-duration: 18s;
     }
 }
+/* ===== LINE Hero Button ===== */
+.line-hero-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.9);
+    color: #06C755; /* LINEグリーン */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+    margin-left: 10px;
+}
 
+.line-hero-btn:hover {
+    background: #06C755;
+    color: white;
+    transform: translateY(-3px);
+}
   </style>
 </head>
 <body>
@@ -414,6 +433,18 @@
             <path d="M22 12.07C22 6.48 17.52 2 12 2S2 6.48 2 12.07c0 5.02 3.66 9.17 8.44 9.93v-7.03H7.9v-2.9h2.54V9.84c0-2.5 1.49-3.88 3.77-3.88 1.09 0 2.23.19 2.23.19v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.44 2.9h-2.34V22c4.78-.76 8.44-4.91 8.44-9.93z"/>
         </svg>
     </a>
+<a href="https://lin.me./R/ti/p/@556fihjp"
+   target="_blank"
+   aria-label="LINE"
+   class="line-hero-btn">
+    <!-- LINEアイコンSVG -->
+    <svg xmlns="http://www.w3.org/2000/svg"
+         viewBox="0 0 24 24"
+         fill="currentColor">
+        <path d="M19.365 3H4.635C3.18 3 2 4.18 2 5.635v9.73C2 16.82 3.18 18 4.635 18h4.058l2.64 3.167c.2.24.564.24.764 0L14.737 18h4.628C20.82 18 22 16.82 22 15.365v-9.73C22 4.18 20.82 3 19.365 3z"/>
+    </svg>
+</a>
+
 </div>
     </div>
 
