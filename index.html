@@ -71,7 +71,9 @@
             margin-left: 15px;
             font-size: 0.85rem;
             font-weight: bold;
+            transition: color 0.3s;
         }
+        nav a:hover { color: var(--main-blue); }
 
         .lang-switch {
             display: flex;
@@ -92,6 +94,57 @@
             color: white;
         }
 
+        /* ===== Hamburger Menu & Mobile Nav ===== */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            cursor: pointer;
+            z-index: 1100;
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background-color: var(--text-color);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        /* アニメーション (X印) */
+        .menu-toggle.active span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+        .menu-toggle.active span:nth-child(2) { opacity: 0; }
+        .menu-toggle.active span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+
+        @media (max-width: 768px) {
+            .menu-toggle { display: flex; }
+            nav {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                background: rgba(255, 255, 255, 0.98);
+                width: 100%;
+                height: 100vh;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                z-index: 1050;
+                padding: 0;
+            }
+            nav.active { right: 0; }
+            nav a {
+                margin: 20px 0;
+                font-size: 1.4rem;
+                border-bottom: none;
+                padding-bottom: 0;
+            }
+            .lang-switch { display: none; }
+        }
+
         /* Hero Section */
         .hero {
             min-height: 55vh;
@@ -105,19 +158,19 @@
         }
 
         .hero-content { flex: 1; min-width: 300px; color: white; text-align: left; }
-/* Hero 上部ステータス表示 */
-.hero-status {
-    display: inline-block;
-    background: rgba(255,255,255,0.95);
-    color: var(--main-blue);
-    font-size: 0.8rem;
-    font-weight: bold;
-    padding: 6px 14px;
-    border-left: 4px solid var(--accent-orange);
-    border-radius: 4px;
-    margin-bottom: 15px;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
-}
+
+        .hero-status {
+            display: inline-block;
+            background: rgba(255,255,255,0.95);
+            color: var(--main-blue);
+            font-size: 0.8rem;
+            font-weight: bold;
+            padding: 6px 14px;
+            border-left: 4px solid var(--accent-orange);
+            border-radius: 4px;
+            margin-bottom: 15px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+        }
 
         .hero h1 {
             font-size: 2.2rem;
@@ -131,6 +184,18 @@
         }
         .hero-title-hide { opacity: 0; transform: translateY(-10px); }
         .hero-title-show { opacity: 1; transform: translateY(0); }
+
+        .hero-top-line { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; width: 100%; }
+        .hero-marquee { overflow: hidden; white-space: nowrap; flex: 1; }
+        .hero-marquee span {
+            display: inline-block;
+            padding-left: 100%;
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: white;
+            animation: marqueeMove 15s linear infinite;
+        }
+        @keyframes marqueeMove { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
 
         /* News Box */
         .news-box {
@@ -158,71 +223,56 @@
         
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
         .card { background: var(--sky-blue); padding: 30px; border-radius: 15px; border-left: 5px solid var(--main-blue); }
-/* おすすめプラン強調 */
-.card.recommend {
-    background: linear-gradient(135deg, #ffffff, #e6f2ff);
-    border: 2px solid var(--accent-orange);
-    transform: scale(1.05);
-    position: relative;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-}
+        
+        .card.recommend {
+            background: linear-gradient(135deg, #ffffff, #e6f2ff);
+            border: 2px solid var(--accent-orange);
+            transform: scale(1.05);
+            position: relative;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        .card.recommend::before {
+            content: "おすすめ";
+            position: absolute;
+            top: -12px;
+            right: -12px;
+            background: var(--accent-orange);
+            color: white;
+            font-size: 0.7rem;
+            font-weight: bold;
+            padding: 6px 12px;
+            border-radius: 20px;
+        }
 
-.card.recommend::before {
-    content: "おすすめ";
-    position: absolute;
-    top: -12px;
-    right: -12px;
-    background: var(--accent-orange);
-    color: white;
-    font-size: 0.7rem;
-    font-weight: bold;
-    padding: 6px 12px;
-    border-radius: 20px;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.2);
-}
-
-        /* Representative Section */
+        /* Representative */
         .representative-container { display: flex; flex-wrap: wrap; gap: 40px; }
         .representative-text { flex: 1; min-width: 300px; }
         .representative-image { flex: 0 0 250px; }
         .representative-image img { width: 100%; border-radius: 10px; }
 
-        /* Advisor Section */
-        .advisor-section { background: linear-gradient(135deg, #ffffff, #f0f8ff); }
-        .feature-box { background: var(--sky-blue); padding: 25px; border-radius: 15px; margin-bottom: 20px; }
-        .price-box { background: #fff; padding: 30px; border-radius: 20px; border: 2px solid var(--main-blue); text-align: center; }
+        /* Social Buttons */
+        .hero-social { margin-top: 15px; display: flex; gap: 10px; }
+        .fb-hero-btn, .line-hero-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.9);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        .fb-hero-btn { color: #1877f2; }
+        .line-hero-btn { color: #06C755; }
+        .fb-hero-btn:hover { background: #1877f2; color: white; transform: translateY(-3px); }
+        .line-hero-btn:hover { background: #06C755; color: white; transform: translateY(-3px); }
+        svg { width: 20px; height: 20px; }
 
         /* Buttons */
         .btn { display: inline-block; padding: 12px 30px; background: var(--main-blue); color: white !important; text-decoration: none; border-radius: 50px; transition: 0.3s; font-weight: bold; cursor: pointer; border: none; }
         .btn:hover { background: var(--accent-green); transform: scale(1.05); }
-/* ===== Hero Facebook Button ===== */
-.hero-social {
-    margin-top: 15px;
-}
-
-.fb-hero-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.9);
-    color: #1877f2;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    transition: all 0.3s ease;
-}
-
-.fb-hero-btn svg {
-    width: 20px;
-    height: 20px;
-}
-
-.fb-hero-btn:hover {
-    background: #1877f2;
-    color: white;
-    transform: translateY(-3px);
-}
 
         /* Modal */
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); display: none; justify-content: center; align-items: center; z-index: 2000; }
@@ -238,140 +288,31 @@
         .event { background: var(--cat-event); }
         .other { background: var(--cat-other); }
 
+/* 追加のスタイル */
+.link-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s;
+}
+.link-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+.link-card h4 {
+    color: var(--main-blue);
+    margin-bottom: 10px;
+}
+.link-card p {
+    font-size: 0.85rem;
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
         /* Google Translate Hider */
         .goog-te-banner-frame.skiptranslate, .goog-te-gadget-icon { display: none !important; }
         body { top: 0px !important; }
-
-/* ===== Hamburger Menu ===== */
-.menu-toggle {
-    display: none; /* デスクトップでは非表示 */
-    flex-direction: column;
-    justify-content: space-between;
-    width: 30px;
-    height: 21px;
-    cursor: pointer;
-    z-index: 1100; /* ヘッダーより前面に */
-}
-
-.menu-toggle span {
-    display: block; /* ←ここが重要：確実に表示させます */
-    width: 100%;
-    height: 3px;
-    background-color: var(--text-color);
-    border-radius: 3px;
-    transition: all 0.3s ease;
-}
-
-/* 開いた時のアニメーション (X印) */
-.menu-toggle.active span:nth-child(1) {
-    transform: translateY(9px) rotate(45deg);
-}
-.menu-toggle.active span:nth-child(2) {
-    opacity: 0;
-}
-.menu-toggle.active span:nth-child(3) {
-    transform: translateY(-9px) rotate(-45deg);
-}
-
-/* ===== Mobile Layout ===== */
-@media (max-width: 768px) {
-    header {
-        justify-content: space-between;
-        padding: 15px 5%;
-    }
-
-    .menu-toggle {
-        display: flex; /* スマホ版で表示 */
-    }
-
-    nav {
-        position: fixed; /* absoluteより安定します */
-        top: 70px;
-        right: -100%; /* 最初は画面の外に隠す */
-        background: white;
-        width: 80%;
-        max-width: 300px;
-        height: 100vh;
-        flex-direction: column;
-        padding: 40px 20px;
-        box-shadow: -5px 0 15px rgba(0,0,0,0.1);
-        display: flex; /* display:noneを使わず配置で制御 */
-        transition: right 0.3s ease;
-        border-radius: 0; 
-    }
-
-    nav.active {
-        right: 0; /* 画面内にスライドイン */
-    }
-
-    nav a {
-        margin: 15px 0;
-        font-size: 1.1rem;
-        border-bottom: 1px solid #eee;
-        padding-bottom: 10px;
-    }
-
-    .lang-switch {
-        display: none;
-    }
-}
-  /* ヒーロー上部 横並びラッパー */
-.hero-top-line {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-
-/* 流れるメッセージ */
-.hero-marquee {
-    overflow: hidden;
-    white-space: nowrap;
-    flex: 1;
-}
-
-.hero-marquee span {
-    display: inline-block;
-    padding-left: 100%;
-    font-size: 1.1rem; /* 登録支援機関より1つ大きく */
-    font-weight: bold;
-    color: white;
-    animation: marqueeMove 12s linear infinite;
-}
-
-@keyframes marqueeMove {
-    0%   { transform: translateX(0); }
-    100% { transform: translateX(-100%); }
-}
-
-/* スマホ調整 */
-@media (max-width: 768px) {
-    .hero-marquee span {
-        font-size: 1rem;
-        animation-duration: 18s;
-    }
-}
-/* ===== LINE Hero Button ===== */
-.line-hero-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.9);
-    color: #06C755; /* LINEグリーン */
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    transition: all 0.3s ease;
-    margin-left: 10px;
-}
-
-.line-hero-btn:hover {
-    background: #06C755;
-    color: white;
-    transform: translateY(-3px);
-}
-  </style>
+    </style>
 </head>
 <body>
 
@@ -380,19 +321,20 @@
         <img src="logo.png" alt="Logo">
         <span>セコンドペンギン企画</span>
     </a>
-   <div class="menu-toggle" onclick="toggleMenu()">
-    <span></span>
-    <span></span>
-    <span></span>
-</div>
+    
+    <div class="menu-toggle" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
 
-<nav id="mainNav">
+    <nav id="mainNav">
     <a href="#message">代表から</a>
     <a href="#business">企業様</a>
     <a href="https://second-penguin-lanning.github.io/Foreigners-Website/">INTERNATIONAL</a>
     <a href="#company">会社概要</a>
     <a href="#contact">お問合せ</a>
-</nav>
+    <a href="#links">関係リンク</a> </nav>
 
     <div class="lang-switch">
         <button onclick="translatePage('ja')">JP</button>
@@ -403,49 +345,31 @@
 
 <section class="hero" id="top">
     <div class="hero-content">
-<div class="hero-top-line">
-
-    <div class="hero-status">
-        登録支援機関（3月登録予定）｜有料職業紹介事業（3月登録予定）
-    </div>
-
-    <div class="hero-marquee">
-        <span>
-            お客様のチャレンジをセコンドペンギンが全力で支援いたします！　
-            お客様のチャレンジをセコンドペンギンが全力で支援いたします！　
-        </span>
-    </div>
-
-</div>
+        <div class="hero-top-line">
+            <div class="hero-status">
+                登録支援機関（3月登録予定）｜有料職業紹介事業（3月登録予定）
+            </div>
+            <div class="hero-marquee">
+                <span>
+                    お客様のチャレンジをセコンドペンギンが全力で支援いたします！　
+                    お客様のチャレンジをセコンドペンギンが全力で支援いたします！　
+                </span>
+            </div>
+        </div>
 
         <h1 id="hero-title">フィリピンなどの優秀な人材を繋ぎます</h1>
         <p style="font-size: 1.2rem; font-weight: bold; margin-bottom: 10px;">企業様の外国人雇用支援、外国人の日本就業/生活支援</p>
         <p style="margin-bottom: 20px; opacity: 0.9;">実務と現場の経験を活かし、皆様の「挑戦」を伴走支援します。</p>
         <a href="#contact" class="btn">お問合せはこちら</a>
-<div class="hero-social">
-    <a href="https://www.facebook.com/profile.php?id=61560839369037"
-       target="_blank"
-       aria-label="Facebook"
-       class="fb-hero-btn">
-        <svg xmlns="http://www.w3.org/2000/svg"
-             viewBox="0 0 24 24"
-             fill="currentColor">
-            <path d="M22 12.07C22 6.48 17.52 2 12 2S2 6.48 2 12.07c0 5.02 3.66 9.17 8.44 9.93v-7.03H7.9v-2.9h2.54V9.84c0-2.5 1.49-3.88 3.77-3.88 1.09 0 2.23.19 2.23.19v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.44 2.9h-2.34V22c4.78-.76 8.44-4.91 8.44-9.93z"/>
-        </svg>
-    </a>
-<a href="https://line.me/R/ti/p/@556fihjp"
-   target="_blank"
-   aria-label="LINE"
-   class="line-hero-btn">
-    <!-- LINEアイコンSVG -->
-    <svg xmlns="http://www.w3.org/2000/svg"
-         viewBox="0 0 24 24"
-         fill="currentColor">
-        <path d="M19.365 3H4.635C3.18 3 2 4.18 2 5.635v9.73C2 16.82 3.18 18 4.635 18h4.058l2.64 3.167c.2.24.564.24.764 0L14.737 18h4.628C20.82 18 22 16.82 22 15.365v-9.73C22 4.18 20.82 3 19.365 3z"/>
-    </svg>
-</a>
 
-</div>
+        <div class="hero-social">
+            <a href="https://www.facebook.com/profile.php?id=61560839369037" target="_blank" aria-label="Facebook" class="fb-hero-btn">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12.07C22 6.48 17.52 2 12 2S2 6.48 2 12.07c0 5.02 3.66 9.17 8.44 9.93v-7.03H7.9v-2.9h2.54V9.84c0-2.5 1.49-3.88 3.77-3.88 1.09 0 2.23.19 2.23.19v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.44 2.9h-2.34V22c4.78-.76 8.44-4.91 8.44-9.93z"/></svg>
+            </a>
+            <a href="https://line.me/R/ti/p/@556fihjp" target="_blank" aria-label="LINE" class="line-hero-btn">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 3H4.635C3.18 3 2 4.18 2 5.635v9.73C2 16.82 3.18 18 4.635 18h4.058l2.64 3.167c.2.24.564.24.764 0L14.737 18h4.628C20.82 18 22 16.82 22 15.365v-9.73C22 4.18 20.82 3 19.365 3z"/></svg>
+            </a>
+        </div>
     </div>
 
     <div class="news-box">
@@ -455,26 +379,17 @@
             <span class="filter-tag" onclick="filterNews('policy', this)">外国人政策</span>
             <span class="filter-tag" onclick="filterNews('procedure', this)">入管手続き</span>
             <span class="filter-tag" onclick="filterNews('study', this)">日本語学習</span>
-            <span class="filter-tag" onclick="filterNews('other', this)">その他</span>    
+            <span class="filter-tag" onclick="filterNews('other', this)">その他</span>
         </div>
         <div id="news-list"></div>
     </div>
 </section>
 
 <section id="message" class="fade-in">
-    <h2>代者から</h2>
+    <h2>代表から</h2>
     <div class="representative-container">
         <div class="representative-text">
-            <p>
-    <strong>
-        <a href="https://www.google.com/search?q=徳永良雄" 
-           target="_blank" 
-           style="color: var(--main-blue); text-decoration: underline;">
-           徳永 良雄
-        </a>
-    </strong>
-    と申します。
-</p>
+            <p><strong><a href="https://www.google.com/search?q=徳永良雄" target="_blank" style="color: var(--main-blue); text-decoration: underline;">徳永 良雄</a></strong> と申します。</p>
             <p style="margin-top: 15px;">31年間の公務員生活を経て、日本で学び、働きたいと願う真面目な若者たちと日本社会を繋ぐため、本事業を立ち上げました。日本語教育や入管手続きの現場経験を活かし、行政書士としても皆様をサポートいたします。</p>
             <p style="margin-top: 15px;">変化する国の政策や現場の実情に合わせ、お客様と共に課題解決に取り組みます。まずはお気軽にご相談ください。</p>
             <div style="margin-top: 20px;">
@@ -489,334 +404,135 @@
 
 <section class="advisor-section fade-in">
     <h2>外国人雇用 顧問・支援サービス</h2>
-   <div class="feature-box">
-    <h3>外国人雇用をお考えの企業様・雇用中の企業様へ</h3>
-    <p>
-        現在、外国人の雇用を考える企業様だけでなく、雇用中の企業様のお力になります。<br>
-        国籍はフィリピン、インドネシアについて豊富な経験がございます。<br>
-        他の国の方々につきましてもお気軽にご相談下さい。
-    </p>
-</div>
-
-   <div class="grid">
-    <div class="card recommend">
-        <h4>顧問プラン</h4>
-        <p>
-            外国人の求人、各種手続き、入国対応、生活支援まで一気通貫でサポートいたします。
-        </p>
-        <p style="margin-top:10px; font-weight:bold;">
-            月額 33,000円～
-        </p>
+    <div class="feature-box">
+        <h3>外国人雇用をお考えの企業様・雇用中の企業様へ</h3>
+        <p>現在、外国人の雇用を考える企業様だけでなく、雇用中の企業様のお力になります。<br>国籍はフィリピン、インドネシアについて豊富な経験がございます。<br>他の国の方々につきましてもお気軽にご相談下さい。</p>
     </div>
 
-    <div class="card">
-        <h4>定額プラン</h4>
-        <p>
-            フィリピン大使館の申請サポート、各種支援、生活・日本語教育、
-            課題解決など個別にサポートいたします。
-        </p>
-        <p style="margin-top:10px; font-weight:bold;">
-            定額 25,000円～
-        </p>
+    <div class="grid">
+        <div class="card recommend">
+            <h4>顧問プラン</h4>
+            <p>外国人の求人、各種手続き、入国対応、生活支援まで一気通貫でサポートいたします。</p>
+            <p style="margin-top:10px; font-weight:bold;">月額 33,000円～</p>
+        </div>
+        <div class="card">
+            <h4>定額プラン</h4>
+            <p>フィリピン大使館の申請サポート、各種支援、生活・日本語教育、課題解決など個別にサポートいたします。</p>
+            <p style="margin-top:10px; font-weight:bold;">定額 25,000円～</p>
+        </div>
     </div>
-</div>
 
-   <div class="price-box" style="margin-top: 30px;">
-    <p style="font-weight:bold; font-size:1.1rem;">
-        初回のご相談無料
-    </p>
-    <p style="margin-top:10px;">
-        お気軽にお問合せフォームでご連絡ください。
-    </p>
-    <a href="#contact" class="btn" style="margin-top:15px;">
-        お問合せはこちら
-    </a>
-</div>
-
+    <div class="price-box" style="margin-top: 30px; text-align: center; border: 2px solid var(--main-blue); padding: 20px; border-radius: 15px;">
+        <p style="font-weight:bold; font-size:1.1rem;">初回のご相談無料</p>
+        <p>お気軽にお問合せフォームでご連絡ください。</p>
+        <a href="#contact" class="btn" style="margin-top:15px;">お問合せはこちら</a>
+    </div>
 </section>
 
 <section id="business" class="fade-in">
     <h2>企業様向けトータルサポート</h2>
-
-    <div style="max-width:900px; margin:0 auto 40px auto; text-align:center;">
-        <p style="font-size:1.1rem; font-weight:bold;">
-            外国人雇用に関する企業様の挑戦を、実務目線で伴走支援します。
-        </p>
-        <p style="margin-top:15px;">
-            人手不足の解決策として注目される外国人材活用。しかし制度の複雑さや受入れ後の不安から、
-            一歩踏み出せない企業様も少なくありません。
-        </p>
-        <p style="margin-top:10px;">
-            セコンドペンギン企画は、雇用アドバイスから受入れ後の生活支援まで、
-            一気通貫で支援する実践型パートナーです。
-        </p>
-    </div>
-
     <div class="grid">
-
         <div class="card">
             <h3>① 良い人材をどう探すか？</h3>
-            <p>
-                業種・職場環境・将来ビジョンを丁寧にヒアリングし、
-                長く活躍できる外国人材をご提案します。
-                単なる紹介ではなく、定着まで見据えたマッチングを行います。
-            </p>
+            <p>単なる紹介ではなく、定着まで見据えたマッチングを行います。</p>
         </div>
-
         <div class="card">
             <h3>② 在留資格は何が最適か？</h3>
-            <p>
-                以下の在留資格に対応し、企業様に最適な選択肢をご案内します。
-            </p>
-            <ul style="margin-top:10px; padding-left:20px;">
-                <li>特定技能</li>
-                <li>育成就労</li>
-                <li>技術・人文知識・国際業務（技人国）</li>
-                <li>留学 など</li>
-            </ul>
+            <p>特定技能、育成就労、技人国、留学など最適な選択肢をご案内します。</p>
         </div>
-
         <div class="card">
             <h3>③ 雇用手続きや受入れが不安</h3>
-            <p>
-                ご相談から採用、雇用開始後の生活支援まで一気通貫でサポート。
-                企業様の負担を軽減し、安心して外国人材を受け入れられる体制を整えます。
-            </p>
+            <p>採用から生活支援まで一気通貫でサポートします。</p>
         </div>
-
         <div class="card">
             <h3>④ 対応可能分野</h3>
-            <ul style="padding-left:20px;">
-                <li>外食</li>
-                <li>製造</li>
-                <li>介護</li>
-                <li>建設</li>
-                <li>農業</li>
-                <li>自動車整備</li>
-                <li>運転業務 など</li>
-            </ul>
-            <p style="margin-top:10px;">
-                多様な業種のニーズに柔軟に対応します。
-            </p>
+            <p>外食、製造、介護、建設、農業、自動車整備、運転業務など多岐にわたります。</p>
         </div>
-
-    </div>
-
-    <div style="text-align:center; margin-top:40px;">
-        <p style="font-weight:bold; margin-bottom:20px;">
-            「外国人を雇う」ではなく、<br>
-            「共に成長できる人材を迎える」ためのパートナーへ。
-        </p>
-        <a href="#contact" class="btn">無料相談はこちら</a>
-    </div>
-
-</section>
-
-<section id="foreign" class="fade-in" style="background: var(--sky-blue); text-align: center;">
-    <div style="background: white; padding: 40px; border-radius: 20px;">
-        <h2>For International Residents</h2>
-        <p>We support your Visa application, Career, and Life in Japan.</p>
-        <a href="https://second-penguin-lanning.github.io/Foreigners-Website/" class="btn" target="_blank" style="margin-top: 20px;">Multilingual Site ↗</a>
-    </div>
-</section>
-
-<section id="company" class="fade-in">
-       <h2>会社概要</h2>
-
-    <div style="display:flex; flex-wrap:wrap; gap:40px; align-items:flex-start;">
-
-        <!-- 左：会社情報 -->
-        <div style="flex:1; min-width:300px;">
-            <table style="width: 100%; border-collapse: collapse;">
-                <tr style="border-bottom: 1px solid #eee;">
-                    <th style="padding: 15px; text-align: left; width: 30%;">屋号</th>
-                    <td>セコンドペンギン企画</td>
-                </tr>
-
-                <tr style="border-bottom: 1px solid #eee;">
-                    <th style="padding: 15px; text-align: left;">設立</th>
-                    <td>2024年6月13日</td>
-                </tr>
-
-                <tr style="border-bottom: 1px solid #eee;">
-                    <th style="padding: 15px; text-align: left;">所在地</th>
-                    <td>
-                        〒658-0032<br>
-                        兵庫県神戸市東灘区向洋町中6-9<br>
-                        神戸ファッションマート 4N-07-01
-                    </td>
-                </tr>
-
-                <tr style="border-bottom: 1px solid #eee;">
-                    <th style="padding: 15px; text-align: left;">Eメール</th>
-                    <td>
-                        <a href="mailto:info@second-penguin.com">
-                            info@second-penguin.com
-                        </a>
-                    </td>
-                </tr>
-
-                <tr style="border-bottom: 1px solid #eee;">
-                    <th style="padding: 15px; text-align: left;">通話連絡先</th>
-                    <td>
-                        <a href="tel:07091922524">
-                            070-9192-2524
-                        </a>
-                    </td>
-                </tr>
-            </table>
-        </div>
-
-   <!-- 右：写真＋GoogleMapリンク -->
-<div style="flex:1; min-width:300px; text-align:center;">
-
-    <img src="fashionmart.png"
-         alt="神戸ファッションマート"
-         style="width:100%; max-width:500px; border-radius:10px; box-shadow:0 5px 15px rgba(0,0,0,0.2);">
-
-    <div style="margin-top:15px;">
-        <a href="https://www.google.com/maps/search/?api=1&query=〒658-0032+兵庫県神戸市東灘区向洋町中6-9+神戸ファッションマート"
-           target="_blank"
-           style="font-weight:bold; color:var(--main-blue); text-decoration:none;">
-
-            Google Mapはこちら ↗
-        </a>
-    </div>
-
-</div>    
-
-    </div>
-</section>
-
-<section id="links" class="fade-in">
-    <h2>関連リンク（制度・手続き情報）</h2>
-
-    <div class="grid">
-
-        <div class="card">
-            <h3>入管（出入国在留管理庁）</h3>
-            <p>
-                在留資格や手続きの公式情報はこちら。
-            </p>
-            <a href="https://www.moj.go.jp/isa/" target="_blank" class="btn" style="margin-top:15px;">
-                出入国在留管理庁 公式サイト ↗
-            </a>
-        </div>
-
-        <div class="card">
-            <h3>特定技能</h3>
-            <p>
-                特定技能制度の概要・分野別情報。
-            </p>
-            <a href="https://www.moj.go.jp/isa/policies/ssw/" target="_blank" class="btn" style="margin-top:15px;">
-                特定技能制度ページ ↗
-            </a>
-        </div>
-
-        <div class="card">
-            <h3>育成就労制度</h3>
-            <p>
-                技能実習に代わる新制度の最新情報。
-            </p>
-            <a href="https://www.moj.go.jp/isa/policies/ikusei.html" target="_blank" class="btn" style="margin-top:15px;">
-                育成就労制度について ↗
-            </a>
-        </div>
-
-        <div class="card">
-            <h3>技術・人文知識・国際業務（技人国）</h3>
-            <p>
-                ホワイトカラー職種向け在留資格。
-            </p>
-            <a href="https://www.moj.go.jp/isa/applications/status/gijinkoku.html" target="_blank" class="btn" style="margin-top:15px;">
-                技人国の解説 ↗
-            </a>
-        </div>
-
-        <div class="card">
-            <h3>永住許可</h3>
-            <p>
-                永住申請の要件や必要書類。
-            </p>
-            <a href="https://www.moj.go.jp/isa/applications/procedures/nyukan_nyukan50.html" target="_blank" class="btn" style="margin-top:15px;">
-                永住許可について ↗
-            </a>
-        </div>
-
-        <div class="card">
-            <h3>留学（文部科学省）</h3>
-            <p>
-                日本留学制度や支援情報。
-            </p>
-            <a href="https://www.mext.go.jp/a_menu/koutou/ryugaku/" target="_blank" class="btn" style="margin-top:15px;">
-                文部科学省 留学情報 ↗
-            </a>
-        </div>
-
     </div>
 </section>
 
 <section id="contact" class="fade-in">
     <h2>お問合せ</h2>
     <div style="max-width:600px; margin:0 auto;">
-       <form action="https://formsubmit.co/info@second-penguin.com" method="POST">
-
-   <input type="hidden" name="_next" value="https://second-penguin-lanning.github.io/SP-Main-Website/#top">
-<input type="hidden" name="_captcha" value="false">
-<input type="hidden" name="_template" value="table">
-
-
-    <div style="margin-bottom:15px;">
-        <label>お名前（必須）</label><br>
-        <input type="text" name="name" required
-               style="width:100%; padding:10px; border:1px solid #ccc; border-radius:5px;">
+        <form action="https://formsubmit.co/info@second-penguin.com" method="POST">
+            <input type="hidden" name="_next" value="https://second-penguin-lanning.github.io/SP-Main-Website/#top">
+            <input type="hidden" name="_captcha" value="false">
+            <div style="margin-bottom:15px;">
+                <label>お名前（必須）</label><br>
+                <input type="text" name="name" required style="width:100%; padding:10px; border:1px solid #ccc; border-radius:5px;">
+            </div>
+            <div style="margin-bottom:15px;">
+                <label>メールアドレス（必須）</label><br>
+                <input type="email" name="email" required style="width:100%; padding:10px; border:1px solid #ccc; border-radius:5px;">
+            </div>
+            <div style="margin-bottom:15px;">
+                <label>内容（必須）</label><br>
+                <textarea name="message" rows="5" required style="width:100%; padding:10px; border:1px solid #ccc; border-radius:5px;"></textarea>
+            </div>
+            <button type="submit" class="btn">送信する</button>
+        </form>
+<p style="font-size:0.8rem; margin-top:15px; line-height:1.6;">
+本フォームより取得した個人情報は、お問合せへの回答および業務のご案内の目的のみに使用いたします。<br>
+詳細は <a href="privacy.html" style="color: var(--main-blue); text-decoration: underline;">プライバシーポリシー</a> をご確認ください。
+</p>
     </div>
+</section>
 
-    <div style="margin-bottom:15px;">
-        <label>都道府県名 市町村名</label><br>
-        <input type="text" name="prefecture"
-               style="width:100%; padding:10px; border:1px solid #ccc; border-radius:5px;">
-    </div>
-
-    <div style="margin-bottom:15px;">
-        <label>メールアドレス（必須）</label><br>
-        <input type="email" name="email" required
-               style="width:100%; padding:10px; border:1px solid #ccc; border-radius:5px;">
-    </div>
-
-    <div style="margin-bottom:15px;">
-        <label>内容（必須）</label><br>
-        <textarea name="message" rows="5" required
-                  style="width:100%; padding:10px; border:1px solid #ccc; border-radius:5px;"></textarea>
-    </div>
-<div style="margin-bottom:20px; font-size:0.9rem;">
-    <label style="display:flex; align-items:flex-start; gap:8px;">
-        <input type="checkbox" name="privacy" required style="margin-top:4px;">
-        <span>
-            <a href="privacy.html" target="_blank" style="color:var(--main-blue); font-weight:bold;">
-                プライバシーポリシー
-            </a>
-            に同意のうえ送信します。
-        </span>
-    </label>
-</div>
-    <button type="submit" class="btn">送信する</button>
-</form>
+<section id="links" class="fade-in">
+    <h2>関係リンク</h2>
+    <div class="grid">
+        <div class="card link-card">
+            <h4>出入国在留管理庁</h4>
+            <p>入国手続きや在留資格の最新情報は公式サイトをご確認ください。</p>
+            <a href="https://www.moj.go.jp/isa/" target="_blank" class="btn" style="margin-top:10px; font-size: 0.8rem;">公式サイト ↗</a>
+        </div>
+        <div class="card link-card">
+            <h4>育成就労制度について</h4>
+            <p>技能実習に代わる新しい制度「育成就労」の解説（法務省ページ）です。</p>
+            <a href="https://www.moj.go.jp/isa/applications/ssw/ikuseishuro_index.html" target="_blank" class="btn" style="margin-top:10px; font-size: 0.8rem;">詳細を見る ↗</a>
+        </div>
+        <div class="card link-card">
+            <h4>特定技能ポータルサイト</h4>
+            <p>特定技能制度の全体像や、試験情報などが網羅されています。</p>
+            <a href="https://www.ssw.go.jp/" target="_blank" class="btn" style="margin-top:10px; font-size: 0.8rem;">ポータルサイト ↗</a>
+        </div>
+        <div class="card link-card">
+            <h4>登録支援機関について</h4>
+            <p>登録支援機関の役割や、届出情報の確認はこちらから。</p>
+            <a href="https://www.moj.go.jp/isa/applications/ssw/nyuukan_nyukan18.html" target="_blank" class="btn" style="margin-top:10px; font-size: 0.8rem;">詳細を見る ↗</a>
+        </div>
+        <div class="card link-card">
+            <h4>技・人・国（技術・人文知識・国際業務）</h4>
+            <p>いわゆるホワイトカラー職種の在留資格に関する手続きについて。</p>
+            <a href="https://www.moj.go.jp/isa/applications/status/gijinkoku.html" target="_blank" class="btn" style="margin-top:10px; font-size: 0.8rem;">詳細を見る ↗</a>
+        </div>
+        <div class="card link-card">
+            <h4>食品産業特定技能協議会 (OTAFF)</h4>
+            <p>外食・飲食料品製造分野の特定技能試験を運営する機関です。</p>
+            <a href="https://www.otaff.or.jp/" target="_blank" class="btn" style="margin-top:10px; font-size: 0.8rem;">公式サイト ↗</a>
+        </div>
+        <div class="card link-card">
+            <h4>建設技能人材機構 (JAC)</h4>
+            <p>建設分野の特定技能受け入れを推進する事業実施団体です。</p>
+            <a href="https://jac-skill.or.jp/" target="_blank" class="btn" style="margin-top:10px; font-size: 0.8rem;">公式サイト ↗</a>
+        </div>
     </div>
 </section>
 
 <footer>
-    <p style="margin-bottom:10px;">
-        <a href="privacy.html" style="color:white; text-decoration:underline;">
+    <p>
+        <a href="privacy.html" style="color:#fff; text-decoration: underline;">
             プライバシーポリシー
         </a>
     </p>
-    <p>&copy; 2024-2026 Second Penguin Kikaku. All Rights Reserved.</p>
+    <p style="margin-top:10px;">
+        © 2024-2026 Second Penguin Kikaku. All Rights Reserved.
+    </p>
 </footer>
 
 <div id="newsModal" class="modal-overlay">
     <div class="modal-content">
-        <span class="modal-close" onclick="closeModal()">&times;</span>
+        <span class="modal-close" onclick="closeModal()">×</span>
         <div id="modalDate" style="color:#888; font-size: 0.8rem;"></div>
         <h2 id="modalTitle" style="text-align:left; font-size: 1.2rem; margin: 10px 0;"></h2>
         <div id="modalBody"></div>
@@ -827,96 +543,32 @@
 
 <script>
 /* ================================
-   1. ニュースデータ & 表示 (2025後半・2026トピック反映)
+   1. メニュー制御 (スマホ用)
+================================ */
+function toggleMenu() {
+    const nav = document.getElementById('mainNav');
+    const toggle = document.querySelector('.menu-toggle');
+    const body = document.body;
+
+    nav.classList.toggle('active');
+    toggle.classList.toggle('active');
+
+    // メニューが開いている時は背面をスクロール不可にする
+    if (nav.classList.contains('active')) {
+        body.style.overflow = 'hidden';
+    } else {
+        body.style.overflow = 'auto';
+    }
+}
+
+/* ================================
+   2. ニュースデータ & 表示
 ================================ */
 const newsData = [
-    { 
-        category: "policy", 
-        catName: "外国人政策", 
-        date: "2026.01.10", 
-        title: "特定技能2号への移行支援体制の強化", 
-        content: `
-            <p>2026年は、特定技能1号から2号への移行を目指す外国人材が急増する年となります。</p>
-            <p>セコンドペンギン企画では、熟練した技能を持つ人材の長期在留を支えるため、キャリアアップ計画の策定や家族帯同に向けた環境整備のコンサルティングを開始しました。</p>
-        ` 
-    },
-    { 
-        category: "procedure", 
-        catName: "入管手続き", 
-        date: "2026.01.05", 
-        title: "入管オンライン申請の完全義務化への対応", 
-        content: `
-            <p>2026年より、一定規模以上の企業における在留資格申請のオンライン化がさらに加速します。</p>
-            <p>当事務所では、企業様側のDX対応を支援するとともに、電子署名を用いたスムーズな申請代行体制を整えております。</p>
-        ` 
-    },
-    { 
-        category: "study", 
-        catName: "日本語学習", 
-        date: "2026.01.02", 
-        title: "AIを活用した「現場特化型」日本語学習プランの提供", 
-        content: `
-            <p>2026年度より、ICT教材とAI会話診断を組み合わせた新しい日本語教育サービスを開始します。</p>
-            <p>職種ごとの専門用語や現場でのコミュニケーションに特化し、短期間で即戦力となる語学力を養います。</p>
-        ` 
-    },
-    { 
-        category: "policy", 
-        catName: "外国人政策", 
-        date: "2025.10.15", 
-        title: "育成就労制度（2027年開始）に向けた準備ガイド", 
-        content: `
-            <p>技能実習制度に代わる「育成就労制度」の運用詳細が公表されました。</p>
-            <p>2025年後半は、現行の技能実習生からの切り替えタイミングや、転籍制限の緩和に伴うリテンション（引き止め）施策の準備が重要になります。</p>
-        ` 
-    },
-    { 
-        category: "procedure", 
-        catName: "入管手続き", 
-        date: "2025.08.20", 
-        title: "在留カードとマイナンバーカードの一体化運用開始", 
-        content: `
-            <p>2025年後半より、在留カードとマイナンバーカードが一体化した「特定在留カード（仮称）」の交付が始まります。</p>
-            <p>雇用主様はカードの確認方法が変わるため、最新の確認デバイスの導入や管理規程の見直しを推奨いたします。</p>
-        ` 
-    },
-    { 
-        category: "study", 
-        catName: "日本語学習", 
-        date: "2025.07.01", 
-        title: "「登録日本語教員」制度に伴う教育の質の保証", 
-        content: `
-            <p>日本語教育機関の認定法に基づき、国家資格「登録日本語教員」による授業が本格化します。</p>
-            <p>弊社が提携する教育機関では、すべて有資格者による指導を行い、より確実なJLPT（日本語能力試験）合格を目指します。</p>
-        ` 
-    },
-    {
- 
-        category: "other",
-        catName: "その他",
-        date: "2026.02.18",
-        title: "セコンドペンギンの名前について",
-        content: `
-            <p>
-            セコンドペンギンは2024年5月、事業を始める時、息子から
-            「ファーストペンギン（開拓者）がいいのでは」と提案がありました。
-            </p>
-            <p>
-            調べると「セカンドペンギン（開拓者の次）」という言葉もありました。
-            しかしファーストペンギンだけでなく、セカンドペンギンもウェブ上では
-            よく見られるネーミングでした。
-            </p>
-            <p>
-            仕事の主な内容が、主役である企業様と外国籍の若者を支える立場であることから、
-            「セカンド」をあえて「セコンド」と呼び変えることとしました。
-            </p>
-            <p>
-            主役を支える“第二の存在”として、誠実に伴走していきたいという思いを込めています。
-            </p>
-        `
-    }
+    { category: "policy", catName: "外国人政策", date: "2026.01.10", title: "特定技能2号への移行支援体制の強化", content: "<p>熟練した技能を持つ人材の長期在留を支えるコンサルティングを開始しました。</p>" },
+    { category: "procedure", catName: "入管手続き", date: "2026.01.05", title: "入管オンライン申請の完全義務化への対応", content: "<p>電子署名を用いたスムーズな申請代行体制を整えております。</p>" },
+    { category: "other", catName: "その他", date: "2026.02.18", title: "セコンドペンギンの名前について", content: "<p>主役（企業様と若者）を支える“第二の存在”として、誠実に伴走したいという思いを込めています。</p>" }
 ];
-
 
 function renderNews(filter = 'all') {
     const list = document.getElementById('news-list');
@@ -941,28 +593,19 @@ function filterNews(category, element) {
 
 function openModal(index) {
     const news = newsData[index];
-    if (!news) return;
-
     document.getElementById('modalDate').textContent = news.date;
     document.getElementById('modalTitle').textContent = news.title;
     document.getElementById('modalBody').innerHTML = news.content;
-
-    const modal = document.getElementById('newsModal');
-    modal.style.display = 'flex';
+    document.getElementById('newsModal').style.display = 'flex';
 }
 
 function closeModal() { document.getElementById('newsModal').style.display = 'none'; }
 
 /* ================================
-   2. Heroタイトルアニメーション
+   3. Heroタイトルアニメーション
 ================================ */
-const titles = [
-    "フィリピンなどの優秀な人材を繋ぎます",
-    "外国人雇用を一気通貫サポート",
-    "求職・留学のことお任せください"
-];
+const titles = ["フィリピンなどの優秀な人材を繋ぎます", "外国人雇用を一気通貫サポート", "求職・留学のことお任せください"];
 let currentIndex = 0;
-
 function rotateHeroTitle() {
     const heroTitle = document.getElementById("hero-title");
     if (!heroTitle) return;
@@ -978,32 +621,23 @@ function rotateHeroTitle() {
 }
 
 /* ================================
-   3. 翻訳機能 (Google Translate)
-================================ */
-function googleTranslateElementInit() {
-    new google.translate.TranslateElement({
-        pageLanguage: 'ja',
-        includedLanguages: 'en,id,ja',
-        autoDisplay: false
-    }, 'google_translate_element');
-}
-
-function translatePage(lang) {
-    const select = document.querySelector(".goog-te-combo");
-    if (select) {
-        select.value = lang;
-        select.dispatchEvent(new Event("change"));
-    } else {
-        alert("翻訳機能の準備中です。数秒後にもう一度お試しください。");
-    }
-}
-
-/* ================================
    4. 初期化処理
 ================================ */
 window.addEventListener('DOMContentLoaded', () => {
     renderNews();
     rotateHeroTitle();
+
+    // メニュー内のリンクをクリックしたらメニューを閉じる
+    const navLinks = document.querySelectorAll('#mainNav a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            const nav = document.getElementById('mainNav');
+            const toggle = document.querySelector('.menu-toggle');
+            nav.classList.remove('active');
+            toggle.classList.remove('active');
+            document.body.style.overflow = 'auto'; 
+        });
+    });
 
     // Fade-in Observer
     const observer = new IntersectionObserver((entries) => {
@@ -1014,31 +648,26 @@ window.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 });
 
-// モーダル外クリックで閉じる（修正版）
-window.addEventListener("click", function(e) {
-    const modal = document.getElementById("newsModal");
-    if (e.target === modal) {
-        closeModal();
-    }
+// モーダル外クリックで閉じる
+window.addEventListener("click", (e) => {
+    const modal = document.getElementById('newsModal');
+    if (e.target === modal) closeModal();
 });
-function toggleMenu() {
-    const nav = document.getElementById("mainNav");
-    const toggle = document.querySelector(".menu-toggle");
-    
-    nav.classList.toggle("active");
-    toggle.classList.toggle("active"); // ハンバーガーをXに変える
-}
-
-// メニューリンクをクリックしたら閉じる設定（追加）
-document.querySelectorAll('nav a').forEach(link => {
-    link.addEventListener('click', () => {
-        document.getElementById("mainNav").classList.remove("active");
-        document.querySelector(".menu-toggle").classList.remove("active");
-    });
-});
-
 </script>
+
 <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<script>
+function googleTranslateElementInit() {
+    new google.translate.TranslateElement({pageLanguage: 'ja', includedLanguages: 'en,id,ja', autoDisplay: false}, 'google_translate_element');
+}
+function translatePage(lang) {
+    const select = document.querySelector(".goog-te-combo");
+    if (select) {
+        select.value = lang;
+        select.dispatchEvent(new Event("change"));
+    }
+}
+</script>
 
 </body>
 </html>
