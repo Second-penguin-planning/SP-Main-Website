@@ -426,7 +426,44 @@ nav {
         padding: 30px;
     }
 }
-    </style>
+   /* ===== LINE固定ボタン ===== */
+.line-fixed-btn {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    background: #06C755;
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    z-index: 3000;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.line-fixed-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.35);
+}
+
+.line-fixed-btn svg {
+    width: 28px;
+    height: 28px;
+}
+
+@media (max-width: 768px) {
+    .line-fixed-btn {
+        right: 15px;
+        bottom: 15px;
+        width: 55px;
+        height: 55px;
+    }
+}
+ </style>
 </head>
 <body>
 
@@ -482,8 +519,12 @@ nav {
         <path d="M22 12.07C22 6.48 17.52 2 12 2S2 6.48 2 12.07c0 5.02 3.66 9.17 8.44 9.93v-7.03H7.9v-2.9h2.54V9.84c0-2.5 1.49-3.88 3.77-3.88 1.09 0 2.23.19 2.23.19v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.44 2.9h-2.34V22c4.78-.76 8.44-4.91 8.44-9.93z"/>
     </svg>
 </a>
-           <a href="https://line.me/R/ti/p/@556fihjp" target="_blank" aria-label="LINE" class="line-hero-btn">
-    <svg viewBox="0 0 24 24" fill="currentColor">
+           <a href="https://lin.ee/cMInLe5/?外国人雇用について相談したいです"
+   target="_blank"
+   aria-label="LINE"
+   class="line-hero-btn">
+    <svg viewBox="0 0 24 24" fill="currentColor" 
+         style="transform: scale(1.5); transform-origin: center;">
         <path d="M20.2 3H3.8C2.8 3 2 3.8 2 4.8v10.4C2 16.2 2.8 17 3.8 17h3.2v3.3c0 .4.5.6.8.3l3.6-3.6h8.8c1 0 1.8-.8 1.8-1.8V4.8c0-1-.8-1.8-1.8-1.8z"/>
         <text x="6.5" y="12.5" font-size="5.5" font-weight="bold" fill="white">LINE</text>
     </svg>
@@ -841,6 +882,16 @@ function translatePage(lang) {
     }
 }
 </script>
+<!-- ===== 固定LINEボタン ===== -->
+<a href="https://line.me/R/oaMessage/@556fihjp/?外国人雇用について相談したいです"
+   target="_blank"
+   class="line-fixed-btn"
+   aria-label="LINEで相談する">
 
+    <svg viewBox="0 0 24 24" fill="currentColor">
+        <path d="M20.2 3H3.8C2.8 3 2 3.8 2 4.8v10.4C2 16.2 2.8 17 3.8 17h3.2v3.3c0 .4.5.6.8.3l3.6-3.6h8.8c1 0 1.8-.8 1.8-1.8V4.8c0-1-.8-1.8-1.8-1.8z"/>
+    </svg>
+
+</a>
 </body>
 </html>
