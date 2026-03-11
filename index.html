@@ -143,7 +143,7 @@
             .lang-switch { display: none; }
         }
 
-        /* ===== New Hero Section Style ===== */
+        /* ===== Hero Section ===== */
         .hero {
             padding: 60px 5%;
             background: linear-gradient(rgba(0, 91, 172, 0.1), rgba(224, 244, 255, 1)), url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=2000&q=80') center/cover;
@@ -208,81 +208,43 @@
             box-shadow: 0 15px 30px rgba(0,0,0,0.2);
         }
 
-        .pillar-header {
-            padding: 20px;
-            color: white;
-            font-weight: bold;
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
+        .pillar-header { padding: 20px; color: white; font-weight: bold; font-size: 0.9rem; display: flex; align-items: center; justify-content: space-between; }
+        .pillar-body { padding: 20px; flex-grow: 1; }
+        .pillar-body h3 { font-size: 1.1rem; margin-bottom: 10px; color: var(--main-blue); }
+        .pillar-body p { font-size: 0.85rem; line-height: 1.5; color: #666; }
+        .pillar-footer { padding: 15px 20px; background: #f8f9fa; font-weight: bold; font-size: 0.8rem; text-align: right; color: var(--main-blue); }
 
-        .pillar-body {
-            padding: 20px;
-            flex-grow: 1;
-        }
-
-        .pillar-body h3 {
-            font-size: 1.1rem;
-            margin-bottom: 10px;
-            color: var(--main-blue);
-        }
-
-        .pillar-body p {
-            font-size: 0.85rem;
-            line-height: 1.5;
-            color: #666;
-        }
-
-        .pillar-footer {
-            padding: 15px 20px;
-            background: #f8f9fa;
-            font-weight: bold;
-            font-size: 0.8rem;
-            text-align: right;
-            color: var(--main-blue);
-        }
-
-        /* 各柱の色設定 */
         .p-employment .pillar-header { background: var(--col-employment); }
         .p-life .pillar-header { background: var(--col-life); }
         .p-edu .pillar-header { background: var(--col-edu); }
         .p-sight .pillar-header { background: var(--col-sightseeing); }
 
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 1.8rem; }
-            .pillar-grid { grid-template-columns: 1fr; }
+        /* ===== Strengths Section (選ばれる理由) ===== */
+        .strengths-section { background: white; padding: 80px 10%; }
+        .strength-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; margin-top: 50px; }
+        .strength-card { text-align: center; padding: 20px; }
+        .strength-icon { font-size: 3rem; margin-bottom: 20px; display: block; }
+        .strength-card h3 { color: var(--main-blue); margin-bottom: 15px; font-size: 1.3rem; }
+        .strength-card p { font-size: 0.95rem; color: #555; text-align: left; }
+        .strength-number { 
+            display: inline-block; 
+            width: 40px; height: 40px; 
+            background: var(--main-blue); 
+            color: white; 
+            border-radius: 50%; 
+            line-height: 40px; 
+            margin-bottom: 15px; 
+            font-weight: bold;
         }
 
         /* General Sections (Original) */
         section { padding: 80px 10%; background: var(--white); margin: 20px 0; }
-        h2 { text-align: center; color: var(--main-blue); margin-bottom: 40px; position: relative; padding-bottom: 10px; }
+        h2 { text-align: center; color: var(--main-blue); margin-bottom: 40px; position: relative; padding-bottom: 10px; font-size: 1.8rem; }
         h2::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 50px; height: 3px; background: var(--accent-green); }
         
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
         .card { background: var(--sky-blue); padding: 30px; border-radius: 15px; border-left: 5px solid var(--main-blue); }
         
-        .card.recommend {
-            background: linear-gradient(135deg, #ffffff, #e6f2ff);
-            border: 2px solid var(--accent-orange);
-            transform: scale(1.05);
-            position: relative;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-        }
-        .card.recommend::before {
-            content: "おすすめ";
-            position: absolute;
-            top: -12px;
-            right: -12px;
-            background: var(--accent-orange);
-            color: white;
-            font-size: 0.7rem;
-            font-weight: bold;
-            padding: 6px 12px;
-            border-radius: 20px;
-        }
-
         .representative-container { display: flex; flex-wrap: wrap; gap: 40px; }
         .representative-text { flex: 1; min-width: 300px; }
         .representative-image { flex: 0 0 250px; }
@@ -293,14 +255,13 @@
 
         footer { background: #333; color: white; text-align: center; padding: 30px; }
 
-        /* Company Table Style (Original) */
+        /* Company & Map (Original) */
         .company-wrapper { display: flex; gap: 50px; margin-top: 50px; align-items: stretch; }
         .company-info, .company-map { flex: 1; background: #ffffff; padding: 40px; border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.08); position: relative; }
         .company-info::before, .company-map::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(to right, #c9a227, #e6c200); border-top-left-radius: 20px; border-top-right-radius: 20px; }
         .company-info table { width: 100%; border-collapse: collapse; }
-        .company-info td { padding: 14px 0; border-bottom: 1px solid #eee; vertical-align: top; }
+        .company-info td { padding: 14px 0; border-bottom: 1px solid #eee; }
         .company-info .label { width: 30%; font-weight: 600; color: var(--main-blue); }
-        .company-map h3 { text-align: center; color: var(--main-blue); margin-bottom: 25px; }
         .company-map iframe { width: 100%; height: 350px; border: none; border-radius: 15px; }
 
         /* LINE固定ボタン (Original) */
@@ -309,7 +270,9 @@
         .line-fixed-btn svg { width: 32px; height: 32px; }
 
         @media (max-width: 768px) {
-            .company-wrapper { flex-direction: column; }
+            .hero h1 { font-size: 1.8rem; }
+            .pillar-grid, .company-wrapper { grid-template-columns: 1fr; flex-direction: column; }
+            .strengths-section { padding: 60px 5%; }
         }
     </style>
 </head>
@@ -322,15 +285,13 @@
     </a>
     
     <div class="menu-toggle" onclick="toggleMenu()">
-        <span></span>
-        <span></span>
-        <span></span>
+        <span></span><span></span><span></span>
     </div>
 
     <nav id="mainNav">
-        <a href="#message">代表から</a>
-        <a href="#advisor">企業様支援</a>
-        <a href="https://second-penguin-planning.github.io/Foreigners-Website/">INTERNATIONAL</a>
+        <a href="#strengths">選ばれる理由</a>
+        <a href="#message">代表メッセージ</a>
+        <a href="#advisor">法人様支援</a>
         <a href="#company">会社概要</a>
         <a href="#contact">お問合せ</a>
     </nav>
@@ -361,10 +322,10 @@
             <div class="pillar-footer">プロに相談する →</div>
         </a>
 
-        <a href="#business" class="pillar-card p-life">
+        <a href="#advisor" class="pillar-card p-life">
             <div class="pillar-header"><span>LIFE SUPPORT</span><span>🏠</span></div>
             <div class="pillar-body">
-                <h3>日本生活スタート支援</h3>
+                <h3>生活セットアップ支援</h3>
                 <p>住居確保、役所同行、インフラ契約まで、日本の生活基盤を最短で構築。離職率を下げる「安心」を来日初日から提供します。</p>
             </div>
             <div class="pillar-footer">支援内容を見る →</div>
@@ -373,8 +334,8 @@
         <a href="https://second-penguin-planning.github.io/Foreigners-Website/" class="pillar-card p-edu">
             <div class="pillar-header"><span>EDUCATION</span><span>📖</span></div>
             <div class="pillar-body">
-                <h3>実務・就業日本語教育</h3>
-                <p>現場で「通じる」言葉を。JLPT対策から職場特化型の日本語教育まで、キャリアアップと生産性向上を同時に実現します。</p>
+                <h3>実務日本語教育</h3>
+                <p>現場で「通じる」言葉を。JLPT対策から職場特化型の教育まで、キャリアアップと生産性向上を同時に実現します。</p>
             </div>
             <div class="pillar-footer">学びのプランを見る →</div>
         </a>
@@ -383,18 +344,42 @@
             <div class="pillar-header"><span>REFRESH</span><span>📸</span></div>
             <div class="pillar-body">
                 <h3>就業者見学・観光支援</h3>
-                <p>日本を「働くだけの場所」にしない。休日見学や文化体験を通じ日本への愛着を深める、企業の福利厚生を兼ねたサポート。</p>
+                <p>日本を「働くだけの場所」にしない。休日見学や文化体験を通じ日本への愛着を深める、福利厚生としてのサポート。</p>
             </div>
             <div class="pillar-footer">日本を体験する →</div>
         </a>
     </div>
 </section>
 
+<section id="strengths" class="strengths-section fade-in">
+    <h2>セコンドペンギン企画が選ばれる理由</h2>
+    <div class="strength-grid">
+        <div class="strength-card">
+            <span class="strength-number">1</span>
+            <span class="strength-icon">⚖️</span>
+            <h3>行政書士の法務知見 ×<br>31年の公務員実務経験</h3>
+            <p>入管業務に精通した行政書士としての専門性に加え、長年の公務員経験で培った「制度の裏側」まで見通す確かな知見で、コンプライアンスを徹底遵守した支援を行います。</p>
+        </div>
+        <div class="strength-card">
+            <span class="strength-number">2</span>
+            <span class="strength-icon">🌏</span>
+            <h3>フィリピン・インドネシアの<br>人材・文化への深い理解</h3>
+            <p>現地の教育現場や送り出し体制に直接関わってきた経験から、国民性や宗教、生活習慣を熟知。単なる「紹介」ではなく、相互理解に基づいた精度の高いマッチングが可能です。</p>
+        </div>
+        <div class="strength-card">
+            <span class="strength-number">3</span>
+            <span class="strength-icon">🛤️</span>
+            <h3>採用から定着まで<br>「点」ではなく「線」の支援</h3>
+            <p>ビザ申請・生活立上げ・日本語教育・そしてリフレッシュ（観光）まで。人材が日本で幸福に働き続けるための全工程を一つの窓口で完結。企業の負担を最小限に抑えます。</p>
+        </div>
+    </div>
+</section>
+
 <section id="message" class="fade-in">
-    <h2>代表から</h2>
+    <h2>代表メッセージ</h2>
     <div class="representative-container">
         <div class="representative-text">
-            <p><strong>徳永 良雄</strong> と申します。</p>
+            <p><strong>徳永 良雄</strong>（Tokunaga Yoshio）</p>
             <p style="margin-top: 15px;">31年間の公務員生活を経て、日本で学び、働きたいと願う真面目な若者たちと日本社会を繋ぐため、本事業を立ち上げました。日本語教育や入管手続きの現場経験を活かし、行政書士としても皆様をサポートいたします。</p>
             <p style="margin-top: 15px;">変化する国の政策や現場の実情に合わせ、お客様と共に課題解決に取り組みます。まずはお気軽にご相談ください。</p>
             <div style="margin-top: 20px;">
@@ -402,22 +387,22 @@
             </div>
         </div>
         <div class="representative-image">
-            <img src="foto_tokunaga.png" alt="代表 德永">
+            <img src="foto_tokunaga.png" alt="代表 徳永">
         </div>
     </div>
 </section>
 
 <section id="advisor" class="advisor-section fade-in">
-    <h2>外国人雇用 顧問・支援サービス</h2>
+    <h2>外国人雇用 顧問・支援プラン</h2>
     <div class="grid">
         <div class="card recommend">
             <h4>顧問プラン</h4>
-            <p>外国人の求人、各種手続き、入国対応、生活支援まで一気通貫でサポートいたします。</p>
+            <p>求人、各種手続き、入国対応、生活支援まで一気通貫でサポートいたします。</p>
             <p style="margin-top:10px; font-weight:bold;">月額 33,000円～</p>
         </div>
         <div class="card">
             <h4>定額プラン</h4>
-            <p>フィリピン大使館の申請サポート、各種支援、生活・日本語教育、課題解決など個別にサポートいたします。</p>
+            <p>フィリピン大使館申請サポート、日本語教育、課題解決など個別にサポートいたします。</p>
             <p style="margin-top:10px; font-weight:bold;">定額 25,000円～</p>
         </div>
     </div>
@@ -431,13 +416,13 @@
                 <tr><td class="label">事務所名</td><td>セコンドペンギン企画</td></tr>
                 <tr><td class="label">代表</td><td>徳永 良雄</td></tr>
                 <tr><td class="label">所在地</td><td>〒658-0032 兵庫県神戸市東灘区向洋町中6-9<br>神戸ファッションマート 4N-07-01</td></tr>
-                <tr><td class="label">電話番号</td><td>070-9192-2524</td></tr>
+                <tr><td class="label">電話</td><td>070-9192-2524</td></tr>
                 <tr><td class="label">メール</td><td>info@second-penguin.com</td></tr>
             </table>
         </div>
         <div class="company-map">
             <h3>アクセスマップ</h3>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3281.3855541656!2d135.2678!3d34.6853!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzTCsDQxJzA3LjEiTiAxMzXCsDE2JzA0LjEiRQ!5e0!3m2!1sja!2sjp!4v1700000000000" loading="lazy"></iframe>
+            <iframe src="http://googleusercontent.com/maps.google.com/2" loading="lazy"></iframe>
         </div>
     </div>
 </section>
@@ -466,7 +451,6 @@ function toggleMenu() {
 }
 
 window.addEventListener('DOMContentLoaded', () => {
-    // Fade-in Observer
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) entry.target.classList.add('visible');
