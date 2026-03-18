@@ -12,15 +12,14 @@
 :root {
     --main-blue:#005bac;
     --accent-green:#006400;
-    --sky:#e0f4ff;
 }
 
 body{
-    font-family:sans-serif;
     margin:0;
-    background:var(--sky);
+    font-family:sans-serif;
 }
 
+/* header */
 header{
     display:flex;
     justify-content:space-between;
@@ -28,6 +27,7 @@ header{
     background:white;
     position:sticky;
     top:0;
+    z-index:10;
 }
 
 .logo{
@@ -47,21 +47,35 @@ nav a{
     font-weight:bold;
 }
 
-/* hero */
+/* HERO（改善ポイント） */
 .hero{
+    position:relative;
+    color:white;
     text-align:center;
-    padding:60px 5%;
-    background:#f5fbff;
+    padding:100px 5%;
+    background:url("https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=2000&q=80") center/cover no-repeat;
+}
+
+.hero::before{
+    content:"";
+    position:absolute;
+    top:0;left:0;
+    width:100%;height:100%;
+    background:rgba(0,0,0,0.5);
+}
+
+.hero-content{
+    position:relative;
+    z-index:1;
 }
 
 .hero h1{
-    font-size:2rem;
-    color:var(--main-blue);
+    font-size:2.2rem;
+    margin-bottom:20px;
 }
 
 .status{
     background:orange;
-    color:white;
     display:inline-block;
     padding:5px 15px;
     border-radius:20px;
@@ -69,31 +83,6 @@ nav a{
     font-size:0.8rem;
 }
 
-/* section */
-section{
-    padding:60px 10%;
-    background:white;
-    margin:20px 0;
-}
-
-h2{
-    text-align:center;
-    color:var(--main-blue);
-}
-
-.grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:20px;
-}
-
-.card{
-    background:#f0f8ff;
-    padding:20px;
-    border-radius:10px;
-}
-
-/* button */
 .btn{
     display:inline-block;
     padding:12px 25px;
@@ -101,7 +90,31 @@ h2{
     color:white;
     text-decoration:none;
     border-radius:30px;
-    margin-top:15px;
+    margin-top:20px;
+}
+
+/* section */
+section{
+    padding:60px 10%;
+}
+
+h2{
+    text-align:center;
+    color:var(--main-blue);
+}
+
+/* grid */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+    margin-top:30px;
+}
+
+.card{
+    background:#f0f8ff;
+    padding:20px;
+    border-radius:10px;
 }
 
 /* footer */
@@ -124,34 +137,37 @@ footer{
 
 <nav>
 <a href="#strengths">強み</a>
+<a href="#service">サービス</a>
 <a href="#plan">プラン</a>
-<a href="#partnership">連携</a>
 <a href="#contact">問合せ</a>
 </nav>
 </header>
 
 <!-- HERO -->
 <section class="hero">
+<div class="hero-content">
+
 <div class="status">
 登録支援機関申請中｜行政書士連携で即対応可能
 </div>
 
 <h1>
-特定技能外国人の受入れを<br>
-「採用・ビザ・生活支援」まで一括対応
+外国人雇用を<br>
+「採用・ビザ・定着」まで一括支援
 </h1>
 
 <p>
-登録支援機関 × 行政書士で<br>
-企業の負担を最小化します
+国内・海外からの人材紹介にも対応<br>
+顧問アドバイザーとして継続支援します
 </p>
 
 <p style="margin-top:20px;font-weight:bold;">
-対応業種：介護・外食・建設・製造業など<br>
-初めての外国人雇用も対応
+対応業種：介護・外食・建設・製造業など
 </p>
 
 <a href="#contact" class="btn">無料相談はこちら</a>
+
+</div>
 </section>
 
 <!-- STRENGTH -->
@@ -165,84 +181,67 @@ footer{
 </div>
 
 <div class="card">
-<h3>② 一括対応</h3>
-<p>採用〜生活支援までワンストップ</p>
+<h3>② 国内・国外人材紹介</h3>
+<p>海外・国内の両方から最適な人材を確保</p>
 </div>
 
 <div class="card">
 <h3>③ 定着支援</h3>
-<p>離職防止まで含めたサポート</p>
+<p>生活支援・教育で離職を防止</p>
+</div>
+</div>
+</section>
+
+<!-- SERVICE -->
+<section id="service">
+<h2>サービス内容</h2>
+
+<div class="grid">
+<div class="card">
+<h3>人材紹介（国内・国外）</h3>
+<p>
+海外送り出し機関および国内在住外国人の両方に対応。
+企業ニーズに合った人材をご紹介します。
+</p>
+</div>
+
+<div class="card">
+<h3>登録支援機関業務</h3>
+<p>
+特定技能外国人の生活支援・相談対応・行政手続き支援を実施。
+</p>
+</div>
+
+<div class="card">
+<h3>雇用顧問アドバイザー</h3>
+<p>
+外国人雇用の制度設計・トラブル対応・定着支援まで継続サポート。
+</p>
 </div>
 </div>
 </section>
 
 <!-- PLAN -->
 <section id="plan">
-<h2>外国人雇用支援プラン</h2>
-
-<p style="text-align:center;">
-こんなお悩みありませんか？<br>
-何から始めればいいかわからない / ビザが不安 / 定着しない
-</p>
+<h2>料金プラン</h2>
 
 <div class="grid">
 <div class="card">
 <h3>顧問プラン</h3>
 <p>
 月額33,000円〜<br>
-（登録支援機関＋生活支援）
+（登録支援＋生活支援＋顧問対応）
 </p>
 </div>
 
 <div class="card">
-<h3>個別支援</h3>
+<h3>個別対応</h3>
 <p>
 25,000円〜<br>
-必要な部分のみ対応
+必要な業務のみ対応
 </p>
 </div>
 </div>
-</section>
-
-<!-- PARTNERSHIP -->
-<section id="partnership">
-<h2>行政書士との連携</h2>
-
-<div class="grid">
-<div class="card">
-<h3>セコンドペンギン企画</h3>
-<p>
-・登録支援機関業務<br>
-・生活支援<br>
-・定着支援
-</p>
-</div>
-
-<div class="card">
-<h3>行政書士事務所</h3>
-<p>
-・在留資格申請<br>
-・入管手続き<br>
-・法務対応
-</p>
-</div>
-</div>
-
-<p style="text-align:center;margin-top:20px;">
-窓口一本で全て完結
-</p>
-</section>
-
-<!-- COMPANY -->
-<section>
-<h2>会社概要</h2>
-
-<p>
-セコンドペンギン企画<br>
-代表：徳永良雄<br>
-神戸市東灘区<br>
-TEL：070-9192-2524
-</p>
 </section>
 
 <!-- CONTACT -->
