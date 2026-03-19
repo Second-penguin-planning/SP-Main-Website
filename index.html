@@ -207,7 +207,13 @@
             transform: translateY(-10px);
             box-shadow: 0 15px 30px rgba(0,0,0,0.2);
         }
-
+.company-map iframe {
+    width: 100%;
+    height: 350px;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
         .pillar-header { padding: 20px; color: white; font-weight: bold; font-size: 0.9rem; display: flex; align-items: center; justify-content: space-between; }
         .pillar-body { padding: 20px; flex-grow: 1; }
         .pillar-body h3 { font-size: 1.1rem; margin-bottom: 10px; color: var(--main-blue); }
@@ -280,7 +286,7 @@
 
 <header>
     <a href="#" class="logo">
-        <img src="images/penguin_logo_192.png" alt="Logo">
+        <img src="./images/penguin_logo_192.png" alt="Logo">
         <span>セコンドペンギン企画</span>
     </a>
     
@@ -313,7 +319,7 @@
     </div>
 
     <div class="pillar-grid">
-        <a href="#advisor" class="pillar-card p-employment">
+       <a href="#employment-detail" class="pillar-card p-employment">
             <div class="pillar-header"><span>FOR CORPORATE</span><span>🤝</span></div>
             <div class="pillar-body">
                 <h3>特定技能・育成就労の外国人雇用支援</h3>
@@ -343,8 +349,8 @@
         <a href="#contact" class="pillar-card p-sight">
             <div class="pillar-header"><span>REFRESH</span><span>📸</span></div>
             <div class="pillar-body">
-                <h3>生活セットアップ支援</h3>
-                <p>日本を「働くだけの場所」にしない。日本語の継続学習、日本の文化体験を通じ日本への愛着を深める、福利厚生としてのサポート。</p>
+                <h3>日本の生活向上サボート</h3>
+                <p>日本を「働くだけの場所」にしない。日本語の継続学習、日本の文化体験などを通じ日本への愛着を深める、福利厚生としてのサポート。</p>
             </div>
             <div class="pillar-footer">日本を体験する →</div>
         </a>
@@ -419,24 +425,46 @@
                 <tr><td class="label">電話</td><td>070-9192-2524</td></tr>
                 <tr><td class="label">メール</td><td>info@second-penguin.com</td></tr>
             </table>
-        </div>
-        <div class="company-map">
-            <h3>アクセスマップ</h3>
-            <iframe src="http://googleusercontent.com/maps.google.com/2" loading="lazy"></iframe>
-        </div>
-    </div>
+       <div class="company-map">
+    <h3>アクセスマップ</h3>
+   <iframe 
+    src="https://www.google.com/maps?q=〒658-0032 兵庫県神戸市東灘区向洋町中6-9 神戸ファッションマート&output=embed"
+    loading="lazy">
+</iframe>
+</div>
 </section>
 
 <section id="contact" class="fade-in">
     <h2>お問合せ</h2>
-    <div style="max-width:600px; margin:0 auto; text-align:center;">
-        <div style="background:#f9f9f9; padding:40px; border-radius:15px; box-shadow:0 8px 25px rgba(0,0,0,0.1);">
-            <h3 style="margin-bottom:15px;">お問い合わせフォーム</h3>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSeJPYhr5yeNR1IyZvTHCWVO5s_os7ff83NjhB02nPmMgARSmA/viewform" target="_blank" class="btn">Googleフォームへ進む</a>
-        </div>
+    <div style="max-width:600px; margin:0 auto;">
+        <form action="https://formspree.io/f/xbdaevyb" method="POST" 
+              style="background:#f9f9f9; padding:40px; border-radius:15px; box-shadow:0 8px 25px rgba(0,0,0,0.1);">
+
+            <h3 style="text-align:center; margin-bottom:20px;">お問い合わせフォーム</h3>
+
+            <!-- ★ここに追加（①②③） -->
+            <input type="hidden" name="_subject" value="お問い合わせが届きました">
+            <input type="hidden" name="_redirect" value="thanks.html">
+            <input type="text" name="_gotcha" style="display:none">
+
+            <label>お名前</label>
+            <input type="text" name="name" required
+                   style="width:100%; padding:10px; margin-bottom:15px; border-radius:8px; border:1px solid #ccc;">
+
+            <label>メールアドレス</label>
+            <input type="email" name="email" required
+                   style="width:100%; padding:10px; margin-bottom:15px; border-radius:8px; border:1px solid #ccc;">
+
+            <label>お問い合わせ内容</label>
+            <textarea name="message" rows="5" required
+                      style="width:100%; padding:10px; margin-bottom:20px; border-radius:8px; border:1px solid #ccc;"></textarea>
+
+            <button type="submit" class="btn" style="width:100%;">
+                送信する
+            </button>
+        </form>
     </div>
 </section>
-
 <footer>
     <p><a href="privacy.html" style="color:#fff; text-decoration: underline;">プライバシーポリシー</a></p>
     <p style="margin-top:10px;">© 2024-2026 Second Penguin Planning. All Rights Reserved.</p>
