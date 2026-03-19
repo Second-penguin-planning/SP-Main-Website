@@ -243,16 +243,15 @@
             font-weight: bold;
         }
 /* ヒーロー内のレイアウト調整 */
-    .hero-main-copy {
-        position: relative; /* ボタンの配置基準 */
-        max-width: 900px;
-        margin: 0 auto 50px;
-    }
+  .hero-main-copy {
+    position: relative;
+}
 
-  .hero-foreigner-btn {
+/* 共通：右上固定 */
+.hero-foreigner-btn {
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: -10px;   /* ← ヘッダー直下に微調整 */
+    right: 0;
 
     background: var(--white);
     color: var(--accent-orange);
@@ -270,7 +269,8 @@
     z-index: 10;
 }
 
-.hero-@-btn:hover {
+/* hover修正（←バグも修正してます） */
+.hero-foreigner-btn:hover {
     background: var(--accent-orange);
     color: #fff;
     transform: translateY(-2px);
@@ -286,12 +286,11 @@
         }
 
 .hero-foreigner-btn {
-    position: static;
-    display: block;
-    margin: 0 auto 20px;
-    width: 85%;
-    text-align: center;
-}
+        top: 10px;
+        right: 10px;
+        font-size: 0.75rem;
+        padding: 8px 12px;
+    }
     }
         /* General Sections (Original) */
         section { padding: 80px 10%; background: var(--white); margin: 20px 0; }
