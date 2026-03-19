@@ -49,7 +49,7 @@
         /* Header */
         header {
             background: var(--white);
-            padding: 15px 5%;
+            padding: 8px 3%;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -98,6 +98,17 @@
             background: var(--main-blue);
             color: white;
         }
+.line-fixed-btn::before {
+    content: "無料";
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: red;
+    color: white;
+    font-size: 10px;
+    padding: 3px 6px;
+    border-radius: 10px;
+}
 .cta-buttons {
   display: flex;
   gap: 12px;
@@ -107,18 +118,16 @@
 
 .line-cta-button {
   display: inline-block;
-  padding: 14px 22px;
+  padding: 16px 26px;
+  font-size: 16px;
   background: #06c755;
   color: #fff;
   text-decoration: none;
   font-weight: bold;
-
-  border-radius: 30px; /* ←ここで丸く */
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-
+  border-radius: 40px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.25);
   transition: 0.3s;
 }
-
 .line-cta-button:hover {
   background: #05a647;
 }
@@ -161,6 +170,12 @@
                 align-items: center;
                 transition: right 0.4s ease;
             }
+  .line-cta-button {
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+    padding: 18px;
+  }
             nav.active { right: 0; }
             nav a { margin: 20px 0; font-size: 1.3rem; }
             .lang-switch { display: none; }
@@ -170,14 +185,14 @@ html {
 }
         /* ===== Hero Section ===== */
         .hero {
-            padding: 60px 5%;
+            padding: 30px 5% 60px;
             background: linear-gradient(rgba(0, 91, 172, 0.1), rgba(224, 244, 255, 1)), url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=2000&q=80') center/cover;
             text-align: center;
         }
 
         .hero-main-copy {
             max-width: 900px;
-            margin: 0 auto 50px;
+            margin: 0 auto 30px;
         }
 
         .hero-status {
@@ -188,7 +203,7 @@ html {
             font-weight: bold;
             padding: 4px 15px;
             border-radius: 50px;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
         }
 
         .hero h1 {
@@ -271,7 +286,7 @@ html {
 /* 削除する or positionを消す */
 .hero-main-copy {
     max-width: 900px;
-    margin: 0 auto 50px;
+    margin: 0 auto 30px;
 }
 
 /* ボタン */
@@ -356,7 +371,11 @@ html {
 
         .btn { display: inline-block; padding: 12px 30px; background: var(--main-blue); color: white !important; text-decoration: none; border-radius: 50px; transition: 0.3s; font-weight: bold; cursor: pointer; border: none; }
         .btn:hover { background: var(--accent-green); transform: scale(1.05); }
-
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.12); }
+    100% { transform: scale(1); }
+}
         footer { background: #333; color: white; text-align: center; padding: 30px; }
 
         /* Company & Map (Original) */
@@ -369,14 +388,40 @@ html {
         .company-map iframe { width: 100%; height: 350px; border: none; border-radius: 15px; }
 
         /* LINE固定ボタン (Original) */
-        .line-fixed-btn { position: fixed; right: 20px; bottom: 20px; width: 60px; height: 60px; background: #06C755; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; box-shadow: 0 4px 12px rgba(0,0,0,0.3); z-index: 1000; transition: transform 0.3s; }
-        .line-fixed-btn:hover { transform: scale(1.1); }
-        .line-fixed-btn svg { width: 32px; height: 32px; }
+        .line-fixed-btn {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    width: 70px;
+    height: 70px;
+    background: #06C755;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+    z-index: 2000;
 
+    animation: pulse 1.8s infinite; /* ←これ追加 */
+}
+        .line-fixed-btn:hover { transform: scale(1.1); }
+        .line-fixed-btn svg { width: 36px; height: 36px; }
+.line-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 10px;
+    font-weight: bold;
+}
         @media (max-width: 768px) {
             .hero h1 { font-size: 1.8rem; }
             .pillar-grid, .company-wrapper { grid-template-columns: 1fr; flex-direction: column; }
             .strengths-section { padding: 60px 5%; }
+ .line-fixed-btn {
+        width: 80px;
+        height: 80px;
+    }
         }
     </style>
 </head>
@@ -413,14 +458,12 @@ html {
         <div class="hero-status">
             登録支援機関（4月登録予定）｜有料職業紹介事業（4月登録予定）
         </div>
-
-        </div>
         <h1>日本で働く、暮らす、楽しむ。<br>そのすべてを、プロの伴走で「成功」へ。</h1>
         <p class="hero-subtext">実務と現場の経験を活かし、皆様の「挑戦」を一気通貫で支援します。</p>
     </div>
         </a>
   <a href="#foreigner" class="hero-foreigner-btn">
-      日本で働くForeignerはコチラ
+      日本で働く外国人の方はコチラ
     </a>
     <div class="pillar-grid">
        <a href="#employment-detail" class="pillar-card p-employment">
@@ -458,6 +501,7 @@ html {
                 <p>日本を「働くだけの場所」にしない。日本語の継続学習、日本の文化体験などを通じ日本への愛着を深める、福利厚生としてのサポート。</p>
             </div>
             <div class="pillar-footer">外国人従業員の暮らしの充実を →</div>
+</a>
     </div>
 </section>
 
@@ -545,11 +589,6 @@ html {
 
     <div style="text-align:center; margin-top:40px;">
         <a href="#contact" class="btn">無料相談はこちら</a>
-<a href="https://lin.ee/QoCa29L" 
-   target="_blank" 
-   class="line-mini-btn">
-   <i class="fab fa-line"></i> LINEで相談
-</a>
 <p class="line-note">
 ※LINEが開きます。友だち追加後にご相談いただけます
 </p>
@@ -605,11 +644,6 @@ html {
 
     <div style="text-align:center; margin-top:40px;">
         <a href="#contact" class="btn">相談する</a>
-<a href="https://lin.ee/QoCa29L" 
-   target="_blank" 
-   class="line-mini-btn">
-   <i class="fab fa-line"></i> LINEで相談
-</a>
     </div>
 </section>
 
@@ -664,11 +698,6 @@ html {
 
     <div style="text-align:center; margin-top:40px;">
         <a href="#contact" class="btn">相談する</a>
-<a href="https://lin.ee/QoCa29L" 
-   target="_blank" 
-   class="line-mini-btn">
-   <i class="fab fa-line"></i> LINEで相談
-</a>
     </div>
 </section>
 
@@ -719,11 +748,6 @@ html {
 
     <div style="text-align:center; margin-top:40px;">
         <a href="#contact" class="btn">相談する</a>
-<a href="https://lin.ee/QoCa29L" 
-   target="_blank" 
-   class="line-mini-btn">
-   <i class="fab fa-line"></i> LINEで相談
-</a>
     </div>
 </section>
 
@@ -819,6 +843,14 @@ window.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 });
 </script>
-
+<a href="https://line.me/R/ti/p/@556fihjp/" class="line-fixed-btn" target="_blank">
+  <div class="line-inner">
+    <!-- LINEアイコン（ちゃんと入れる） -->
+    <svg viewBox="0 0 24 24" fill="white">
+      <path d="M19.365 3.184C17.621 1.44 14.9.5 12 .5 6.201.5 1.5 4.764 1.5 10c0 2.846 1.447 5.393 3.736 7.145L4.5 23.5l6.67-3.62c.267.03.538.045.83.045 5.799 0 10.5-4.264 10.5-9.5 0-2.904-1.744-5.64-4.135-7.241z"/>
+    </svg>
+    <span>無料でLINE相談はこちら</span>
+  </div>
+</a>
 </body>
 </html>
