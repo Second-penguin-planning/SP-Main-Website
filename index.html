@@ -244,9 +244,6 @@ html {
             margin-bottom: 15px; 
             font-weight: bold;
         }
-.hero {
-    position: relative;
-}
 
 /* 削除する or positionを消す */
 .hero-main-copy {
@@ -255,24 +252,24 @@ html {
 }
 
 /* ボタン */
+.hero {
+  position: relative;
+}
+
 .hero-foreigner-btn {
-    position: fixed;
-    top: 20px;
-    right: 20px;
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 20px;
+  background: #b89b5e;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+  transition: 0.3s;
+}
 
-    background: var(--white);
-    color: var(--accent-orange);
-    border: 2px solid var(--accent-orange);
-
-    padding: 10px 18px;
-    border-radius: 30px;
-
-    font-size: 0.9rem;
-    font-weight: bold;
-    text-decoration: none;
-
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    z-index: 2000;
+.hero-foreigner-btn:hover {
+  background: #a68a4c;
 }
 
 /* hover修正（←バグも修正してます） */
@@ -332,9 +329,7 @@ html {
     </style>
 </head>
 <body>
-  <a href="https://second-penguin-planning.github.io/Foreigners-Website/" class="hero-foreigner-btn">
-        日本で働くForeignerはこちら ↗
-    </a>
+
 <header>
     <a href="#" class="logo">
         <img src="./images/penguin_logo_192.png" alt="Logo">
@@ -383,17 +378,17 @@ html {
         </a>
 
        <a href="#advisor-detail" class="pillar-card p-life">
-            <div class="pillar-header"><span>LIFE SUPPORT</span><span>🏠</span></div>
+            <div class="pillar-header"><span>ADVISER</span><span>🏠</span></div>
             <div class="pillar-body">
                 <h3>企業様の外国人雇用アドバイザー</h3>
                 <p>外国人の雇用を考えはじめた時点からご相談ください。企業の考えに沿ったより良い雇用計画を立て、優秀な人材雇用を実現します。</p>
             </div>
-            <div class="pillar-footer">外国人雇用のプロを顧問に！ →</div>
+            <div class="pillar-footer">外国人雇用のプロを顧問に →</div>
         </a>
 
        
           <a href="#setup-detail" class="pillar-card p-edu"> 
- <div class="pillar-header"><span>EDUCATION</span><span>📖</span></div>
+ <div class="pillar-header"><span>ENTRY SUPPORT</span><span>📖</span></div>
             <div class="pillar-body">
                 <h3>入国時生活セットアップ支援</h3>
                 <p>住居確保、役所同行、インフラ契約まで、日本の生活基盤を最短で構築。離職率を下げる「安心」を来日初日から提供します。</p>
@@ -402,13 +397,16 @@ html {
         </a>
 
        <a href="#life-detail" class="pillar-card p-sight">
-            <div class="pillar-header"><span>REFRESH</span><span>📸</span></div>
+            <div class="pillar-header"><span>LIFE SUPPORT</span><span>📸</span></div>
             <div class="pillar-body">
                 <h3>日本の生活向上サボート</h3>
                 <p>日本を「働くだけの場所」にしない。日本語の継続学習、日本の文化体験などを通じ日本への愛着を深める、福利厚生としてのサポート。</p>
             </div>
-            <div class="pillar-footer">外国人従業員の暮らしの充実を！ →</div>
+            <div class="pillar-footer">外国人従業員の暮らしの充実を →</div>
         </a>
+  <a href="#foreigner" class="hero-foreigner-btn">
+      日本で働くForeignerはコチラ
+    </a>
     </div>
 </section>
 
