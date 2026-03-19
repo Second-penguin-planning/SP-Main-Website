@@ -98,7 +98,30 @@
             background: var(--main-blue);
             color: white;
         }
+.cta-buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
 
+.line-cta-button {
+  display: inline-block;
+  padding: 14px 22px;
+  background: #06c755;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+
+  border-radius: 30px; /* ←ここで丸く */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+
+  transition: 0.3s;
+}
+
+.line-cta-button:hover {
+  background: #05a647;
+}
         /* ===== Hamburger Menu & Mobile Nav ===== */
         .menu-toggle {
             display: none;
@@ -252,20 +275,43 @@ html {
 }
 
 /* ボタン */
-.hero {
+.line-mini-btn {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 8px 14px;
+  font-size: 13px;
+
+  background: #06c755;
+  color: #fff;
+  text-decoration: none;
+
+  border-radius: 20px; /* ←丸い */
+  transition: 0.3s;
+}
+
+.line-mini-btn:hover {
+  background: #05a647;
+}.hero {
   position: relative;
 }
 
+/* ★これが本体 */
 .hero-foreigner-btn {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 12px 20px;
+  position: absolute;
+  top: 70px;   /* ←ヘッダーの高さに応じて調整（60〜90px） */
+  right: 20px;
+
+  padding: 10px 18px;
   background: #b89b5e;
   color: #fff;
   text-decoration: none;
-  border-radius: 6px;
   font-weight: bold;
+
+  border-radius: 30px; /* ←角丸（ここ重要） */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+
   transition: 0.3s;
+  z-index: 10;
 }
 
 .hero-foreigner-btn:hover {
@@ -281,7 +327,13 @@ html {
 
     /* PCサイズでの右上配置 */
     @media (min-width: 769px) {
-        .hero-header-flex {
+         .hero-foreigner-btn {
+    top: 60px;
+    right: 12px;
+    font-size: 12px;
+    padding: 8px 14px;
+  }
+.hero-header-flex {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -366,7 +418,10 @@ html {
         <h1>日本で働く、暮らす、楽しむ。<br>そのすべてを、プロの伴走で「成功」へ。</h1>
         <p class="hero-subtext">実務と現場の経験を活かし、皆様の「挑戦」を一気通貫で支援します。</p>
     </div>
-
+        </a>
+  <a href="#foreigner" class="hero-foreigner-btn">
+      日本で働くForeignerはコチラ
+    </a>
     <div class="pillar-grid">
        <a href="#employment-detail" class="pillar-card p-employment">
             <div class="pillar-header"><span>FOR CORPORATE</span><span>🤝</span></div>
@@ -403,10 +458,6 @@ html {
                 <p>日本を「働くだけの場所」にしない。日本語の継続学習、日本の文化体験などを通じ日本への愛着を深める、福利厚生としてのサポート。</p>
             </div>
             <div class="pillar-footer">外国人従業員の暮らしの充実を →</div>
-        </a>
-  <a href="#foreigner" class="hero-foreigner-btn">
-      日本で働くForeignerはコチラ
-    </a>
     </div>
 </section>
 
@@ -494,6 +545,11 @@ html {
 
     <div style="text-align:center; margin-top:40px;">
         <a href="#contact" class="btn">無料相談はこちら</a>
+<a href="https://line.me/R/oaMessage/@556fihjp/" 
+   target="_blank" 
+   class="line-mini-btn">
+   <i class="fab fa-line"></i> LINEで相談
+</a>
     </div>
 </section>
 
@@ -546,6 +602,11 @@ html {
 
     <div style="text-align:center; margin-top:40px;">
         <a href="#contact" class="btn">相談する</a>
+<a href="https://line.me/R/oaMessage/@556fihjp/" 
+   target="_blank" 
+   class="line-mini-btn">
+   <i class="fab fa-line"></i> LINEで相談
+</a>
     </div>
 </section>
 
@@ -600,6 +661,11 @@ html {
 
     <div style="text-align:center; margin-top:40px;">
         <a href="#contact" class="btn">相談する</a>
+<a href="https://line.me/R/oaMessage/@556fihjp/" 
+   target="_blank" 
+   class="line-mini-btn">
+   <i class="fab fa-line"></i> LINEで相談
+</a>
     </div>
 </section>
 
@@ -650,6 +716,11 @@ html {
 
     <div style="text-align:center; margin-top:40px;">
         <a href="#contact" class="btn">相談する</a>
+<a href="https://line.me/R/oaMessage/@556fihjp/" 
+   target="_blank" 
+   class="line-mini-btn">
+   <i class="fab fa-line"></i> LINEで相談
+</a>
     </div>
 </section>
 
@@ -745,10 +816,6 @@ window.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 });
 </script>
-
-<a href="https://line.me/R/oaMessage/@556fihjp/?外国人雇用について相談したいです" target="_blank" class="line-fixed-btn" aria-label="LINEで相談する">
-    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.2 3H3.8C2.8 3 2 3.8 2 4.8v10.4C2 16.2 2.8 17 3.8 17h3.2v3.3c0 .4.5.6.8.3l3.6-3.6h8.8c1 0 1.8-.8 1.8-1.8V4.8c0-1-.8-1.8-1.8-1.8z"/></svg>
-</a>
 
 </body>
 </html>
