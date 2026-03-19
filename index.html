@@ -242,16 +242,21 @@
             margin-bottom: 15px; 
             font-weight: bold;
         }
-/* ヒーロー内のレイアウト調整 */
-  .hero-main-copy {
+.hero {
     position: relative;
 }
 
-/* 共通：右上固定 */
+/* 削除する or positionを消す */
+.hero-main-copy {
+    max-width: 900px;
+    margin: 0 auto 50px;
+}
+
+/* ボタン */
 .hero-foreigner-btn {
     position: absolute;
-    top: -10px;   /* ← ヘッダー直下に微調整 */
-    right: -10px;
+    top: 10px;
+    right: 5%;
 
     background: var(--white);
     color: var(--accent-orange);
@@ -265,7 +270,6 @@
     text-decoration: none;
 
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    transition: all 0.3s;
     z-index: 10;
 }
 
@@ -284,12 +288,6 @@
             align-items: center;
             margin-bottom: 20px;
         }
-
-.hero-foreigner-btn {
-        top: 10px;
-        right: 10px;
-        font-size: 0.75rem;
-        padding: 8px 12px;
     }
     }
         /* General Sections (Original) */
