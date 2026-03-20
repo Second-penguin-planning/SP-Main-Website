@@ -98,24 +98,98 @@
             background: var(--main-blue);
             color: white;
         }
-.line-fixed-btn::before {
-    content: "無料";
-    position: absolute;
-    top: -5px;
-    right: -5px;
-    background: red;
-    color: white;
-    font-size: 10px;
-    padding: 3px 6px;
-    border-radius: 10px;
-}
+
 .cta-buttons {
   display: flex;
   gap: 12px;
   margin-top: 20px;
   flex-wrap: wrap;
 }
+.foreigner-menu-btn {
+    background: #8b0000;
+    color: #fff !important;
+    padding: 8px 14px;
+    border-radius: 20px;
+    margin-left: 10px;
+    font-size: 0.8rem;
+    transition: 0.3s;
+}
 
+.foreigner-menu-btn:hover {
+    background: #b22222;
+}
+/* ===== LINEボタン（完成版） ===== */
+.line-fixed-btn {
+    position: fixed;
+    top: 80px;
+    right: 20px;
+
+    width: 85px;
+    height: 85px;
+
+    background: #06C755;
+    border-radius: 50%;
+    border: 4px solid white;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-shadow: 0 8px 25px rgba(0,0,0,0.35);
+    z-index: 2000;
+
+    animation: floaty 2s ease-in-out infinite;
+    transition: 0.3s;
+}
+
+/* ホバーで強調 */
+.line-fixed-btn:hover {
+    transform: scale(1.15);
+}
+
+/* 中身 */
+.line-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 11px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+}
+
+/* ロゴ */
+.line-inner img {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 4px;
+}
+
+/* 通常テキスト */
+.line-text {
+    display: block;
+}
+
+/* ホバー時テキスト（最初は非表示） */
+.line-hover-text {
+    display: none;
+    font-size: 10px;
+}
+
+/* ホバーで切替 */
+.line-fixed-btn:hover .line-text {
+    display: none;
+}
+.line-fixed-btn:hover .line-hover-text {
+    display: block;
+}
+
+/* ふわふわアニメーション */
+@keyframes floaty {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+    100% { transform: translateY(0); }
+}
 .line-cta-button {
   display: inline-block;
   padding: 16px 26px;
@@ -324,24 +398,12 @@ html {
 }
 
 /* ★これが本体 */
-.hero-foreigner-btn {
-  position: absolute;
-  top: 70px;   /* ←ヘッダーの高さに応じて調整（60〜90px） */
-  right: 20px;
-
-  padding: 10px 18px;
-  background: #b89b5e;
-  color: #fff;
-  text-decoration: none;
-  font-weight: bold;
-
-  border-radius: 30px; /* ←角丸（ここ重要） */
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-
-  transition: 0.3s;
-  z-index: 10;
+.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
-
 .hero-foreigner-btn:hover {
   background: #a68a4c;
 }
@@ -432,15 +494,32 @@ border: 3px solid white;
     font-size: 10px;
     font-weight: bold;
 }
+.line-inner img {
+    width: 36px;
+    height: 36px;
+    margin-bottom: 4px;
+}
+
         @media (max-width: 768px) {
             .hero h1 { font-size: 1.8rem; }
             .pillar-grid, .company-wrapper { grid-template-columns: 1fr; flex-direction: column; }
             .strengths-section { padding: 60px 5%; }
- .line-fixed-btn {
+   .line-fixed-btn {
         top: 90px;
         right: 15px;
-        width: 70px;
-        height: 70px;
+
+        width: 95px;
+        height: 95px;
+    }
+
+    .line-inner img {
+        width: 45px;
+        height: 45px;
+    }
+
+    .line-text,
+    .line-hover-text {
+        font-size: 12px;
     }
         }
     </style>
@@ -463,8 +542,8 @@ border: 3px solid white;
         <a href="#message">代表メッセージ</a>
         <a href="#advisor">法人様支援</a>
 <a href="https://second-penguin-planning.github.io/Foreigners-Website/" 
-   class="foreigner-menu" target="_blank">
-   外国の方へ
+   class="foreigner-menu-btn" target="_blank">
+   外国の方はこちら
 </a>
         <a href="#company">会社概要</a>
         <a href="#contact">お問合せ</a>
@@ -865,18 +944,12 @@ window.addEventListener('DOMContentLoaded', () => {
 </script>
 <a href="https://line.me/R/ti/p/@556fihjp/" class="line-fixed-btn" target="_blank">
   <div class="line-inner">
-    <!-- LINEアイコン（ちゃんと入れる） -->
-   <a href="https://line.me/R/ti/p/@556fihjp/" class="line-fixed-btn" target="_blank">
-  <div class="line-inner">
 
-    <svg viewBox="0 0 24 24" fill="white">
-      <path d="M12 2C6.48 2 2 5.94 2 10.5c0 2.58 1.64 4.87 4.09 6.37-.18.66-.65 2.38-.74 2.75 0 0-.03.24.13.33.16.09.35-.02.35-.02.46-.25 2.63-1.43 3.59-1.95.52.07 1.06.1 1.58.1 5.52 0 10-3.94 10-8.5S17.52 2 12 2zm-3.5 7h-1v3h1V9zm2 0h-1v3h1V9zm2 0h-1v3h1V9zm2 0h-1v3h1V9z"/>
-    </svg>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/LINE_logo.svg" alt="LINE">
 
-    <span>無料でLINE相談はこちら</span>
-  </div>
-</a>
-    <span>LINE相談はこちら</span>
+    <span class="line-text">LINE相談</span>
+    <span class="line-hover-text">今すぐ相談！</span>
+
   </div>
 </a>
 </body>
