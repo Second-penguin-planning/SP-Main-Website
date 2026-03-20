@@ -131,31 +131,11 @@
 .line-cta-button:hover {
   background: #05a647;
 }
-/* 外国の方へメニュー（えんじ色） */
 .foreigner-menu {
     color: #8b0000; /* えんじ色 */
-}
-/* 外国の方へ（ボタン風） */
-.foreigner-menu-btn {
-    display: inline-block;
-    margin-left: 15px;
-    padding: 8px 14px;
-
-    background: #8b0000; /* えんじ */
-    color: #fff;
-    text-decoration: none;
-    font-size: 0.8rem;
     font-weight: bold;
-
-    border-radius: 20px;
-    transition: 0.3s;
 }
 
-/* hoverで少し明るく */
-.foreigner-menu-btn:hover {
-    background: #b22222;
-    transform: translateY(-2px);
-}
 .foreigner-menu:hover {
     color: #b22222;
 }
@@ -432,7 +412,7 @@ html {
     height: 70px;
     background: #06C755;
     border-radius: 50%;
-
+border: 3px solid white;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -483,7 +463,7 @@ html {
         <a href="#message">代表メッセージ</a>
         <a href="#advisor">法人様支援</a>
 <a href="https://second-penguin-planning.github.io/Foreigners-Website/" 
-   class="foreigner-menu-btn" target="_blank">
+   class="foreigner-menu" target="_blank">
    外国の方へ
 </a>
         <a href="#company">会社概要</a>
@@ -886,10 +866,17 @@ window.addEventListener('DOMContentLoaded', () => {
 <a href="https://line.me/R/ti/p/@556fihjp/" class="line-fixed-btn" target="_blank">
   <div class="line-inner">
     <!-- LINEアイコン（ちゃんと入れる） -->
+   <a href="https://line.me/R/ti/p/@556fihjp/" class="line-fixed-btn" target="_blank">
+  <div class="line-inner">
+
     <svg viewBox="0 0 24 24" fill="white">
-      <path d="M19.365 3.184C17.621 1.44 14.9.5 12 .5 6.201.5 1.5 4.764 1.5 10c0 2.846 1.447 5.393 3.736 7.145L4.5 23.5l6.67-3.62c.267.03.538.045.83.045 5.799 0 10.5-4.264 10.5-9.5 0-2.904-1.744-5.64-4.135-7.241z"/>
+      <path d="M12 2C6.48 2 2 5.94 2 10.5c0 2.58 1.64 4.87 4.09 6.37-.18.66-.65 2.38-.74 2.75 0 0-.03.24.13.33.16.09.35-.02.35-.02.46-.25 2.63-1.43 3.59-1.95.52.07 1.06.1 1.58.1 5.52 0 10-3.94 10-8.5S17.52 2 12 2zm-3.5 7h-1v3h1V9zm2 0h-1v3h1V9zm2 0h-1v3h1V9zm2 0h-1v3h1V9z"/>
     </svg>
+
     <span>無料でLINE相談はこちら</span>
+  </div>
+</a>
+    <span>LINE相談はこちら</span>
   </div>
 </a>
 </body>
