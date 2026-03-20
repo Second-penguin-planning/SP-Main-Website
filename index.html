@@ -131,6 +131,34 @@
 .line-cta-button:hover {
   background: #05a647;
 }
+/* 外国の方へメニュー（えんじ色） */
+.foreigner-menu {
+    color: #8b0000; /* えんじ色 */
+}
+/* 外国の方へ（ボタン風） */
+.foreigner-menu-btn {
+    display: inline-block;
+    margin-left: 15px;
+    padding: 8px 14px;
+
+    background: #8b0000; /* えんじ */
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: bold;
+
+    border-radius: 20px;
+    transition: 0.3s;
+}
+
+/* hoverで少し明るく */
+.foreigner-menu-btn:hover {
+    background: #b22222;
+    transform: translateY(-2px);
+}
+.foreigner-menu:hover {
+    color: #b22222;
+}
         /* ===== Hamburger Menu & Mobile Nav ===== */
         .menu-toggle {
             display: none;
@@ -170,6 +198,11 @@
                 align-items: center;
                 transition: right 0.4s ease;
             }
+  .foreigner-menu-btn {
+        font-size: 1.2rem;
+        padding: 12px 24px;
+        margin: 20px 0;
+    }
   .line-cta-button {
     width: 100%;
     text-align: center;
@@ -388,22 +421,27 @@ html {
         .company-map iframe { width: 100%; height: 350px; border: none; border-radius: 15px; }
 
         /* LINE固定ボタン (Original) */
-        .line-fixed-btn {
+       /* LINE固定ボタン → 右上へ */
+.line-fixed-btn {
     position: fixed;
+
+    top: 80px;   /* ←ヘッダーの下に配置（重要） */
     right: 20px;
-    bottom: 20px;
+
     width: 70px;
     height: 70px;
     background: #06C755;
     border-radius: 50%;
+
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
+
     box-shadow: 0 6px 20px rgba(0,0,0,0.35);
     z-index: 2000;
 
-    animation: pulse 1.8s infinite; /* ←これ追加 */
+    animation: pulse 1.8s infinite;
 }
         .line-fixed-btn:hover { transform: scale(1.1); }
         .line-fixed-btn svg { width: 36px; height: 36px; }
@@ -419,8 +457,10 @@ html {
             .pillar-grid, .company-wrapper { grid-template-columns: 1fr; flex-direction: column; }
             .strengths-section { padding: 60px 5%; }
  .line-fixed-btn {
-        width: 80px;
-        height: 80px;
+        top: 90px;
+        right: 15px;
+        width: 70px;
+        height: 70px;
     }
         }
     </style>
@@ -442,6 +482,10 @@ html {
         <a href="#strengths">選ばれる理由</a>
         <a href="#message">代表メッセージ</a>
         <a href="#advisor">法人様支援</a>
+<a href="https://second-penguin-planning.github.io/Foreigners-Website/" 
+   class="foreigner-menu-btn" target="_blank">
+   外国の方へ
+</a>
         <a href="#company">会社概要</a>
         <a href="#contact">お問合せ</a>
     </nav>
@@ -461,10 +505,6 @@ html {
         <h1>日本で働く、暮らす、楽しむ。<br>そのすべてを、プロの伴走で「成功」へ。</h1>
         <p class="hero-subtext">実務と現場の経験を活かし、皆様の「挑戦」を一気通貫で支援します。</p>
     </div>
-        </a>
-  <a href="#foreigner" class="hero-foreigner-btn">
-      日本で働く外国人の方はコチラ
-    </a>
     <div class="pillar-grid">
        <a href="#employment-detail" class="pillar-card p-employment">
             <div class="pillar-header"><span>FOR CORPORATE</span><span>🤝</span></div>
