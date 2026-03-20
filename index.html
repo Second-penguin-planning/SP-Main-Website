@@ -1,12 +1,21 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <link rel="icon" type="image/png" sizes="32x32" href="penguin_logo_192.png">
+<!-- ファビコン（ブラウザタブ） -->
+<link rel="icon" type="image/png" sizes="32x32" href="./images/penguin_logo_192.png">
 
-    <link rel="apple-touch-icon" sizes="192x192" href="penguin_logo_192.png">
-    <link rel="icon" type="image/png" sizes="512x512" href="penguin_logo_512.png">
+<!-- スマホホーム画面（iPhone） -->
+<link rel="apple-touch-icon" sizes="192x192" href="./images/penguin_logo_192.png">
 
-    <link rel="manifest" href="manifest.json">
+<!-- Android / PWA用 -->
+<link rel="icon" type="image/png" sizes="192x192" href="./images/penguin_logo_192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="./images/penguin_logo_512.png">
+
+<!-- 重要：テーマカラー（これないと表示崩れることあり） -->
+<meta name="theme-color" content="#005bac">
+
+<!-- マニフェスト -->
+<link rel="manifest" href="manifest.json">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>セコンドペンギン企画 | 外国人雇用・生活支援</title>
@@ -947,9 +956,9 @@ window.addEventListener('DOMContentLoaded', () => {
 
     <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/LINE_logo.svg" alt="LINE">
 
-    <span class="line-text">LINE相談</span>
+    <span class="line-text">無料 相談</span>
     <span class="line-hover-text">今すぐ相談！</span>
-
+　
   </div>
 </a>
 </body>
