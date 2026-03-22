@@ -132,7 +132,7 @@
 
 /* ホバーで強調 */
 .line-fixed-btn:hover {
-    transform: none;
+    transform: scale(1.05);
 }
 
 /* 中身 */
@@ -491,39 +491,41 @@ html {
 .line-fixed-btn {
     position: fixed;
 
-    top: 80px;   /* ←ヘッダーの下に配置（重要） */
+    top: 80px;
     right: 20px;
 
-    width: 70px;
-    height: 70px;
+    width: 120px;          /* ←横長に */
+    height: 60px;
+
     background: #06C755;
-    border-radius: 50%;
-border: 3px solid white;
+    border-radius: 16px;   /* ←丸じゃなく角丸に */
+    border: 3px solid white;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
 
     box-shadow: 0 6px 20px rgba(0,0,0,0.35);
     z-index: 2000;
 
-    animation:none;
+    transition: 0.3s;
 }
         .line-fixed-btn:hover { transform: scale(1.1); }
         .line-fixed-btn svg { width: 36px; height: 36px; }
 .line-inner {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;   /* ←横並びに変更 */
     align-items: center;
-    font-size: 10px;
+    gap: 6px;
+    font-size: 11px;
     font-weight: bold;
 }
-.line-inner img {
-    width: 36px;
-    height: 36px;
-    margin-bottom: 4px;
-}
 
+.line-inner img {
+    width: 28px;
+    height: 28px;
+    margin-bottom: 0; /* ←不要になる */
+}
         @media (max-width: 768px) {
             .hero h1 { font-size: 1.8rem; }
             .pillar-grid, .company-wrapper { grid-template-columns: 1fr; flex-direction: column; }
