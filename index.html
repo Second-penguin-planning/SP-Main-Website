@@ -491,7 +491,7 @@ html {
 .line-fixed-btn {
     position: fixed;
 
-    top: 80px;
+    top: 90px;
     right: 20px;
 
     width: 120px;          /* ←横長に */
@@ -530,24 +530,25 @@ html {
             .hero h1 { font-size: 1.8rem; }
             .pillar-grid, .company-wrapper { grid-template-columns: 1fr; flex-direction: column; }
             .strengths-section { padding: 60px 5%; }
-   .line-fixed-btn {
-        top: 90px;
-        right: 15px;
+  .line-fixed-btn {
+        top: 120px;   /* ← ヘッダーより下にする（重要） */
+        right: 12px;
 
-        width: 95px;
-        height: 95px;
+        width: 80px;   /* ← 小さく */
+        height: 50px;
+
+        border-radius: 12px; /* 少しだけ丸角 */
     }
 
     .line-inner img {
-        width: 45px;
-        height: 45px;
+        width: 26px;
+        height: 26px;
     }
 
     .line-text,
     .line-hover-text {
-        font-size: 12px;
-  display: none;
-  }
+        font-size: 10px;
+    }
   }
 /* PCだけ右上に移動 */
 @media (min-width: 769px) {
