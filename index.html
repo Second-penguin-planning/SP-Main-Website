@@ -538,7 +538,7 @@ border: 3px solid white;
         font-size: 12px;
   display: none;
   }
-
+  }
 /* PCだけ右上に移動 */
 @media (min-width: 769px) {
     .lang-fixed {
@@ -985,15 +985,14 @@ function googleTranslateElementInit() {
 
 // 言語切替ボタン用
 function translatePage(lang) {
-    const combo = document.querySelector('select.goog-te-combo');
-
-    if (!combo) {
-        console.log("翻訳未ロード");
-        return;
-    }
-
-    combo.value = lang;
-    combo.dispatchEvent(new Event('change'));
+    const check = setInterval(() => {
+        const combo = document.querySelector('.goog-te-combo');
+        if (combo) {
+            combo.value = lang;
+            combo.dispatchEvent(new Event('change'));
+            clearInterval(check);
+        }
+    }, 300);
 }
 </script>
 <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
