@@ -528,11 +528,53 @@ border: 3px solid white;
     .line-hover-text {
         font-size: 12px;
     }
+/* 言語ボタン固定 */
+.lang-fixed {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+
+    display: flex;
+    gap: 6px;
+
+    background: white;
+    padding: 6px;
+    border-radius: 30px;
+
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    z-index: 3000;
+}
+
+.lang-fixed button {
+    font-size: 12px;
+    padding: 6px 10px;
+    border: 1px solid #005bac;
+    background: white;
+    color: #005bac;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.lang-fixed button:hover {
+    background: #005bac;
+    color: white;
+}
+
+/* PCだけ右上に移動 */
+@media (min-width: 769px) {
+    .lang-fixed {
+        top: 80px;
+        right: 20px;
+        left: auto;
+        bottom: auto;
+    }
+}
         }
     </style>
 </head>
 <body>
-
+<!-- Google翻訳 -->
+<div id="google_translate_element" style="display:none;"></div>
 <header>
     <a href="#" class="logo">
         <img src="./images/penguin_logo_192.png" alt="Logo">
@@ -556,11 +598,7 @@ border: 3px solid white;
         <a href="#contact">お問合せ</a>
     </nav>
 
-    <div class="lang-switch">
-        <button onclick="translatePage('ja')">JP</button>
-        <button onclick="translatePage('en')">EN</button>
-        <button onclick="translatePage('id')">ID</button>
-    </div>
+
 </header>
 
 <section class="hero" id="top">
@@ -949,6 +987,29 @@ window.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 });
 </script>
+<script>
+// Google翻訳 初期化
+function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+        pageLanguage: 'ja',
+        includedLanguages: 'ja,en,id,tl',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+    }, 'google_translate_element');
+}
+
+// 言語切替ボタン用
+function translatePage(lang) {
+    const select = document.querySelector(".goog-te-combo");
+    if (!select) {
+        alert("翻訳の読み込み中です。少し待ってください。");
+        return;
+    }
+    select.value = lang;
+    select.dispatchEvent(new Event("change"));
+}
+</script>
+
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 <a href="https://line.me/R/ti/p/@556fihjp/" class="line-fixed-btn" target="_blank">
   <div class="line-inner">
 
@@ -959,5 +1020,17 @@ window.addEventListener('DOMContentLoaded', () => {
 　
   </div>
 </a>
+</a>  <!-- ← LINEボタンここで終わり -->
+
+<!-- 👇ここに追加 -->
+<div class="lang-fixed">
+    <button onclick="translatePage('ja')">JP</button>
+    <button onclick="translatePage('en')">EN</button>
+    <button onclick="translatePage('id')">ID</button>
+    <button onclick="translatePage('tl')">TL</button>
+</div>
+
+</body>
+</html>
 </body>
 </html>
