@@ -382,7 +382,68 @@ html {
     max-width: 900px;
     margin: 0 auto 30px;
 }
+/* 言語ボタン固定 */
+.lang-fixed {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
 
+    display: flex;
+    gap: 6px;
+
+    background: white;
+    padding: 6px;
+    border-radius: 30px;
+
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    z-index: 3000;
+}
+
+.lang-fixed button {
+    font-size: 12px;
+    padding: 6px 10px;
+    border: 1px solid #005bac;
+    background: white;
+    color: #005bac;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.lang-fixed button:hover {
+    background: #005bac;
+    color: white;
+}
+/* 言語ボタン固定 */
+.lang-fixed {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+
+    display: flex;
+    gap: 6px;
+
+    background: white;
+    padding: 6px;
+    border-radius: 30px;
+
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    z-index: 3000;
+}
+
+.lang-fixed button {
+    font-size: 12px;
+    padding: 6px 10px;
+    border: 1px solid #005bac;
+    background: white;
+    color: #005bac;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.lang-fixed button:hover {
+    background: #005bac;
+    color: white;
+}
 /* ボタン */
 .line-mini-btn {
   display: inline-block;
@@ -528,40 +589,16 @@ border: 3px solid white;
     .line-hover-text {
         font-size: 12px;
     }
-/* 言語ボタン固定 */
-.lang-fixed {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
 
-    display: flex;
-    gap: 6px;
-
-    background: white;
-    padding: 6px;
-    border-radius: 30px;
-
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    z-index: 3000;
-}
-
-.lang-fixed button {
-    font-size: 12px;
-    padding: 6px 10px;
-    border: 1px solid #005bac;
-    background: white;
-    color: #005bac;
-    border-radius: 20px;
-    cursor: pointer;
-}
-
-.lang-fixed button:hover {
-    background: #005bac;
-    color: white;
-}
 
 /* PCだけ右上に移動 */
 @media (min-width: 769px) {
+    .lang-fixed {
+        top: 80px;
+        right: 20px;
+        left: auto;
+        bottom: auto;
+    }
     .lang-fixed {
         top: 80px;
         right: 20px;
@@ -999,16 +1036,17 @@ function googleTranslateElementInit() {
 
 // 言語切替ボタン用
 function translatePage(lang) {
-    const select = document.querySelector(".goog-te-combo");
-    if (!select) {
-        alert("翻訳の読み込み中です。少し待ってください。");
+    const combo = document.querySelector('select.goog-te-combo');
+
+    if (!combo) {
+        console.log("翻訳未ロード");
         return;
     }
-    select.value = lang;
-    select.dispatchEvent(new Event("change"));
+
+    combo.value = lang;
+    combo.dispatchEvent(new Event('change'));
 }
 </script>
-
 <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 <a href="https://line.me/R/ti/p/@556fihjp/" class="line-fixed-btn" target="_blank">
   <div class="line-inner">
