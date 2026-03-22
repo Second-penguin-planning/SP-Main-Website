@@ -128,26 +128,7 @@
     background: #b22222;
 }
 /* ===== LINEボタン（完成版） ===== */
-.line-fixed-btn {
-    position: fixed;
-    top: 80px;
-    right: 20px;
 
-    width: 65px;
-    height: 65px;
-
-    background: #06C755;
-    border-radius: 50%;
-    border: 4px solid white;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    box-shadow: 0 8px 25px rgba(0,0,0,0.35);
-    z-index: 2000;
-
-}
 
 /* ホバーで強調 */
 .line-fixed-btn:hover {
@@ -155,15 +136,6 @@
 }
 
 /* 中身 */
-.line-inner {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-size: 10px;
-    font-weight: bold;
-    color: white;
-    text-align: center;
-}
 
 /* ロゴ */
 .line-inner img {
@@ -413,32 +385,7 @@ html {
     background: #005bac;
     color: white;
 }
-/* 言語ボタン固定 */
-.lang-fixed {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
 
-    display: flex;
-    gap: 6px;
-
-    background: white;
-    padding: 6px;
-    border-radius: 30px;
-
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    z-index: 3000;
-}
-
-.lang-fixed button {
-    font-size: 12px;
-    padding: 6px 10px;
-    border: 1px solid #005bac;
-    background: white;
-    color: #005bac;
-    border-radius: 20px;
-    cursor: pointer;
-}
 
 .lang-fixed button:hover {
     background: #005bac;
@@ -461,16 +408,17 @@ html {
 
 .line-mini-btn:hover {
   background: #05a647;
-}.hero {
-  position: relative;
 }
 
 /* ★これが本体 */
 .hero {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  padding: 30px 5% 60px;
+  background: ...;
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .hero-foreigner-btn:hover {
   background: #a68a4c;
@@ -496,7 +444,7 @@ html {
             justify-content: space-between;
             align-items: center;
             margin-bottom: 20px;
-        }
+        
     }
     }
         /* General Sections (Original) */
@@ -551,7 +499,7 @@ border: 3px solid white;
     box-shadow: 0 6px 20px rgba(0,0,0,0.35);
     z-index: 2000;
 
-    animation: pulse 1.8s infinite;
+    animation:none;
 }
         .line-fixed-btn:hover { transform: scale(1.1); }
         .line-fixed-btn svg { width: 36px; height: 36px; }
@@ -588,8 +536,8 @@ border: 3px solid white;
     .line-text,
     .line-hover-text {
         font-size: 12px;
-    }
-
+  display: none;
+  }
 
 /* PCだけ右上に移動 */
 @media (min-width: 769px) {
@@ -614,7 +562,7 @@ border: 3px solid white;
 <div id="google_translate_element" style="display:none;"></div>
 <header>
     <a href="#" class="logo">
-        <img src="./images/penguin_logo_192.png" alt="Logo">
+        <img src="./images/penguin_logo_192.png" alt="セコンドペンギン企画ロゴ">
         <span>セコンドペンギン企画</span>
     </a>
     
@@ -637,6 +585,7 @@ border: 3px solid white;
 
 
 </header>
+
 
 <section class="hero" id="top">
     <div class="hero-main-copy">
@@ -1058,7 +1007,6 @@ function translatePage(lang) {
 　
   </div>
 </a>
-</a>  <!-- ← LINEボタンここで終わり -->
 
 <!-- 👇ここに追加 -->
 <div class="lang-fixed">
@@ -1068,7 +1016,5 @@ function translatePage(lang) {
     <button onclick="translatePage('tl')">TL</button>
 </div>
 
-</body>
-</html>
 </body>
 </html>
