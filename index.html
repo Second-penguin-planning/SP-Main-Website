@@ -115,17 +115,17 @@
   flex-wrap: wrap;
 }
 .foreigner-menu-btn {
-    background: #8b0000;
-    color: #fff !important;
-    padding: 8px 14px;
-    border-radius: 20px;
-    margin-left: 10px;
-    font-size: 0.8rem;
-    transition: 0.3s;
+    background: none;
+    color: #8b0000 !important; /* えんじ色 */
+    padding: 0;
+    border-radius: 0;
+    margin-left: 15px;
+    font-size: 0.85rem;
+    font-weight: bold;
 }
 
 .foreigner-menu-btn:hover {
-    background: #b22222;
+    color: #b22222;
 }
 /* ===== LINEボタン（完成版） ===== */
 
@@ -254,6 +254,18 @@ html {
     scroll-behavior: smooth;
 }
        
+.hero {
+  position: relative;
+  background: url("https://images.unsplash.com/photo-1454165804606-c3d57bc86b40") center/cover no-repeat;
+  padding: 120px 10%;
+  color: #fff;
+  min-height: 80vh;
+
+  display: flex;
+  align-items: center;
+}
+
+/* 黒オーバーレイ（重要） */
 .hero::before {
   content: "";
   position: absolute;
@@ -261,56 +273,28 @@ html {
   left: 0;
   width: 100%;
   height: 100%;
-
-  background: rgba(0, 0, 0, 0.5); /* ←濃さ調整OK */
+  background: rgba(0, 40, 90, 0.6); /* 青系フィルター */
   z-index: 0;
 }
+
+/* 文字前面 */
 .hero > * {
   position: relative;
   z-index: 1;
 }
+
+/* 見出し */
 .hero h1 {
   color: #fff;
-  text-shadow: 0 3px 10px rgba(0,0,0,0.6);
+  font-size: 2.4rem;
+  line-height: 1.4;
+  text-shadow: 0 4px 15px rgba(0,0,0,0.7);
 }
 
+/* サブ */
 .hero-subtext {
-  color: #f0f0f0;
+  color: #eaeaea;
 }
-
-.hero-status {
-  background: rgba(255,140,0,0.9);
-}
-
-        .hero-main-copy {
-            max-width: 900px;
-            margin: 0 auto 30px;
-        }
-
-        .hero-status {
-            display: inline-block;
-            background: var(--accent-orange);
-            color: white;
-            font-size: 0.8rem;
-            font-weight: bold;
-            padding: 4px 15px;
-            border-radius: 50px;
-            margin-bottom: 10px;
-        }
-
-        .hero h1 {
-            font-size: 2.5rem;
-            color: var(--main-blue);
-            line-height: 1.3;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 0px white;
-        }
-
-        .hero-subtext {
-            font-size: 1.1rem;
-            font-weight: bold;
-            color: #444;
-        }
 
         /* 4 Pillars Grid */
         .pillar-grid {
@@ -585,12 +569,12 @@ html {
 
     <nav id="mainNav">
 <a href="#top">TOP</a>
-        <a href="#advisor-detail">法人様支援</a>
+         <a href="#strengths">選ばれる理由</a>
+ <a href="#employment-detail">法人様支援</a>
 <a href="https://second-penguin-planning.github.io/Foreigners-Website/" 
    class="foreigner-menu-btn" target="_blank">
    Foreigner
 </a>
-        <a href="#strengths">選ばれる理由</a>
         <a href="#message">代表メッセージ</a>
         <a href="#company">会社概要</a>
         <a href="#contact">お問合せ</a>
