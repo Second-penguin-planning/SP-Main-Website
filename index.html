@@ -131,9 +131,6 @@
 
 
 /* ホバーで強調 */
-.line-fixed-btn:hover {
-    transform: scale(1.05);
-}
 
 /* 中身 */
 
@@ -249,21 +246,75 @@
     nav.active { right: 0; }
     nav a { margin: 20px 0; font-size: 1.3rem; }
 
-   /* ▼追加した言語ボタンのスタイル */
-        .lang-switch {
-            display: flex;
-            gap: 6px;
-            margin: 20px 0; /* 少しのマージンを追加 */
-        }
+ .lang-switch {
+        display: none; /* ←スマホでは非表示 */
+    }
 }
 html {
     scroll-behavior: smooth;
 }
         /* ===== Hero Section ===== */
-        .hero {
-            padding: 30px 5% 60px;
-                       text-align: center;
-        }
+    .hero {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; /* ← 横中央も追加（重要） */
+
+  /* ▼ 背景画像 */
+  background: 
+    linear-gradient(rgba(0, 91, 172, 0.6), rgba(0, 91, 172, 0.6)),
+    url("images/hero.jpg") center/cover no-repeat;
+
+  color: #fff;
+  text-align: center;
+}
+
+
+ .hero {
+  position: relative;
+  padding: 80px 5% 80px;
+  text-align: center;
+
+  background-image: url('https://images.unsplash.com/photo-1526481280690-7e2c8c6c5b62?auto=format&fit=crop&w=1600&q=80');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  color: white;
+
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background: rgba(0, 0, 0, 0.5); /* ←濃さ調整OK */
+  z-index: 0;
+}
+.hero > * {
+  position: relative;
+  z-index: 1;
+}
+.hero h1 {
+  color: #fff;
+  text-shadow: 0 3px 10px rgba(0,0,0,0.6);
+}
+
+.hero-subtext {
+  color: #f0f0f0;
+}
+
+.hero-status {
+  background: rgba(255,140,0,0.9);
+}
 
         .hero-main-copy {
             max-width: 900px;
@@ -422,32 +473,17 @@ html {
 /* ★これが本体 */
 .hero {
   padding: 30px 5% 60px;
-  background: ...;
+  background: var(--sky-blue);
   text-align: center;
 
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.hero-foreigner-btn:hover {
-  background: #a68a4c;
-}
-
-/* hover修正（←バグも修正してます） */
-.hero-foreigner-btn:hover {
-    background: var(--accent-orange);
-    color: #fff;
-    transform: translateY(-2px);
-}
 
     /* PCサイズでの右上配置 */
     @media (min-width: 769px) {
-         .hero-foreigner-btn {
-    top: 60px;
-    right: 12px;
-    font-size: 12px;
-    padding: 8px 14px;
-  }
+
 .hero-header-flex {
             display: flex;
             justify-content: space-between;
@@ -553,18 +589,28 @@ html {
   }
 /* PCだけ右上に移動 */
 @media (min-width: 769px) {
-    .lang-fixed {
-        top: 80px;
-        right: 20px;
-        left: auto;
-        bottom: auto;
+   
+/* スマホメニュー内の言語ボタン */
+.mobile-lang {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .mobile-lang {
+        display: flex;
+        gap: 10px;
+        margin-top: 30px;
     }
-    .lang-fixed {
-        top: 80px;
-        right: 20px;
-        left: auto;
-        bottom: auto;
+
+    .mobile-lang button {
+        font-size: 14px;
+        padding: 8px 12px;
+        border: 1px solid var(--main-blue);
+        background: white;
+        color: var(--main-blue);
+        border-radius: 20px;
     }
+}
         }
     </style>
 </head>
@@ -592,6 +638,12 @@ html {
 </a>
         <a href="#company">会社概要</a>
         <a href="#contact">お問合せ</a>
+<div class="mobile-lang">
+    <button onclick="translatePage('ja')">JP</button>
+    <button onclick="translatePage('en')">EN</button>
+    <button onclick="translatePage('id')">ID</button>
+    <button onclick="translatePage('tl')">TL</button>
+</div>
     </nav>
 
   <div class="lang-switch">
@@ -648,6 +700,7 @@ html {
                 <p>日本を「働くだけの場所」にしない。日本語の継続学習、日本の文化体験などを通じ日本への愛着を深める、福利厚生としてのサポート。</p>
             </div>
             <div class="pillar-footer">外国人従業員の暮らしの充実を →</div>
+</div>
 </a>
     </div>
 </section>
