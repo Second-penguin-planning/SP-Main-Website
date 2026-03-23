@@ -585,13 +585,13 @@ html {
 
     <nav id="mainNav">
 <a href="#top">TOP</a>
-        <a href="#strengths">選ばれる理由</a>
-        <a href="#message">代表メッセージ</a>
-        <a href="#advisor">法人様支援</a>
+        <a href="#advisor-detail">法人様支援</a>
 <a href="https://second-penguin-planning.github.io/Foreigners-Website/" 
    class="foreigner-menu-btn" target="_blank">
    Foreigner
 </a>
+        <a href="#strengths">選ばれる理由</a>
+        <a href="#message">代表メッセージ</a>
         <a href="#company">会社概要</a>
         <a href="#contact">お問合せ</a>
 <div class="mobile-lang">
@@ -1028,6 +1028,25 @@ function translatePage(lang) {
     }, 250);
 }
 
+</script>
+<script>
+function toggleMenu() {
+    const nav = document.getElementById('mainNav');
+    const toggle = document.querySelector('.menu-toggle');
+    nav.classList.toggle('active');
+    toggle.classList.toggle('active');
+}
+
+// ★これ追加
+document.querySelectorAll('#mainNav a').forEach(link => {
+    link.addEventListener('click', () => {
+        const nav = document.getElementById('mainNav');
+        const toggle = document.querySelector('.menu-toggle');
+
+        nav.classList.remove('active');
+        toggle.classList.remove('active');
+    });
+});
 </script>
 <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 <a href="https://line.me/R/ti/p/@556fihjp/" class="line-fixed-btn" target="_blank">
