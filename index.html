@@ -533,6 +533,42 @@
     vertical-align: middle;
     font-weight: bold;
 }
+/* お問い合わせフォーム */
+.contact-form {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-weight: bold;
+    margin-bottom: 6px;
+    color: var(--main-blue);
+    font-size: 0.95rem;
+}
+
+.form-group input,
+.form-group textarea {
+    padding: 12px 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: 'Noto Sans JP', sans-serif;
+    transition: border-color 0.3s;
+    background: #fafafa;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--main-blue);
+    background: #fff;
+}
 
 /* 所在地・電話 横並び2列 */
 .form-row-2col {
@@ -1009,9 +1045,8 @@
 </section>
 
 
-<section id="contact" class="section">
-    <div class="container">
-        <h2 class="section-title">お問い合わせ</h2>
+<section id="contact" class="fade-in">
+    <h2>お問い合わせ</h2>
         <p style="text-align:center; font-size:0.85rem; color:#666; margin-top:-20px; margin-bottom:30px;">
             💬 右のLINEでのお問い合わせでも受付可能です
         </p>
