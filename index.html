@@ -522,6 +522,31 @@
         .company-info td { padding: 14px 0; border-bottom: 1px solid #eee; }
         .company-info .label { width: 30%; font-weight: 600; color: var(--main-blue); }
         .company-map iframe { width: 100%; height: 350px; border: none; border-radius: 15px; }
+/* 必須バッジ */
+.required-badge {
+    background: #e74c3c;
+    color: white;
+    font-size: 0.7rem;
+    padding: 2px 7px;
+    border-radius: 4px;
+    margin-left: 8px;
+    vertical-align: middle;
+    font-weight: bold;
+}
+
+/* 所在地・電話 横並び2列 */
+.form-row-2col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+/* スマホは縦1列 */
+@media (max-width: 600px) {
+    .form-row-2col {
+        grid-template-columns: 1fr;
+    }
+}
 
         .line-fixed-btn {
             position: fixed;
@@ -570,12 +595,6 @@
 
         .mobile-lang { display: none; }
         
-@media (max-width: 600px) {
-    .form-row {
-        grid-template-columns: 1fr !important;
-    }
-}
-
         @media (max-width: 768px) {
             .mobile-lang {
                 display: flex;
@@ -998,18 +1017,24 @@
         </p>
         <div class="contact-form">
             <form id="contactForm">
+
+                <!-- お名前 -->
                 <div class="form-group">
                     <label for="name">
                         お名前
-                        <span style="background:#e74c3c; color:white; font-size:0.7rem; padding:2px 6px; border-radius:4px; margin-left:6px; vertical-align:middle;">必須</span>
+                        <span class="required-badge">必須</span>
                     </label>
                     <input type="text" id="name" name="name" placeholder="山田 太郎" required>
                 </div>
+
+                <!-- 会社名 -->
                 <div class="form-group">
                     <label for="company">会社名</label>
                     <input type="text" id="company" name="company" placeholder="株式会社〇〇">
                 </div>
-                <div class="form-row" style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
+
+                <!-- 企業所在地 ＋ 電話番号（横並び） -->
+                <div class="form-row-2col">
                     <div class="form-group">
                         <label for="location">企業所在地</label>
                         <input type="text" id="location" name="location" placeholder="例：兵庫県神戸市">
@@ -1019,20 +1044,25 @@
                         <input type="tel" id="phone" name="phone" placeholder="例：078-000-0000">
                     </div>
                 </div>
+
+                <!-- メールアドレス -->
                 <div class="form-group">
                     <label for="email">
                         メールアドレス
-                        <span style="background:#e74c3c; color:white; font-size:0.7rem; padding:2px 6px; border-radius:4px; margin-left:6px; vertical-align:middle;">必須</span>
+                        <span class="required-badge">必須</span>
                     </label>
                     <input type="email" id="email" name="email" placeholder="example@company.com" required>
                 </div>
+
+                <!-- お問い合わせ内容 -->
                 <div class="form-group">
                     <label for="message">
                         お問い合わせ内容
-                        <span style="background:#e74c3c; color:white; font-size:0.7rem; padding:2px 6px; border-radius:4px; margin-left:6px; vertical-align:middle;">必須</span>
+                        <span class="required-badge">必須</span>
                     </label>
                     <textarea id="message" name="message" rows="6" placeholder="お気軽にご相談ください..." required></textarea>
                 </div>
+
                 <button type="submit" class="btn btn-primary" style="width:100%; padding:15px; font-size:1.1rem;">
                     送信する
                 </button>
@@ -1040,6 +1070,7 @@
         </div>
     </div>
 </section>
+
 
 
 
