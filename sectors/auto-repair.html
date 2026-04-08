@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<link rel="icon" type="image/png" sizes="32x32" href="../images/penguin_logo_192.png">
+<link rel="apple-touch-icon" sizes="192x192" href="../images/penguin_logo_192.png">
+<meta name="theme-color" content="#005bac">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>自動車整備業 | セコンドペンギン企画</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --main-blue: #005bac;
+        --accent-green: #006400;
+        --sky-blue: #e0f4ff;
+        --text-color: #333;
+        --white: #ffffff;
+        --accent-orange: #ff8c00;
+        --sector-color: #2c3e50;
+        --sector-light: #eaf0f6;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+        font-family: 'Noto Sans JP', sans-serif;
+        line-height: 1.8;
+        color: var(--text-color);
+        background-color: var(--sky-blue);
+        overflow-x: hidden;
+    }
+
+    /* ===== HEADER ===== */
+    header {
+        background: var(--white);
+        padding: 8px 3%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: bold;
+        font-size: 1.1rem;
+        color: var(--main-blue);
+        text-decoration: none;
+    }
+    .logo img { height: 38px; width: auto; }
+    .header-right {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+    .back-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 7px 16px;
+        background: var(--sector-color);
+        color: white;
+        text-decoration: none;
+        border-radius: 20px;
+        font-size: 0.82rem;
+        font-weight: bold;
+        transition: 0.3s;
+    }
+    .back-btn:hover { background: var(--main-blue); transform: translateX(-3px); }
+
+    /* ===== SECTOR NAV ===== */
+    .sector-nav-bar {
+        background: var(--sector-color);
+        padding: 10px 16px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        justify-content: center;
+    }
+    .sector-nav-bar a {
+        display: inline-flex;
+        align-items: center;
+        gap: 3px;
+        padding: 4px 12px;
+        background: rgba(255,255,255,0.15);
+        color: #fff;
+        text-decoration: none;
+        font-size: 0.72rem;
+        font-weight: 600;
+        border: 1px solid rgba(255,255,255,0.3);
+        border-radius: 16px;
+        transition: all 0.2s ease;
+        white-space: nowrap;
+    }
+    .sector-nav-bar a:hover,
+    .sector-nav-bar a.active {
+        background: rgba(255,255,255,0.9);
+        color: var(--sector-color);
+        border-color: transparent;
+    }
+    @media (max-width: 600px) {
+        .sector-nav-bar a { font-size: 0.65rem; padding: 3px 9px; }
+    }
+
+    /* ===== HERO ===== */
+    .page-hero {
+        position: relative;
+        background: url("https://images.unsplash.com/photo-1625047509168-a7026f36de04?w=1400") center/cover no-repeat;
+        padding: 80px 10% 60px;
+        color: #fff;
+        text-align: center;
+        min-height: 380px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .page-hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(20, 30, 44, 0.65);
+        z-index: 0;
+    }
+    .page-hero > * { position: relative; z-index: 1; }
+    .page-hero .sector-badge {
+        display: inline-block;
+        background: rgba(255,255,255,0.2);
+        border: 1px solid rgba(255,255,255,0.5);
+        padding: 4px 18px;
+        border-radius: 20px;
+        font-size: 0.82rem;
+        margin-bottom: 16px;
+        letter-spacing: 0.1em;
+    }
+    .page-hero h1 {
+        font-size: clamp(1.8rem, 4vw, 2.8rem);
+        line-height: 1.35;
+        text-shadow: 0 3px 15px rgba(0,0,0,0.6);
+        margin-bottom: 16px;
+    }
+    .page-hero p {
+        font-size: 1rem;
+        color: #c8d8e8;
+        max-width: 640px;
+    }
+
+    /* ===== 共通 ===== */
+    .section { padding: 70px 10%; background: var(--white); margin: 20px 0; }
+    .section-gray { background: var(--sky-blue); }
+    .section-accent { background: var(--sector-light); }
+
+    h2 {
+        text-align: center;
+        color: var(--sector-color);
+        font-size: 1.7rem;
+        margin-bottom: 40px;
+        position: relative;
+        padding-bottom: 12px;
+    }
+    h2::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 50px;
+        height: 3px;
+        background: var(--accent-orange);
+        border-radius: 2px;
+    }
+    h3 { color: var(--sector-color); margin-bottom: 10px; }
+
+    .lead-text {
+        text-align: center;
+        color: #555;
+        font-size: 0.97rem;
+        margin-top: -28px;
+        margin-bottom: 44px;
+        line-height: 1.9;
+    }
+
+    /* ===== INTRO CARDS ===== */
+    .intro-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 24px;
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+    .intro-card {
+        background: var(--sector-light);
+        border-radius: 14px;
+        padding: 28px 24px;
+        border-left: 5px solid var(--sector-color);
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .intro-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+    .intro-card .icon { font-size: 2rem; margin-bottom: 12px; display: block; }
+    .intro-card h3 { font-size: 1rem; margin-bottom: 8px; }
+    .intro-card p { font-size: 0.88rem; color: #555; line-height: 1.75; }
+
+    /* ===== HIGHLIGHT BOX ===== */
+    .highlight-box {
+        background: #eaf0f6;
+        border-left: 5px solid var(--sector-color);
+        border-radius: 10px;
+        padding: 20px 24px;
+        margin: 0 auto 36px;
+        max-width: 860px;
+        font-size: 0.92rem;
+        line-height: 1.85;
+        color: #2c3e50;
+    }
+    .highlight-box strong { color: #1a252f; }
+
+    /* ===== 業務区分テーブル ===== */
+    .job-table-wrap { overflow-x: auto; margin-top: 10px; }
+    .job-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.9rem;
+        min-width: 540px;
+    }
+    .job-table th {
+        background: var(--sector-color);
+        color: white;
+        padding: 12px 16px;
+        text-align: left;
+        font-weight: 600;
+    }
+    .job-table td {
+        padding: 12px 16px;
+        border-bottom: 1px solid #d8e4ef;
+        vertical-align: top;
+    }
+    .job-table tr:nth-child(even) td { background: #f4f7fa; }
+    .job-table tr:hover td { background: #deeaf5; }
+    .tag {
+        display: inline-block;
+        padding: 2px 10px;
+        border-radius: 12px;
+        font-size: 0.72rem;
+        font-weight: bold;
+        margin: 2px 2px 2px 0;
+    }
+    .tag-navy  { background: #d0ddf0; color: #1a2a50; }
+    .tag-green { background: #d4f0dd; color: #1a6b33; }
+    .tag-gray  { background: #e8e8e8; color: #444; }
+
+    /* ===== 資格・試験 ===== */
+    .exam-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 20px;
+        max-width: 900px;
+        margin: 0 auto;
+    }
+    .exam-card {
+        background: white;
+        border-radius: 12px;
+        padding: 24px 20px;
+        box-shadow: 0 3px 14px rgba(0,0,0,0.08);
+        border-top: 4px solid var(--sector-color);
+        text-align: center;
+    }
+    .exam-card .exam-icon { font-size: 2rem; margin-bottom: 10px; display: block; }
+    .exam-card h3 { font-size: 0.95rem; margin-bottom: 8px; color: var(--sector-color); }
+    .exam-card p { font-size: 0.84rem; color: #555; line-height: 1.7; }
+
+    /* ===== FLOW ===== */
+    .flow-list { max-width: 800px; margin: 0 auto; }
+    .flow-item {
+        display: flex;
+        gap: 20px;
+        align-items: flex-start;
+        margin-bottom: 28px;
+        position: relative;
+    }
+    .flow-item:not(:last-child)::after {
+        content: '';
+        position: absolute;
+        left: 22px;
+        top: 50px;
+        bottom: -10px;
+        width: 2px;
+        background: linear-gradient(to bottom, var(--sector-color), transparent);
+    }
+    .flow-num {
+        flex-shrink: 0;
+        width: 46px;
+        height: 46px;
+        background: var(--sector-color);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1rem;
+        font-weight: bold;
+        box-shadow: 0 4px 12px rgba(44,62,80,0.3);
+    }
+    .flow-body h3 { font-size: 1rem; margin-bottom: 4px; }
+    .flow-body p { font-size: 0.87rem; color: #555; line-height: 1.7; }
+
+    /* ===== PRICE ===== */
+    .price-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 20px;
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+    .price-card {
+        background: white;
+        border-radius: 14px;
+        padding: 28px 22px;
+        box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+        text-align: center;
+        border-top: 4px solid var(--sector-color);
+        transition: transform 0.3s;
+    }
+    .price-card:hover { transform: translateY(-5px); }
+    .price-card .price-icon { font-size: 2.2rem; margin-bottom: 12px; display: block; }
+    .price-card h3 { font-size: 0.95rem; margin-bottom: 10px; color: var(--sector-color); }
+    .price-card .price-amount {
+        font-size: 1.4rem;
+        font-weight: bold;
+        color: var(--accent-orange);
+        margin-bottom: 10px;
+    }
+    .price-card p { font-size: 0.82rem; color: #666; line-height: 1.7; }
+    .price-note {
+        text-align: center;
+        font-size: 0.82rem;
+        color: #888;
+        margin-top: 20px;
+    }
+
+    /* ===== FAQ ===== */
+    .faq-list { max-width: 800px; margin: 0 auto; }
+    .faq-item {
+        background: white;
+        border-radius: 12px;
+        margin-bottom: 14px;
+        overflow: hidden;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    }
+    .faq-q {
+        padding: 18px 22px;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        cursor: pointer;
+        font-weight: bold;
+        font-size: 0.95rem;
+        color: var(--sector-color);
+        user-select: none;
+        transition: background 0.2s;
+    }
+    .faq-q:hover { background: var(--sector-light); }
+    .faq-q .q-mark {
+        flex-shrink: 0;
+        width: 32px;
+        height: 32px;
+        background: var(--sector-color);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.9rem;
+        font-weight: bold;
+    }
+    .faq-q .faq-arrow {
+        margin-left: auto;
+        transition: transform 0.3s;
+        font-size: 0.9rem;
+        color: #999;
+    }
+    .faq-item.open .faq-arrow { transform: rotate(180deg); }
+    .faq-a {
+        display: none;
+        padding: 0 22px 18px 68px;
+        font-size: 0.9rem;
+        color: #555;
+        line-height: 1.8;
+        border-top: 1px solid #dde8f0;
+    }
+    .faq-item.open .faq-a { display: block; }
+
+    /* ===== CTA ===== */
+    .cta-section {
+        background: linear-gradient(135deg, var(--sector-color) 0%, #3d566e 100%);
+        padding: 70px 10%;
+        text-align: center;
+        color: white;
+    }
+    .cta-section h2 { color: white; font-size: 1.6rem; margin-bottom: 12px; }
+    .cta-section h2::after { background: rgba(255,255,255,0.5); }
+    .cta-section p { color: #c8d8e8; margin-bottom: 32px; font-size: 0.97rem; }
+    .cta-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .btn-white {
+        display: inline-block;
+        padding: 14px 32px;
+        background: white;
+        color: var(--sector-color);
+        text-decoration: none;
+        border-radius: 50px;
+        font-weight: bold;
+        font-size: 1rem;
+        transition: 0.3s;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+    }
+    .btn-white:hover { transform: scale(1.05); }
+    .btn-line {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 14px 28px;
+        background: #06c755;
+        color: white;
+        text-decoration: none;
+        border-radius: 50px;
+        font-weight: bold;
+        font-size: 1rem;
+        transition: 0.3s;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+    }
+    .btn-line:hover { background: #05a647; transform: scale(1.05); }
+    .btn-line img { width: 22px; height: 22px; }
+
+    /* ===== LINE固定 ===== */
+    .line-fixed-btn {
+        position: fixed;
+        top: 90px;
+        right: 20px;
+        width: 120px;
+        height: 60px;
+        background: #06C755;
+        border-radius: 30px;
+        border: 3px solid white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+        z-index: 9999;
+        transition: 0.3s;
+        text-decoration: none;
+    }
+    .line-fixed-btn:hover { transform: scale(1.1); }
+    .line-inner {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 11px;
+        font-weight: bold;
+        color: white;
+    }
+    .line-inner img { width: 28px; height: 28px; }
+
+    @media (max-width: 768px) {
+        .page-hero { min-height: 280px; padding: 60px 6% 40px; }
+        .section { padding: 50px 6%; }
+        .line-fixed-btn { top: 120px; right: 12px; width: 80px; height: 50px; border-radius: 25px; }
+        .line-inner img { width: 26px; height: 26px; }
+    }
+
+    footer { background: #333; color: white; text-align: center; padding: 30px; }
+    footer a { color: #fff; text-decoration: underline; }
+
+    .fade-in {
+        opacity: 0;
+        transform: translateY(28px);
+        transition: opacity 0.75s ease-out, transform 0.75s ease-out;
+    }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header>
+    <a href="../index.html" class="logo">
+        <img src="../images/penguin_logo_192.png" alt="セコンドペンギン企画ロゴ">
+        <span>セコンドペンギン企画</span>
+    </a>
+    <div class="header-right">
+        <a href="../index.html#contact" class="back-btn">📩 無料相談</a>
+        <a href="../index.html" class="back-btn">← TOPへ戻る</a>
+    </div>
+</header>
+
+<!-- ===== 他業種ナビ ===== -->
+<nav class="sector-nav-bar">
+    <a href="construction.html">建設業 →</a>
+    <a href="transport.html">運送業 →</a>
+    <a href="auto-repair.html" class="active">自動車整備 →</a>
+    <a href="accommodation.html">宿泊業 →</a>
+    <a href="food.html">食品業 →</a>
+    <a href="food-manufacturing.html">飲食料品製造業 →</a>
+    <a href="industrial-manufacturing.html">工業製品製造業 →</a>
+    <a href="care.html">介護 →</a>
+    <a href="union.html">組合 →</a>
+    <a href="registration-support.html">登録支援機関 →</a>
+</nav>
+
+<!-- ===== HERO ===== -->
+<div class="page-hero">
+    <span class="sector-badge">🔧 特定技能 対応分野（自動車整備）</span>
+    <h1>自動車整備業における<br>外国人材の採用・定着支援</h1>
+    <p>整備士不足が深刻化する自動車整備業に、<br>技術力の高い海外人材をお届けします。</p>
+</div>
+
+
+<!-- ===== INTRO ===== -->
+<section class="section fade-in">
+    <h2>自動車整備業で外国人を雇用する理由</h2>
+    <p class="lead-text">
+        整備士の高齢化・若手離れにより、業界全体で深刻な人材不足が続いています。<br>
+        特定技能「自動車整備」は、即戦力となる技術者を確保できる有力な制度です。
+    </p>
+
+    <div class="highlight-box">
+        🔩 <strong>自動車整備士の不足は業界全体の課題です。</strong><br>
+        国土交通省の調査では、2030年には約5万人の整備士が不足すると推計されています。
+        特定技能「自動車整備」では、<strong>日常点検・定期点検・分解整備</strong>の業務に従事できる人材の受入れが可能です。
+        弊社では技術力のある候補者のスクリーニングから在留申請・定着支援まで完全サポートします。
+    </div>
+
+    <div class="intro-grid">
+        <div class="intro-card">
+            <span class="icon">🔍</span>
+            <h3>深刻な整備士不足</h3>
+            <p>整備士の平均年齢は上昇し続け、若手の新規参入も減少。外国人材の活用が業界の持続的な経営に直結しています。</p>
+        </div>
+        <div class="intro-card">
+            <span class="icon">🛠️</span>
+            <h3>技術水準の高い人材</h3>
+            <p>フィリピン・インドネシアでは自動車整備の職業訓練が充実しており、基礎技術をしっかり身に付けた人材が多く存在します。</p>
+        </div>
+        <div class="intro-card">
+            <span class="icon">📜</span>
+            <h3>資格取得サポートも対応</h3>
+            <p>入国後に日本の自動車整備士技能検定3級の取得を目指すルートも。弊社では学習支援・受験手続きもサポートします。</p>
+        </div>
+    </div>
+</section>
+
+
+<!-- ===== 業務区分 ===== -->
+<section class="section section-accent fade-in">
+    <h2>自動車整備の対象業務</h2>
+    <p class="lead-text">
+        特定技能「自動車整備」では、以下の業務に従事することができます。
+    </p>
+    <div class="job-table-wrap">
+        <table class="job-table">
+            <thead>
+                <tr>
+                    <th style="width:28%">業務区分</th>
+                    <th style="width:50%">主な作業内容</th>
+                    <th style="width:22%">技能レベル</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>日常点検整備</strong></td>
+                    <td>エンジン・ブレーキ・タイヤ・灯火類など日常的な点検・調整作業</td>
+                    <td><span class="tag tag-navy">特定技能1号</span></td>
+                </tr>
+                <tr>
+                    <td><strong>定期点検整備</strong></td>
+                    <td>法定点検（3か月・6か月・12か月点検等）に伴う点検・整備作業</td>
+                    <td><span class="tag tag-navy">特定技能1号</span></td>
+                </tr>
+                <tr>
+                    <td><strong>分解整備</strong></td>
+                    <td>エンジン・ブレーキ・動力伝達装置等の分解・組立・調整</td>
+                    <td><span class="tag tag-navy">特定技能1号</span></td>
+                </tr>
+                <tr>
+                    <td><strong>関連業務（付随）</strong></td>
+                    <td>洗車・部品交換補助・受付補助など整備業務に付随する作業</td>
+                    <td><span class="tag tag-gray">補助的業務</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <p style="font-size:0.82rem; color:#888; margin-top:14px; text-align:center;">
+        ※分解整備は道路運送車両法上の認証工場での業務が前提です。
+    </p>
+</section>
+
+
+<!-- ===== 資格・試験 ===== -->
+<section class="section fade-in">
+    <h2>必要な資格・試験について</h2>
+    <p class="lead-text">
+        特定技能「自動車整備」で就労するためには、以下のいずれかの要件を満たす必要があります。
+    </p>
+    <div class="exam-grid">
+        <div class="exam-card">
+            <span class="exam-icon">📋</span>
+            <h3>自動車整備分野<br>特定技能評価試験</h3>
+            <p>国土交通省が実施する技能評価試験（学科・実技）に合格することで特定技能1号の要件を満たします。海外でも受験可能です。</p>
+        </div>
+        <div class="exam-card">
+            <span class="exam-icon">🏅</span>
+            <h3>自動車整備士<br>技能検定3級</h3>
+            <p>日本の国家資格である自動車整備士技能検定3級（ガソリン・ジーゼル等）の合格者は試験免除となります。</p>
+        </div>
+        <div class="exam-card">
+            <span class="exam-icon">🗣️</span>
+            <h3>日本語能力試験<br>N4以上</h3>
+            <p>日本語能力試験N4以上、または「日本語基礎テスト」の合格が必要です。弊社の日本語学習サポートで取得を支援します。</p>
+        </div>
+    </div>
+</section>
+
+
+<!-- ===== 支援フロー ===== -->
+<section class="section section-gray fade-in">
+    <h2>採用から定着までのサポートフロー</h2>
+    <p class="lead-text">
+        自動車整備業特有の資格・試験対応も含め、一気通貫でサポートします。
+    </p>
+    <div class="flow-list">
+        <div class="flow-item">
+            <div class="flow-num">1</div>
+            <div class="flow-body">
+                <h3>無料初回相談・雇用計画の設計</h3>
+                <p>貴社の業務内容・必要なスキルレベル・受入人数・時期をヒアリングし、最適な採用プランをご提案します。</p>
+            </div>
+        </div>
+        <div class="flow-item">
+            <div class="flow-num">2</div>
+            <div class="flow-body">
+                <h3>候補者の選定・スクリーニング</h3>
+                <p>フィリピン・インドネシアの連携機関から、整備技術・日本語力・安全意識を総合評価した候補者をご紹介。ビデオ面接も対応します。</p>
+            </div>
+        </div>
+        <div class="flow-item">
+            <div class="flow-num">3</div>
+            <div class="flow-body">
+                <h3>技能評価試験・日本語試験のサポート</h3>
+                <p>特定技能評価試験および日本語試験の受験準備を支援。試験スケジュールや申込み手続きもご案内します。</p>
+            </div>
+        </div>
+        <div class="flow-item">
+            <div class="flow-num">4</div>
+            <div class="flow-body">
+                <h3>在留資格申請（行政書士対応）</h3>
+                <p>特定技能「自動車整備」の在留資格申請書類を行政書士が作成・申請。国土交通省への確認手続きも対応します。</p>
+            </div>
+        </div>
+        <div class="flow-item">
+            <div class="flow-num">5</div>
+            <div class="flow-body">
+                <h3>入国・生活セットアップ</h3>
+                <p>空港送迎・住居確保・住民登録・銀行口座・携帯契約など、来日直後の生活立ち上げをまるごとサポートします。</p>
+            </div>
+        </div>
+        <div class="flow-item">
+            <div class="flow-num">6</div>
+            <div class="flow-body">
+                <h3>就業開始・整備士3級取得支援・定期面談</h3>
+                <p>就業後も定期面談・相談対応を実施。希望者には自動車整備士技能検定3級の取得に向けた学習支援も行います。</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ===== 料金 ===== -->
+<section class="section fade-in">
+    <h2>料金目安</h2>
+    <p class="lead-text">
+        人数・国・サポート範囲により変動します。まずはお気軽にご相談ください。
+    </p>
+    <div class="price-grid">
+        <div class="price-card">
+            <span class="price-icon">📝</span>
+            <h3>初回相談</h3>
+            <div class="price-amount">無料</div>
+            <p>制度の概要・スケジュール・費用感のご相談。オンライン対応可。</p>
+        </div>
+        <div class="price-card">
+            <span class="price-icon">✈️</span>
+            <h3>入国まで一括サポート</h3>
+            <div class="price-amount">150,000円〜</div>
+            <p>在留申請・マッチング・試験サポート・入国前準備を含むパッケージ。</p>
+        </div>
+        <div class="price-card">
+            <span class="price-icon">🏠</span>
+            <h3>入国後 生活セットアップ</h3>
+            <div class="price-amount">50,000円〜</div>
+            <p>住居確保・役所手続き・銀行・携帯など来日直後のセットアップ。</p>
+        </div>
+        <div class="price-card">
+            <span class="price-icon">🤝</span>
+            <h3>登録支援機関 月次サポート</h3>
+            <div class="price-amount">15,000円〜/人・月</div>
+            <p>義務的支援（面談・相談対応・情報提供）＋整備士資格取得支援。</p>
+        </div>
+    </div>
+    <p class="price-note">※上記は目安です。フルサポートパッケージは個別にお見積りいたします。</p>
+</section>
+
+
+<!-- ===== FAQ ===== -->
+<section class="section section-accent fade-in">
+    <h2>よくあるご質問（自動車整備業）</h2>
+    <div class="faq-list">
+        <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+                <span class="q-mark">Q</span>
+                認証工場でなくても受入れできますか？
+                <span class="faq-arrow">▼</span>
+            </div>
+            <div class="faq-a">
+                分解整備を伴う業務については、道路運送車両法上の認証を受けた工場であることが必要です。認証のない事業所でも、日常点検・洗車補助などの付随業務は可能ですが、詳細は個別にご相談ください。
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+                <span class="q-mark">Q</span>
+                技能評価試験はどこで受験できますか？
+                <span class="faq-arrow">▼</span>
+            </div>
+            <div class="faq-a">
+                国内では各都道府県で実施されています。フィリピンなど海外での試験実施も一部行われています。試験日程・申込み方法は弊社が最新情報をご案内しますのでお問合せください。
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+                <span class="q-mark">Q</span>
+                外国人が日本の整備士3級を取得できますか？
+                <span class="faq-arrow">▼</span>
+            </div>
+            <div class="faq-a">
+                はい、可能です。日本語での学科試験と実技試験があります。弊社では就業後の学習支援・受験手続きのサポートを行い、キャリアアップを後押しします。3級取得後はさらなる資格取得も視野に入ります。
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+                <span class="q-mark">Q</span>
+                EV（電気自動車）の整備はできますか？
+                <span class="faq-arrow">▼</span>
+            </div>
+            <div class="faq-a">
+                EV整備には「低圧電気取扱業務特別教育」などの追加資格が必要です。就業後の研修受講で対応可能なケースもあります。貴社の整備車種に合わせて対応策をご提案します。
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+                <span class="q-mark">Q</span>
+                フィリピン・インドネシアには整備士経験者がいますか？
+                <span class="faq-arrow">▼</span>
+            </div>
+            <div class="faq-a">
+                はい、両国とも自動車整備の職業訓練校が充実しており、一定の整備経験を持つ人材が多くいます。弊社の連携機関を通じて、技術レベル・経験年数・車種対応力を丁寧にスクリーニングした候補者をご紹介します。
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ===== CTA ===== -->
+<section class="cta-section fade-in">
+    <h2>まずは無料相談から</h2>
+    <p>自動車整備業での外国人雇用について、資格・試験対応も含めてお気軽にご相談ください。<br>専門スタッフが貴社の状況に合わせた最適プランをご提案します。</p>
+    <div class="cta-btns">
+        <a href="../index.html#contact" class="btn-white">📩 お問合せフォームへ</a>
+        <a href="https://line.me/R/ti/p/@556fihjp/" target="_blank" class="btn-line">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/LINE_logo.svg" alt="LINE">
+            LINEで相談する
+        </a>
+    </div>
+</section>
+
+
+<footer>
+    <p><a href="../privacy.html">プライバシーポリシー</a></p>
+    <p style="margin-top:10px;">© 2024-2026 Second Penguin Planning. All Rights Reserved.</p>
+</footer>
+
+<!-- LINE固定ボタン -->
+<a href="https://line.me/R/ti/p/@556fihjp/" class="line-fixed-btn" target="_blank">
+    <div class="line-inner">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/LINE_logo.svg" alt="LINE">
+        <span>無料 相談</span>
+    </div>
+</a>
+
+<script>
+function toggleFaq(el) {
+    const item = el.closest('.faq-item');
+    item.classList.toggle('open');
+}
+window.addEventListener('DOMContentLoaded', () => {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) entry.target.classList.add('visible');
+        });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+});
+</script>
+
+</body>
+</html>
