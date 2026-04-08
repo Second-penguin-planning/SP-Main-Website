@@ -6,18 +6,17 @@
     <title>外食業 特定技能サポート | 徳永行政書士事務所</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
+
         body {
             font-family: 'Hiragino Sans', 'Yu Gothic', sans-serif;
             color: #333;
             background: #fff;
         }
 
-        /* ヘッダー */
+        /* ====== HEADER ====== */
         header {
             background: linear-gradient(135deg, #8B0000 0%, #c0392b 100%);
             color: white;
-            padding: 0;
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -28,314 +27,465 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 12px 30px;
+            padding: 10px 30px;
         }
 
-        .logo {
-            font-size: 1.1rem;
-            font-weight: bold;
-            line-height: 1.4;
-        }
-
-        .logo span {
-            font-size: 0.75rem;
-            opacity: 0.85;
-            display: block;
-        }
-
-        .header-contact {
+        /* ロゴエリア */
+        .logo-area {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 12px;
         }
 
+        .logo-penguin {
+            width: 48px;
+            height: 48px;
+        }
+
+        .logo-text {
+            line-height: 1.3;
+        }
+
+        .logo-text .firm-name {
+            font-size: 1.05rem;
+            font-weight: bold;
+            letter-spacing: 0.05em;
+        }
+
+        .logo-text .firm-sub {
+            font-size: 0.7rem;
+            opacity: 0.85;
+        }
+
+        /* 言語切替 */
         .lang-switcher {
             display: flex;
-            gap: 6px;
+            gap: 5px;
         }
 
         .lang-btn {
-            background: rgba(255,255,255,0.2);
-            border: 1px solid rgba(255,255,255,0.4);
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.35);
             color: white;
-            padding: 4px 10px;
+            padding: 4px 9px;
             border-radius: 4px;
             cursor: pointer;
-            font-size: 0.75rem;
+            font-size: 0.72rem;
             transition: background 0.2s;
         }
 
         .lang-btn:hover, .lang-btn.active {
-            background: rgba(255,255,255,0.4);
+            background: rgba(255,255,255,0.35);
         }
-
-        .line-btn-header {
-            background: #06C755;
-            color: white;
-            padding: 8px 18px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            transition: background 0.2s;
-        }
-
-        .line-btn-header:hover { background: #05a847; }
 
         /* セクターナビ */
         .sector-nav {
-            background: rgba(0,0,0,0.25);
-            padding: 8px 30px;
+            background: rgba(0,0,0,0.22);
+            padding: 0 30px;
+            display: flex;
+            align-items: center;
             overflow-x: auto;
             white-space: nowrap;
+            gap: 4px;
         }
 
         .sector-nav a {
-            color: rgba(255,255,255,0.8);
+            color: rgba(255,255,255,0.78);
             text-decoration: none;
-            font-size: 0.78rem;
-            margin-right: 20px;
-            padding: 4px 0;
-            border-bottom: 2px solid transparent;
+            font-size: 0.75rem;
+            padding: 9px 12px;
+            border-bottom: 3px solid transparent;
             transition: all 0.2s;
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            flex-shrink: 0;
         }
 
-        .sector-nav a:hover { color: white; }
+        .sector-nav a:hover {
+            color: white;
+            background: rgba(255,255,255,0.08);
+        }
+
         .sector-nav a.active {
             color: white;
             border-bottom-color: #ffd700;
             font-weight: bold;
+            background: rgba(255,255,255,0.1);
         }
 
-        /* ヒーローセクション */
+        /* ====== HERO ====== */
         .hero {
-            background: linear-gradient(135deg, #8B0000 0%, #c0392b 60%, #e74c3c 100%);
-            color: white;
-            padding: 60px 30px;
-            text-align: center;
+            position: relative;
+            min-height: 480px;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            background: #8B0000;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(135deg,
+                    rgba(139,0,0,0.97) 0%,
+                    rgba(139,0,0,0.82) 45%,
+                    rgba(192,57,43,0.65) 100%);
+            z-index: 1;
+        }
+
+        /* 背景パターン */
+        .hero-pattern {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            background-image:
+                repeating-linear-gradient(
+                    45deg,
+                    transparent,
+                    transparent 40px,
+                    rgba(255,255,255,0.03) 40px,
+                    rgba(255,255,255,0.03) 80px
+                );
+        }
+
+        /* 右側デコ：大きな絵文字 */
+        .hero-deco {
+            position: absolute;
+            right: 6%;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 11rem;
+            opacity: 0.12;
+            z-index: 1;
+            pointer-events: none;
+            line-height: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 60px 30px 60px 50px;
+            max-width: 700px;
         }
 
         .hero-badge {
-            display: inline-block;
-            background: rgba(255,255,255,0.2);
-            border: 1px solid rgba(255,255,255,0.4);
-            padding: 6px 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.35);
+            color: white;
+            padding: 6px 16px;
             border-radius: 20px;
-            font-size: 0.85rem;
-            margin-bottom: 20px;
+            font-size: 0.78rem;
+            margin-bottom: 22px;
+        }
+
+        .hero-badge-dot {
+            width: 7px;
+            height: 7px;
+            background: #ffd700;
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.3); }
         }
 
         .hero h1 {
-            font-size: 2.2rem;
-            margin-bottom: 10px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            font-size: 3rem;
+            font-weight: 900;
+            color: white;
+            line-height: 1.15;
+            margin-bottom: 8px;
+            text-shadow: 0 3px 12px rgba(0,0,0,0.4);
         }
 
-        .hero h1 span {
-            font-size: 1rem;
+        .hero h1 .en {
             display: block;
-            opacity: 0.85;
-            margin-top: 5px;
-            font-weight: normal;
+            font-size: 1rem;
+            font-weight: 400;
+            opacity: 0.78;
+            letter-spacing: 0.08em;
+            margin-top: 6px;
         }
 
         .hero-desc {
-            font-size: 1rem;
-            max-width: 600px;
-            margin: 20px auto 0;
-            opacity: 0.9;
-            line-height: 1.8;
+            font-size: 0.98rem;
+            color: rgba(255,255,255,0.88);
+            line-height: 1.85;
+            margin: 22px 0 32px;
+            max-width: 520px;
         }
 
+        /* ヒーロー内 stat */
         .hero-stats {
             display: flex;
-            justify-content: center;
-            gap: 40px;
-            margin-top: 35px;
+            gap: 28px;
+            margin-bottom: 36px;
             flex-wrap: wrap;
         }
 
         .hero-stat {
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.22);
+            border-radius: 10px;
+            padding: 14px 20px;
             text-align: center;
+            min-width: 110px;
         }
 
         .hero-stat .num {
-            font-size: 2rem;
-            font-weight: bold;
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #ffd700;
             display: block;
         }
 
         .hero-stat .label {
-            font-size: 0.78rem;
-            opacity: 0.85;
+            font-size: 0.68rem;
+            color: rgba(255,255,255,0.8);
+            margin-top: 3px;
         }
 
-        /* メインコンテンツ */
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 20px;
+        /* LINE CTAボタン（ヒーロー内） */
+        .hero-cta {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            align-items: center;
         }
 
-        /* セクション共通 */
+        .btn-line-hero {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #06C755;
+            color: white;
+            padding: 14px 30px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: bold;
+            text-decoration: none;
+            box-shadow: 0 4px 18px rgba(6,199,85,0.45);
+            transition: all 0.25s;
+        }
+
+        .btn-line-hero:hover {
+            background: #05b34d;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(6,199,85,0.55);
+        }
+
+        .btn-line-hero .line-icon {
+            width: 26px;
+            height: 26px;
+            background: white;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-line-hero .line-icon svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .btn-tel-hero {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255,255,255,0.9);
+            font-size: 0.92rem;
+            font-weight: bold;
+            text-decoration: none;
+            border-bottom: 1px dashed rgba(255,255,255,0.45);
+            padding-bottom: 2px;
+            transition: color 0.2s;
+        }
+
+        .btn-tel-hero:hover { color: white; }
+
+        /* ====== SECTIONS ====== */
         section {
-            padding: 60px 0;
+            padding: 64px 0;
         }
 
-        section:nth-child(even) {
-            background: #f8f8f8;
+        section.bg-gray {
+            background: #f7f7f7;
         }
 
         .section-inner {
-            max-width: 900px;
+            max-width: 920px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 24px;
+        }
+
+        .section-header {
+            margin-bottom: 36px;
+        }
+
+        .section-label {
+            display: inline-block;
+            background: #8B0000;
+            color: white;
+            font-size: 0.7rem;
+            font-weight: bold;
+            letter-spacing: 0.12em;
+            padding: 4px 12px;
+            border-radius: 3px;
+            margin-bottom: 10px;
         }
 
         .section-title {
-            font-size: 1.6rem;
+            font-size: 1.65rem;
+            font-weight: 800;
+            color: #1a1a1a;
+            line-height: 1.3;
+        }
+
+        .section-title span {
             color: #8B0000;
-            margin-bottom: 10px;
-            padding-bottom: 12px;
-            border-bottom: 3px solid #8B0000;
         }
 
-        .section-subtitle {
+        .section-desc {
+            margin-top: 10px;
             color: #666;
-            font-size: 0.9rem;
-            margin-bottom: 30px;
+            font-size: 0.88rem;
+            line-height: 1.7;
         }
 
-        /* 業種カード */
+        /* ====== 業態カード ====== */
         .industry-cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 20px;
-            margin-top: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 18px;
         }
 
         .industry-card {
             background: white;
-            border-radius: 10px;
-            padding: 25px;
-            border-left: 4px solid #8B0000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-            transition: transform 0.2s, box-shadow 0.2s;
+            border-radius: 12px;
+            padding: 26px;
+            border-top: 4px solid #8B0000;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+            transition: transform 0.22s, box-shadow 0.22s;
         }
 
         .industry-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(139,0,0,0.15);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 28px rgba(139,0,0,0.14);
         }
 
-        .industry-card .icon {
-            font-size: 2rem;
-            margin-bottom: 12px;
+        .industry-card .ic-icon {
+            font-size: 2.2rem;
+            margin-bottom: 14px;
         }
 
         .industry-card h3 {
-            font-size: 1.05rem;
+            font-size: 1rem;
+            font-weight: 700;
             color: #8B0000;
             margin-bottom: 8px;
         }
 
         .industry-card p {
-            font-size: 0.85rem;
+            font-size: 0.83rem;
             color: #555;
-            line-height: 1.6;
+            line-height: 1.65;
         }
 
-        /* 業務区分 */
+        /* ====== 業務グリッド ====== */
         .job-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-top: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+            gap: 14px;
         }
 
         .job-item {
             background: white;
-            border-radius: 8px;
-            padding: 18px;
+            border-radius: 10px;
+            padding: 20px 16px;
             text-align: center;
             border: 2px solid #f0d0d0;
-            transition: border-color 0.2s;
+            transition: border-color 0.2s, transform 0.2s;
         }
 
         .job-item:hover {
             border-color: #8B0000;
+            transform: translateY(-2px);
         }
 
-        .job-item .job-icon {
-            font-size: 1.8rem;
-            margin-bottom: 8px;
-        }
+        .job-item .ji-icon { font-size: 1.9rem; margin-bottom: 9px; }
 
         .job-item h4 {
-            font-size: 0.9rem;
-            color: #333;
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: #222;
             margin-bottom: 5px;
         }
 
         .job-item p {
-            font-size: 0.78rem;
+            font-size: 0.76rem;
             color: #666;
+            line-height: 1.5;
         }
 
-        /* 要件ボックス */
-        .requirement-box {
-            background: #fff5f5;
-            border: 1px solid #f0d0d0;
-            border-radius: 10px;
-            padding: 25px;
-            margin-top: 25px;
+        /* ====== 注意ボックス ====== */
+        .notice-box {
+            background: #fff8f8;
+            border: 1px solid #f5c0c0;
+            border-left: 5px solid #8B0000;
+            border-radius: 8px;
+            padding: 20px 22px;
+            margin-top: 24px;
         }
 
-        .requirement-box h3 {
+        .notice-box h3 {
             color: #8B0000;
-            margin-bottom: 15px;
-            font-size: 1.05rem;
+            font-size: 0.95rem;
+            margin-bottom: 12px;
         }
 
-        .requirement-list {
+        .notice-box ul {
             list-style: none;
         }
 
-        .requirement-list li {
-            padding: 8px 0;
-            border-bottom: 1px solid #f0d0d0;
-            font-size: 0.9rem;
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
+        .notice-box ul li {
+            font-size: 0.85rem;
+            color: #555;
+            padding: 6px 0;
+            border-bottom: 1px solid #f5c0c0;
+            padding-left: 18px;
+            position: relative;
         }
 
-        .requirement-list li:last-child { border-bottom: none; }
+        .notice-box ul li:last-child { border-bottom: none; }
 
-        .requirement-list li::before {
-            content: "✓";
+        .notice-box ul li::before {
+            content: "!";
             color: #8B0000;
             font-weight: bold;
-            flex-shrink: 0;
+            position: absolute;
+            left: 0;
         }
 
-        /* 試験情報 */
-        .exam-cards {
+        /* ====== 試験カード ====== */
+        .exam-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 20px;
-            margin-top: 25px;
         }
 
         .exam-card {
             background: white;
-            border-radius: 10px;
-            padding: 25px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            border-radius: 12px;
+            padding: 26px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.07);
             position: relative;
             overflow: hidden;
         }
@@ -343,131 +493,197 @@
         .exam-card::before {
             content: "";
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
+            top: 0; left: 0; right: 0;
             height: 4px;
-            background: #8B0000;
-        }
-
-        .exam-card h3 {
-            color: #8B0000;
-            margin-bottom: 12px;
-            font-size: 1rem;
-        }
-
-        .exam-card p {
-            font-size: 0.85rem;
-            color: #555;
-            line-height: 1.7;
+            background: linear-gradient(90deg, #8B0000, #c0392b);
         }
 
         .exam-tag {
             display: inline-block;
             background: #8B0000;
             color: white;
+            font-size: 0.7rem;
+            font-weight: bold;
             padding: 3px 10px;
-            border-radius: 12px;
-            font-size: 0.72rem;
+            border-radius: 10px;
             margin-bottom: 10px;
         }
 
-        /* サポートフロー */
-        .flow-steps {
+        .exam-card h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 12px;
+        }
+
+        .exam-card p {
+            font-size: 0.83rem;
+            color: #555;
+            line-height: 1.75;
+        }
+
+        /* 要件リスト */
+        .req-box {
+            background: #fff8f8;
+            border: 1px solid #f5c0c0;
+            border-radius: 10px;
+            padding: 24px;
+            margin-top: 24px;
+        }
+
+        .req-box h3 {
+            color: #8B0000;
+            font-size: 0.95rem;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .req-list { list-style: none; }
+
+        .req-list li {
+            font-size: 0.85rem;
+            color: #444;
+            padding: 8px 0;
+            border-bottom: 1px solid #f0d0d0;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .req-list li:last-child { border-bottom: none; }
+
+        .req-list li::before {
+            content: "✓";
+            color: #8B0000;
+            font-weight: bold;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        /* ====== サポートフロー ====== */
+        .flow-wrap {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            grid-template-columns: repeat(6, 1fr);
             gap: 0;
-            margin-top: 30px;
-            position: relative;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 720px) {
+            .flow-wrap {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 420px) {
+            .flow-wrap {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
         .flow-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             text-align: center;
-            padding: 20px 10px;
+            padding: 18px 8px;
             position: relative;
         }
 
         .flow-step:not(:last-child)::after {
-            content: "→";
+            content: "›";
             position: absolute;
-            right: -8px;
-            top: 50%;
-            transform: translateY(-50%);
+            right: -4px;
+            top: 28px;
+            font-size: 1.6rem;
             color: #8B0000;
-            font-size: 1.2rem;
             font-weight: bold;
+            line-height: 1;
         }
 
-        .step-num {
-            width: 40px;
-            height: 40px;
+        @media (max-width: 720px) {
+            .flow-step:nth-child(3n)::after,
+            .flow-step:last-child::after { display: none; }
+        }
+
+        .flow-num {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
             background: #8B0000;
             color: white;
-            border-radius: 50%;
+            font-size: 1rem;
+            font-weight: 800;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: bold;
-            margin: 0 auto 10px;
-            font-size: 0.9rem;
+            margin-bottom: 10px;
+            box-shadow: 0 3px 10px rgba(139,0,0,0.3);
         }
 
-        .step-title {
-            font-size: 0.82rem;
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 5px;
+        .flow-title {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #222;
+            margin-bottom: 4px;
         }
 
-        .step-desc {
-            font-size: 0.72rem;
-            color: #666;
-            line-height: 1.4;
+        .flow-desc {
+            font-size: 0.7rem;
+            color: #777;
+            line-height: 1.45;
         }
 
-        /* 料金表 */
-        .pricing-cards {
+        /* ====== 料金 ====== */
+        .pricing-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 20px;
-            margin-top: 25px;
         }
 
         .pricing-card {
             background: white;
-            border-radius: 12px;
-            padding: 28px;
+            border-radius: 14px;
+            padding: 30px 24px;
             text-align: center;
-            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 3px 16px rgba(0,0,0,0.09);
             border: 2px solid transparent;
-            transition: border-color 0.2s;
+            transition: border-color 0.25s, transform 0.25s;
         }
 
         .pricing-card:hover {
             border-color: #8B0000;
+            transform: translateY(-3px);
         }
 
         .pricing-card.featured {
             border-color: #8B0000;
-            background: #fff5f5;
+            background: linear-gradient(160deg, #fff8f8, #fff);
+        }
+
+        .pricing-card .pc-icon {
+            font-size: 2rem;
+            margin-bottom: 12px;
         }
 
         .pricing-card h3 {
-            font-size: 0.95rem;
-            color: #666;
-            margin-bottom: 15px;
+            font-size: 0.9rem;
+            color: #777;
+            margin-bottom: 14px;
+            font-weight: 600;
         }
 
         .pricing-card .price {
-            font-size: 1.8rem;
-            font-weight: bold;
+            font-size: 2rem;
+            font-weight: 800;
             color: #8B0000;
         }
 
-        .pricing-card .price-unit {
-            font-size: 0.8rem;
-            color: #888;
-            margin-bottom: 15px;
+        .pricing-card .price-note {
+            font-size: 0.78rem;
+            color: #999;
+            margin-bottom: 18px;
         }
 
         .pricing-card ul {
@@ -476,147 +692,196 @@
         }
 
         .pricing-card ul li {
-            font-size: 0.82rem;
+            font-size: 0.8rem;
             color: #555;
             padding: 5px 0;
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid #f0e0e0;
+            padding-left: 14px;
+            position: relative;
         }
+
+        .pricing-card ul li:last-child { border-bottom: none; }
 
         .pricing-card ul li::before {
-            content: "・";
+            content: "●";
             color: #8B0000;
+            font-size: 0.5rem;
+            position: absolute;
+            left: 0;
+            top: 8px;
         }
 
-        /* FAQ */
-        .faq-list {
-            margin-top: 25px;
-        }
+        /* ====== FAQ ====== */
+        .faq-list { display: flex; flex-direction: column; gap: 10px; }
 
         .faq-item {
             background: white;
-            border-radius: 8px;
-            margin-bottom: 12px;
+            border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 2px 8px rgba(0,0,0,0.06);
         }
 
         .faq-q {
-            padding: 18px 20px;
-            font-weight: bold;
-            color: #333;
-            cursor: pointer;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            font-size: 0.9rem;
+            gap: 12px;
+            padding: 18px 20px;
+            cursor: pointer;
+            user-select: none;
+            transition: background 0.18s;
         }
 
-        .faq-q::before {
-            content: "Q";
-            color: white;
+        .faq-q:hover { background: #fff8f8; }
+
+        .faq-q-mark {
+            width: 28px;
+            height: 28px;
             background: #8B0000;
-            width: 24px;
-            height: 24px;
+            color: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.8rem;
+            font-size: 0.82rem;
+            font-weight: 700;
             flex-shrink: 0;
-            margin-right: 10px;
         }
 
-        .faq-q-text { flex: 1; }
+        .faq-q-text {
+            flex: 1;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #222;
+        }
 
         .faq-toggle {
             color: #8B0000;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
+            font-weight: 300;
             flex-shrink: 0;
+            transition: transform 0.25s;
         }
+
+        .faq-toggle.open { transform: rotate(45deg); }
 
         .faq-a {
-            padding: 0 20px 18px 54px;
+            display: none;
+            padding: 4px 20px 18px 60px;
             font-size: 0.85rem;
             color: #555;
-            line-height: 1.7;
+            line-height: 1.75;
         }
 
-        /* CTA */
+        /* ====== CTA SECTION ====== */
         .cta-section {
-            background: linear-gradient(135deg, #8B0000, #c0392b);
-            color: white;
+            background: linear-gradient(135deg, #8B0000 0%, #c0392b 100%);
+            padding: 72px 24px;
             text-align: center;
-            padding: 60px 20px;
+            color: white;
         }
 
         .cta-section h2 {
-            font-size: 1.6rem;
-            margin-bottom: 10px;
+            font-size: 1.7rem;
+            font-weight: 800;
+            margin-bottom: 12px;
         }
 
         .cta-section p {
             font-size: 0.95rem;
-            opacity: 0.9;
-            margin-bottom: 30px;
+            opacity: 0.88;
+            margin-bottom: 36px;
         }
 
         .cta-buttons {
             display: flex;
-            gap: 15px;
+            gap: 16px;
             justify-content: center;
             flex-wrap: wrap;
         }
 
-        .cta-btn-line {
+        .btn-line-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
             background: #06C755;
             color: white;
-            padding: 14px 35px;
-            border-radius: 8px;
-            text-decoration: none;
+            padding: 15px 36px;
+            border-radius: 50px;
+            font-size: 1.05rem;
             font-weight: bold;
-            font-size: 1rem;
+            text-decoration: none;
+            box-shadow: 0 4px 20px rgba(6,199,85,0.4);
+            transition: all 0.25s;
+        }
+
+        .btn-line-cta:hover {
+            background: #05b34d;
+            transform: translateY(-2px);
+            box-shadow: 0 7px 28px rgba(6,199,85,0.5);
+        }
+
+        .btn-line-cta .line-icon {
+            width: 28px;
+            height: 28px;
+            background: white;
+            border-radius: 7px;
             display: flex;
             align-items: center;
+            justify-content: center;
+        }
+
+        .btn-line-cta .line-icon svg {
+            width: 19px;
+            height: 19px;
+        }
+
+        .btn-tel-cta {
+            display: inline-flex;
+            align-items: center;
             gap: 8px;
-            transition: background 0.2s;
-        }
-
-        .cta-btn-line:hover { background: #05a847; }
-
-        .cta-btn-tel {
-            background: rgba(255,255,255,0.2);
             color: white;
-            padding: 14px 35px;
-            border-radius: 8px;
-            text-decoration: none;
+            padding: 15px 32px;
+            border-radius: 50px;
+            font-size: 1.05rem;
             font-weight: bold;
-            font-size: 1rem;
+            text-decoration: none;
             border: 2px solid rgba(255,255,255,0.5);
-            transition: background 0.2s;
+            background: rgba(255,255,255,0.12);
+            transition: all 0.25s;
         }
 
-        .cta-btn-tel:hover { background: rgba(255,255,255,0.3); }
+        .btn-tel-cta:hover { background: rgba(255,255,255,0.22); }
 
-        /* フッター */
+        /* ====== FOOTER ====== */
         footer {
-            background: #2c2c2c;
-            color: rgba(255,255,255,0.7);
+            background: #1a1a1a;
+            color: rgba(255,255,255,0.6);
             text-align: center;
-            padding: 25px 20px;
-            font-size: 0.8rem;
+            padding: 28px 20px;
+            font-size: 0.78rem;
+        }
+
+        footer .foot-links {
+            display: flex;
+            gap: 18px;
+            justify-content: center;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
         }
 
         footer a {
-            color: rgba(255,255,255,0.7);
+            color: rgba(255,255,255,0.6);
             text-decoration: none;
-            margin: 0 10px;
+            transition: color 0.18s;
         }
 
-        /* アニメーション */
+        footer a:hover { color: white; }
+
+        /* ====== FADE ANIMATION ====== */
         .fade-in {
             opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
+            transform: translateY(22px);
+            transition: opacity 0.55s ease, transform 0.55s ease;
         }
 
         .fade-in.visible {
@@ -624,37 +889,69 @@
             transform: translateY(0);
         }
 
-        /* レスポンシブ */
+        /* ====== RESPONSIVE ====== */
         @media (max-width: 600px) {
-            .hero h1 { font-size: 1.6rem; }
-            .hero-stats { gap: 20px; }
-            .flow-step:not(:last-child)::after { display: none; }
-            .flow-steps { grid-template-columns: repeat(2, 1fr); }
-            .header-top { flex-wrap: wrap; gap: 10px; }
+            .hero h1 { font-size: 2.1rem; }
+            .hero-content { padding: 40px 20px; }
+            .hero-stats { gap: 12px; }
+            .hero-stat { min-width: 90px; padding: 10px 14px; }
+            .hero-stat .num { font-size: 1.3rem; }
+            .header-top { padding: 10px 16px; flex-wrap: wrap; gap: 8px; }
+            .sector-nav { padding: 0 16px; }
         }
     </style>
 </head>
 <body>
 
-<!-- ヘッダー -->
+<!-- ====== HEADER ====== -->
 <header>
     <div class="header-top">
-        <div class="logo">
-            徳永行政書士事務所
-            <span>Tokunaga Immigration & Administrative Office | 특정기능 전문</span>
-        </div>
-        <div class="header-contact">
-            <div class="lang-switcher">
-                <button class="lang-btn active" onclick="switchLang('ja')">JP</button>
-                <button class="lang-btn" onclick="switchLang('en')">EN</button>
-                <button class="lang-btn" onclick="switchLang('id')">ID</button>
-                <button class="lang-btn" onclick="switchLang('tl')">TL</button>
+        <!-- ロゴ（セコンドペンギン） -->
+        <div class="logo-area">
+            <svg class="logo-penguin" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <!-- 体 -->
+                <ellipse cx="50" cy="62" rx="28" ry="30" fill="white"/>
+                <!-- 頭 -->
+                <circle cx="50" cy="32" r="20" fill="white"/>
+                <!-- 顔（黒） -->
+                <ellipse cx="50" cy="33" rx="14" ry="16" fill="#111"/>
+                <!-- お腹（白） -->
+                <ellipse cx="50" cy="68" rx="17" ry="20" fill="white"/>
+                <!-- 目（左） -->
+                <circle cx="44" cy="28" r="3.5" fill="white"/>
+                <circle cx="44.8" cy="28" r="1.8" fill="#111"/>
+                <!-- 目（右） -->
+                <circle cx="56" cy="28" r="3.5" fill="white"/>
+                <circle cx="56.8" cy="28" r="1.8" fill="#111"/>
+                <!-- くちばし -->
+                <ellipse cx="50" cy="37" rx="5" ry="3" fill="#f39c12"/>
+                <!-- 羽（左） -->
+                <ellipse cx="22" cy="62" rx="9" ry="20" fill="#111" transform="rotate(-10 22 62)"/>
+                <!-- 羽（右） -->
+                <ellipse cx="78" cy="62" rx="9" ry="20" fill="#111" transform="rotate(10 78 62)"/>
+                <!-- 足（左） -->
+                <ellipse cx="41" cy="90" rx="8" ry="5" fill="#f39c12" transform="rotate(-10 41 90)"/>
+                <!-- 足（右） -->
+                <ellipse cx="59" cy="90" rx="8" ry="5" fill="#f39c12" transform="rotate(10 59 90)"/>
+                <!-- 頭トップ黒 -->
+                <ellipse cx="50" cy="18" rx="17" ry="10" fill="#111"/>
+            </svg>
+            <div class="logo-text">
+                <div class="firm-name">徳永行政書士事務所</div>
+                <div class="firm-sub">Tokunaga Immigration & Administrative Office</div>
             </div>
-            <a href="https://line.me/ti/p/YOUR_LINE_ID" class="line-btn-header" target="_blank">
-                💬 LINE相談
-            </a>
+        </div>
+
+        <!-- 言語切替 -->
+        <div class="lang-switcher">
+            <button class="lang-btn active" onclick="switchLang('ja',this)">JP</button>
+            <button class="lang-btn" onclick="switchLang('en',this)">EN</button>
+            <button class="lang-btn" onclick="switchLang('id',this)">ID</button>
+            <button class="lang-btn" onclick="switchLang('tl',this)">TL</button>
         </div>
     </div>
+
+    <!-- セクターナビ -->
     <nav class="sector-nav">
         <a href="../index.html">🏠 TOP</a>
         <a href="construction.html">🏗️ 建設業</a>
@@ -670,102 +967,132 @@
     </nav>
 </header>
 
-<!-- ヒーロー -->
+<!-- ====== HERO ====== -->
 <div class="hero">
-    <div class="hero-badge">🍽️ 特定技能 対応分野</div>
-    <h1>
-        外食業
-        <span>Food Service Industry</span>
-    </h1>
-    <p class="hero-desc">
-        深刻な人手不足が続く外食業界。飲食店・ファストフード・デリバリーまで幅広い業態で特定技能外国人を受け入れ可能です。
-    </p>
-    <div class="hero-stats">
-        <div class="hero-stat">
-            <span class="num">53,000人</span>
-            <span class="label">受入れ見込み数（5年間）</span>
+    <div class="hero-pattern"></div>
+    <div class="hero-bg"></div>
+    <div class="hero-deco">🍽️</div>
+    <div class="hero-content">
+        <div class="hero-badge">
+            <span class="hero-badge-dot"></span>
+            特定技能 対応分野 ／ Food Service Industry
         </div>
-        <div class="hero-stat">
-            <span class="num">4業務</span>
-            <span class="label">対象業務区分</span>
+        <h1>
+            外食業
+            <span class="en">Food Service Industry</span>
+        </h1>
+        <p class="hero-desc">
+            深刻な人手不足が続く外食業界。飲食店・テイクアウト・カフェまで幅広い業態で特定技能外国人を受け入れ可能です。採用から就労開始まで、ワンストップでサポートします。
+        </p>
+        <div class="hero-stats">
+            <div class="hero-stat">
+                <span class="num">53,000人</span>
+                <span class="label">受入れ見込み<br>（5年間）</span>
+            </div>
+            <div class="hero-stat">
+                <span class="num">4業務</span>
+                <span class="label">対象業務<br>区分</span>
+            </div>
+            <div class="hero-stat">
+                <span class="num">全国</span>
+                <span class="label">対象<br>エリア</span>
+            </div>
         </div>
-        <div class="hero-stat">
-            <span class="num">全国</span>
-            <span class="label">対象エリア</span>
+        <div class="hero-cta">
+            <a href="https://line.me/ti/p/YOUR_LINE_ID" class="btn-line-hero" target="_blank">
+                <span class="line-icon">
+                    <svg viewBox="0 0 24 24" fill="#06C755" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2C6.48 2 2 6.02 2 11c0 3.04 1.6 5.73 4.09 7.47L5 21l3.18-1.56C9.35 19.79 10.65 20 12 20c5.52 0 10-4.02 10-9S17.52 2 12 2zm1 13H8v-1.5h5V15zm3-3H8v-1.5h8V12zm0-3H8V7.5h8V9z"/>
+                    </svg>
+                </span>
+                LINEで無料相談
+            </a>
+            <a href="tel:078-XXX-XXXX" class="btn-tel-hero">
+                📞 078-XXX-XXXX
+            </a>
         </div>
     </div>
 </div>
 
-<!-- 対象業態 -->
+<!-- ====== 対象業態 ====== -->
 <section>
     <div class="section-inner">
-        <h2 class="section-title fade-in">対象となる業態</h2>
-        <p class="section-subtitle fade-in">外食業分野では幅広い飲食サービス事業が受入れ対象です</p>
+        <div class="section-header fade-in">
+            <span class="section-label">TARGET BUSINESS</span>
+            <h2 class="section-title">対象となる<span>業態</span></h2>
+            <p class="section-desc">旅館業法に基づく許可を受けた幅広い飲食サービス事業が受入れ対象です</p>
+        </div>
         <div class="industry-cards">
             <div class="industry-card fade-in">
-                <div class="icon">🍣</div>
+                <div class="ic-icon">🍣</div>
                 <h3>飲食店営業</h3>
                 <p>一般レストラン・居酒屋・寿司店・ラーメン店・定食屋など、食事の提供を主とする飲食店全般が対象です。</p>
             </div>
             <div class="industry-card fade-in">
-                <div class="icon">🍔</div>
+                <div class="ic-icon">🍔</div>
                 <h3>持ち帰り・デリバリー</h3>
                 <p>テイクアウト専門店やデリバリー対応の飲食店も対象。弁当販売・惣菜提供なども含まれます。</p>
             </div>
             <div class="industry-card fade-in">
-                <div class="icon">☕</div>
+                <div class="ic-icon">☕</div>
                 <h3>喫茶店営業</h3>
                 <p>カフェ・喫茶店・コーヒーショップなど、飲み物の提供を主とする店舗も対象業態に含まれます。</p>
             </div>
         </div>
-    </div>
-</section>
 
-<!-- 業務区分 -->
-<section style="background: #f8f8f8;">
-    <div class="section-inner">
-        <h2 class="section-title fade-in">対象となる業務区分</h2>
-        <p class="section-subtitle fade-in">以下の業務であれば従事可能です（複数業務の組み合わせも可）</p>
-        <div class="job-grid">
-            <div class="job-item fade-in">
-                <div class="job-icon">🍳</div>
-                <h4>調理</h4>
-                <p>食材の仕込み・調理・盛り付けなど厨房業務全般</p>
-            </div>
-            <div class="job-item fade-in">
-                <div class="job-icon">🫱</div>
-                <h4>接客</h4>
-                <p>注文受付・配膳・会計・清掃などホール業務</p>
-            </div>
-            <div class="job-item fade-in">
-                <div class="job-icon">📦</div>
-                <h4>店舗管理</h4>
-                <p>食材発注・在庫管理・衛生管理・開閉店業務</p>
-            </div>
-            <div class="job-item fade-in">
-                <div class="job-icon">🚗</div>
-                <h4>デリバリー</h4>
-                <p>テイクアウト対応・デリバリー配達・梱包作業</p>
-            </div>
-        </div>
-
-        <div class="requirement-box fade-in" style="margin-top: 30px;">
-            <h3>⚠️ 注意点：できない業務</h3>
-            <ul class="requirement-list">
+        <div class="notice-box fade-in">
+            <h3>⚠️ 受入れできない業態</h3>
+            <ul>
                 <li>風俗営業（キャバレー・バー等）に関連する飲食業務</li>
-                <li>飲食業とは別に、製造業許可が必要な大規模食品製造</li>
+                <li>飲食業とは別に製造業許可が必要な大規模食品製造</li>
                 <li>単純な食品販売のみ（スーパーのレジ業務など）</li>
             </ul>
         </div>
     </div>
 </section>
 
-<!-- 試験・資格 -->
+<!-- ====== 業務区分 ====== -->
+<section class="bg-gray">
+    <div class="section-inner">
+        <div class="section-header fade-in">
+            <span class="section-label">JOB CATEGORIES</span>
+            <h2 class="section-title">対象となる<span>業務区分</span></h2>
+            <p class="section-desc">以下の業務であれば従事可能です（複数業務の組み合わせも可）</p>
+        </div>
+        <div class="job-grid">
+            <div class="job-item fade-in">
+                <div class="ji-icon">🍳</div>
+                <h4>調理</h4>
+                <p>食材の仕込み・調理・盛り付けなど厨房業務全般</p>
+            </div>
+            <div class="job-item fade-in">
+                <div class="ji-icon">🫱</div>
+                <h4>接客</h4>
+                <p>注文受付・配膳・会計・清掃などホール業務</p>
+            </div>
+            <div class="job-item fade-in">
+                <div class="ji-icon">📦</div>
+                <h4>店舗管理</h4>
+                <p>食材発注・在庫管理・衛生管理・開閉店業務</p>
+            </div>
+            <div class="job-item fade-in">
+                <div class="ji-icon">🚗</div>
+                <h4>デリバリー</h4>
+                <p>テイクアウト対応・デリバリー配達・梱包作業</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ====== 試験・資格 ====== -->
 <section>
     <div class="section-inner">
-        <h2 class="section-title fade-in">試験・資格要件</h2>
-        <p class="section-subtitle fade-in">特定技能「外食業」の要件を満たす方法は2つあります</p>
-        <div class="exam-cards">
+        <div class="section-header fade-in">
+            <span class="section-label">QUALIFICATION</span>
+            <h2 class="section-title">試験・<span>資格要件</span></h2>
+            <p class="section-desc">特定技能「外食業」の要件を満たす方法は3つあります</p>
+        </div>
+        <div class="exam-grid">
             <div class="exam-card fade-in">
                 <span class="exam-tag">方法①</span>
                 <h3>外食業技能測定試験</h3>
@@ -773,94 +1100,101 @@
                     ・学科試験（衛生管理・接客・飲食法令等）<br>
                     ・実技試験（調理・接客等の実務知識）<br>
                     ・海外でも受験可能（ベトナム・フィリピン等）<br>
-                    ・合格後、日本語試験も別途必要
+                    ・合格後、日本語試験（N4相当）も別途必要
                 </p>
             </div>
             <div class="exam-card fade-in">
                 <span class="exam-tag">方法②</span>
-                <h3>調理師免許・製菓衛生師等</h3>
+                <h3>調理師免許等の保有</h3>
                 <p>
-                    ・調理師免許保有者は技能試験免除<br>
-                    ・製菓衛生師、船舶料理士も対象<br>
-                    ・ふぐ調理師免許も該当<br>
-                    ・日本語試験（N4相当）は引き続き必要
+                    ・調理師免許保有者は技能試験が免除<br>
+                    ・製菓衛生師・船舶料理士・ふぐ調理師も対象<br>
+                    ・日本語試験（N4相当）は引き続き必要<br>
+                    ・免許の写し・翻訳が必要
                 </p>
             </div>
             <div class="exam-card fade-in">
                 <span class="exam-tag">方法③</span>
                 <h3>技能実習2号修了</h3>
                 <p>
-                    ・飲食料品製造業・農業等の技能実習2号修了者<br>
-                    ・外食業での実務経験がある場合<br>
+                    ・飲食料品製造業等の技能実習2号修了者<br>
                     ・試験免除で特定技能1号へ移行可能<br>
-                    ・移行先は関連業種との確認が必要
+                    ・移行先は関連業種との確認が必要<br>
+                    ・実習評価票・修了証の準備が必要
                 </p>
             </div>
         </div>
 
-        <div class="requirement-box fade-in" style="margin-top: 30px;">
+        <div class="req-box fade-in">
             <h3>📋 受入れ機関（雇用企業）の主な要件</h3>
-            <ul class="requirement-list">
+            <ul class="req-list">
                 <li>食品衛生法に基づく飲食店営業許可（または喫茶店営業許可）の取得</li>
                 <li>食品衛生責任者の設置（各店舗に1名）</li>
-                <li>外食業分野の協議会（外食業特定技能協議会）への加入</li>
-                <li>同等業務に従事する日本人と同等以上の賃金</li>
+                <li>外食業特定技能協議会（農林水産省所管）への加入（4ヶ月以内）</li>
+                <li>同等業務に従事する日本人と同等以上の賃金・待遇</li>
                 <li>適切な1号特定技能外国人支援計画の作成・実施</li>
             </ul>
         </div>
     </div>
 </section>
 
-<!-- サポートフロー -->
-<section style="background: #f8f8f8;">
+<!-- ====== サポートフロー ====== -->
+<section class="bg-gray">
     <div class="section-inner">
-        <h2 class="section-title fade-in">サポートの流れ</h2>
-        <p class="section-subtitle fade-in">ご相談から就労開始まで、すべてお任せください</p>
-        <div class="flow-steps">
+        <div class="section-header fade-in">
+            <span class="section-label">SUPPORT FLOW</span>
+            <h2 class="section-title">サポートの<span>流れ</span></h2>
+            <p class="section-desc">ご相談から就労開始まで、すべてお任せください</p>
+        </div>
+        <div class="flow-wrap">
             <div class="flow-step fade-in">
-                <div class="step-num">1</div>
-                <div class="step-title">無料相談</div>
-                <div class="step-desc">お店の状況・必要人数・業務内容をヒアリング</div>
+                <div class="flow-num">1</div>
+                <div class="flow-title">無料相談</div>
+                <div class="flow-desc">お店の状況・必要人数・業務内容をヒアリング</div>
             </div>
             <div class="flow-step fade-in">
-                <div class="step-num">2</div>
-                <div class="step-title">営業許可確認</div>
-                <div class="step-desc">飲食店営業許可・食品衛生責任者の確認</div>
+                <div class="flow-num">2</div>
+                <div class="flow-title">営業許可確認</div>
+                <div class="flow-desc">飲食店営業許可・食品衛生責任者の確認</div>
             </div>
             <div class="flow-step fade-in">
-                <div class="step-num">3</div>
-                <div class="step-title">人材マッチング</div>
-                <div class="step-desc">試験合格者・技能実習修了者の紹介</div>
+                <div class="flow-num">3</div>
+                <div class="flow-title">人材マッチング</div>
+                <div class="flow-desc">試験合格者・技能実習修了者の紹介</div>
             </div>
             <div class="flow-step fade-in">
-                <div class="step-num">4</div>
-                <div class="step-title">在留資格申請</div>
-                <div class="step-desc">特定技能ビザ申請・審査対応（2〜4ヶ月）</div>
+                <div class="flow-num">4</div>
+                <div class="flow-title">在留資格申請</div>
+                <div class="flow-desc">特定技能ビザ申請・審査対応（2〜4ヶ月）</div>
             </div>
             <div class="flow-step fade-in">
-                <div class="step-num">5</div>
-                <div class="step-title">入国・入社</div>
-                <div class="step-desc">空港送迎・住居手配・役所手続きサポート</div>
+                <div class="flow-num">5</div>
+                <div class="flow-title">入国・入社</div>
+                <div class="flow-desc">空港送迎・住居手配・役所手続きサポート</div>
             </div>
             <div class="flow-step fade-in">
-                <div class="step-num">6</div>
-                <div class="step-title">継続支援</div>
-                <div class="step-desc">協議会加入・定期面談・更新手続きまで</div>
+                <div class="flow-num">6</div>
+                <div class="flow-title">継続支援</div>
+                <div class="flow-desc">協議会加入・定期面談・更新手続きまで</div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- 料金 -->
+<!-- ====== 料金 ====== -->
 <section>
     <div class="section-inner">
-        <h2 class="section-title fade-in">料金プラン</h2>
-        <p class="section-subtitle fade-in">飲食店の規模・人数に合わせた柔軟なプランをご用意しています</p>
-        <div class="pricing-cards">
+        <div class="section-header fade-in">
+            <span class="section-label">PRICING</span>
+            <h2 class="section-title">料金<span>プラン</span></h2>
+            <p class="section-desc">飲食店の規模・人数に合わせた柔軟なプランをご用意しています</p>
+        </div>
+        <div class="pricing-grid">
             <div class="pricing-card fade-in">
-                <h3>📋 在留資格申請</h3>
-                <div class="price">150,000<small style="font-size:1rem">円〜</small></div>
-                <div class="price-unit">/ 1名あたり（税別）</div>
+                <div class="pc-icon">📋</div>
+                <h3>在留資格申請</h3>
+                <div class="price">¥150,000<small style="font-size:1rem">〜</small></div>
+                <div class="price-note">1名あたり（税別）</div>
                 <ul>
                     <li>申請書類作成・翻訳</li>
                     <li>入管申請・審査対応</li>
@@ -869,9 +1203,10 @@
                 </ul>
             </div>
             <div class="pricing-card featured fade-in">
-                <h3>🏠 受入れ初期設定</h3>
-                <div class="price">50,000<small style="font-size:1rem">円〜</small></div>
-                <div class="price-unit">/ セット（税別）</div>
+                <div class="pc-icon">🏠</div>
+                <h3>受入れ初期設定</h3>
+                <div class="price">¥50,000<small style="font-size:1rem">〜</small></div>
+                <div class="price-note">セット（税別）</div>
                 <ul>
                     <li>住居確保サポート</li>
                     <li>役所・銀行手続き同行</li>
@@ -880,31 +1215,36 @@
                 </ul>
             </div>
             <div class="pricing-card fade-in">
-                <h3>📅 月次サポート</h3>
-                <div class="price">15,000<small style="font-size:1rem">円〜</small></div>
-                <div class="price-unit">/ 人・月（税別）</div>
+                <div class="pc-icon">📅</div>
+                <h3>月次サポート</h3>
+                <div class="price">¥15,000<small style="font-size:1rem">〜</small></div>
+                <div class="price-note">人・月（税別）</div>
                 <ul>
                     <li>定期面談（月1回）</li>
-                    <li>相談窓口（多言語対応）</li>
+                    <li>多言語相談窓口</li>
                     <li>労務トラブル対応</li>
                     <li>更新・変更手続き</li>
                 </ul>
             </div>
         </div>
-        <p class="fade-in" style="text-align:center; margin-top:20px; color:#888; font-size:0.82rem;">
+        <p class="fade-in" style="text-align:center;margin-top:18px;color:#999;font-size:0.8rem;">
             ※ 複数名採用・複数店舗の場合は割引あり。詳細はお問い合わせください。
         </p>
     </div>
 </section>
 
-<!-- FAQ -->
-<section style="background: #f8f8f8;">
+<!-- ====== FAQ ====== -->
+<section class="bg-gray">
     <div class="section-inner">
-        <h2 class="section-title fade-in">よくあるご質問</h2>
-        <p class="section-subtitle fade-in">外食業での特定技能受入れに関するQ&A</p>
+        <div class="section-header fade-in">
+            <span class="section-label">FAQ</span>
+            <h2 class="section-title">よくある<span>ご質問</span></h2>
+            <p class="section-desc">外食業での特定技能受入れに関するQ&A</p>
+        </div>
         <div class="faq-list">
             <div class="faq-item fade-in">
                 <div class="faq-q">
+                    <span class="faq-q-mark">Q</span>
                     <span class="faq-q-text">アルバイト・パートとして雇うことはできますか？</span>
                     <span class="faq-toggle">＋</span>
                 </div>
@@ -914,34 +1254,38 @@
             </div>
             <div class="faq-item fade-in">
                 <div class="faq-q">
+                    <span class="faq-q-mark">Q</span>
                     <span class="faq-q-text">調理のみ、ホールのみでの採用は可能ですか？</span>
                     <span class="faq-toggle">＋</span>
                 </div>
                 <div class="faq-a">
-                    可能です。外食業の業務区分は「調理」「接客」「店舗管理」などに分かれており、いずれか1つまたは複数の組み合わせで従事できます。ただし、就労資格証明書等の書類に記載した業務内容の範囲内となります。
+                    可能です。外食業の業務区分は「調理」「接客」「店舗管理」などに分かれており、いずれか1つまたは複数の組み合わせで従事できます。就労資格証明書等に記載した業務内容の範囲内となります。
                 </div>
             </div>
             <div class="faq-item fade-in">
                 <div class="faq-q">
+                    <span class="faq-q-mark">Q</span>
                     <span class="faq-q-text">チェーン店の場合、店舗間で異動させることはできますか？</span>
                     <span class="faq-toggle">＋</span>
                 </div>
                 <div class="faq-a">
-                    同一企業内であれば、一定条件のもと店舗間の異動が可能です。ただし、就労する店舗の飲食店営業許可の確認や、変更届の提出が必要な場合があります。異動前にご相談ください。
+                    同一企業内であれば一定条件のもと店舗間の異動が可能です。ただし、就労する店舗の飲食店営業許可の確認や変更届の提出が必要な場合があります。異動前にご相談ください。
                 </div>
             </div>
             <div class="faq-item fade-in">
                 <div class="faq-q">
+                    <span class="faq-q-mark">Q</span>
                     <span class="faq-q-text">外食業協議会への加入は必須ですか？</span>
                     <span class="faq-toggle">＋</span>
                 </div>
                 <div class="faq-a">
-                    はい、必須です。初めて特定技能外国人を受け入れる場合、4ヶ月以内に外食業特定技能協議会（農林水産省所管）への加入が義務付けられています。加入費用と手続きについてもサポートいたします。
+                    はい、必須です。初めて特定技能外国人を受け入れる場合、4ヶ月以内に外食業特定技能協議会（農林水産省所管）への加入が義務付けられています。加入費用と手続きについてもサポートします。
                 </div>
             </div>
             <div class="faq-item fade-in">
                 <div class="faq-q">
-                    <span class="faq-q-text">日本語があまり話せない人でも採用できますか？</span>
+                    <span class="faq-q-mark">Q</span>
+                    <span class="faq-q-text">日本語があまり話せない方でも採用できますか？</span>
                     <span class="faq-toggle">＋</span>
                 </div>
                 <div class="faq-a">
@@ -952,59 +1296,65 @@
     </div>
 </section>
 
-<!-- CTA -->
+<!-- ====== CTA ====== -->
 <div class="cta-section">
     <h2>外食業での人材採用、まずはご相談ください</h2>
     <p>飲食店・カフェ・デリバリーなど業態を問わず、最適な採用プランをご提案します</p>
     <div class="cta-buttons">
-        <a href="https://line.me/ti/p/YOUR_LINE_ID" class="cta-btn-line" target="_blank">
-            💬 LINEで無料相談
+        <a href="https://line.me/ti/p/YOUR_LINE_ID" class="btn-line-cta" target="_blank">
+            <span class="line-icon">
+                <svg viewBox="0 0 24 24" fill="#06C755" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2C6.48 2 2 6.02 2 11c0 3.04 1.6 5.73 4.09 7.47L5 21l3.18-1.56C9.35 19.79 10.65 20 12 20c5.52 0 10-4.02 10-9S17.52 2 12 2zm1 13H8v-1.5h5V15zm3-3H8v-1.5h8V12zm0-3H8V7.5h8V9z"/>
+                </svg>
+            </span>
+            LINEで無料相談
         </a>
-        <a href="tel:078-XXX-XXXX" class="cta-btn-tel">
+        <a href="tel:078-XXX-XXXX" class="btn-tel-cta">
             📞 電話で相談
         </a>
     </div>
 </div>
 
-<!-- フッター -->
+<!-- ====== FOOTER ====== -->
 <footer>
-    <p>徳永行政書士事務所 | 神戸ファッションマート 4N-07-01</p>
-    <p style="margin-top: 8px;">
+    <div class="foot-links">
         <a href="../index.html">TOP</a>
         <a href="../index.html#about">事務所概要</a>
         <a href="../index.html#contact">お問い合わせ</a>
-    </p>
-    <p style="margin-top: 10px;">© 2025 徳永行政書士事務所. All Rights Reserved.</p>
+        <a href="construction.html">建設業</a>
+        <a href="transport.html">運輸業</a>
+        <a href="accommodation.html">宿泊業</a>
+    </div>
+    <p>徳永行政書士事務所 ｜ 神戸ファッションマート 4N-07-01</p>
+    <p style="margin-top:6px;">© 2025 徳永行政書士事務所. All Rights Reserved.</p>
 </footer>
 
 <script>
-    // フェードインアニメーション
+    // フェードイン
     const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
+        entries.forEach(e => {
+            if (e.isIntersecting) e.target.classList.add('visible');
         });
     }, { threshold: 0.1 });
-
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
     // FAQ アコーディオン
     document.querySelectorAll('.faq-q').forEach(q => {
         q.addEventListener('click', () => {
             const item = q.parentElement;
-            const answer = item.querySelector('.faq-a');
-            const toggle = q.querySelector('.faq-toggle');
-            const isOpen = answer.style.display === 'block';
-            answer.style.display = isOpen ? 'none' : 'block';
-            toggle.textContent = isOpen ? '＋' : '－';
+            const ans = item.querySelector('.faq-a');
+            const tog = q.querySelector('.faq-toggle');
+            const open = ans.style.display === 'block';
+            ans.style.display = open ? 'none' : 'block';
+            tog.textContent = open ? '＋' : '－';
+            tog.classList.toggle('open', !open);
         });
     });
 
-    // 言語切替（プレースホルダー）
-    function switchLang(lang) {
-        document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-        event.target.classList.add('active');
+    // 言語切替
+    function switchLang(lang, btn) {
+        document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
     }
 </script>
 
