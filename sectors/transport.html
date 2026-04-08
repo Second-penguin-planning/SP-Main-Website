@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<link rel="icon" type="image/png" sizes="32x32" href="../images/penguin_logo_192.png">
+<link rel="apple-touch-icon" sizes="192x192" href="../images/penguin_logo_192.png">
+<meta name="theme-color" content="#005bac">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>運送業（自動車運転）| セコンドペンギン企画</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --main-blue: #005bac;
+        --accent-green: #006400;
+        --sky-blue: #e0f4ff;
+        --text-color: #333;
+        --white: #ffffff;
+        --accent-orange: #ff8c00;
+        --sector-color: #7b3f00;
+        --sector-light: #fdf3e8;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+        font-family: 'Noto Sans JP', sans-serif;
+        line-height: 1.8;
+        color: var(--text-color);
+        background-color: var(--sky-blue);
+        overflow-x: hidden;
+    }
+
+    /* ===== HEADER ===== */
+    header {
+        background: var(--white);
+        padding: 8px 3%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: bold;
+        font-size: 1.1rem;
+        color: var(--main-blue);
+        text-decoration: none;
+    }
+    .logo img { height: 38px; width: auto; }
+    .header-right {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+    .back-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 7px 16px;
+        background: var(--sector-color);
+        color: white;
+        text-decoration: none;
+        border-radius: 20px;
+        font-size: 0.82rem;
+        font-weight: bold;
+        transition: 0.3s;
+    }
+    .back-btn:hover { background: var(--main-blue); transform: translateX(-3px); }
+
+    /* ===== SECTOR NAV ===== */
+    .sector-nav-bar {
+        background: var(--sector-color);
+        padding: 10px 16px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        justify-content: center;
+    }
+    .sector-nav-bar a {
+        display: inline-flex;
+        align-items: center;
+        gap: 3px;
+        padding: 4px 12px;
+        background: rgba(255,255,255,0.15);
+        color: #fff;
+        text-decoration: none;
+        font-size: 0.72rem;
+        font-weight: 600;
+        border: 1px solid rgba(255,255,255,0.3);
+        border-radius: 16px;
+        transition: all 0.2s ease;
+        white-space: nowrap;
+    }
+    .sector-nav-bar a:hover,
+    .sector-nav-bar a.active {
+        background: rgba(255,255,255,0.9);
+        color: var(--sector-color);
+        border-color: transparent;
+    }
+    @media (max-width: 600px) {
+        .sector-nav-bar a { font-size: 0.65rem; padding: 3px 9px; }
+    }
+
+    /* ===== HERO ===== */
+    .page-hero {
+        position: relative;
+        background: url("https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=1400") center/cover no-repeat;
+        padding: 80px 10% 60px;
+        color: #fff;
+        text-align: center;
+        min-height: 380px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .page-hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(60, 25, 0, 0.62);
+        z-index: 0;
+    }
+    .page-hero > * { position: relative; z-index: 1; }
+    .page-hero .sector-badge {
+        display: inline-block;
+        background: rgba(255,255,255,0.2);
+        border: 1px solid rgba(255,255,255,0.5);
+        padding: 4px 18px;
+        border-radius: 20px;
+        font-size: 0.82rem;
+        margin-bottom: 16px;
+        letter-spacing: 0.1em;
+    }
+    .page-hero h1 {
+        font-size: clamp(1.8rem, 4vw, 2.8rem);
+        line-height: 1.35;
+        text-shadow: 0 3px 15px rgba(0,0,0,0.6);
+        margin-bottom: 16px;
+    }
+    .page-hero p {
+        font-size: 1rem;
+        color: #f5dfc8;
+        max-width: 640px;
+    }
+
+    /* ===== 共通 ===== */
+    .section { padding: 70px 10%; background: var(--white); margin: 20px 0; }
+    .section-gray { background: var(--sky-blue); }
+    .section-accent { background: var(--sector-light); }
+
+    h2 {
+        text-align: center;
+        color: var(--sector-color);
+        font-size: 1.7rem;
+        margin-bottom: 40px;
+        position: relative;
+        padding-bottom: 12px;
+    }
+    h2::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 50px;
+        height: 3px;
+        background: var(--accent-orange);
+        border-radius: 2px;
+    }
+    h3 { color: var(--sector-color); margin-bottom: 10px; }
+
+    .lead-text {
+        text-align: center;
+        color: #555;
+        font-size: 0.97rem;
+        margin-top: -28px;
+        margin-bottom: 44px;
+        line-height: 1.9;
+    }
+
+    /* ===== INTRO CARDS ===== */
+    .intro-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 24px;
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+    .intro-card {
+        background: var(--sector-light);
+        border-radius: 14px;
+        padding: 28px 24px;
+        border-left: 5px solid var(--sector-color);
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .intro-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+    .intro-card .icon { font-size: 2rem; margin-bottom: 12px; display: block; }
+    .intro-card h3 { font-size: 1rem; margin-bottom: 8px; }
+    .intro-card p { font-size: 0.88rem; color: #555; line-height: 1.75; }
+
+    /* ===== NOTICE BOX ===== */
+    .notice-box {
+        background: #fff8e6;
+        border-left: 5px solid var(--accent-orange);
+        border-radius: 10px;
+        padding: 20px 24px;
+        margin: 0 auto 36px;
+        max-width: 860px;
+        font-size: 0.92rem;
+        line-height: 1.85;
+        color: #5a3a00;
+    }
+    .notice-box strong { color: #8a4500; }
+
+    /* ===== 業務区分テーブル ===== */
+    .job-table-wrap { overflow-x: auto; margin-top: 10px; }
+    .job-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.9rem;
+        min-width: 560px;
+    }
+    .job-table th {
+        background: var(--sector-color);
+        color: white;
+        padding: 12px 16px;
+        text-align: left;
+        font-weight: 600;
+    }
+    .job-table td {
+        padding: 12px 16px;
+        border-bottom: 1px solid #f0e0cc;
+        vertical-align: top;
+    }
+    .job-table tr:nth-child(even) td { background: #fdf8f2; }
+    .job-table tr:hover td { background: #fdeedd; }
+    .tag {
+        display: inline-block;
+        padding: 2px 10px;
+        border-radius: 12px;
+        font-size: 0.72rem;
+        font-weight: bold;
+        margin: 2px 2px 2px 0;
+    }
+    .tag-brown { background: #ffe0b2; color: #6d3b00; }
+    .tag-green { background: #d4f0dd; color: #1a6b33; }
+    .tag-red   { background: #fde8e8; color: #8b0000; }
+
+    /* ===== FLOW ===== */
+    .flow-list { max-width: 800px; margin: 0 auto; }
+    .flow-item {
+        display: flex;
+        gap: 20px;
+        align-items: flex-start;
+        margin-bottom: 28px;
+        position: relative;
+    }
+    .flow-item:not(:last-child)::after {
+        content: '';
+        position: absolute;
+        left: 22px;
+        top: 50px;
+        bottom: -10px;
+        width: 2px;
+        background: linear-gradient(to bottom, var(--sector-color), transparent);
+    }
+    .flow-num {
+        flex-shrink: 0;
+        width: 46px;
+        height: 46px;
+        background: var(--sector-color);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1rem;
+        font-weight: bold;
+        box-shadow: 0 4px 12px rgba(123,63,0,0.3);
+    }
+    .flow-body h3 { font-size: 1rem; margin-bottom: 4px; }
+    .flow-body p { font-size: 0.87rem; color: #555; line-height: 1.7; }
+
+    /* ===== PRICE ===== */
+    .price-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 20px;
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+    .price-card {
+        background: white;
+        border-radius: 14px;
+        padding: 28px 22px;
+        box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+        text-align: center;
+        border-top: 4px solid var(--sector-color);
+        transition: transform 0.3s;
+    }
+    .price-card:hover { transform: translateY(-5px); }
+    .price-card .price-icon { font-size: 2.2rem; margin-bottom: 12px; display: block; }
+    .price-card h3 { font-size: 0.95rem; margin-bottom: 10px; color: var(--sector-color); }
+    .price-card .price-amount {
+        font-size: 1.4rem;
+        font-weight: bold;
+        color: var(--accent-orange);
+        margin-bottom: 10px;
+    }
+    .price-card p { font-size: 0.82rem; color: #666; line-height: 1.7; }
+    .price-note {
+        text-align: center;
+        font-size: 0.82rem;
+        color: #888;
+        margin-top: 20px;
+    }
+
+    /* ===== FAQ ===== */
+    .faq-list { max-width: 800px; margin: 0 auto; }
+    .faq-item {
+        background: white;
+        border-radius: 12px;
+        margin-bottom: 14px;
+        overflow: hidden;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    }
+    .faq-q {
+        padding: 18px 22px;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        cursor: pointer;
+        font-weight: bold;
+        font-size: 0.95rem;
+        color: var(--sector-color);
+        user-select: none;
+        transition: background 0.2s;
+    }
+    .faq-q:hover { background: var(--sector-light); }
+    .faq-q .q-mark {
+        flex-shrink: 0;
+        width: 32px;
+        height: 32px;
+        background: var(--sector-color);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.9rem;
+        font-weight: bold;
+    }
+    .faq-q .faq-arrow {
+        margin-left: auto;
+        transition: transform 0.3s;
+        font-size: 0.9rem;
+        color: #999;
+    }
+    .faq-item.open .faq-arrow { transform: rotate(180deg); }
+    .faq-a {
+        display: none;
+        padding: 0 22px 18px 68px;
+        font-size: 0.9rem;
+        color: #555;
+        line-height: 1.8;
+        border-top: 1px solid #f0e8dc;
+    }
+    .faq-item.open .faq-a { display: block; }
+
+    /* ===== CTA ===== */
+    .cta-section {
+        background: linear-gradient(135deg, var(--sector-color) 0%, #a0522d 100%);
+        padding: 70px 10%;
+        text-align: center;
+        color: white;
+    }
+    .cta-section h2 { color: white; font-size: 1.6rem; margin-bottom: 12px; }
+    .cta-section h2::after { background: rgba(255,255,255,0.5); }
+    .cta-section p { color: #f5dfc8; margin-bottom: 32px; font-size: 0.97rem; }
+    .cta-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .btn-white {
+        display: inline-block;
+        padding: 14px 32px;
+        background: white;
+        color: var(--sector-color);
+        text-decoration: none;
+        border-radius: 50px;
+        font-weight: bold;
+        font-size: 1rem;
+        transition: 0.3s;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+    }
+    .btn-white:hover { transform: scale(1.05); }
+    .btn-line {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 14px 28px;
+        background: #06c755;
+        color: white;
+        text-decoration: none;
+        border-radius: 50px;
+        font-weight: bold;
+        font-size: 1rem;
+        transition: 0.3s;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+    }
+    .btn-line:hover { background: #05a647; transform: scale(1.05); }
+    .btn-line img { width: 22px; height: 22px; }
+
+    /* ===== LINE固定 ===== */
+    .line-fixed-btn {
+        position: fixed;
+        top: 90px;
+        right: 20px;
+        width: 120px;
+        height: 60px;
+        background: #06C755;
+        border-radius: 30px;
+        border: 3px solid white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+        z-index: 9999;
+        transition: 0.3s;
+        text-decoration: none;
+    }
+    .line-fixed-btn:hover { transform: scale(1.1); }
+    .line-inner {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 11px;
+        font-weight: bold;
+        color: white;
+    }
+    .line-inner img { width: 28px; height: 28px; }
+
+    @media (max-width: 768px) {
+        .page-hero { min-height: 280px; padding: 60px 6% 40px; }
+        .section { padding: 50px 6%; }
+        .line-fixed-btn { top: 120px; right: 12px; width: 80px; height: 50px; border-radius: 25px; }
+        .line-inner img { width: 26px; height: 26px; }
+    }
+
+    footer { background: #333; color: white; text-align: center; padding: 30px; }
+    footer a { color: #fff; text-decoration: underline; }
+
+    .fade-in {
+        opacity: 0;
+        transform: translateY(28px);
+        transition: opacity 0.75s ease-out, transform 0.75s ease-out;
+    }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header>
+    <a href="../index.html" class="logo">
+        <img src="../images/penguin_logo_192.png" alt="セコンドペンギン企画ロゴ">
+        <span>セコンドペンギン企画</span>
+    </a>
+    <div class="header-right">
+        <a href="../index.html#contact" class="back-btn">📩 無料相談</a>
+        <a href="../index.html" class="back-btn">← TOPへ戻る</a>
+    </div>
+</header>
+
+<!-- ===== 他業種ナビ ===== -->
+<nav class="sector-nav-bar">
+    <a href="construction.html">建設業 →</a>
+    <a href="transport.html" class="active">運送業 →</a>
+    <a href="auto-repair.html">自動車整備 →</a>
+    <a href="accommodation.html">宿泊業 →</a>
+    <a href="food.html">食品業 →</a>
+    <a href="food-manufacturing.html">飲食料品製造業 →</a>
+    <a href="industrial-manufacturing.html">工業製品製造業 →</a>
+    <a href="care.html">介護 →</a>
+    <a href="union.html">組合 →</a>
+    <a href="registration-support.html">登録支援機関 →</a>
+</nav>
+
+<!-- ===== HERO ===== -->
+<div class="page-hero">
+    <span class="sector-badge">🚛 特定技能 対応分野（自動車運転）</span>
+    <h1>運送業における<br>外国人材の採用・定着支援</h1>
+    <p>2024年問題で加速する人手不足に対し、<br>特定技能「自動車運転」でドライバー確保を実現します。</p>
+</div>
+
+
+<!-- ===== INTRO ===== -->
+<section class="section fade-in">
+    <h2>運送業で外国人を雇用する理由</h2>
+    <p class="lead-text">
+        2024年の時間外労働規制により、さらに深刻化するドライバー不足。<br>
+        特定技能「自動車運転」は2024年3月に新設された注目の制度です。
+    </p>
+
+    <div class="notice-box">
+        ⚠️ <strong>重要：特定技能「自動車運転」は2024年3月新設の制度です。</strong><br>
+        対象は<strong>トラック・バス・タクシー</strong>の3区分。日本の運転免許（大型・中型・普通など）の取得が就労の前提条件となります。免許取得のルートや要件について、弊社が最新情報に基づきご案内します。
+    </div>
+
+    <div class="intro-grid">
+        <div class="intro-card">
+            <span class="icon">🚚</span>
+            <h3>2024年問題で加速する不足</h3>
+            <p>時間外労働の上限規制により、輸送能力が最大14%減少するとも試算されています。外国人ドライバーの確保は業界の急務です。</p>
+        </div>
+        <div class="intro-card">
+            <span class="icon">🆕</span>
+            <h3>2024年新設の特定技能区分</h3>
+            <p>「自動車運転」分野は2024年3月に特定技能対象として追加。トラック・バス・タクシーの3業務区分で受入れが可能になりました。</p>
+        </div>
+        <div class="intro-card">
+            <span class="icon">🪪</span>
+            <h3>免許取得サポートも対応</h3>
+            <p>入国後に日本の運転免許を取得するルートも整備されています。弊社ではその手続きや教習所連携についてもアドバイスします。</p>
+        </div>
+    </div>
+</section>
+
+
+<!-- ===== 業務区分 ===== -->
+<section class="section section-accent fade-in">
+    <h2>自動車運転の業務区分一覧</h2>
+    <p class="lead-text">
+        特定技能「自動車運転」では、以下の3区分で就労が認められています。
+    </p>
+    <div class="job-table-wrap">
+        <table class="job-table">
+            <thead>
+                <tr>
+                    <th style="width:20%">業務区分</th>
+                    <th style="width:40%">主な作業内容</th>
+                    <th style="width:22%">必要免許（目安）</th>
+                    <th style="width:18%">技能レベル</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>トラック</strong></td>
+                    <td>貨物自動車による貨物の運送業務（集配・幹線輸送など）</td>
+                    <td>大型・中型・準中型・普通</td>
+                    <td><span class="tag tag-brown">特定技能1号</span></td>
+                </tr>
+                <tr>
+                    <td><strong>バス</strong></td>
+                    <td>路線バス・貸切バスなどによる旅客の運送業務</td>
+                    <td>大型第二種</td>
+                    <td><span class="tag tag-brown">特定技能1号</span></td>
+                </tr>
+                <tr>
+                    <td><strong>タクシー</strong></td>
+                    <td>一般乗用旅客自動車による旅客の運送業務</td>
+                    <td>普通第二種</td>
+                    <td><span class="tag tag-brown">特定技能1号</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <p style="font-size:0.82rem; color:#888; margin-top:14px; text-align:center;">
+        ※必要免許は業務・車種により異なります。詳細はお問合せください。
+    </p>
+</section>
+
+
+<!-- ===== 支援フロー ===== -->
+<section class="section fade-in">
+    <h2>採用から定着までのサポートフロー</h2>
+    <p class="lead-text">
+        特定技能「自動車運転」特有の手続きも含め、一気通貫でサポートします。
+    </p>
+    <div class="flow-list">
+        <div class="flow-item">
+            <div class="flow-num">1</div>
+            <div class="flow-body">
+                <h3>無料初回相談・雇用計画の設計</h3>
+                <p>業務区分（トラック・バス・タクシー）の選定、受入人数、スケジュールをヒアリングし、最適なプランをご提案します。</p>
+            </div>
+        </div>
+        <div class="flow-item">
+            <div class="flow-num">2</div>
+            <div class="flow-body">
+                <h3>試験・技能水準の確認</h3>
+                <p>特定技能「自動車運転」の技能評価試験（業務区分別）の概要をご説明し、候補者の受験準備をサポートします。</p>
+            </div>
+        </div>
+        <div class="flow-item">
+            <div class="flow-num">3</div>
+            <div class="flow-body">
+                <h3>候補者の選定・マッチング</h3>
+                <p>フィリピン・インドネシアの連携機関から、運転適性・安全意識・日本語力を総合評価した候補者をご紹介します。</p>
+            </div>
+        </div>
+        <div class="flow-item">
+            <div class="flow-num">4</div>
+            <div class="flow-body">
+                <h3>在留資格申請（行政書士対応）</h3>
+                <p>特定技能「自動車運転」の在留資格申請書類を行政書士が作成・申請。運送業特有の審査ポイントを熟知した対応をします。</p>
+            </div>
+        </div>
+        <div class="flow-item">
+            <div class="flow-num">5</div>
+            <div class="flow-body">
+                <h3>入国・日本免許取得サポート</h3>
+                <p>入国後の住居確保・生活立ち上げに加え、日本の運転免許取得に向けた教習所連携や書類準備もサポートします。</p>
+            </div>
+        </div>
+        <div class="flow-item">
+            <div class="flow-num">6</div>
+            <div class="flow-body">
+                <h3>就業開始・定期面談（登録支援機関）</h3>
+                <p>就業開始後も義務的支援（定期面談・相談対応）を継続実施。長く安心して働ける環境を支えます。</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ===== 料金 ===== -->
+<section class="section section-gray fade-in">
+    <h2>料金目安</h2>
+    <p class="lead-text">
+        業務区分・人数・サポート範囲により変動します。まずはお気軽にご相談ください。
+    </p>
+    <div class="price-grid">
+        <div class="price-card">
+            <span class="price-icon">📝</span>
+            <h3>初回相談</h3>
+            <div class="price-amount">無料</div>
+            <p>制度の概要・スケジュール・費用感のご相談。オンライン対応可。</p>
+        </div>
+        <div class="price-card">
+            <span class="price-icon">✈️</span>
+            <h3>入国まで一括サポート</h3>
+            <div class="price-amount">150,000円〜</div>
+            <p>在留申請・マッチング・入国前サポートを含むパッケージ。</p>
+        </div>
+        <div class="price-card">
+            <span class="price-icon">🏠</span>
+            <h3>入国後 生活セットアップ</h3>
+            <div class="price-amount">50,000円〜</div>
+            <p>住居確保・役所手続き・銀行・携帯など来日直後のセットアップ。</p>
+        </div>
+        <div class="price-card">
+            <span class="price-icon">🤝</span>
+            <h3>登録支援機関 月次サポート</h3>
+            <div class="price-amount">15,000円〜/人・月</div>
+            <p>義務的支援（面談・相談対応・情報提供）を代行。</p>
+        </div>
+    </div>
+    <p class="price-note">※上記は目安です。フルサポートパッケージは個別にお見積りいたします。</p>
+</section>
+
+
+<!-- ===== FAQ ===== -->
+<section class="section fade-in">
+    <h2>よくあるご質問（運送業）</h2>
+    <div class="faq-list">
+        <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+                <span class="q-mark">Q</span>
+                特定技能「自動車運転」はいつから受入れできますか？
+                <span class="faq-arrow">▼</span>
+            </div>
+            <div class="faq-a">
+                2024年3月29日に閣議決定・告示され、受入れが可能となりました。ただし、技能評価試験の整備・実施スケジュールが業務区分により異なります。最新情報は弊社にお問合せください。
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+                <span class="q-mark">Q</span>
+                外国人が日本の運転免許を取得できますか？
+                <span class="faq-arrow">▼</span>
+            </div>
+            <div class="faq-a">
+                はい、可能です。本国の運転免許を持っている場合、切替え（外免切替）が利用できるケースがあります。また、教習所での取得も可能です。業務区分・必要免許種別に応じてご案内します。
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+                <span class="q-mark">Q</span>
+                トラック・バス・タクシーで受入れ条件は違いますか？
+                <span class="faq-arrow">▼</span>
+            </div>
+            <div class="faq-a">
+                はい、業務区分ごとに必要な技能試験・免許・日本語レベルが異なります。特にバス・タクシーは第二種免許が必要なため、より高度な準備が求められます。区分ごとに最適なプランをご提案します。
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+                <span class="q-mark">Q</span>
+                日本語でのコミュニケーションは大丈夫ですか？
+                <span class="faq-arrow">▼</span>
+            </div>
+            <div class="faq-a">
+                特定技能の要件としてN4相当の日本語試験合格が必要です。運送業では乗客・取引先とのやり取りが伴うため、弊社の日本語学習サポートを活用いただき、就業後も継続的にスキルアップを支援します。
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+                <span class="q-mark">Q</span>
+                フィリピン・インドネシアにドライバー経験者はいますか？
+                <span class="faq-arrow">▼</span>
+            </div>
+            <div class="faq-a">
+                両国ともにトラックやバスの運転経験を持つ人材が多く存在します。弊社の連携機関を通じて、経験・適性・安全意識を丁寧にスクリーニングした候補者をご紹介します。
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ===== CTA ===== -->
+<section class="cta-section fade-in">
+    <h2>まずは無料相談から</h2>
+    <p>運送業での外国人雇用について、新制度の活用方法も含めてお気軽にご相談ください。<br>専門スタッフが貴社の状況に合わせた最適プランをご提案します。</p>
+    <div class="cta-btns">
+        <a href="../index.html#contact" class="btn-white">📩 お問合せフォームへ</a>
+        <a href="https://line.me/R/ti/p/@556fihjp/" target="_blank" class="btn-line">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/LINE_logo.svg" alt="LINE">
+            LINEで相談する
+        </a>
+    </div>
+</section>
+
+
+<footer>
+    <p><a href="../privacy.html">プライバシーポリシー</a></p>
+    <p style="margin-top:10px;">© 2024-2026 Second Penguin Planning. All Rights Reserved.</p>
+</footer>
+
+<!-- LINE固定ボタン -->
+<a href="https://line.me/R/ti/p/@556fihjp/" class="line-fixed-btn" target="_blank">
+    <div class="line-inner">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/LINE_logo.svg" alt="LINE">
+        <span>無料 相談</span>
+    </div>
+</a>
+
+<script>
+function toggleFaq(el) {
+    const item = el.closest('.faq-item');
+    item.classList.toggle('open');
+}
+window.addEventListener('DOMContentLoaded', () => {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) entry.target.classList.add('visible');
+        });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+});
+</script>
+
+</body>
+</html>
