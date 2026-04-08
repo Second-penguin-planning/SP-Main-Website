@@ -51,6 +51,7 @@
             transform: translateY(0);
         }
 
+        /* ===== HEADER ===== */
         header {
             background: var(--white);
             padding: 8px 3%;
@@ -103,12 +104,6 @@
             color: white;
         }
 
-        .cta-buttons {
-            display: flex;
-            gap: 12px;
-            margin-top: 20px;
-            flex-wrap: wrap;
-        }
         .foreigner-menu-btn {
             background: none;
             color: #8b0000 !important;
@@ -118,40 +113,7 @@
             font-size: 0.85rem;
             font-weight: bold;
         }
-        .foreigner-menu-btn:hover { color: #b22222; }
-
-        .line-inner img {
-            width: 42px;
-            height: 42px;
-            margin-bottom: 4px;
-        }
-        .line-text { display: block; }
-        .line-hover-text { display: none; font-size: 10px; }
-        .line-fixed-btn:hover .line-text { display: none; }
-        .line-fixed-btn:hover .line-hover-text { display: block; }
-
-        @keyframes floaty {
-            0% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
-            100% { transform: translateY(0); }
-        }
-
-        .line-cta-button {
-            display: inline-block;
-            padding: 16px 26px;
-            font-size: 16px;
-            background: #06c755;
-            color: #fff;
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 40px;
-            box-shadow: 0 6px 15px rgba(0,0,0,0.25);
-            transition: 0.3s;
-        }
-        .line-cta-button:hover { background: #05a647; }
-
-        .foreigner-menu { color: #8b0000; font-weight: bold; }
-        .foreigner-menu:hover { color: #b22222; }
+        .foreigner-menu-btn:hover { color: #b22222 !important; }
 
         .menu-toggle {
             display: none;
@@ -188,17 +150,12 @@
                 justify-content: center;
                 align-items: center;
                 transition: right 0.4s ease;
+                z-index: 1050;
             }
             .foreigner-menu-btn {
                 font-size: 1.2rem;
                 padding: 12px 24px;
                 margin: 20px 0;
-            }
-            .line-cta-button {
-                width: 100%;
-                text-align: center;
-                font-size: 18px;
-                padding: 18px;
             }
             nav.active { right: 0; }
             nav a { margin: 20px 0; font-size: 1.3rem; }
@@ -214,6 +171,54 @@
             color: #fff;
         }
 
+        /* ===== SECTOR NAV ===== */
+        .sector-nav {
+            background: rgba(0, 0, 0, 0.72);
+            backdrop-filter: blur(4px);
+            padding: 10px 16px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+            justify-content: center;
+            width: 100%;
+            position: relative;
+            z-index: 2;
+        }
+
+        .sector-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 5px 13px;
+            background: rgba(255,255,255,0.14);
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border: 1px solid rgba(255,255,255,0.38);
+            border-radius: 20px;
+            transition: all 0.25s ease;
+            white-space: nowrap;
+            letter-spacing: 0.03em;
+        }
+        .sector-btn:hover {
+            background: rgba(255,255,255,0.95);
+            color: #1a3a5c;
+            border-color: transparent;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+        .sector-btn .arrow {
+            font-size: 0.7rem;
+            transition: transform 0.25s ease;
+        }
+        .sector-btn:hover .arrow { transform: translateX(3px); }
+
+        @media (max-width: 600px) {
+            .sector-btn { font-size: 0.68rem; padding: 4px 9px; }
+        }
+
+        /* ===== HERO ===== */
         .hero {
             position: relative;
             background: url("https://images.unsplash.com/photo-1454165804606-c3d57bc86b40") center/cover no-repeat;
@@ -244,6 +249,12 @@
         }
         .hero-subtext { color: #eaeaea; }
 
+        .hero-main-copy {
+            max-width: 900px;
+            margin: 0 auto 20px;
+        }
+
+        /* ===== PILLAR GRID ===== */
         .pillar-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -268,26 +279,39 @@
             transform: translateY(-10px);
             box-shadow: 0 15px 30px rgba(0,0,0,0.2);
         }
-        .company-map iframe {
-            width: 100%;
-            height: 350px;
-            border: none;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        .pillar-header {
+            padding: 10px;
+            color: white;
+            font-weight: bold;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
-        .pillar-header { padding: 10px; color: white; font-weight: bold; font-size: 0.9rem; display: flex; align-items: center; justify-content: space-between; }
         .pillar-body { padding: 20px; flex-grow: 1; }
         .pillar-body h3 { font-size: 1.1rem; margin-bottom: 10px; color: var(--main-blue); }
         .pillar-body p { font-size: 0.85rem; line-height: 1.5; color: #666; }
-        .pillar-footer { padding: 15px 20px; background: #f8f9fa; font-weight: bold; font-size: 0.8rem; text-align: right; color: var(--main-blue); }
+        .pillar-footer {
+            padding: 15px 20px;
+            background: #f8f9fa;
+            font-weight: bold;
+            font-size: 0.8rem;
+            text-align: right;
+            color: var(--main-blue);
+        }
         .p-employment .pillar-header { background: var(--col-employment); }
         .p-life .pillar-header { background: var(--col-life); }
         .p-edu .pillar-header { background: var(--col-edu); }
         .p-sight .pillar-header { background: var(--col-sightseeing); }
 
-        /* ===== Strengths Section ===== */
+        /* ===== STRENGTHS ===== */
         .strengths-section { background: white; padding: 80px 10%; }
-        .strength-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; margin-top: 50px; }
+        .strength-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
         .strength-card { text-align: center; padding: 20px; }
         .strength-icon { font-size: 3rem; margin-bottom: 20px; display: block; }
         .strength-card h3 { color: var(--main-blue); margin-bottom: 15px; font-size: 1.3rem; }
@@ -303,7 +327,7 @@
             font-weight: bold;
         }
 
-        /* ===== アピール点セクション ===== */
+        /* ===== アピール点 ===== */
         .appeals-section {
             padding: 80px 10%;
             background: linear-gradient(135deg, #f0f7ff 0%, #e8f4f8 100%);
@@ -340,8 +364,6 @@
             max-width: 1100px;
             margin: 0 auto;
         }
-
-        /* 4・5枚目を2列中央寄せ */
         .appeals-grid .appeal-card:nth-child(4) {
             grid-column: 1 / 2;
             justify-self: end;
@@ -352,7 +374,6 @@
             justify-self: start;
             width: 100%;
         }
-
         .appeal-card {
             position: relative;
             background: #ffffff;
@@ -366,16 +387,11 @@
             transform: translateY(-6px);
             box-shadow: 0 12px 32px rgba(0,0,0,0.13);
         }
-
-        /* ③ハイライト */
         .appeal-card--highlight {
             border-top: 4px solid #e8a020;
             background: linear-gradient(160deg, #fffdf5 0%, #fff8e6 100%);
         }
         .appeal-card--highlight h3 { color: #b87000; }
-        .appeal-card--highlight .appeal-icon { color: #e8a020; }
-
-        /* バッジ */
         .appeal-badge {
             position: absolute;
             top: -14px;
@@ -390,7 +406,6 @@
             white-space: nowrap;
             letter-spacing: 0.05em;
         }
-
         .appeal-number {
             font-size: 2.8rem;
             font-weight: 800;
@@ -399,12 +414,6 @@
             margin-bottom: 6px;
             font-family: Arial, sans-serif;
         }
-        .appeal-icon {
-            font-size: 1.9rem;
-            color: var(--main-blue);
-            margin-bottom: 10px;
-            display: block;
-        }
         .appeal-card h3 {
             font-size: 1rem;
             font-weight: 700;
@@ -412,18 +421,11 @@
             margin-bottom: 10px;
             line-height: 1.5;
         }
-        .appeal-card p {
-            font-size: 0.88rem;
-            color: #555;
-            line-height: 1.8;
-        }
+        .appeal-card p { font-size: 0.88rem; color: #555; line-height: 1.8; }
         .appeal-card p strong { color: #b87000; }
 
-        /* レスポンシブ */
         @media (max-width: 960px) {
-            .appeals-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
+            .appeals-grid { grid-template-columns: repeat(2, 1fr); }
             .appeals-grid .appeal-card:nth-child(4),
             .appeals-grid .appeal-card:nth-child(5) {
                 grid-column: auto;
@@ -431,22 +433,195 @@
             }
         }
         @media (max-width: 580px) {
-            .appeals-grid {
-                grid-template-columns: 1fr;
-            }
+            .appeals-grid { grid-template-columns: 1fr; }
             .appeals-grid .appeal-card:nth-child(4),
             .appeals-grid .appeal-card:nth-child(5) {
                 grid-column: auto;
                 justify-self: auto;
             }
         }
-        /* ===== アピール点セクション ここまで ===== */
 
-        .hero-main-copy {
-            max-width: 900px;
-            margin: 0 auto 20px;
+        /* ===== SECTIONS ===== */
+        section { padding: 80px 10%; background: var(--white); margin: 20px 0; }
+        h2 {
+            text-align: center;
+            color: var(--main-blue);
+            margin-bottom: 40px;
+            position: relative;
+            padding-bottom: 10px;
+            font-size: 1.8rem;
+        }
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background: var(--accent-green);
         }
 
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .card {
+            background: var(--sky-blue);
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 5px solid var(--main-blue);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--main-blue);
+            color: white !important;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: 0.3s;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+        }
+        .btn:hover { background: var(--accent-green); transform: scale(1.05); }
+
+        .representative-container { display: flex; flex-wrap: wrap; gap: 40px; }
+        .representative-text { flex: 1; min-width: 300px; }
+        .representative-image { flex: 0 0 250px; }
+        .representative-image img { width: 100%; border-radius: 10px; }
+
+        .company-wrapper {
+            display: flex;
+            gap: 50px;
+            margin-top: 50px;
+            align-items: stretch;
+        }
+        .company-info, .company-map {
+            flex: 1;
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+            position: relative;
+        }
+        .company-info::before, .company-map::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 4px;
+            background: linear-gradient(to right, #c9a227, #e6c200);
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+        }
+        .company-info table { width: 100%; border-collapse: collapse; }
+        .company-info td { padding: 14px 0; border-bottom: 1px solid #eee; }
+        .company-info .label { width: 30%; font-weight: 600; color: var(--main-blue); }
+        .company-map iframe {
+            width: 100%;
+            height: 350px;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        @media (max-width: 768px) {
+            .company-wrapper { flex-direction: column; }
+        }
+
+        /* ===== CONTACT FORM ===== */
+        .required-badge {
+            background: #e74c3c;
+            color: white;
+            font-size: 0.7rem;
+            padding: 2px 7px;
+            border-radius: 4px;
+            margin-left: 8px;
+            vertical-align: middle;
+            font-weight: bold;
+        }
+        .contact-form { max-width: 700px; margin: 0 auto; }
+        .form-group {
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+        .form-group label {
+            font-weight: bold;
+            margin-bottom: 6px;
+            color: var(--main-blue);
+            font-size: 0.95rem;
+        }
+        .form-group input,
+        .form-group textarea {
+            padding: 12px 16px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: 'Noto Sans JP', sans-serif;
+            transition: border-color 0.3s;
+            background: #fafafa;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--main-blue);
+            background: #fff;
+        }
+        .form-row-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        @media (max-width: 600px) {
+            .form-row-2col { grid-template-columns: 1fr; }
+        }
+
+        /* ===== LINE FIXED BTN ===== */
+        .line-fixed-btn {
+            position: fixed;
+            top: 90px;
+            right: 20px;
+            width: 120px;
+            height: 60px;
+            background: #06C755;
+            border-radius: 30px;
+            border: 3px solid white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+            z-index: 9999;
+            transition: 0.3s;
+            text-decoration: none;
+        }
+        .line-fixed-btn:hover { transform: scale(1.1); }
+        .line-inner {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 6px;
+            font-size: 11px;
+            font-weight: bold;
+        }
+        .line-inner img { width: 28px; height: 28px; }
+        .line-text { display: block; color: white; }
+        .line-hover-text { display: none; font-size: 10px; color: white; }
+        .line-fixed-btn:hover .line-text { display: none; }
+        .line-fixed-btn:hover .line-hover-text { display: block; }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 1.4rem; }
+            .line-fixed-btn {
+                top: 120px;
+                right: 12px;
+                width: 80px;
+                height: 50px;
+                border-radius: 25px;
+            }
+            .line-inner img { width: 26px; height: 26px; }
+            .line-text, .line-hover-text { font-size: 10px; }
+        }
+
+        /* ===== LANG FIXED ===== */
         .lang-fixed {
             position: fixed;
             bottom: 20px;
@@ -470,167 +645,8 @@
         }
         .lang-fixed button:hover { background: #005bac; color: white; }
 
-        .line-mini-btn {
-            display: inline-block;
-            margin-top: 10px;
-            padding: 8px 14px;
-            font-size: 13px;
-            background: #06c755;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 20px;
-            transition: 0.3s;
-        }
-        .line-mini-btn:hover { background: #05a647; }
-
-        @media (min-width: 769px) {
-            .hero-header-flex {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                margin-bottom: 20px;
-            }
-        }
-
-        section { padding: 80px 10%; background: var(--white); margin: 20px 0; }
-        h2 { text-align: center; color: var(--main-blue); margin-bottom: 40px; position: relative; padding-bottom: 10px; font-size: 1.8rem; }
-        h2::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 50px; height: 3px; background: var(--accent-green); }
-
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-        .card { background: var(--sky-blue); padding: 30px; border-radius: 15px; border-left: 5px solid var(--main-blue); }
-
-        .representative-container { display: flex; flex-wrap: wrap; gap: 40px; }
-        .representative-text { flex: 1; min-width: 300px; }
-        .representative-image { flex: 0 0 250px; }
-        .representative-image img { width: 100%; border-radius: 10px; }
-
-        .btn { display: inline-block; padding: 12px 30px; background: var(--main-blue); color: white !important; text-decoration: none; border-radius: 50px; transition: 0.3s; font-weight: bold; cursor: pointer; border: none; }
-        .btn:hover { background: var(--accent-green); transform: scale(1.05); }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.12); }
-            100% { transform: scale(1); }
-        }
-
-        footer { background: #333; color: white; text-align: center; padding: 30px; }
-
-        .company-wrapper { display: flex; gap: 50px; margin-top: 50px; align-items: stretch; }
-        .company-info, .company-map { flex: 1; background: #ffffff; padding: 40px; border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.08); position: relative; }
-        .company-info::before, .company-map::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(to right, #c9a227, #e6c200); border-top-left-radius: 20px; border-top-right-radius: 20px; }
-        .company-info table { width: 100%; border-collapse: collapse; }
-        .company-info td { padding: 14px 0; border-bottom: 1px solid #eee; }
-        .company-info .label { width: 30%; font-weight: 600; color: var(--main-blue); }
-        .company-map iframe { width: 100%; height: 350px; border: none; border-radius: 15px; }
-/* 必須バッジ */
-.required-badge {
-    background: #e74c3c;
-    color: white;
-    font-size: 0.7rem;
-    padding: 2px 7px;
-    border-radius: 4px;
-    margin-left: 8px;
-    vertical-align: middle;
-    font-weight: bold;
-}
-/* お問い合わせフォーム */
-.contact-form {
-    max-width: 700px;
-    margin: 0 auto;
-}
-
-.form-group {
-    margin-bottom: 20px;
-    display: flex;
-    flex-direction: column;
-}
-
-.form-group label {
-    font-weight: bold;
-    margin-bottom: 6px;
-    color: var(--main-blue);
-    font-size: 0.95rem;
-}
-
-.form-group input,
-.form-group textarea {
-    padding: 12px 16px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-family: 'Noto Sans JP', sans-serif;
-    transition: border-color 0.3s;
-    background: #fafafa;
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-    outline: none;
-    border-color: var(--main-blue);
-    background: #fff;
-}
-
-/* 所在地・電話 横並び2列 */
-.form-row-2col {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-}
-
-/* スマホは縦1列 */
-@media (max-width: 600px) {
-    .form-row-2col {
-        grid-template-columns: 1fr;
-    }
-}
-
-        .line-fixed-btn {
-            position: fixed;
-            top: 90px;
-            right: 20px;
-            width: 120px;
-            height: 60px;
-            background: #06C755;
-            border-radius: 30px;
-            border: 3px solid white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.35);
-            z-index: 9999;
-            transition: 0.3s;
-            text-decoration: none;
-        }
-        .line-fixed-btn:hover { transform: scale(1.1); }
-        .line-fixed-btn svg { width: 36px; height: 36px; }
-
-        .line-inner {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            gap: 6px;
-            font-size: 11px;
-            font-weight: bold;
-        }
-        .line-inner img { width: 28px; height: 28px; margin-bottom: 0; }
-
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 1.8rem; }
-            .pillar-grid, .company-wrapper { grid-template-columns: 1fr; flex-direction: column; }
-            .strengths-section { padding: 60px 5%; }
-            .line-fixed-btn {
-                top: 120px;
-                right: 12px;
-                width: 80px;
-                height: 50px;
-                border-radius: 25px;
-            }
-            .line-inner img { width: 26px; height: 26px; }
-            .line-text, .line-hover-text { font-size: 10px; }
-        }
-
+        /* ===== MOBILE LANG ===== */
         .mobile-lang { display: none; }
-        
         @media (max-width: 768px) {
             .mobile-lang {
                 display: flex;
@@ -644,14 +660,19 @@
                 background: white;
                 color: var(--main-blue);
                 border-radius: 20px;
+                cursor: pointer;
             }
         }
+
+        footer { background: #333; color: white; text-align: center; padding: 30px; }
+        footer a { color: #fff; text-decoration: underline; }
     </style>
 </head>
 <body>
 
 <div id="google_translate_element" style="display:none;"></div>
 
+<!-- ===== HEADER ===== -->
 <header>
     <a href="#" class="logo">
         <img src="./images/penguin_logo_192.png" alt="セコンドペンギン企画ロゴ">
@@ -691,6 +712,21 @@
 
 <!-- ===== HERO ===== -->
 <section class="hero" id="top">
+
+    <!-- セクターナビゲーション -->
+    <nav class="sector-nav">
+        <a href="sectors/construction.html" class="sector-btn">建設業 <span class="arrow">→</span></a>
+        <a href="sectors/transport.html" class="sector-btn">運送業 <span class="arrow">→</span></a>
+        <a href="sectors/auto-repair.html" class="sector-btn">自動車整備 <span class="arrow">→</span></a>
+        <a href="sectors/accommodation.html" class="sector-btn">宿泊業 <span class="arrow">→</span></a>
+        <a href="sectors/food.html" class="sector-btn">食品業 <span class="arrow">→</span></a>
+        <a href="sectors/food-manufacturing.html" class="sector-btn">飲食料品製造業 <span class="arrow">→</span></a>
+        <a href="sectors/industrial-manufacturing.html" class="sector-btn">工業製品製造業 <span class="arrow">→</span></a>
+        <a href="sectors/care.html" class="sector-btn">介護 <span class="arrow">→</span></a>
+        <a href="sectors/union.html" class="sector-btn">組合 <span class="arrow">→</span></a>
+        <a href="sectors/registration-support.html" class="sector-btn">登録支援機関 <span class="arrow">→</span></a>
+    </nav>
+
     <div class="hero-main-copy">
         <div class="hero-status">
             <span class="marker">建設業、自動車運送業、自動車整備、宿泊、介護、その他分野で求人を行う企業様</span>
@@ -698,6 +734,7 @@
         <h1>フィリピン・インドネシアなどの優れた人材を雇用、共に成長する<br>そのすべてを、プロの伴走で「成功」へ。</h1>
         <p class="hero-subtext">実務と現場の経験を活かし、皆様の「挑戦」を一気通貫で支援します。</p>
     </div>
+
     <div class="pillar-grid">
         <a href="#employment-detail" class="pillar-card p-employment">
             <div class="pillar-header"><span>FOR CORPORATE</span><span>🤝</span></div>
@@ -765,68 +802,33 @@
 <section id="appeals" class="appeals-section fade-in">
     <h2>私たちのアピール点</h2>
     <p class="section-subtitle">5つの強みで、質の高いサービスをお届けします</p>
-
     <div class="appeals-grid">
-
-        <!-- ① -->
         <div class="appeal-card">
             <div class="appeal-number">01</div>
             <h3>複数機関との連携による<br>確かな人材ネットワーク</h3>
-            <p>
-                フィリピンでは複数の送り出し・教育機関と連携し、優秀な人材を確保するための体制をすでに整備。
-                インドネシアにおいても同様の体制整備を積極的に進めており、
-                幅広い人材プールからご要望に合った方をご紹介できます。
-            </p>
+            <p>フィリピンでは複数の送り出し・教育機関と連携し、優秀な人材を確保するための体制をすでに整備。インドネシアにおいても同様の体制整備を積極的に進めており、幅広い人材プールからご要望に合った方をご紹介できます。</p>
         </div>
-
-        <!-- ② -->
         <div class="appeal-card">
             <div class="appeal-number">02</div>
             <h3>業務適性を見極める<br>丁寧なスクリーニング</h3>
-            <p>
-                候補者の選定にあたっては、業務内容・職場環境・企業文化との適合性を
-                多角的に評価・スクリーニング。
-                ミスマッチを事前に防ぎ、採用後の定着率向上と企業様の安心につなげます。
-            </p>
+            <p>候補者の選定にあたっては、業務内容・職場環境・企業文化との適合性を多角的に評価・スクリーニング。ミスマッチを事前に防ぎ、採用後の定着率向上と企業様の安心につなげます。</p>
         </div>
-
-        <!-- ③ 一番のアピール -->
         <div class="appeal-card appeal-card--highlight">
             <div class="appeal-badge">✨ 最大のアピール</div>
             <div class="appeal-number">03</div>
             <h3>網羅的な知識を持つ責任者による<br>一気通貫の高品質サービス</h3>
-            <p>
-                法務・採用・生活支援・定着まで、<strong>幅広い知識を持つ責任者が一貫して担当</strong>。
-                分業による情報の分断や品質のムラが生じません。
-                専門性と効率を両立させることで、
-                <strong>高品質なサービスを経済的なコストでご提供</strong>します。
-            </p>
+            <p>法務・採用・生活支援・定着まで、<strong>幅広い知識を持つ責任者が一貫して担当</strong>。分業による情報の分断や品質のムラが生じません。専門性と効率を両立させることで、<strong>高品質なサービスを経済的なコストでご提供</strong>します。</p>
         </div>
-
-        <!-- ④ -->
         <div class="appeal-card">
             <div class="appeal-number">04</div>
             <h3>SNS×自動化で実現する<br>オンライン手厚いサポート</h3>
-            <p>
-                LINEをはじめとするSNSや業務自動化ツールを積極的に活用し、
-                場所・時間を問わずオンラインできめ細かなサポートを実現。
-                迅速かつスムーズなコミュニケーションで、
-                企業様・外国人材の双方をしっかり支援します。
-            </p>
+            <p>LINEをはじめとするSNSや業務自動化ツールを積極的に活用し、場所・時間を問わずオンラインできめ細かなサポートを実現。迅速かつスムーズなコミュニケーションで、企業様・外国人材の双方をしっかり支援します。</p>
         </div>
-
-        <!-- ⑤ -->
         <div class="appeal-card">
             <div class="appeal-number">05</div>
             <h3>充実したネットワークで<br>緊急時も迅速対応</h3>
-            <p>
-                課題解決に向けた関係機関・専門家・支援団体のネットワークを継続的に拡充。
-                緊急の問題が発生した場合でも、
-                適切なリソースに素早くつなぐことで
-                迅速・的確な対応が可能です。
-            </p>
+            <p>課題解決に向けた関係機関・専門家・支援団体のネットワークを継続的に拡充。緊急の問題が発生した場合でも、適切なリソースに素早くつなぐことで迅速・的確な対応が可能です。</p>
         </div>
-
     </div>
 </section>
 
@@ -898,7 +900,7 @@
         </div>
         <div class="card">
             <h3>ケース別対応</h3>
-            <ul style="padding-left:20px;">
+            <ul style="padding-left:20px; line-height:1.8;">
                 <li>初めて外国人雇用を行う企業</li>
                 <li>すでに雇用しているが課題がある企業</li>
                 <li>複数名採用を検討している企業</li>
@@ -941,7 +943,7 @@
         </div>
         <div class="card">
             <h3>導入効果</h3>
-            <ul style="padding-left:20px;">
+            <ul style="padding-left:20px; line-height:1.8;">
                 <li>離職率の低下</li>
                 <li>早期戦力化</li>
                 <li>企業側の負担軽減</li>
@@ -982,7 +984,7 @@
         </div>
         <div class="card">
             <h3>導入効果</h3>
-            <ul style="padding-left:20px;">
+            <ul style="padding-left:20px; line-height:1.8;">
                 <li>離職防止</li>
                 <li>職場定着率向上</li>
                 <li>モチベーション向上</li>
@@ -1037,7 +1039,7 @@
         <div class="company-map">
             <h3>アクセスマップ</h3>
             <iframe
-                src="https://www.google.com/maps?q=〒658-0032 兵庫県神戸市東灘区向洋町中6-9 神戸ファッションマート&output=embed"
+                src="https://www.google.com/maps?q=〒658-0032+兵庫県神戸市東灘区向洋町中6-9+神戸ファッションマート&output=embed"
                 loading="lazy">
             </iframe>
         </div>
@@ -1047,71 +1049,48 @@
 
 <section id="contact" class="fade-in">
     <h2>お問合せフォーム</h2>
-        <p style="text-align:center; font-size:0.85rem; color:#666; margin-top:-20px; margin-bottom:30px;">
-            💬 右のLINEでのお問合せでも受付可能です<br>
-            プライバシーポリシーをご確認の上、お問合せフォームの送信お願いします。
-        </p>
-        <div class="contact-form">
-            <form id="contactForm">
-
-                <!-- お名前 -->
+    <p style="text-align:center; font-size:0.85rem; color:#666; margin-top:-20px; margin-bottom:30px;">
+        💬 右のLINEでのお問合せでも受付可能です<br>
+        プライバシーポリシーをご確認の上、お問合せフォームの送信お願いします。
+    </p>
+    <div class="contact-form">
+        <form id="contactForm">
+            <div class="form-group">
+                <label for="name">お名前 <span class="required-badge">必須</span></label>
+                <input type="text" id="name" name="name" placeholder="山田 太郎" required>
+            </div>
+            <div class="form-group">
+                <label for="company-name">会社名</label>
+                <input type="text" id="company-name" name="company" placeholder="株式会社〇〇">
+            </div>
+            <div class="form-row-2col">
                 <div class="form-group">
-                    <label for="name">
-                        お名前
-                        <span class="required-badge">必須</span>
-                    </label>
-                    <input type="text" id="name" name="name" placeholder="山田 太郎" required>
+                    <label for="location">企業所在地</label>
+                    <input type="text" id="location" name="location" placeholder="例：兵庫県神戸市">
                 </div>
-
-                <!-- 会社名 -->
                 <div class="form-group">
-                    <label for="company">会社名</label>
-                    <input type="text" id="company" name="company" placeholder="株式会社〇〇">
+                    <label for="phone">電話番号</label>
+                    <input type="tel" id="phone" name="phone" placeholder="例：078-000-0000">
                 </div>
-
-                <!-- 企業所在地 ＋ 電話番号（横並び） -->
-                <div class="form-row-2col">
-                    <div class="form-group">
-                        <label for="location">企業所在地</label>
-                        <input type="text" id="location" name="location" placeholder="例：兵庫県神戸市">
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">電話番号</label>
-                        <input type="tel" id="phone" name="phone" placeholder="例：078-000-0000">
-                    </div>
-                </div>
-
-                <!-- メールアドレス -->
-                <div class="form-group">
-                    <label for="email">
-                        メールアドレス
-                        <span class="required-badge">必須</span>
-                    </label>
-                    <input type="email" id="email" name="email" placeholder="example@company.com" required>
-                </div>
-
-                <!-- お問い合わせ内容 -->
-                <div class="form-group">
-                    <label for="message">
-                        お問い合わせ内容
-                        <span class="required-badge">必須</span>
-                    </label>
-                    <textarea id="message" name="message" rows="6" placeholder="お気軽にご相談ください..." required></textarea>
-                </div>
-
-                <button type="submit" class="btn btn-primary" style="width:100%; padding:15px; font-size:1.1rem;">
-                    送信する
-                </button>
-            </form>
-        </div>
+            </div>
+            <div class="form-group">
+                <label for="email">メールアドレス <span class="required-badge">必須</span></label>
+                <input type="email" id="email" name="email" placeholder="example@company.com" required>
+            </div>
+            <div class="form-group">
+                <label for="message">お問い合わせ内容 <span class="required-badge">必須</span></label>
+                <textarea id="message" name="message" rows="6" placeholder="お気軽にご相談ください..." required></textarea>
+            </div>
+            <button type="submit" class="btn" style="width:100%; padding:15px; font-size:1.1rem;">
+                送信する
+            </button>
+        </form>
     </div>
 </section>
 
 
-
-
 <footer>
-    <p><a href="privacy.html" style="color:#fff; text-decoration:underline;">プライバシーポリシー</a></p>
+    <p><a href="privacy.html">プライバシーポリシー</a></p>
     <p style="margin-top:10px;">© 2024-2026 Second Penguin Planning. All Rights Reserved.</p>
 </footer>
 
@@ -1124,6 +1103,14 @@
         <span class="line-hover-text">今すぐ相談！</span>
     </div>
 </a>
+
+<!-- 言語切替固定ボタン -->
+<div class="lang-fixed">
+    <button onclick="translatePage('ja')">JP</button>
+    <button onclick="translatePage('en')">EN</button>
+    <button onclick="translatePage('id')">ID</button>
+    <button onclick="translatePage('tl')">TL</button>
+</div>
 
 
 <script>
