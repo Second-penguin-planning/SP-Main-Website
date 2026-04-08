@@ -1,1118 +1,1390 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>宿泊業の外国人採用支援 | セコンドペンギン企画</title>
-  <meta name="description" content="旅館・ホテルの特定技能外国人採用をトータルサポート。フロント業務・客室清掃・料飲サービスなど宿泊業全般の受入支援を行います。">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --primary: #2c5f8a;
-      --primary-dark: #1a3a5c;
-      --secondary: #e8a020;
-      --sector-color: #2a6496;
-      --sector-light: #e8f4fc;
-      --text-dark: #1a1a2e;
-      --text-mid: #444;
-      --text-light: #666;
-      --white: #ffffff;
-      --bg-light: #f8f9fa;
-      --border: #dee2e6;
-      --shadow: 0 4px 20px rgba(0,0,0,0.08);
-      --radius: 12px;
-      --transition: 0.3s ease;
-    }
-
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    body {
-      font-family: 'Noto Sans JP', sans-serif;
-      color: var(--text-dark);
-      line-height: 1.7;
-      background: var(--white);
-    }
-
-    /* ===== HEADER ===== */
-    .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background: var(--white);
-      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-    }
-
-    .header-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 24px;
-      height: 68px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .logo-area {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-    }
-
-    .logo-icon {
-      width: 42px;
-      height: 42px;
-      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 22px;
-    }
-
-    .logo-text {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .logo-text .ja {
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--primary-dark);
-      line-height: 1.2;
-    }
-
-    .logo-text .en {
-      font-size: 10px;
-      color: var(--text-light);
-      font-family: 'Poppins', sans-serif;
-      letter-spacing: 0.05em;
-    }
-
-    .header-back {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 8px 18px;
-      background: var(--bg-light);
-      border: 1px solid var(--border);
-      border-radius: 30px;
-      font-size: 13px;
-      color: var(--text-mid);
-      text-decoration: none;
-      transition: var(--transition);
-    }
-
-    .header-back:hover {
-      background: var(--sector-light);
-      border-color: var(--sector-color);
-      color: var(--sector-color);
-    }
-
-    /* ===== SECTOR NAV ===== */
-    .sector-nav {
-      background: var(--sector-color);
-      overflow-x: auto;
-      scrollbar-width: none;
-    }
-
-    .sector-nav::-webkit-scrollbar { display: none; }
-
-    .sector-nav-inner {
-      display: flex;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
-    .sector-nav a {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      padding: 12px 16px;
-      font-size: 12px;
-      color: rgba(255,255,255,0.75);
-      text-decoration: none;
-      white-space: nowrap;
-      transition: var(--transition);
-      border-bottom: 3px solid transparent;
-    }
-
-    .sector-nav a:hover,
-    .sector-nav a.active {
-      color: var(--white);
-      border-bottom-color: var(--secondary);
-      background: rgba(255,255,255,0.08);
-    }
-
-    /* ===== HERO ===== */
-    .hero {
-      position: relative;
-      height: 460px;
-      display: flex;
-      align-items: center;
-      overflow: hidden;
-    }
-
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      background: url('https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=1600&auto=format&fit=crop&q=80') center/cover no-repeat;
-      filter: brightness(0.4);
-    }
-
-    .hero-content {
-      position: relative;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 24px;
-      width: 100%;
-    }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: var(--secondary);
-      color: var(--white);
-      font-size: 12px;
-      font-weight: 700;
-      padding: 4px 14px;
-      border-radius: 20px;
-      margin-bottom: 16px;
-      letter-spacing: 0.05em;
-    }
-
-    .hero h1 {
-      font-size: clamp(26px, 4vw, 46px);
-      font-weight: 700;
-      color: var(--white);
-      line-height: 1.3;
-      margin-bottom: 16px;
-    }
-
-    .hero h1 span {
-      color: var(--secondary);
-    }
-
-    .hero-desc {
-      font-size: 16px;
-      color: rgba(255,255,255,0.85);
-      max-width: 580px;
-      margin-bottom: 28px;
-    }
-
-    .hero-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .hero-tag {
-      background: rgba(255,255,255,0.15);
-      border: 1px solid rgba(255,255,255,0.3);
-      color: var(--white);
-      font-size: 12px;
-      padding: 5px 14px;
-      border-radius: 20px;
-      backdrop-filter: blur(4px);
-    }
-
-    /* ===== SECTIONS ===== */
-    section { padding: 80px 24px; }
-
-    .container { max-width: 1200px; margin: 0 auto; }
-
-    .section-label {
-      font-size: 12px;
-      font-weight: 700;
-      color: var(--sector-color);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      font-family: 'Poppins', sans-serif;
-      margin-bottom: 8px;
-    }
-
-    .section-title {
-      font-size: clamp(22px, 3vw, 34px);
-      font-weight: 700;
-      color: var(--text-dark);
-      margin-bottom: 12px;
-      line-height: 1.4;
-    }
-
-    .section-desc {
-      font-size: 15px;
-      color: var(--text-light);
-      max-width: 640px;
-      margin-bottom: 48px;
-    }
-
-    /* ===== WHY CARDS ===== */
-    .why-section { background: var(--bg-light); }
-
-    .why-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px;
-    }
-
-    .why-card {
-      background: var(--white);
-      border-radius: var(--radius);
-      padding: 32px 28px;
-      box-shadow: var(--shadow);
-      border-top: 4px solid var(--sector-color);
-      transition: var(--transition);
-      opacity: 0;
-      transform: translateY(24px);
-    }
-
-    .why-card.visible {
-      opacity: 1;
-      transform: translateY(0);
-      transition: opacity 0.5s ease, transform 0.5s ease;
-    }
-
-    .why-card:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(0,0,0,0.12); }
-
-    .why-icon {
-      font-size: 36px;
-      margin-bottom: 16px;
-    }
-
-    .why-card h3 {
-      font-size: 17px;
-      font-weight: 700;
-      margin-bottom: 10px;
-      color: var(--text-dark);
-    }
-
-    .why-card p {
-      font-size: 14px;
-      color: var(--text-light);
-      line-height: 1.8;
-    }
-
-    /* ===== INFO BOX ===== */
-    .info-box {
-      background: var(--sector-light);
-      border-left: 5px solid var(--sector-color);
-      border-radius: var(--radius);
-      padding: 24px 28px;
-      margin-bottom: 40px;
-      display: flex;
-      gap: 16px;
-      align-items: flex-start;
-    }
-
-    .info-box-icon { font-size: 28px; flex-shrink: 0; }
-
-    .info-box-body h4 {
-      font-size: 15px;
-      font-weight: 700;
-      color: var(--sector-color);
-      margin-bottom: 6px;
-    }
-
-    .info-box-body p {
-      font-size: 14px;
-      color: var(--text-mid);
-      line-height: 1.8;
-    }
-
-    /* ===== TABLE ===== */
-    .table-wrap {
-      overflow-x: auto;
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      background: var(--white);
-    }
-
-    thead th {
-      background: var(--sector-color);
-      color: var(--white);
-      padding: 14px 18px;
-      font-size: 13px;
-      font-weight: 700;
-      text-align: left;
-    }
-
-    tbody tr { border-bottom: 1px solid var(--border); transition: var(--transition); }
-    tbody tr:last-child { border-bottom: none; }
-    tbody tr:hover { background: var(--sector-light); }
-
-    tbody td {
-      padding: 14px 18px;
-      font-size: 14px;
-      color: var(--text-mid);
-      vertical-align: top;
-    }
-
-    tbody td:first-child { font-weight: 700; color: var(--text-dark); white-space: nowrap; }
-
-    .tag {
-      display: inline-block;
-      padding: 2px 10px;
-      border-radius: 12px;
-      font-size: 11px;
-      font-weight: 700;
-      margin: 2px 2px 2px 0;
-    }
-
-    .tag-blue { background: var(--sector-light); color: var(--sector-color); }
-    .tag-orange { background: #fff3e0; color: #e65100; }
-
-    /* ===== FLOW ===== */
-    .flow-section { background: var(--bg-light); }
-
-    .flow-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 20px;
-    }
-
-    .flow-item {
-      background: var(--white);
-      border-radius: var(--radius);
-      padding: 28px 24px;
-      box-shadow: var(--shadow);
-      display: flex;
-      gap: 20px;
-      align-items: flex-start;
-      opacity: 0;
-      transform: translateY(24px);
-    }
-
-    .flow-item.visible {
-      opacity: 1;
-      transform: translateY(0);
-      transition: opacity 0.5s ease, transform 0.5s ease;
-    }
-
-    .flow-num {
-      width: 44px;
-      height: 44px;
-      min-width: 44px;
-      border-radius: 50%;
-      background: var(--sector-color);
-      color: var(--white);
-      font-family: 'Poppins', sans-serif;
-      font-weight: 700;
-      font-size: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .flow-body h3 {
-      font-size: 16px;
-      font-weight: 700;
-      margin-bottom: 6px;
-      color: var(--text-dark);
-    }
-
-    .flow-body p {
-      font-size: 13px;
-      color: var(--text-light);
-      line-height: 1.8;
-    }
-
-    /* ===== PRICE ===== */
-    .price-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-    }
-
-    .price-card {
-      background: var(--white);
-      border-radius: var(--radius);
-      padding: 28px 24px;
-      box-shadow: var(--shadow);
-      border: 2px solid var(--border);
-      text-align: center;
-      transition: var(--transition);
-      opacity: 0;
-      transform: translateY(24px);
-    }
-
-    .price-card.visible {
-      opacity: 1;
-      transform: translateY(0);
-      transition: opacity 0.5s ease, transform 0.5s ease;
-    }
-
-    .price-card:hover, .price-card.featured {
-      border-color: var(--sector-color);
-      box-shadow: 0 8px 30px rgba(42,100,150,0.15);
-    }
-
-    .price-card.featured { background: var(--sector-light); }
-
-    .price-icon { font-size: 32px; margin-bottom: 12px; }
-
-    .price-card h3 {
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--text-mid);
-      margin-bottom: 12px;
-    }
-
-    .price-amount {
-      font-size: 28px;
-      font-weight: 700;
-      color: var(--sector-color);
-      font-family: 'Poppins', sans-serif;
-      line-height: 1;
-      margin-bottom: 4px;
-    }
-
-    .price-unit { font-size: 12px; color: var(--text-light); margin-bottom: 12px; }
-    .price-note { font-size: 12px; color: var(--text-light); line-height: 1.6; }
-
-    /* ===== FAQ ===== */
-    .faq-section { background: var(--bg-light); }
-
-    .faq-list { max-width: 800px; margin: 0 auto; }
-
-    .faq-item {
-      background: var(--white);
-      border-radius: var(--radius);
-      margin-bottom: 12px;
-      box-shadow: var(--shadow);
-      overflow: hidden;
-    }
-
-    .faq-q {
-      width: 100%;
-      text-align: left;
-      padding: 20px 24px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 15px;
-      font-weight: 700;
-      color: var(--text-dark);
-      transition: var(--transition);
-    }
-
-    .faq-q:hover { background: var(--sector-light); }
-
-    .faq-q-mark {
-      width: 28px;
-      height: 28px;
-      min-width: 28px;
-      border-radius: 50%;
-      background: var(--sector-color);
-      color: var(--white);
-      font-size: 13px;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Poppins', sans-serif;
-    }
-
-    .faq-q-text { flex: 1; }
-
-    .faq-arrow {
-      font-size: 12px;
-      color: var(--text-light);
-      transition: transform var(--transition);
-    }
-
-    .faq-item.open .faq-arrow { transform: rotate(180deg); }
-
-    .faq-a {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.4s ease;
-    }
-
-    .faq-a-inner {
-      padding: 0 24px 20px 64px;
-      font-size: 14px;
-      color: var(--text-mid);
-      line-height: 1.9;
-    }
-
-    /* ===== CTA ===== */
-    .cta-section {
-      background: linear-gradient(135deg, var(--sector-color), var(--primary-dark));
-      padding: 80px 24px;
-      text-align: center;
-    }
-
-    .cta-section h2 {
-      font-size: clamp(22px, 3vw, 32px);
-      font-weight: 700;
-      color: var(--white);
-      margin-bottom: 12px;
-    }
-
-    .cta-section p {
-      font-size: 15px;
-      color: rgba(255,255,255,0.85);
-      margin-bottom: 36px;
-    }
-
-    .cta-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-      justify-content: center;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 14px 32px;
-      border-radius: 40px;
-      font-size: 15px;
-      font-weight: 700;
-      text-decoration: none;
-      transition: var(--transition);
-      cursor: pointer;
-      border: none;
-    }
-
-    .btn-primary {
-      background: var(--secondary);
-      color: var(--white);
-      box-shadow: 0 4px 16px rgba(232,160,32,0.4);
-    }
-
-    .btn-primary:hover { background: #c8880e; transform: translateY(-2px); }
-
-    .btn-outline {
-      background: transparent;
-      color: var(--white);
-      border: 2px solid rgba(255,255,255,0.6);
-    }
-
-    .btn-outline:hover {
-      background: rgba(255,255,255,0.1);
-      border-color: var(--white);
-      transform: translateY(-2px);
-    }
-
-    /* ===== FOOTER ===== */
-    .site-footer {
-      background: var(--text-dark);
-      color: rgba(255,255,255,0.7);
-      padding: 48px 24px 32px;
-    }
-
-    .footer-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 40px;
-      justify-content: space-between;
-      margin-bottom: 40px;
-    }
-
-    .footer-brand .logo-text .ja { color: var(--white); }
-    .footer-brand .logo-text .en { color: rgba(255,255,255,0.5); }
-
-    .footer-brand p {
-      font-size: 13px;
-      color: rgba(255,255,255,0.55);
-      margin-top: 12px;
-      max-width: 260px;
-      line-height: 1.8;
-    }
-
-    .footer-links h4 {
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--white);
-      margin-bottom: 12px;
-      letter-spacing: 0.05em;
-    }
-
-    .footer-links ul { list-style: none; }
-
-    .footer-links ul li { margin-bottom: 8px; }
-
-    .footer-links ul li a {
-      font-size: 13px;
-      color: rgba(255,255,255,0.6);
-      text-decoration: none;
-      transition: var(--transition);
-    }
-
-    .footer-links ul li a:hover { color: var(--white); }
-
-    .footer-bottom {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding-top: 24px;
-      border-top: 1px solid rgba(255,255,255,0.1);
-      text-align: center;
-      font-size: 12px;
-      color: rgba(255,255,255,0.4);
-    }
-
-    /* ===== LINE BUTTON ===== */
-    .line-fixed {
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      z-index: 9999;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .line-btn {
-      width: 62px;
-      height: 62px;
-      background: #06C755;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 20px rgba(6,199,85,0.5);
-      transition: var(--transition);
-      text-decoration: none;
-    }
-
-    .line-btn:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(6,199,85,0.6); }
-
-    .line-btn svg { width: 34px; height: 34px; fill: white; }
-
-    .line-label {
-      font-size: 10px;
-      font-weight: 700;
-      color: #06C755;
-      background: white;
-      padding: 2px 8px;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-    }
-
-    /* ===== RESPONSIVE ===== */
-    @media (max-width: 768px) {
-      section { padding: 60px 16px; }
-      .hero { height: 380px; }
-      .flow-grid { grid-template-columns: 1fr; }
-      .footer-inner { flex-direction: column; gap: 28px; }
-      .faq-a-inner { padding-left: 40px; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>宿泊業 特定技能サポート | 徳永行政書士事務所</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Hiragino Sans', 'Yu Gothic', sans-serif;
+            color: #333;
+            background: #fff;
+        }
+
+        /* ====== HEADER ====== */
+        header {
+            background: linear-gradient(135deg, #1a4a6b 0%, #2980b9 100%);
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 30px;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-penguin {
+            width: 48px;
+            height: 48px;
+        }
+
+        .logo-text .firm-name {
+            font-size: 1.05rem;
+            font-weight: bold;
+            letter-spacing: 0.05em;
+        }
+
+        .logo-text .firm-sub {
+            font-size: 0.7rem;
+            opacity: 0.85;
+        }
+
+        .lang-switcher {
+            display: flex;
+            gap: 5px;
+        }
+
+        .lang-btn {
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.35);
+            color: white;
+            padding: 4px 9px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.72rem;
+            transition: background 0.2s;
+        }
+
+        .lang-btn:hover, .lang-btn.active {
+            background: rgba(255,255,255,0.35);
+        }
+
+        /* セクターナビ */
+        .sector-nav {
+            background: rgba(0,0,0,0.22);
+            padding: 0 30px;
+            display: flex;
+            align-items: center;
+            overflow-x: auto;
+            white-space: nowrap;
+            gap: 4px;
+        }
+
+        .sector-nav a {
+            color: rgba(255,255,255,0.78);
+            text-decoration: none;
+            font-size: 0.75rem;
+            padding: 9px 12px;
+            border-bottom: 3px solid transparent;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            flex-shrink: 0;
+        }
+
+        .sector-nav a:hover {
+            color: white;
+            background: rgba(255,255,255,0.08);
+        }
+
+        .sector-nav a.active {
+            color: white;
+            border-bottom-color: #ffd700;
+            font-weight: bold;
+            background: rgba(255,255,255,0.1);
+        }
+
+        /* ====== HERO ====== */
+        .hero {
+            position: relative;
+            min-height: 480px;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            background: #1a4a6b;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(135deg,
+                    rgba(26,74,107,0.97) 0%,
+                    rgba(26,74,107,0.82) 45%,
+                    rgba(41,128,185,0.65) 100%);
+            z-index: 1;
+        }
+
+        .hero-pattern {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            background-image:
+                repeating-linear-gradient(
+                    45deg,
+                    transparent,
+                    transparent 40px,
+                    rgba(255,255,255,0.03) 40px,
+                    rgba(255,255,255,0.03) 80px
+                );
+        }
+
+        .hero-deco {
+            position: absolute;
+            right: 6%;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 11rem;
+            opacity: 0.12;
+            z-index: 1;
+            pointer-events: none;
+            line-height: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 60px 30px 60px 50px;
+            max-width: 700px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.35);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.78rem;
+            margin-bottom: 22px;
+        }
+
+        .hero-badge-dot {
+            width: 7px;
+            height: 7px;
+            background: #ffd700;
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.3); }
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            color: white;
+            line-height: 1.15;
+            margin-bottom: 8px;
+            text-shadow: 0 3px 12px rgba(0,0,0,0.4);
+        }
+
+        .hero h1 .en {
+            display: block;
+            font-size: 1rem;
+            font-weight: 400;
+            opacity: 0.78;
+            letter-spacing: 0.08em;
+            margin-top: 6px;
+        }
+
+        .hero-desc {
+            font-size: 0.98rem;
+            color: rgba(255,255,255,0.88);
+            line-height: 1.85;
+            margin: 22px 0 32px;
+            max-width: 520px;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 28px;
+            margin-bottom: 36px;
+            flex-wrap: wrap;
+        }
+
+        .hero-stat {
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.22);
+            border-radius: 10px;
+            padding: 14px 20px;
+            text-align: center;
+            min-width: 110px;
+        }
+
+        .hero-stat .num {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #ffd700;
+            display: block;
+        }
+
+        .hero-stat .label {
+            font-size: 0.68rem;
+            color: rgba(255,255,255,0.8);
+            margin-top: 3px;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .btn-line-hero {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #06C755;
+            color: white;
+            padding: 14px 30px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: bold;
+            text-decoration: none;
+            box-shadow: 0 4px 18px rgba(6,199,85,0.45);
+            transition: all 0.25s;
+        }
+
+        .btn-line-hero:hover {
+            background: #05b34d;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(6,199,85,0.55);
+        }
+
+        .btn-line-hero .line-icon {
+            width: 26px;
+            height: 26px;
+            background: white;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-line-hero .line-icon svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .btn-tel-hero {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255,255,255,0.9);
+            font-size: 0.92rem;
+            font-weight: bold;
+            text-decoration: none;
+            border-bottom: 1px dashed rgba(255,255,255,0.45);
+            padding-bottom: 2px;
+            transition: color 0.2s;
+        }
+
+        .btn-tel-hero:hover { color: white; }
+
+        /* ====== SECTIONS ====== */
+        section { padding: 64px 0; }
+        section.bg-gray { background: #f7f7f7; }
+
+        .section-inner {
+            max-width: 920px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section-header { margin-bottom: 36px; }
+
+        .section-label {
+            display: inline-block;
+            background: #1a4a6b;
+            color: white;
+            font-size: 0.7rem;
+            font-weight: bold;
+            letter-spacing: 0.12em;
+            padding: 4px 12px;
+            border-radius: 3px;
+            margin-bottom: 10px;
+        }
+
+        .section-title {
+            font-size: 1.65rem;
+            font-weight: 800;
+            color: #1a1a1a;
+            line-height: 1.3;
+        }
+
+        .section-title span { color: #1a4a6b; }
+
+        .section-desc {
+            margin-top: 10px;
+            color: #666;
+            font-size: 0.88rem;
+            line-height: 1.7;
+        }
+
+        /* ====== 施設カード ====== */
+        .industry-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 18px;
+        }
+
+        .industry-card {
+            background: white;
+            border-radius: 12px;
+            padding: 26px;
+            border-top: 4px solid #1a4a6b;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+            transition: transform 0.22s, box-shadow 0.22s;
+        }
+
+        .industry-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 28px rgba(26,74,107,0.14);
+        }
+
+        .industry-card .ic-icon {
+            font-size: 2.2rem;
+            margin-bottom: 14px;
+        }
+
+        .industry-card h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #1a4a6b;
+            margin-bottom: 8px;
+        }
+
+        .industry-card p {
+            font-size: 0.83rem;
+            color: #555;
+            line-height: 1.65;
+        }
+
+        /* 警告ボックス */
+        .warning-box {
+            background: #fffbea;
+            border: 1px solid #f0c040;
+            border-left: 5px solid #e6ac00;
+            border-radius: 8px;
+            padding: 20px 22px;
+            margin-top: 24px;
+        }
+
+        .warning-box h3 {
+            color: #8a6000;
+            font-size: 0.95rem;
+            margin-bottom: 12px;
+        }
+
+        .warning-box ul { list-style: none; }
+
+        .warning-box ul li {
+            font-size: 0.85rem;
+            color: #555;
+            padding: 6px 0;
+            border-bottom: 1px solid #f0e0a0;
+            padding-left: 18px;
+            position: relative;
+        }
+
+        .warning-box ul li:last-child { border-bottom: none; }
+
+        .warning-box ul li::before {
+            content: "!";
+            color: #e6ac00;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        /* ====== 業務グリッド ====== */
+        .job-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            gap: 14px;
+        }
+
+        .job-item {
+            background: white;
+            border-radius: 10px;
+            padding: 20px 14px;
+            text-align: center;
+            border: 2px solid #d0e8f5;
+            transition: border-color 0.2s, transform 0.2s;
+        }
+
+        .job-item:hover {
+            border-color: #1a4a6b;
+            transform: translateY(-2px);
+        }
+
+        .job-item .ji-icon { font-size: 1.9rem; margin-bottom: 9px; }
+
+        .job-item h4 {
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: #222;
+            margin-bottom: 5px;
+        }
+
+        .job-item p {
+            font-size: 0.76rem;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        /* 特徴ボックス */
+        .feature-box {
+            background: #1a4a6b;
+            color: white;
+            border-radius: 12px;
+            padding: 28px;
+            margin-top: 28px;
+        }
+
+        .feature-box h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 18px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 14px;
+        }
+
+        .feature-item {
+            background: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            padding: 16px;
+        }
+
+        .feature-item .fi-icon {
+            font-size: 1.6rem;
+            margin-bottom: 8px;
+        }
+
+        .feature-item h4 {
+            font-size: 0.88rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .feature-item p {
+            font-size: 0.76rem;
+            opacity: 0.85;
+            line-height: 1.5;
+        }
+
+        /* ====== 試験カード ====== */
+        .exam-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+        }
+
+        .exam-card {
+            background: white;
+            border-radius: 12px;
+            padding: 26px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .exam-card::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #1a4a6b, #2980b9);
+        }
+
+        .exam-tag {
+            display: inline-block;
+            background: #1a4a6b;
+            color: white;
+            font-size: 0.7rem;
+            font-weight: bold;
+            padding: 3px 10px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        .exam-card h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 12px;
+        }
+
+        .exam-card p {
+            font-size: 0.83rem;
+            color: #555;
+            line-height: 1.75;
+        }
+
+        /* 要件ボックス */
+        .req-box {
+            background: #f0f7ff;
+            border: 1px solid #c0dff5;
+            border-radius: 10px;
+            padding: 24px;
+            margin-top: 24px;
+        }
+
+        .req-box h3 {
+            color: #1a4a6b;
+            font-size: 0.95rem;
+            margin-bottom: 14px;
+        }
+
+        .req-list { list-style: none; }
+
+        .req-list li {
+            font-size: 0.85rem;
+            color: #444;
+            padding: 8px 0;
+            border-bottom: 1px solid #d0e8f5;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .req-list li:last-child { border-bottom: none; }
+
+        .req-list li::before {
+            content: "✓";
+            color: #1a4a6b;
+            font-weight: bold;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        /* ====== サポートフロー ====== */
+        .flow-wrap {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 0;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 720px) {
+            .flow-wrap { grid-template-columns: repeat(3, 1fr); }
+        }
+
+        @media (max-width: 420px) {
+            .flow-wrap { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        .flow-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 18px 8px;
+            position: relative;
+        }
+
+        .flow-step:not(:last-child)::after {
+            content: "›";
+            position: absolute;
+            right: -4px;
+            top: 28px;
+            font-size: 1.6rem;
+            color: #1a4a6b;
+            font-weight: bold;
+            line-height: 1;
+        }
+
+        @media (max-width: 720px) {
+            .flow-step:nth-child(3n)::after,
+            .flow-step:last-child::after { display: none; }
+        }
+
+        .flow-num {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: #1a4a6b;
+            color: white;
+            font-size: 1rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+            box-shadow: 0 3px 10px rgba(26,74,107,0.3);
+        }
+
+        .flow-title {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #222;
+            margin-bottom: 4px;
+        }
+
+        .flow-desc {
+            font-size: 0.7rem;
+            color: #777;
+            line-height: 1.45;
+        }
+
+        /* ====== 料金 ====== */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+        }
+
+        .pricing-card {
+            background: white;
+            border-radius: 14px;
+            padding: 30px 24px;
+            text-align: center;
+            box-shadow: 0 3px 16px rgba(0,0,0,0.09);
+            border: 2px solid transparent;
+            transition: border-color 0.25s, transform 0.25s;
+        }
+
+        .pricing-card:hover {
+            border-color: #1a4a6b;
+            transform: translateY(-3px);
+        }
+
+        .pricing-card.featured {
+            border-color: #1a4a6b;
+            background: linear-gradient(160deg, #f0f7ff, #fff);
+        }
+
+        .pricing-card .pc-icon {
+            font-size: 2rem;
+            margin-bottom: 12px;
+        }
+
+        .pricing-card h3 {
+            font-size: 0.9rem;
+            color: #777;
+            margin-bottom: 14px;
+            font-weight: 600;
+        }
+
+        .pricing-card .price {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #1a4a6b;
+        }
+
+        .pricing-card .price-note {
+            font-size: 0.78rem;
+            color: #999;
+            margin-bottom: 18px;
+        }
+
+        .pricing-card ul { list-style: none; text-align: left; }
+
+        .pricing-card ul li {
+            font-size: 0.8rem;
+            color: #555;
+            padding: 5px 0;
+            border-bottom: 1px solid #d0e8f5;
+            padding-left: 14px;
+            position: relative;
+        }
+
+        .pricing-card ul li:last-child { border-bottom: none; }
+
+        .pricing-card ul li::before {
+            content: "●";
+            color: #1a4a6b;
+            font-size: 0.5rem;
+            position: absolute;
+            left: 0;
+            top: 8px;
+        }
+
+        /* ====== FAQ ====== */
+        .faq-list { display: flex; flex-direction: column; gap: 10px; }
+
+        .faq-item {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .faq-q {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 18px 20px;
+            cursor: pointer;
+            user-select: none;
+            transition: background 0.18s;
+        }
+
+        .faq-q:hover { background: #f0f7ff; }
+
+        .faq-q-mark {
+            width: 28px;
+            height: 28px;
+            background: #1a4a6b;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.82rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .faq-q-text {
+            flex: 1;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #222;
+        }
+
+        .faq-toggle {
+            color: #1a4a6b;
+            font-size: 1.3rem;
+            font-weight: 300;
+            flex-shrink: 0;
+            transition: transform 0.25s;
+        }
+
+        .faq-toggle.open { transform: rotate(45deg); }
+
+        .faq-a {
+            display: none;
+            padding: 4px 20px 18px 60px;
+            font-size: 0.85rem;
+            color: #555;
+            line-height: 1.75;
+        }
+
+        /* ====== CTA ====== */
+        .cta-section {
+            background: linear-gradient(135deg, #1a4a6b 0%, #2980b9 100%);
+            padding: 72px 24px;
+            text-align: center;
+            color: white;
+        }
+
+        .cta-section h2 {
+            font-size: 1.7rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+
+        .cta-section p {
+            font-size: 0.95rem;
+            opacity: 0.88;
+            margin-bottom: 36px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-line-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #06C755;
+            color: white;
+            padding: 15px 36px;
+            border-radius: 50px;
+            font-size: 1.05rem;
+            font-weight: bold;
+            text-decoration: none;
+            box-shadow: 0 4px 20px rgba(6,199,85,0.4);
+            transition: all 0.25s;
+        }
+
+        .btn-line-cta:hover {
+            background: #05b34d;
+            transform: translateY(-2px);
+            box-shadow: 0 7px 28px rgba(6,199,85,0.5);
+        }
+
+        .btn-line-cta .line-icon {
+            width: 28px;
+            height: 28px;
+            background: white;
+            border-radius: 7px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-line-cta .line-icon svg {
+            width: 19px;
+            height: 19px;
+        }
+
+        .btn-tel-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: white;
+            padding: 15px 32px;
+            border-radius: 50px;
+            font-size: 1.05rem;
+            font-weight: bold;
+            text-decoration: none;
+            border: 2px solid rgba(255,255,255,0.5);
+            background: rgba(255,255,255,0.12);
+            transition: all 0.25s;
+        }
+
+        .btn-tel-cta:hover { background: rgba(255,255,255,0.22); }
+
+        /* ====== FOOTER ====== */
+        footer {
+            background: #1a1a1a;
+            color: rgba(255,255,255,0.6);
+            text-align: center;
+            padding: 28px 20px;
+            font-size: 0.78rem;
+        }
+
+        footer .foot-links {
+            display: flex;
+            gap: 18px;
+            justify-content: center;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+        }
+
+        footer a {
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            transition: color 0.18s;
+        }
+
+        footer a:hover { color: white; }
+
+        /* ====== ANIMATION ====== */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(22px);
+            transition: opacity 0.55s ease, transform 0.55s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ====== RESPONSIVE ====== */
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 2.1rem; }
+            .hero-content { padding: 40px 20px; }
+            .hero-stats { gap: 12px; }
+            .hero-stat { min-width: 90px; padding: 10px 14px; }
+            .hero-stat .num { font-size: 1.3rem; }
+            .header-top { padding: 10px 16px; flex-wrap: wrap; gap: 8px; }
+            .sector-nav { padding: 0 16px; }
+        }
+    </style>
 </head>
 <body>
 
-<!-- ===== HEADER ===== -->
-<header class="site-header">
-  <div class="header-inner">
-    <a href="../index.html" class="logo-area">
-      <div class="logo-icon">🐧</div>
-      <div class="logo-text">
-        <span class="ja">セコンドペンギン企画</span>
-        <span class="en">Second Penguin Planning</span>
-      </div>
-    </a>
-    <a href="../index.html" class="header-back">← トップへ戻る</a>
-  </div>
+<!-- ====== HEADER ====== -->
+<header>
+    <div class="header-top">
+        <!-- ロゴ（セコンドペンギン） -->
+        <div class="logo-area">
+            <svg class="logo-penguin" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <!-- 体 -->
+                <ellipse cx="50" cy="62" rx="28" ry="30" fill="white"/>
+                <!-- 頭 -->
+                <circle cx="50" cy="32" r="20" fill="white"/>
+                <!-- 顔（黒） -->
+                <ellipse cx="50" cy="33" rx="14" ry="16" fill="#111"/>
+                <!-- お腹（白） -->
+                <ellipse cx="50" cy="68" rx="17" ry="20" fill="white"/>
+                <!-- 目（左） -->
+                <circle cx="44" cy="28" r="3.5" fill="white"/>
+                <circle cx="44.8" cy="28" r="1.8" fill="#111"/>
+                <!-- 目（右） -->
+                <circle cx="56" cy="28" r="3.5" fill="white"/>
+                <circle cx="56.8" cy="28" r="1.8" fill="#111"/>
+                <!-- くちばし -->
+                <ellipse cx="50" cy="37" rx="5" ry="3" fill="#f39c12"/>
+                <!-- 羽（左） -->
+                <ellipse cx="22" cy="62" rx="9" ry="20" fill="#111" transform="rotate(-10 22 62)"/>
+                <!-- 羽（右） -->
+                <ellipse cx="78" cy="62" rx="9" ry="20" fill="#111" transform="rotate(10 78 62)"/>
+                <!-- 足（左） -->
+                <ellipse cx="41" cy="90" rx="8" ry="5" fill="#f39c12" transform="rotate(-10 41 90)"/>
+                <!-- 足（右） -->
+                <ellipse cx="59" cy="90" rx="8" ry="5" fill="#f39c12" transform="rotate(10 59 90)"/>
+                <!-- 頭トップ黒 -->
+                <ellipse cx="50" cy="18" rx="17" ry="10" fill="#111"/>
+            </svg>
+            <div class="logo-text">
+                <div class="firm-name">徳永行政書士事務所</div>
+                <div class="firm-sub">Tokunaga Immigration & Administrative Office</div>
+            </div>
+        </div>
+
+        <!-- 言語切替 -->
+        <div class="lang-switcher">
+            <button class="lang-btn active" onclick="switchLang('ja',this)">JP</button>
+            <button class="lang-btn" onclick="switchLang('en',this)">EN</button>
+            <button class="lang-btn" onclick="switchLang('id',this)">ID</button>
+            <button class="lang-btn" onclick="switchLang('tl',this)">TL</button>
+        </div>
+    </div>
+
+    <!-- セクターナビ -->
+    <nav class="sector-nav">
+        <a href="../index.html">🏠 TOP</a>
+        <a href="construction.html">🏗️ 建設業</a>
+        <a href="transport.html">🚛 運輸業</a>
+        <a href="auto-repair.html">🔧 自動車整備</a>
+        <a href="food.html">🍽️ 外食業</a>
+        <a href="accommodation.html" class="active">🏨 宿泊業</a>
+        <a href="agriculture.html">🌾 農業</a>
+        <a href="fishery.html">🐟 漁業</a>
+        <a href="food-manufacturing.html">🏭 食品製造</a>
+        <a href="nursing.html">👩‍⚕️ 介護</a>
+        <a href="industrial-machinery.html">⚙️ 産業機械</a>
+    </nav>
 </header>
 
-<!-- ===== SECTOR NAV ===== -->
-<nav class="sector-nav">
-  <div class="sector-nav-inner">
-    <a href="construction.html">🏗️ 建設</a>
-    <a href="accommodation.html" class="active">🏨 宿泊</a>
-    <a href="food-service.html">🍽️ 飲食料品製造</a>
-    <a href="restaurant.html">🍜 外食</a>
-    <a href="nursing.html">🏥 介護</a>
-    <a href="agriculture.html">🌾 農業</a>
-    <a href="fishery.html">🐟 漁業</a>
-    <a href="manufacturing.html">🏭 製造</a>
-    <a href="cleaning.html">🧹 ビルクリーニング</a>
-    <a href="auto-repair.html">🔧 自動車整備</a>
-  </div>
-</nav>
-
-<!-- ===== HERO ===== -->
-<section class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-content">
-    <div class="hero-badge">🏨 特定技能 対応業種</div>
-    <h1>宿泊業の<span>外国人採用</span>を<br>まるごとサポート</h1>
-    <p class="hero-desc">
-      深刻な人手不足が続くホテル・旅館業界。特定技能制度を活用した外国人スタッフの採用から定着まで、宿泊業の特性に寄り添い、一貫してご支援します。
-    </p>
-    <div class="hero-tags">
-      <span class="hero-tag">🛎️ フロント業務</span>
-      <span class="hero-tag">🛏️ 客室清掃・整備</span>
-      <span class="hero-tag">🍽️ 料飲サービス</span>
-      <span class="hero-tag">🔧 設備管理</span>
-    </div>
-  </div>
-</section>
-
-<!-- ===== WHY ===== -->
-<section class="why-section">
-  <div class="container">
-    <div class="section-label">Why Foreign Staff</div>
-    <h2 class="section-title">宿泊業が外国人採用を<br>選ぶ3つの理由</h2>
-    <p class="section-desc">観光立国ニッポンの最前線で、外国人スタッフが果たす役割はますます大きくなっています。</p>
-    <div class="why-grid">
-      <div class="why-card">
-        <div class="why-icon">🌍</div>
-        <h3>インバウンド対応力の向上</h3>
-        <p>外国語対応ができるスタッフの存在は、欧米・アジアからの訪日旅行者のホスピタリティ向上に直結します。英語・中国語・韓国語など多言語対応でリピーターを獲得しましょう。</p>
-      </div>
-      <div class="why-card">
-        <div class="why-icon">🔄</div>
-        <h3>深刻な人手不足の解消</h3>
-        <p>シフト制・夜勤・早番など働き方の多様さから、日本人スタッフの確保が年々困難になっています。特定技能外国人は即戦力として現場をしっかり支えてくれます。</p>
-      </div>
-      <div class="why-card">
-        <div class="why-icon">💡</div>
-        <h3>職場の多様性と活性化</h3>
-        <p>異文化背景を持つスタッフの加入で、チームに新たな視点と活力が生まれます。外国人スタッフが働きやすい環境整備は、日本人スタッフの定着率向上にも繋がります。</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== WORK CATEGORIES ===== -->
-<section>
-  <div class="container">
-    <div class="section-label">Work Categories</div>
-    <h2 class="section-title">受入可能な業務区分</h2>
-    <p class="section-desc">宿泊業の特定技能は「宿泊」1区分ですが、以下の幅広い業務に従事できます。</p>
-
-    <div class="info-box">
-      <div class="info-box-icon">ℹ️</div>
-      <div class="info-box-body">
-        <h4>宿泊業の特定技能ポイント</h4>
-        <p>
-          宿泊業は特定技能<strong>1号のみ</strong>（2号への移行不可）です。受入可能人数は施設の常勤職員総数の<strong>1/2以内</strong>という上限があります。
-          また、建設業のようなJAC加入義務はなく、登録支援機関（セコンドペンギン企画）との支援委託契約で受入が可能です。
-          試験は「宿泊技能測定試験」と「日本語能力試験N4相当以上」の合格が必要です。
+<!-- ====== HERO ====== -->
+<div class="hero">
+    <div class="hero-pattern"></div>
+    <div class="hero-bg"></div>
+    <div class="hero-deco">🏨</div>
+    <div class="hero-content">
+        <div class="hero-badge">
+            <span class="hero-badge-dot"></span>
+            特定技能 対応分野 ／ Accommodation Industry
+        </div>
+        <h1>
+            宿泊業
+            <span class="en">Accommodation Industry</span>
+        </h1>
+        <p class="hero-desc">
+            インバウンド需要の回復と深刻な人手不足が同時進行する宿泊業界。ホテル・旅館・ゲストハウスなど幅広い施設で特定技能外国人を受け入れ可能です。
         </p>
-      </div>
+        <div class="hero-stats">
+            <div class="hero-stat">
+                <span class="num">22,000人</span>
+                <span class="label">受入れ見込み<br>（5年間）</span>
+            </div>
+            <div class="hero-stat">
+                <span class="num">5業務</span>
+                <span class="label">対象業務<br>区分</span>
+            </div>
+            <div class="hero-stat">
+                <span class="num">旅館業法</span>
+                <span class="label">許可施設<br>が対象</span>
+            </div>
+        </div>
+        <div class="hero-cta">
+            <a href="https://line.me/ti/p/YOUR_LINE_ID" class="btn-line-hero" target="_blank">
+                <span class="line-icon">
+                    <svg viewBox="0 0 24 24" fill="#06C755" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2C6.48 2 2 6.02 2 11c0 3.04 1.6 5.73 4.09 7.47L5 21l3.18-1.56C9.35 19.79 10.65 20 12 20c5.52 0 10-4.02 10-9S17.52 2 12 2zm1 13H8v-1.5h5V15zm3-3H8v-1.5h8V12zm0-3H8V7.5h8V9z"/>
+                    </svg>
+                </span>
+                LINEで無料相談
+            </a>
+            <a href="tel:078-XXX-XXXX" class="btn-tel-hero">
+                📞 078-XXX-XXXX
+            </a>
+        </div>
     </div>
-
-    <div class="table-wrap">
-      <table>
-        <thead>
-          <tr>
-            <th>業務区分</th>
-            <th>主な業務内容</th>
-            <th>ポイント</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>フロント業務</td>
-            <td>チェックイン・チェックアウト対応、予約受付・変更・キャンセル処理、電話・メール対応、館内案内、観光情報の提供</td>
-            <td><span class="tag tag-blue">語学力が活きる</span><span class="tag tag-blue">インバウンド対応</span></td>
-          </tr>
-          <tr>
-            <td>企画・広報</td>
-            <td>宿泊プランの企画立案、SNSや多言語パンフレットの制作補助、観光イベントの企画・調整補助</td>
-            <td><span class="tag tag-blue">創造性を発揮</span></td>
-          </tr>
-          <tr>
-            <td>接客・サービス</td>
-            <td>レストラン・バーでの料飲サービス、宴会・婚礼など各種イベントでのホール業務、外国人ゲストへの通訳サポート</td>
-            <td><span class="tag tag-blue">多言語対応</span><span class="tag tag-orange">夜勤あり</span></td>
-          </tr>
-          <tr>
-            <td>客室清掃・整備</td>
-            <td>客室のベッドメイキング・清掃・備品補充、リネン類の交換・管理、ハウスキーピング全般</td>
-            <td><span class="tag tag-blue">即戦力採用多数</span></td>
-          </tr>
-          <tr>
-            <td>施設・設備管理</td>
-            <td>館内設備の点検・軽微な修繕、駐車場・エントランスの管理、防災設備の確認補助</td>
-            <td><span class="tag tag-orange">技術系スキル</span></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</section>
-
-<!-- ===== FLOW ===== -->
-<section class="flow-section">
-  <div class="container">
-    <div class="section-label">Support Flow</div>
-    <h2 class="section-title">採用〜定着サポートの流れ</h2>
-    <p class="section-desc">初回ご相談から就労開始、その後の定着支援まで、担当者が伴走型でサポートします。</p>
-    <div class="flow-grid">
-      <div class="flow-item">
-        <div class="flow-num">1</div>
-        <div class="flow-body">
-          <h3>無料ご相談・受入計画策定</h3>
-          <p>受入人数・業務内容・希望する国籍・時期などをヒアリング。宿泊業の受入上限（常勤職員数の1/2）の確認や受入コスト試算もこの段階で行います。</p>
-        </div>
-      </div>
-      <div class="flow-item">
-        <div class="flow-num">2</div>
-        <div class="flow-body">
-          <h3>求人票作成・海外募集開始</h3>
-          <p>フィリピン・インドネシア・ベトナムなど提携送出機関を通じて宿泊業経験者や語学力のある候補者を募集。施設の雰囲気に合う人材を重視してご提案します。</p>
-        </div>
-      </div>
-      <div class="flow-item">
-        <div class="flow-num">3</div>
-        <div class="flow-body">
-          <h3>書類選考・オンライン面接</h3>
-          <p>履歴書・職歴書のスクリーニング後、Zoomなどでのオンライン面接を設定。通訳サポートや質問例のご提供など、面接が円滑に進むよう事前サポートします。</p>
-        </div>
-      </div>
-      <div class="flow-item">
-        <div class="flow-num">4</div>
-        <div class="flow-body">
-          <h3>在留資格申請（行政書士連携）</h3>
-          <p>内定後、在留資格「特定技能」の申請書類を行政書士と連携して作成・提出。雇用契約書・支援計画書・各種証明書類の準備を一括代行します。</p>
-        </div>
-      </div>
-      <div class="flow-item">
-        <div class="flow-num">5</div>
-        <div class="flow-body">
-          <h3>来日前後の生活サポート</h3>
-          <p>住居探し・銀行口座開設・住民登録・SIM契約などの生活インフラを整備。施設近辺の住環境情報の提供や、必要に応じた宿舎確保もサポートします。</p>
-        </div>
-      </div>
-      <div class="flow-item">
-        <div class="flow-num">6</div>
-        <div class="flow-body">
-          <h3>登録支援機関として月次サポート</h3>
-          <p>就労開始後も登録支援機関として、定期面談・相談対応・日本語学習支援・各種行政手続きをサポート。外国人スタッフが安心して長く働ける環境を継続的に整えます。</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== PRICE ===== -->
-<section>
-  <div class="container">
-    <div class="section-label">Pricing</div>
-    <h2 class="section-title">料金目安</h2>
-    <p class="section-desc">料金はご状況により異なります。まずはお気軽にご相談ください。</p>
-    <div class="price-grid">
-      <div class="price-card">
-        <div class="price-icon">💬</div>
-        <h3>初回相談</h3>
-        <div class="price-amount">無料</div>
-        <div class="price-unit">&nbsp;</div>
-        <div class="price-note">受入可能人数の試算・業務区分確認・コストシミュレーションまで無料で対応します。</div>
-      </div>
-      <div class="price-card featured">
-        <div class="price-icon">✈️</div>
-        <h3>入国・採用支援</h3>
-        <div class="price-amount">150,000<span style="font-size:14px">円〜</span></div>
-        <div class="price-unit">/ 1名あたり</div>
-        <div class="price-note">求人票作成・マッチング・面接調整・在留資格申請サポートを含む入国支援一式。</div>
-      </div>
-      <div class="price-card">
-        <div class="price-icon">🏠</div>
-        <h3>生活立上げ支援</h3>
-        <div class="price-amount">50,000<span style="font-size:14px">円〜</span></div>
-        <div class="price-unit">/ 1名あたり</div>
-        <div class="price-note">住居手配・銀行口座・住民票・SIM契約など来日後の生活環境整備を代行します。</div>
-      </div>
-      <div class="price-card">
-        <div class="price-icon">📋</div>
-        <h3>月次サポート</h3>
-        <div class="price-amount">15,000<span style="font-size:14px">円〜</span></div>
-        <div class="price-unit">/ 1名あたり・月額</div>
-        <div class="price-note">登録支援機関として定期面談・相談対応・行政手続き・日本語学習支援を毎月提供。</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== FAQ ===== -->
-<section class="faq-section">
-  <div class="container">
-    <div class="section-label">FAQ</div>
-    <h2 class="section-title">よくあるご質問</h2>
-    <p class="section-desc">宿泊業での外国人採用に関するよくある疑問にお答えします。</p>
-    <div class="faq-list">
-
-      <div class="faq-item">
-        <button class="faq-q">
-          <span class="faq-q-mark">Q</span>
-          <span class="faq-q-text">宿泊業の特定技能では何人まで受け入れられますか？</span>
-          <span class="faq-arrow">▼</span>
-        </button>
-        <div class="faq-a">
-          <div class="faq-a-inner">
-            宿泊業の特定技能外国人の受入数は、<strong>施設の常勤職員総数の1/2以内</strong>と定められています。例えば常勤職員が10名の施設であれば、最大5名まで受け入れ可能です。なお、建設業のように業界団体（JACなど）への加入義務はありません。常勤職員数のカウント方法についてはご相談時に詳しくご説明します。
-          </div>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q">
-          <span class="faq-q-mark">Q</span>
-          <span class="faq-q-text">フロント業務に従事させるためには日本語力はどのくらい必要ですか？</span>
-          <span class="faq-arrow">▼</span>
-        </button>
-        <div class="faq-a">
-          <div class="faq-a-inner">
-            特定技能の要件として<strong>日本語能力試験N4相当以上</strong>または国際交流基金日本語基礎テスト（JFT-Basic）の合格が必要です。フロント業務は日本語のほか外国語スキルも重要であり、実際には英語・中国語・韓国語話者の候補者も多数います。来日後も弊社の日本語学習支援プログラムで継続的にスキルアップをサポートします。
-          </div>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q">
-          <span class="faq-q-mark">Q</span>
-          <span class="faq-q-text">夜勤や早番など変則シフトに外国人スタッフを入れることはできますか？</span>
-          <span class="faq-arrow">▼</span>
-        </button>
-        <div class="faq-a">
-          <div class="faq-a-inner">
-            はい、可能です。特定技能の就労制限は業種・業務区分に基づくものであり、シフトの種類（夜勤・早番・遅番など）による制限はありません。ただし、雇用契約書に就業時間・休日・割増賃金などの条件を明記することが必要です。弊社では雇用契約書のチェックや、外国人スタッフへの労働条件説明（母国語翻訳対応）も支援しています。
-          </div>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q">
-          <span class="faq-q-mark">Q</span>
-          <span class="faq-q-text">採用する国籍に制限はありますか？おすすめの国はどこですか？</span>
-          <span class="faq-arrow">▼</span>
-        </button>
-        <div class="faq-a">
-          <div class="faq-a-inner">
-            特定技能制度において国籍による制限は基本的にありません。弊社ではフィリピン・インドネシア・ベトナム・ネパール・ミャンマーなどの提携送出機関と連携しています。宿泊業ではフィリピン（英語対応力が高い）やインドネシア（勤勉・礼儀正しい）出身スタッフの採用実績が多くなっています。施設の客層や業務ニーズに合わせて最適な国籍・候補者をご提案します。
-          </div>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-q">
-          <span class="faq-q-mark">Q</span>
-          <span class="faq-q-text">宿泊業特定技能は2号（長期就労）への移行ができないと聞きましたが？</span>
-          <span class="faq-arrow">▼</span>
-        </button>
-        <div class="faq-a">
-          <div class="faq-a-inner">
-            現時点では宿泊業は特定技能<strong>1号のみ</strong>の対象業種であり、最大5年間の就労となります。ただし、政府は2号への拡大を含む制度見直しを継続的に検討しており、今後変更される可能性があります。また、一定の要件を満たせば技術・人文知識・国際業務などの在留資格への変更も考えられます。長期的なキャリアプランについてもご一緒に考えます。
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ===== CTA ===== -->
-<section class="cta-section">
-  <div class="container">
-    <h2>宿泊業の外国人採用、<br>まずはご相談から</h2>
-    <p>受入可能人数の確認から採用後の定着支援まで、初回相談は無料です。<br>LINEやお問い合わせフォームからお気軽にご連絡ください。</p>
-    <div class="cta-buttons">
-      <a href="https://lin.ee/XXXXXXX" class="btn btn-primary">💬 LINEで無料相談</a>
-      <a href="../index.html#contact" class="btn btn-outline">📧 フォームで問い合わせ</a>
-    </div>
-  </div>
-</section>
-
-<!-- ===== FOOTER ===== -->
-<footer class="site-footer">
-  <div class="footer-inner">
-    <div class="footer-brand">
-      <div class="logo-area" style="margin-bottom:12px;">
-        <div class="logo-icon">🐧</div>
-        <div class="logo-text">
-          <span class="ja">セコンドペンギン企画</span>
-          <span class="en">Second Penguin Planning</span>
-        </div>
-      </div>
-      <p>外国人採用・定着支援の専門家として、企業と外国人スタッフの架け橋になります。</p>
-    </div>
-    <div class="footer-links">
-      <h4>対応業種</h4>
-      <ul>
-        <li><a href="construction.html">🏗️ 建設業</a></li>
-        <li><a href="accommodation.html">🏨 宿泊業</a></li>
-        <li><a href="food-service.html">🍽️ 飲食料品製造業</a></li>
-        <li><a href="restaurant.html">🍜 外食業</a></li>
-        <li><a href="nursing.html">🏥 介護</a></li>
-      </ul>
-    </div>
-    <div class="footer-links">
-      <h4>サービス</h4>
-      <ul>
-        <li><a href="../index.html#services">採用支援サービス</a></li>
-        <li><a href="../index.html#support">登録支援機関サービス</a></li>
-        <li><a href="../index.html#pricing">料金案内</a></li>
-        <li><a href="../index.html#contact">お問い合わせ</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <p>© 2025 セコンドペンギン企画 All Rights Reserved.</p>
-  </div>
-</footer>
-
-<!-- ===== LINE FIXED BUTTON ===== -->
-<div class="line-fixed">
-  <a href="https://lin.ee/XXXXXXX" class="line-btn" target="_blank" rel="noopener">
-    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-      <path d="M24 4C12.95 4 4 12.27 4 22.5c0 8.19 5.37 15.17 13.08 18.08-.18.65-.68 2.35-.78 2.71-.12.44.16.43.34.31.14-.09 2.24-1.52 3.14-2.13.86.12 1.73.18 2.62.18 11.05 0 20-8.27 20-18.5S35.05 4 24 4z"/>
-    </svg>
-  </a>
-  <span class="line-label">LINE相談</span>
 </div>
 
-<!-- ===== SCRIPTS ===== -->
+<!-- ====== 対象施設 ====== -->
+<section>
+    <div class="section-inner">
+        <div class="section-header fade-in">
+            <span class="section-label">TARGET FACILITY</span>
+            <h2 class="section-title">対象となる<span>施設</span></h2>
+            <p class="section-desc">旅館業法に基づく許可を受けた宿泊施設が受入れ対象です</p>
+        </div>
+        <div class="industry-cards">
+            <div class="industry-card fade-in">
+                <div class="ic-icon">🏨</div>
+                <h3>ホテル・旅館</h3>
+                <p>シティホテル・ビジネスホテル・リゾートホテル・温泉旅館など、旅館業法の旅館・ホテル営業許可を持つ施設が対象です。</p>
+            </div>
+            <div class="industry-card fade-in">
+                <div class="ic-icon">🏠</div>
+                <h3>簡易宿所</h3>
+                <p>ゲストハウス・ホステル・民宿・ペンションなど、簡易宿所営業許可を持つ施設も特定技能の受入れが可能です。</p>
+            </div>
+            <div class="industry-card fade-in">
+                <div class="ic-icon">🌸</div>
+                <h3>リゾート・温泉施設</h3>
+                <p>温泉旅館・高級リゾート施設なども対象。インバウンド観光客への接客・ホスピタリティ業務での活躍が期待されます。</p>
+            </div>
+        </div>
+
+        <div class="warning-box fade-in">
+            <h3>⚠️ 民泊（住宅宿泊事業法）について</h3>
+            <ul>
+                <li>住宅宿泊事業法（民泊新法）に基づく民泊は、特定技能の受入れ対象外です</li>
+                <li>旅館業法の許可を取得している施設のみが対象となります</li>
+                <li>許可の種類についてご不明な場合はお気軽にご相談ください</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- ====== 業務区分 ====== -->
+<section class="bg-gray">
+    <div class="section-inner">
+        <div class="section-header fade-in">
+            <span class="section-label">JOB CATEGORIES</span>
+            <h2 class="section-title">対象となる<span>業務区分</span></h2>
+            <p class="section-desc">宿泊施設での幅広い業務に従事できます</p>
+        </div>
+        <div class="job-grid">
+            <div class="job-item fade-in">
+                <div class="ji-icon">🛎️</div>
+                <h4>フロント業務</h4>
+                <p>チェックイン・チェックアウト・予約対応・案内業務</p>
+            </div>
+            <div class="job-item fade-in">
+                <div class="ji-icon">🛏️</div>
+                <h4>客室清掃・整備</h4>
+                <p>客室クリーンアップ・リネン交換・アメニティ補充</p>
+            </div>
+            <div class="job-item fade-in">
+                <div class="ji-icon">🍽️</div>
+                <h4>レストランサービス</h4>
+                <p>朝食・夕食の提供・宴会サービス・食器洗浄</p>
+            </div>
+            <div class="job-item fade-in">
+                <div class="ji-icon">🧹</div>
+                <h4>館内清掃・整備</h4>
+                <p>ロビー・廊下・大浴場などの共有スペース清掃</p>
+            </div>
+            <div class="job-item fade-in">
+                <div class="ji-icon">🎒</div>
+                <h4>接客・コンシェルジュ</h4>
+                <p>観光案内・荷物対応・多言語での案内サービス</p>
+            </div>
+        </div>
+
+        <div class="feature-box fade-in">
+            <h3>🌍 外国人スタッフが活躍できる理由</h3>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <div class="fi-icon">🗣️</div>
+                    <h4>多言語対応</h4>
+                    <p>英語・中国語・タガログ語などで外国人宿泊客への対応が可能</p>
+                </div>
+                <div class="feature-item">
+                    <div class="fi-icon">🌏</div>
+                    <h4>インバウンド対応</h4>
+                    <p>訪日外国人観光客のニーズに寄り添ったサービス提供</p>
+                </div>
+                <div class="feature-item">
+                    <div class="fi-icon">🏆</div>
+                    <h4>ホスピタリティ</h4>
+                    <p>母国でのサービス業経験を活かした高品質な接客</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ====== 試験・資格 ====== -->
+<section>
+    <div class="section-inner">
+        <div class="section-header fade-in">
+            <span class="section-label">QUALIFICATION</span>
+            <h2 class="section-title">試験・<span>資格要件</span></h2>
+            <p class="section-desc">特定技能「宿泊業」の要件を満たす方法は2つあります</p>
+        </div>
+        <div class="exam-grid">
+            <div class="exam-card fade-in">
+                <span class="exam-tag">方法①</span>
+                <h3>宿泊業技能測定試験</h3>
+                <p>
+                    ・学科試験（衛生・安全・宿泊サービス・法令等）<br>
+                    ・実技試験（フロント業務・接客応対等）<br>
+                    ・観光庁が指定した実施機関が運営<br>
+                    ・合格後、日本語試験（N4相当）も必要
+                </p>
+            </div>
+            <div class="exam-card fade-in">
+                <span class="exam-tag">方法②</span>
+                <h3>技能実習2号修了</h3>
+                <p>
+                    ・宿泊業の技能実習2号を修了した方<br>
+                    ・試験免除で特定技能1号へ移行可能<br>
+                    ・移行時も日本語要件の確認が必要<br>
+                    ・実習先と同種の業務が推奨されます
+                </p>
+            </div>
+        </div>
+
+        <div class="req-box fade-in">
+            <h3>📋 受入れ機関（宿泊施設）の主な要件</h3>
+            <ul class="req-list">
+                <li>旅館業法に基づく旅館・ホテル営業または簡易宿所営業の許可取得</li>
+                <li>宿泊業分野特定技能協議会（観光庁所管）への加入（4ヶ月以内）</li>
+                <li>同等業務に従事する日本人と同等以上の賃金・待遇</li>
+                <li>適切な1号特定技能外国人支援計画の作成・実施</li>
+                <li>旅行業法・消防法等の関連法令を遵守していること</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- ====== サポートフロー ====== -->
+<section class="bg-gray">
+    <div class="section-inner">
+        <div class="section-header fade-in">
+            <span class="section-label">SUPPORT FLOW</span>
+            <h2 class="section-title">サポートの<span>流れ</span></h2>
+            <p class="section-desc">宿泊施設の採用から就労開始まで、一貫してサポートします</p>
+        </div>
+        <div class="flow-wrap">
+            <div class="flow-step fade-in">
+                <div class="flow-num">1</div>
+                <div class="flow-title">無料相談</div>
+                <div class="flow-desc">施設規模・業態・必要人数の確認</div>
+            </div>
+            <div class="flow-step fade-in">
+                <div class="flow-num">2</div>
+                <div class="flow-title">許可証確認</div>
+                <div class="flow-desc">旅館業法許可証・各種届出の確認</div>
+            </div>
+            <div class="flow-step fade-in">
+                <div class="flow-num">3</div>
+                <div class="flow-title">人材マッチング</div>
+                <div class="flow-desc">試験合格者・実習修了者の紹介・面接</div>
+            </div>
+            <div class="flow-step fade-in">
+                <div class="flow-num">4</div>
+                <div class="flow-title">在留資格申請</div>
+                <div class="flow-desc">特定技能ビザ申請・入管対応（2〜4ヶ月）</div>
+            </div>
+            <div class="flow-step fade-in">
+                <div class="flow-num">5</div>
+                <div class="flow-title">入国・入社</div>
+                <div class="flow-desc">住居確保・役所手続き・研修サポート</div>
+            </div>
+            <div class="flow-step fade-in">
+                <div class="flow-num">6</div>
+                <div class="flow-title">継続支援</div>
+                <div class="flow-desc">協議会加入・定期面談・更新手続き</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ====== 料金 ====== -->
+<section>
+    <div class="section-inner">
+        <div class="section-header fade-in">
+            <span class="section-label">PRICING</span>
+            <h2 class="section-title">料金<span>プラン</span></h2>
+            <p class="section-desc">施設規模・採用人数に応じた柔軟なプランをご用意しています</p>
+        </div>
+        <div class="pricing-grid">
+            <div class="pricing-card fade-in">
+                <div class="pc-icon">📋</div>
+                <h3>在留資格申請</h3>
+                <div class="price">¥150,000<small style="font-size:1rem">〜</small></div>
+                <div class="price-note">1名あたり（税別）</div>
+                <ul>
+                    <li>申請書類作成・翻訳</li>
+                    <li>入管申請・審査対応</li>
+                    <li>不許可時の再申請サポート</li>
+                    <li>協議会加入手続き</li>
+                </ul>
+            </div>
+            <div class="pricing-card featured fade-in">
+                <div class="pc-icon">🏠</div>
+                <h3>受入れ初期設定</h3>
+                <div class="price">¥50,000<small style="font-size:1rem">〜</small></div>
+                <div class="price-note">セット（税別）</div>
+                <ul>
+                    <li>住居確保サポート</li>
+                    <li>役所・銀行手続き同行</li>
+                    <li>宿泊業務オリエンテーション</li>
+                    <li>多言語接客マニュアル準備</li>
+                </ul>
+            </div>
+            <div class="pricing-card fade-in">
+                <div class="pc-icon">📅</div>
+                <h3>月次サポート</h3>
+                <div class="price">¥15,000<small style="font-size:1rem">〜</small></div>
+                <div class="price-note">人・月（税別）</div>
+                <ul>
+                    <li>定期面談（月1回）</li>
+                    <li>多言語相談窓口</li>
+                    <li>労務トラブル対応</li>
+                    <li>在留期間更新手続き</li>
+                </ul>
+            </div>
+        </div>
+        <p class="fade-in" style="text-align:center;margin-top:18px;color:#999;font-size:0.8rem;">
+            ※ 複数名採用・複数施設の場合は割引あり。詳細はお問い合わせください。
+        </p>
+    </div>
+</section>
+
+<!-- ====== FAQ ====== -->
+<section class="bg-gray">
+    <div class="section-inner">
+        <div class="section-header fade-in">
+            <span class="section-label">FAQ</span>
+            <h2 class="section-title">よくある<span>ご質問</span></h2>
+            <p class="section-desc">宿泊業での特定技能受入れに関するQ&A</p>
+        </div>
+        <div class="faq-list">
+            <div class="faq-item fade-in">
+                <div class="faq-q">
+                    <span class="faq-q-mark">Q</span>
+                    <span class="faq-q-text">小規模なゲストハウスでも受入れできますか？</span>
+                    <span class="faq-toggle">＋</span>
+                </div>
+                <div class="faq-a">
+                    はい、規模にかかわらず旅館業法の許可（旅館・ホテル営業または簡易宿所営業）を取得していれば受入れ可能です。ただし、1名の採用でも支援計画の作成・実施義務は発生します。
+                </div>
+            </div>
+            <div class="faq-item fade-in">
+                <div class="faq-q">
+                    <span class="faq-q-mark">Q</span>
+                    <span class="faq-q-text">フロントとレストランを兼務させることはできますか？</span>
+                    <span class="faq-toggle">＋</span>
+                </div>
+                <div class="faq-a">
+                    はい、宿泊業分野内の複数業務を兼務させることは可能です。フロント業務と館内レストランのサービス業務を組み合わせて従事させることができます。ただし、外食業や食品製造業など別分野の業務への兼務は認められません。
+                </div>
+            </div>
+            <div class="faq-item fade-in">
+                <div class="faq-q">
+                    <span class="faq-q-mark">Q</span>
+                    <span class="faq-q-text">特定技能外国人に夜勤をさせることはできますか？</span>
+                    <span class="faq-toggle">＋</span>
+                </div>
+                <div class="faq-a">
+                    法令上、夜勤を禁止する規定はありません。日本人スタッフと同等の条件であれば夜勤勤務も可能です。ただし、深夜割増賃金の支払いなど、労働基準法を遵守した適切な処遇が必要です。
+                </div>
+            </div>
+            <div class="faq-item fade-in">
+                <div class="faq-q">
+                    <span class="faq-q-mark">Q</span>
+                    <span class="faq-q-text">宿泊業特定技能協議会への加入はいつまでに必要ですか？</span>
+                    <span class="faq-toggle">＋</span>
+                </div>
+                <div class="faq-a">
+                    特定技能外国人を初めて受け入れてから4ヶ月以内に、観光庁所管の宿泊業特定技能協議会へ加入する必要があります。加入が遅れると在留資格更新に影響する可能性があります。当事務所では加入手続きもサポートします。
+                </div>
+            </div>
+            <div class="faq-item fade-in">
+                <div class="faq-q">
+                    <span class="faq-q-mark">Q</span>
+                    <span class="faq-q-text">インバウンド対応で特に活躍できる人材はいますか？</span>
+                    <span class="faq-toggle">＋</span>
+                </div>
+                <div class="faq-a">
+                    訪日外国人の多い出身国（フィリピン・ベトナム・インドネシア等）出身のスタッフは、英語や自国語でのコミュニケーション能力に加え、日本語も習得しているため、外国人宿泊客対応で大きな強みを発揮します。施設のターゲット顧客に合わせた人材マッチングもご提案できます。
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ====== CTA ====== -->
+<div class="cta-section">
+    <h2>宿泊施設の人材採用、まずはご相談ください</h2>
+    <p>ホテル・旅館・ゲストハウスなど施設の規模を問わず、最適な採用プランをご提案します</p>
+    <div class="cta-buttons">
+        <a href="https://line.me/ti/p/YOUR_LINE_ID" class="btn-line-cta" target="_blank">
+            <span class="line-icon">
+                <svg viewBox="0 0 24 24" fill="#06C755" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2C6.48 2 2 6.02 2 11c0 3.04 1.6 5.73 4.09 7.47L5 21l3.18-1.56C9.35 19.79 10.65 20 12 20c5.52 0 10-4.02 10-9S17.52 2 12 2zm1 13H8v-1.5h5V15zm3-3H8v-1.5h8V12zm0-3H8V7.5h8V9z"/>
+                </svg>
+            </span>
+            LINEで無料相談
+        </a>
+        <a href="tel:078-XXX-XXXX" class="btn-tel-cta">
+            📞 電話で相談
+        </a>
+    </div>
+</div>
+
+<!-- ====== FOOTER ====== -->
+<footer>
+    <div class="foot-links">
+        <a href="../index.html">TOP</a>
+        <a href="../index.html#about">事務所概要</a>
+        <a href="../index.html#contact">お問い合わせ</a>
+        <a href="construction.html">建設業</a>
+        <a href="transport.html">運輸業</a>
+        <a href="food.html">外食業</a>
+    </div>
+    <p>徳永行政書士事務所 ｜ 神戸ファッションマート 4N-07-01</p>
+    <p style="margin-top:6px;">© 2025 徳永行政書士事務所. All Rights Reserved.</p>
+</footer>
+
 <script>
-  // FAQ Accordion
-  document.querySelectorAll('.faq-q').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const item = btn.closest('.faq-item');
-      const ans = item.querySelector('.faq-a');
-      const isOpen = item.classList.contains('open');
+    // フェードイン
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+            if (e.isIntersecting) e.target.classList.add('visible');
+        });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-      document.querySelectorAll('.faq-item.open').forEach(el => {
-        el.classList.remove('open');
-        el.querySelector('.faq-a').style.maxHeight = '0';
-      });
-
-      if (!isOpen) {
-        item.classList.add('open');
-        ans.style.maxHeight = ans.scrollHeight + 'px';
-      }
+    // FAQ アコーディオン
+    document.querySelectorAll('.faq-q').forEach(q => {
+        q.addEventListener('click', () => {
+            const item = q.parentElement;
+            const ans = item.querySelector('.faq-a');
+            const tog = q.querySelector('.faq-toggle');
+            const open = ans.style.display === 'block';
+            ans.style.display = open ? 'none' : 'block';
+            tog.textContent = open ? '＋' : '－';
+            tog.classList.toggle('open', !open);
+        });
     });
-  });
 
-  // Intersection Observer for fade-in
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
-      if (entry.isIntersecting) {
-        setTimeout(() => entry.target.classList.add('visible'), i * 100);
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1 });
-
-  document.querySelectorAll('.why-card, .flow-item, .price-card').forEach(el => observer.observe(el));
+    // 言語切替
+    function switchLang(lang, btn) {
+        document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+    }
 </script>
 
 </body>
