@@ -1,0 +1,1470 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>工業製品製造業 特定技能サポート | 徳永行政書士事務所</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Hiragino Sans', 'Yu Gothic', sans-serif;
+            color: #333;
+            background: #fff;
+        }
+
+        /* ====== HEADER ====== */
+        header {
+            background: linear-gradient(135deg, #2c3e50 0%, #4a6278 100%);
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 30px;
+        }
+
+        .logo-area { display: flex; align-items: center; gap: 12px; }
+        .logo-penguin { width: 48px; height: 48px; }
+
+        .logo-text .firm-name {
+            font-size: 1.05rem;
+            font-weight: bold;
+            letter-spacing: 0.05em;
+        }
+
+        .logo-text .firm-sub { font-size: 0.7rem; opacity: 0.85; }
+
+        .lang-switcher { display: flex; gap: 5px; }
+
+        .lang-btn {
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.35);
+            color: white;
+            padding: 4px 9px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.72rem;
+            transition: background 0.2s;
+        }
+
+        .lang-btn:hover, .lang-btn.active { background: rgba(255,255,255,0.35); }
+
+        .sector-nav {
+            background: rgba(0,0,0,0.22);
+            padding: 0 30px;
+            display: flex;
+            align-items: center;
+            overflow-x: auto;
+            white-space: nowrap;
+            gap: 4px;
+        }
+
+        .sector-nav a {
+            color: rgba(255,255,255,0.78);
+            text-decoration: none;
+            font-size: 0.75rem;
+            padding: 9px 12px;
+            border-bottom: 3px solid transparent;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            flex-shrink: 0;
+        }
+
+        .sector-nav a:hover { color: white; background: rgba(255,255,255,0.08); }
+
+        .sector-nav a.active {
+            color: white;
+            border-bottom-color: #ffd700;
+            font-weight: bold;
+            background: rgba(255,255,255,0.1);
+        }
+
+        /* ====== HERO ====== */
+        .hero {
+            position: relative;
+            min-height: 480px;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            background: #2c3e50;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg,
+                rgba(44,62,80,0.97) 0%,
+                rgba(44,62,80,0.82) 45%,
+                rgba(74,98,120,0.65) 100%);
+            z-index: 1;
+        }
+
+        .hero-pattern {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            background-image: repeating-linear-gradient(
+                45deg,
+                transparent, transparent 40px,
+                rgba(255,255,255,0.03) 40px,
+                rgba(255,255,255,0.03) 80px
+            );
+        }
+
+        .hero-deco {
+            position: absolute;
+            right: 6%;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 11rem;
+            opacity: 0.12;
+            z-index: 1;
+            pointer-events: none;
+            line-height: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 60px 30px 60px 50px;
+            max-width: 700px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.35);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.78rem;
+            margin-bottom: 22px;
+        }
+
+        .hero-badge-dot {
+            width: 7px;
+            height: 7px;
+            background: #ffd700;
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.3); }
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 900;
+            color: white;
+            line-height: 1.15;
+            margin-bottom: 8px;
+            text-shadow: 0 3px 12px rgba(0,0,0,0.4);
+        }
+
+        .hero h1 .en {
+            display: block;
+            font-size: 1rem;
+            font-weight: 400;
+            opacity: 0.78;
+            letter-spacing: 0.08em;
+            margin-top: 6px;
+        }
+
+        .hero-desc {
+            font-size: 0.98rem;
+            color: rgba(255,255,255,0.88);
+            line-height: 1.85;
+            margin: 22px 0 32px;
+            max-width: 520px;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 28px;
+            margin-bottom: 36px;
+            flex-wrap: wrap;
+        }
+
+        .hero-stat {
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.22);
+            border-radius: 10px;
+            padding: 14px 20px;
+            text-align: center;
+            min-width: 110px;
+        }
+
+        .hero-stat .num {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #ffd700;
+            display: block;
+        }
+
+        .hero-stat .label {
+            font-size: 0.68rem;
+            color: rgba(255,255,255,0.8);
+            margin-top: 3px;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .btn-line-hero {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #06C755;
+            color: white;
+            padding: 14px 30px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: bold;
+            text-decoration: none;
+            box-shadow: 0 4px 18px rgba(6,199,85,0.45);
+            transition: all 0.25s;
+        }
+
+        .btn-line-hero:hover {
+            background: #05b34d;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(6,199,85,0.55);
+        }
+
+        .btn-line-hero .line-icon {
+            width: 26px;
+            height: 26px;
+            background: white;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-line-hero .line-icon svg { width: 18px; height: 18px; }
+
+        .btn-tel-hero {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255,255,255,0.9);
+            font-size: 0.92rem;
+            font-weight: bold;
+            text-decoration: none;
+            border-bottom: 1px dashed rgba(255,255,255,0.45);
+            padding-bottom: 2px;
+            transition: color 0.2s;
+        }
+
+        .btn-tel-hero:hover { color: white; }
+
+        /* ====== ALERT BANNER ====== */
+        .alert-banner {
+            background: linear-gradient(90deg, #f39c12, #e67e22);
+            color: white;
+            padding: 14px 30px;
+            text-align: center;
+            font-size: 0.88rem;
+            font-weight: 600;
+        }
+
+        .alert-banner span {
+            background: rgba(255,255,255,0.25);
+            padding: 2px 10px;
+            border-radius: 10px;
+            margin-right: 8px;
+            font-size: 0.78rem;
+        }
+
+        /* ====== SECTIONS ====== */
+        section { padding: 64px 0; }
+        section.bg-gray { background: #f7f7f7; }
+
+        .section-inner {
+            max-width: 920px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section-header { margin-bottom: 36px; }
+
+        .section-label {
+            display: inline-block;
+            background: #2c3e50;
+            color: white;
+            font-size: 0.7rem;
+            font-weight: bold;
+            letter-spacing: 0.12em;
+            padding: 4px 12px;
+            border-radius: 3px;
+            margin-bottom: 10px;
+        }
+
+        .section-title {
+            font-size: 1.65rem;
+            font-weight: 800;
+            color: #1a1a1a;
+            line-height: 1.3;
+        }
+
+        .section-title span { color: #2c3e50; }
+
+        .section-desc {
+            margin-top: 10px;
+            color: #666;
+            font-size: 0.88rem;
+            line-height: 1.7;
+        }
+
+        /* ====== 分野タブ ====== */
+        .field-tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 22px;
+            flex-wrap: wrap;
+        }
+
+        .field-tab {
+            background: #e8ecef;
+            color: #555;
+            padding: 7px 16px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+        }
+
+        .field-tab.active, .field-tab:hover {
+            background: #2c3e50;
+            color: white;
+        }
+
+        /* ====== 分野カード ====== */
+        .field-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+        }
+
+        .field-card {
+            background: white;
+            border-radius: 12px;
+            padding: 22px;
+            border-top: 4px solid #2c3e50;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+            transition: transform 0.22s, box-shadow 0.22s;
+        }
+
+        .field-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 28px rgba(44,62,80,0.15);
+        }
+
+        .field-card .fc-icon { font-size: 2rem; margin-bottom: 12px; }
+
+        .field-card h3 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 6px;
+        }
+
+        .field-card p {
+            font-size: 0.8rem;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .field-card .fc-count {
+            display: inline-block;
+            background: #e8ecef;
+            color: #2c3e50;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 8px;
+            margin-top: 8px;
+        }
+
+        /* ====== 業務グリッド ====== */
+        .job-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 14px;
+        }
+
+        .job-item {
+            background: white;
+            border-radius: 10px;
+            padding: 18px 14px;
+            text-align: center;
+            border: 2px solid #d8e2ea;
+            transition: border-color 0.2s, transform 0.2s;
+        }
+
+        .job-item:hover {
+            border-color: #2c3e50;
+            transform: translateY(-2px);
+        }
+
+        .job-item .ji-icon { font-size: 1.8rem; margin-bottom: 8px; }
+
+        .job-item h4 {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #222;
+            margin-bottom: 5px;
+        }
+
+        .job-item p {
+            font-size: 0.74rem;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        /* ====== 統合特定技能ボックス ====== */
+        .integration-box {
+            background: #2c3e50;
+            color: white;
+            border-radius: 14px;
+            padding: 32px;
+            margin-top: 28px;
+        }
+
+        .integration-box h3 {
+            font-size: 1.05rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .integration-box .ib-sub {
+            font-size: 0.82rem;
+            opacity: 0.75;
+            margin-bottom: 20px;
+        }
+
+        .integration-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 12px;
+        }
+
+        .integration-item {
+            background: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            padding: 14px;
+            text-align: center;
+        }
+
+        .integration-item .ii-icon { font-size: 1.5rem; margin-bottom: 6px; }
+
+        .integration-item h4 {
+            font-size: 0.82rem;
+            font-weight: 700;
+            margin-bottom: 3px;
+        }
+
+        .integration-item p {
+            font-size: 0.72rem;
+            opacity: 0.82;
+        }
+
+        /* ====== 試験カード ====== */
+        .exam-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+        }
+
+        .exam-card {
+            background: white;
+            border-radius: 12px;
+            padding: 26px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .exam-card::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #2c3e50, #4a6278);
+        }
+
+        .exam-tag {
+            display: inline-block;
+            background: #2c3e50;
+            color: white;
+            font-size: 0.7rem;
+            font-weight: bold;
+            padding: 3px 10px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        .exam-card h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 12px;
+        }
+
+        .exam-card p {
+            font-size: 0.83rem;
+            color: #555;
+            line-height: 1.75;
+        }
+
+        /* 要件ボックス */
+        .req-box {
+            background: #f0f3f6;
+            border: 1px solid #c8d4de;
+            border-radius: 10px;
+            padding: 24px;
+            margin-top: 24px;
+        }
+
+        .req-box h3 {
+            color: #2c3e50;
+            font-size: 0.95rem;
+            margin-bottom: 14px;
+        }
+
+        .req-list { list-style: none; }
+
+        .req-list li {
+            font-size: 0.85rem;
+            color: #444;
+            padding: 8px 0;
+            border-bottom: 1px solid #d8e2ea;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .req-list li:last-child { border-bottom: none; }
+
+        .req-list li::before {
+            content: "✓";
+            color: #2c3e50;
+            font-weight: bold;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        /* ====== 比較表 ====== */
+        .compare-table {
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            font-size: 0.84rem;
+        }
+
+        .compare-table thead {
+            background: #2c3e50;
+            color: white;
+        }
+
+        .compare-table th {
+            padding: 14px 16px;
+            text-align: left;
+            font-weight: 700;
+        }
+
+        .compare-table td {
+            padding: 12px 16px;
+            border-bottom: 1px solid #e8ecef;
+            color: #444;
+        }
+
+        .compare-table tr:last-child td { border-bottom: none; }
+
+        .compare-table tr:nth-child(even) td { background: #f7f9fb; }
+
+        .tag-new {
+            display: inline-block;
+            background: #e74c3c;
+            color: white;
+            font-size: 0.65rem;
+            font-weight: 700;
+            padding: 2px 7px;
+            border-radius: 8px;
+            margin-left: 6px;
+        }
+
+        /* ====== フロー ====== */
+        .flow-wrap {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 0;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 720px) {
+            .flow-wrap { grid-template-columns: repeat(3, 1fr); }
+        }
+
+        @media (max-width: 420px) {
+            .flow-wrap { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        .flow-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 18px 8px;
+            position: relative;
+        }
+
+        .flow-step:not(:last-child)::after {
+            content: "›";
+            position: absolute;
+            right: -4px;
+            top: 28px;
+            font-size: 1.6rem;
+            color: #2c3e50;
+            font-weight: bold;
+            line-height: 1;
+        }
+
+        @media (max-width: 720px) {
+            .flow-step:nth-child(3n)::after,
+            .flow-step:last-child::after { display: none; }
+        }
+
+        .flow-num {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: #2c3e50;
+            color: white;
+            font-size: 1rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+            box-shadow: 0 3px 10px rgba(44,62,80,0.3);
+        }
+
+        .flow-title { font-size: 0.8rem; font-weight: 700; color: #222; margin-bottom: 4px; }
+        .flow-desc { font-size: 0.7rem; color: #777; line-height: 1.45; }
+
+        /* ====== 料金 ====== */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+        }
+
+        .pricing-card {
+            background: white;
+            border-radius: 14px;
+            padding: 30px 24px;
+            text-align: center;
+            box-shadow: 0 3px 16px rgba(0,0,0,0.09);
+            border: 2px solid transparent;
+            transition: border-color 0.25s, transform 0.25s;
+        }
+
+        .pricing-card:hover {
+            border-color: #2c3e50;
+            transform: translateY(-3px);
+        }
+
+        .pricing-card.featured {
+            border-color: #2c3e50;
+            background: linear-gradient(160deg, #f0f3f6, #fff);
+        }
+
+        .pricing-card .pc-icon { font-size: 2rem; margin-bottom: 12px; }
+
+        .pricing-card h3 {
+            font-size: 0.9rem;
+            color: #777;
+            margin-bottom: 14px;
+            font-weight: 600;
+        }
+
+        .pricing-card .price {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #2c3e50;
+        }
+
+        .pricing-card .price-note {
+            font-size: 0.78rem;
+            color: #999;
+            margin-bottom: 18px;
+        }
+
+        .pricing-card ul { list-style: none; text-align: left; }
+
+        .pricing-card ul li {
+            font-size: 0.8rem;
+            color: #555;
+            padding: 5px 0;
+            border-bottom: 1px solid #d8e2ea;
+            padding-left: 14px;
+            position: relative;
+        }
+
+        .pricing-card ul li:last-child { border-bottom: none; }
+
+        .pricing-card ul li::before {
+            content: "●";
+            color: #2c3e50;
+            font-size: 0.5rem;
+            position: absolute;
+            left: 0;
+            top: 8px;
+        }
+
+        /* ====== FAQ ====== */
+        .faq-list { display: flex; flex-direction: column; gap: 10px; }
+
+        .faq-item {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .faq-q {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 18px 20px;
+            cursor: pointer;
+            user-select: none;
+            transition: background 0.18s;
+        }
+
+        .faq-q:hover { background: #f0f3f6; }
+
+        .faq-q-mark {
+            width: 28px;
+            height: 28px;
+            background: #2c3e50;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.82rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .faq-q-text { flex: 1; font-size: 0.9rem; font-weight: 600; color: #222; }
+
+        .faq-toggle {
+            color: #2c3e50;
+            font-size: 1.3rem;
+            font-weight: 300;
+            flex-shrink: 0;
+            transition: transform 0.25s;
+        }
+
+        .faq-toggle.open { transform: rotate(45deg); }
+
+        .faq-a {
+            display: none;
+            padding: 4px 20px 18px 60px;
+            font-size: 0.85rem;
+            color: #555;
+            line-height: 1.75;
+        }
+
+        /* ====== CTA ====== */
+        .cta-section {
+            background: linear-gradient(135deg, #2c3e50 0%, #4a6278 100%);
+            padding: 72px 24px;
+            text-align: center;
+            color: white;
+        }
+
+        .cta-section h2 { font-size: 1.7rem; font-weight: 800; margin-bottom: 12px; }
+        .cta-section p { font-size: 0.95rem; opacity: 0.88; margin-bottom: 36px; }
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-line-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #06C755;
+            color: white;
+            padding: 15px 36px;
+            border-radius: 50px;
+            font-size: 1.05rem;
+            font-weight: bold;
+            text-decoration: none;
+            box-shadow: 0 4px 20px rgba(6,199,85,0.4);
+            transition: all 0.25s;
+        }
+
+        .btn-line-cta:hover {
+            background: #05b34d;
+            transform: translateY(-2px);
+            box-shadow: 0 7px 28px rgba(6,199,85,0.5);
+        }
+
+        .btn-line-cta .line-icon {
+            width: 28px;
+            height: 28px;
+            background: white;
+            border-radius: 7px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-line-cta .line-icon svg { width: 19px; height: 19px; }
+
+        .btn-tel-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: white;
+            padding: 15px 32px;
+            border-radius: 50px;
+            font-size: 1.05rem;
+            font-weight: bold;
+            text-decoration: none;
+            border: 2px solid rgba(255,255,255,0.5);
+            background: rgba(255,255,255,0.12);
+            transition: all 0.25s;
+        }
+
+        .btn-tel-cta:hover { background: rgba(255,255,255,0.22); }
+
+        /* ====== FOOTER ====== */
+        footer {
+            background: #1a1a1a;
+            color: rgba(255,255,255,0.6);
+            text-align: center;
+            padding: 28px 20px;
+            font-size: 0.78rem;
+        }
+
+        footer .foot-links {
+            display: flex;
+            gap: 18px;
+            justify-content: center;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+        }
+
+        footer a { color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.18s; }
+        footer a:hover { color: white; }
+
+        /* ====== ANIMATION ====== */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(22px);
+            transition: opacity 0.55s ease, transform 0.55s ease;
+        }
+
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+        /* ====== RESPONSIVE ====== */
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 2rem; }
+            .hero-content { padding: 40px 20px; }
+            .hero-stats { gap: 12px; }
+            .hero-stat { min-width: 85px; padding: 10px 12px; }
+            .hero-stat .num { font-size: 1.2rem; }
+            .header-top { padding: 10px 16px; flex-wrap: wrap; gap: 8px; }
+            .sector-nav { padding: 0 16px; }
+            .compare-table { font-size: 0.76rem; }
+            .compare-table th, .compare-table td { padding: 10px 10px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ====== HEADER ====== -->
+<header>
+    <div class="header-top">
+        <div class="logo-area">
+            <svg class="logo-penguin" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <ellipse cx="50" cy="62" rx="28" ry="30" fill="white"/>
+                <circle cx="50" cy="32" r="20" fill="white"/>
+                <ellipse cx="50" cy="33" rx="14" ry="16" fill="#111"/>
+                <ellipse cx="50" cy="68" rx="17" ry="20" fill="white"/>
+                <circle cx="44" cy="28" r="3.5" fill="white"/>
+                <circle cx="44.8" cy="28" r="1.8" fill="#111"/>
+                <circle cx="56" cy="28" r="3.5" fill="white"/>
+                <circle cx="56.8" cy="28" r="1.8" fill="#111"/>
+                <ellipse cx="50" cy="37" rx="5" ry="3" fill="#f39c12"/>
+                <ellipse cx="22" cy="62" rx="9" ry="20" fill="#111" transform="rotate(-10 22 62)"/>
+                <ellipse cx="78" cy="62" rx="9" ry="20" fill="#111" transform="rotate(10 78 62)"/>
+                <ellipse cx="41" cy="90" rx="8" ry="5" fill="#f39c12" transform="rotate(-10 41 90)"/>
+                <ellipse cx="59" cy="90" rx="8" ry="5" fill="#f39c12" transform="rotate(10 59 90)"/>
+                <ellipse cx="50" cy="18" rx="17" ry="10" fill="#111"/>
+            </svg>
+            <div class="logo-text">
+                <div class="firm-name">徳永行政書士事務所</div>
+                <div class="firm-sub">Tokunaga Immigration & Administrative Office</div>
+            </div>
+        </div>
+        <div class="lang-switcher">
+            <button class="lang-btn active" onclick="switchLang('ja',this)">JP</button>
+            <button class="lang-btn" onclick="switchLang('en',this)">EN</button>
+            <button class="lang-btn" onclick="switchLang('id',this)">ID</button>
+            <button class="lang-btn" onclick="switchLang('tl',this)">TL</button>
+        </div>
+    </div>
+    <nav class="sector-nav">
+        <a href="../index.html">🏠 TOP</a>
+        <a href="construction.html">🏗️ 建設業</a>
+        <a href="transport.html">🚛 運輸業</a>
+        <a href="auto-repair.html">🔧 自動車整備</a>
+        <a href="food.html">🍽️ 外食業</a>
+        <a href="accommodation.html">🏨 宿泊業</a>
+        <a href="agriculture.html">🌾 農業</a>
+        <a href="fishery.html">🐟 漁業</a>
+        <a href="food-manufacturing.html">🏭 食品製造</a>
+        <a href="nursing.html">👩‍⚕️ 介護</a>
+        <a href="industrial-machinery.html" class="active">⚙️ 産業機械</a>
+    </nav>
+</header>
+
+<!-- アラートバナー -->
+<div class="alert-banner">
+    <span>2024年改正</span>
+    従来の「素形材・産業機械・電気電子情報関連製造業」が「工業製品製造業」に統合・拡大されました
+</div>
+
+<!-- ====== HERO ====== -->
+<div class="hero">
+    <div class="hero-pattern"></div>
+    <div class="hero-bg"></div>
+    <div class="hero-deco">⚙️</div>
+    <div class="hero-content">
+        <div class="hero-badge">
+            <span class="hero-badge-dot"></span>
+            特定技能 対応分野 ／ Industrial Products Manufacturing
+        </div>
+        <h1>
+            工業製品製造業
+            <span class="en">Industrial Products Manufacturing</span>
+        </h1>
+        <p class="hero-desc">
+            2024年の制度改正で大幅に拡大。素形材・産業機械・電気電子・航空機・半導体・印刷など幅広い製造分野が対象となり、日本のモノづくりを支える即戦力人材の受入れが可能です。
+        </p>
+        <div class="hero-stats">
+            <div class="hero-stat">
+                <span class="num">48,000人</span>
+                <span class="label">受入れ見込み<br>（5年間）</span>
+            </div>
+            <div class="hero-stat">
+                <span class="num">23業務</span>
+                <span class="label">対象業務<br>区分</span>
+            </div>
+            <div class="hero-stat">
+                <span class="num">2024年</span>
+                <span class="label">制度統合・<br>拡大</span>
+            </div>
+        </div>
+        <div class="hero-cta">
+            <a href="https://line.me/ti/p/YOUR_LINE_ID" class="btn-line-hero" target="_blank">
+                <span class="line-icon">
+                    <svg viewBox="0 0 24 24" fill="#06C755" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2C6.48 2 2 6.02 2 11c0 3.04 1.6 5.73 4.09 7.47L5 21l3.18-1.56C9.35 19.79 10.65 20 12 20c5.52 0 10-4.02 10-9S17.52 2 12 2zm1 13H8v-1.5h5V15zm3-3H8v-1.5h8V12zm0-3H8V7.5h8V9z"/>
+                    </svg>
+                </span>
+                LINEで無料相談
+            </a>
+            <a href="tel:078-XXX-XXXX" class="btn-tel-hero">📞 078-XXX-XXXX</a>
+        </div>
+    </div>
+</div>
+
+<!-- ====== 対象分野 ====== -->
+<section>
+    <div class="section-inner">
+        <div class="section-header fade-in">
+            <span class="section-label">TARGET FIELDS</span>
+            <h2 class="section-title">対象となる<span>製造分野</span></h2>
+            <p class="section-desc">2024年改正で統合・拡大。従来3分野が1つの「工業製品製造業」として整理されました</p>
+        </div>
+        <div class="field-cards">
+            <div class="field-card fade-in">
+                <div class="fc-icon">🔩</div>
+                <h3>素形材・金属加工</h3>
+                <p>鋳造・鍛造・プレス・溶接・切削・研磨・めっき・アルミダイカストなど</p>
+                <span class="fc-count">旧：素形材産業</span>
+            </div>
+            <div class="field-card fade-in">
+                <div class="fc-icon">⚙️</div>
+                <h3>産業機械製造</h3>
+                <p>旋盤・フライス盤・ボール盤・各種産業機械の製造・組み立て・検査</p>
+                <span class="fc-count">旧：産業機械製造業</span>
+            </div>
+            <div class="field-card fade-in">
+                <div class="fc-icon">💡</div>
+                <h3>電気・電子・情報機器</h3>
+                <p>電子部品・プリント基板・半導体・情報通信機器・家電製品の製造</p>
+                <span class="fc-count">旧：電気電子情報関連</span>
+            </div>
+            <div class="field-card fade-in">
+                <div class="fc-icon">✈️</div>
+                <h3>航空機・船舶製造</h3>
+                <p>航空機部品・船体ブロック・艤装品の製造・組み立て・検査業務</p>
+                <span class="fc-count">新規追加分野</span>
+            </div>
+            <div class="field-card fade-in">
+                <div class="fc-icon">🖨️</div>
+                <h3>印刷・紙工品製造</h3>
+                <p>オフセット印刷・フレキソ印刷・段ボール製造・製本・製袋など</p>
+                <span class="fc-count">新規追加分野</span>
+            </div>
+            <div class="field-card fade-in">
+                <div class="fc-icon">🧪</div>
+                <h3>プラスチック・ゴム製品</h3>
+                <p>プラスチック成形・ゴム製品製造・シール材・パッキン類の製造</p>
+                <span class="fc-count">新規追加分野</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ====== 業務区分 ====== -->
+<section class="bg-gray">
+    <div class="section-inner">
+        <div class="section-header fade-in">
+            <span class="section-label">JOB CATEGORIES</span>
+            <h2 class="section-title">対象となる<span>業務区分</span></h2>
+            <p class="section-desc">製造・加工・検査・溶接など23の業務区分で従事できます</p>
+        </div>
+        <div class="job-grid">
+            <div class="job-item fade-in">
+                <div class="ji-icon">🔥</div>
+                <h4>鋳造</h4>
+                <p>溶融金属の鋳型への注入・型開き・仕上げ</p>
+            </div>
+            <div class="job-item fade-in">
+                <div class="ji-icon">⚒️</div>
+                <h4>鍛造・プレス</h4>
+                <p>金属の加熱・打鍛・プレス成形加工</p>
+            </div>
+            <div class="job-item fade-in">
+                <div class="ji-icon">🔧</div>
+                <h4>切削・研削</h4>
+                <p>旋盤・フライス盤・研削盤による機械加工</p>
+            </div>
+            <div class="job-item fade-in">
+                <div class="ji-icon">🔗</div>
+                <h4>溶接</h4>
+                <p>アーク溶接・MIG/TIG溶接・スポット溶接</p>
+            </div>
+            <div class="job-item fade-in">
+                <div class="ji-icon">🎨</div>
+                <h4>塗装・表面処理</h4>
+                <p>塗装・めっき・陽極酸化処理・熱処理</p>
+            </div>
+            <div class="job-item fade-in">
+                <div class="ji-icon">🔌</div>
+                <h4>電気・電子組立</h4>
+                <p>基板実装・ハンダ付け・配線・電装品組立</p>
+            </div>
+            <div class="job-item fade-in">
+                <div class="ji-icon">🔍</div>
+                <h4>検査・品質管理</h4>
+                <p>寸法測定・外観検査・機能検査・出荷検査</p>
+            </div>
+            <div class="job-item fade-in">
+                <div class="ji-icon">🏗️</div>
+                <h4>機械組立・据付</h4>
+                <p>部品の組み立て・調整・機械の据付作業</p>
+            </div>
+        </div>
+
+        <div class="integration-box fade-in">
+            <h3>🏭 統合後の大きなメリット：分野を超えた柔軟な配置</h3>
+            <p class="ib-sub">2024年改正により、旧3分野の垣根がなくなりました。同一企業内での複数工程への配置が以前より柔軟に行えます。</p>
+            <div class="integration-grid">
+                <div class="integration-item">
+                    <div class="ii-icon">🔄</div>
+                    <h4>工程間の移動</h4>
+                    <p>鋳造→加工→検査など工程間の配置転換が容易に</p>
+                </div>
+                <div class="integration-item">
+                    <div class="ii-icon">🏢</div>
+                    <h4>グループ会社間</h4>
+                    <p>同一グループ内の関連製造拠点への配置も対応</p>
+                </div>
+                <div class="integration-item">
+                    <div class="ii-icon">📈</div>
+                    <h4>スキルアップ</h4>
+                    <p>複数工程の経験で特定技能2号取得も目指せる</p>
+                </div>
+                <div class="integration-item">
+                    <div class="ii-icon">🤝</div>
+                    <h4>協議会一本化</h4>
+                    <p>統合された協議会への加入で手続きが簡素化</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ====== 分野別比較表 ====== -->
+<section>
+    <div class="section-inner">
+        <div class="section-header fade-in">
+            <span class="section-label">FIELD COMPARISON</span>
+            <h2 class="section-title">分野別<span>受入れ概要</span></h2>
+            <p class="section-desc">製造業種ごとの特定技能受入れ概要をご確認ください</p>
+        </div>
+        <div class="fade-in" style="overflow-x:auto;">
+            <table class="compare-table">
+                <thead>
+                    <tr>
+                        <th>製造分野</th>
+                        <th>主な業務例</th>
+                        <th>試験実施機関</th>
+                        <th>備考</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>素形材・金属加工</td>
+                        <td>鋳造・鍛造・溶接・めっき</td>
+                        <td>製造業技能試験センター</td>
+                        <td>試験区分が細分化</td>
+                    </tr>
+                    <tr>
+                        <td>産業機械製造</td>
+                        <td>機械加工・組立・検査</td>
+                        <td>製造業技能試験センター</td>
+                        <td>業務範囲が広い</td>
+                    </tr>
+                    <tr>
+                        <td>電気・電子</td>
+                        <td>基板実装・配線・組立</td>
+                        <td>製造業技能試験センター</td>
+                        <td>精密作業が中心</td>
+                    </tr>
+                    <tr>
+                        <td>航空機部品<span class="tag-new">NEW</span></td>
+                        <td>部品製造・組立・検査</td>
+                        <td>製造業技能試験センター</td>
+                        <td>2024年改正で追加</td>
+                    </tr>
+                    <tr>
+                        <td>印刷<span class="tag-new">NEW</span></td>
+                        <td>印刷機操作・断裁・製本</td>
+                        <td>製造業技能試験センター</td>
+                        <td>2024年改正で追加</td>
+                    </tr>
+                    <tr>
+                        <td>プラスチック・ゴム<span class="tag-new">NEW</span></td>
+                        <td>成形・押し出し・検査</td>
+                        <td>製造業技能試験センター</td>
+                        <td>2024年改正で追加</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<!-- ====== 試験・資格 ====== -->
+<section class="bg-gray">
+    <div class="section-inner">
+        <div class="section-header fade-in">
+            <span class="section-label">QUALIFICATION</span>
+            <h2 class="section-title">試験・<span>資格要件</span></h2>
+            <p class="section-desc">特定技能「工業製品製造業」の要件を満たす方法は3つあります</p>
+        </div>
+        <div class="exam-grid">
+            <div class="exam-card fade-in">
+                <span class="exam-tag">方法①</span>
+                <h3>工業製品製造業技能測定試験</h3>
+                <p>
+                    ・学科試験（安全衛生・製造知識・品質管理等）<br>
+                    ・実技試験（各業務区分ごとの専門知識）<br>
+                    ・業務区分ごとに試験が異なります<br>
+                    ・日本語試験（N4相当）も別途必要
+                </p>
+            </div>
+            <div class="exam-card fade-in">
+                <span class="exam-tag">方法②</span>
+                <h3>関連する国家資格の保有</h3>
+                <p>
+                    ・機械・電気系の技能士（国家資格）保有で免除あり<br>
+                    ・溶接技能者資格・電気工事士等も対象<br>
+                    ・日本語試験（N4相当）は引き続き必要<br>
+                    ・資格証の写し・翻訳の準備が必要
+                </p>
+            </div>
+            <div class="exam-card fade-in">
+                <span class="exam-tag">方法③</span>
+                <h3>技能実習2号修了</h3>
+                <p>
+                    ・工業製品製造業関連の技能実習2号修了者<br>
+                    ・試験免除で特定技能1号へ移行可能<br>
+                    ・実習職種・作業と移行先業務の確認が必要<br>
+                    ・修了証・評価票の準備が必要
+                </p>
+            </div>
+        </div>
+
+        <div class="req-box fade-in">
+            <h3>📋 受入れ機関（製造事業者）の主な要件</h3>
+            <ul class="req-list">
+                <li>対象となる製造業の事業許可・届出の適正な取得</li>
+                <li>労働安全衛生法に基づく安全管理体制の整備</li>
+                <li>工業製品製造業特定技能協議会（経済産業省所管）への加入（4ヶ月以内）</li>
+                <li>同等業務に従事する日本人と同等以上の賃金・待遇</li>
+                <li>適切な1号特定技能外国人支援計画の作成・実施</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- ====== サポートフロー ====== -->
+<section>
+    <div class="section-inner">
+        <div class="section-header fade-in">
+            <span class="section-label">SUPPORT FLOW</span>
+            <h2 class="section-title">サポートの<span>流れ</span></h2>
+            <p class="section-desc">製造現場のニーズに合わせた一貫サポートを提供します</p>
+        </div>
+        <div class="flow-wrap">
+            <div class="flow-step fade-in">
+                <div class="flow-num">1</div>
+                <div class="flow-title">無料相談</div>
+                <div class="flow-desc">製造品目・工程・必要スキルをヒアリング</div>
+            </div>
+            <div class="flow-step fade-in">
+                <div class="flow-num">2</div>
+                <div class="flow-title">分野確認</div>
+                <div class="flow-desc">対象業務区分・試験区分の特定</div>
+            </div>
+            <div class="flow-step fade-in">
+                <div class="flow-num">3</div>
+                <div class="flow-title">人材マッチング</div>
+                <div class="flow-desc">試験合格者・実習修了者の紹介・面接</div>
+            </div>
+            <div class="flow-step fade-in">
+                <div class="flow-num">4</div>
+                <div class="flow-title">在留資格申請</div>
+                <div class="flow-desc">特定技能ビザ申請・入管対応（2〜4ヶ月）</div>
+            </div>
+            <div class="flow-step fade-in">
+                <div class="flow-num">5</div>
+                <div class="flow-title">入国・入社</div>
+                <div class="flow-desc">住居確保・安全衛生教育・役所手続き</div>
+            </div>
+            <div class="flow-step fade-in">
+                <div class="flow-num">6</div>
+                <div class="flow-title">継続支援</div>
+                <div class="flow-desc">協議会加入・定期面談・更新手続き</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ====== 料金 ====== -->
+<section class="bg-gray">
+    <div class="section-inner">
+        <div class="section-header fade-in">
+            <span class="section-label">PRICING</span>
+            <h2 class="section-title">料金<span>プラン</span></h2>
+            <p class="section-desc">工場規模・採用人数に応じた柔軟なプランをご用意しています</p>
+        </div>
+        <div class="pricing-grid">
+            <div class="pricing-card fade-in">
+                <div class="pc-icon">📋</div>
+                <h3>在留資格申請</h3>
+                <div class="price">¥150,000<small style="font-size:1rem">〜</small></div>
+                <div class="price-note">1名あたり（税別）</div>
+                <ul>
+                    <li>申請書類作成・翻訳</li>
+                    <li>入管申請・審査対応</li>
+                    <li>不許可時の再申請サポート</li>
+                    <li>協議会加入手続き</li>
+                </ul>
+            </div>
+            <div class="pricing-card featured fade-in">
+                <div class="pc-icon">🏠</div>
+                <h3>受入れ初期設定</h3>
+                <div class="price">¥50,000<small style="font-size:1rem">〜</small></div>
+                <div class="price-note">セット（税別）</div>
+                <ul>
+                    <li>住居確保サポート</li>
+                    <li>役所・銀行手続き同行</li>
+                    <li>安全衛生教育補助</li>
+                    <li>多言語作業指示書作成</li>
+                </ul>
+            </div>
+            <div class="pricing-card fade-in">
+                <div class="pc-icon">📅</div>
+                <h3>月次サポート</h3>
+                <div class="price">¥15,000<small style="font-size:1rem">〜</small></div>
+                <div class="price-note">人・月（税別）</div>
+                <ul>
+                    <li>定期面談（月1回）</li>
+                    <li>多言語相談窓口</li>
+                    <li>労務トラブル対応</li>
+                    <li>在留期間更新手続き</li>
+                </ul>
+            </div>
+        </div>
+        <p class="fade-in" style="text-align:center;margin-top:18px;color:#999;font-size:0.8rem;">
+            ※ 複数名採用・複数工場の場合は割引あり。詳細はお問い合わせください。
+        </p>
+    </div>
+</section>
+
+<!-- ====== FAQ ====== -->
+<section>
+    <div class="section-inner">
+        <div class="section-header fade-in">
+            <span class="section-label">FAQ</span>
+            <h2 class="section-title">よくある<span>ご質問</span></h2>
+            <p class="section-desc">工業製品製造業での特定技能受入れに関するQ&A</p>
+        </div>
+        <div class="faq-list">
+            <div class="faq-item fade-in">
+                <div class="faq-q">
+                    <span class="faq-q-mark">Q</span>
+                    <span class="faq-q-text">旧「産業機械製造業」で受け入れていた外国人は引き続き働けますか？</span>
+                    <span class="faq-toggle">＋</span>
+                </div>
+                <div class="faq-a">
+                    はい、2024年の制度改正後も引き続き就労できます。旧分野の在留資格は新しい「工業製品製造業」の枠組みに自動的に移行されます。ただし、次回の在留期間更新時に新制度に沿った手続きが必要になる場合があります。詳細はご相談ください。
+                </div>
+            </div>
+            <div class="faq-item fade-in">
+                <div class="faq-q">
+                    <span class="faq-q-mark">Q</span>
+                    <span class="faq-q-text">溶接の仕事をさせたいのですが、どの試験が必要ですか？</span>
+                    <span class="faq-toggle">＋</span>
+                </div>
+                <div class="faq-a">
+                    溶接業務は工業製品製造業の「溶接」区分に含まれます。製造業技能試験センターが実施する「溶接」区分の学科・実技試験に合格する必要があります。なお、溶接技能者資格（JIS Z 3801等）を保有している場合は試験の一部が免除される場合があります。
+                </div>
+            </div>
+            <div class="faq-item fade-in">
+                <div class="faq-q">
+                    <span class="faq-q-mark">Q</span>
+                    <span class="faq-q-text">印刷業は2024年から対象になったと聞きましたが、詳しく教えてください。</span>
+                    <span class="faq-toggle">＋</span>
+                </div>
+                <div class="faq-a">
+                    はい、2024年の制度改正で印刷業が新たに「工業製品製造業」に追加されました。オフセット印刷・フレキソ印刷・グラビア印刷・断裁・製本・製袋など印刷に関連する製造業務が対象です。まだ制度が新しいため、詳細要件については最新情報を確認しながらサポートします。
+                </div>
+            </div>
+            <div class="faq-item fade-in">
+                <div class="faq-q">
+                    <span class="faq-q-mark">Q</span>
+                    <span class="faq-q-text">製造ラインの複数工程を掛け持ちさせることはできますか？</span>
+                    <span class="faq-toggle">＋</span>
+                </div>
+                <div class="faq-a">
+                    工業製品製造業の分野内であれば、複数の業務区分にまたがって従事させることが可能です。例えば「機械加工」と「検査」を兼務させる場合、それぞれの業務が就労資格証明書等に記載された範囲内であれば問題ありません。
+                </div>
+            </div>
+            <div class="faq-item fade-in">
+                <div class="faq-q">
+                    <span class="faq-q-mark">Q</span>
+                    <span class="faq-q-text">特定技能2号（無期限就労）は工業製品製造業でも取得できますか？</span>
+                    <span class="faq-toggle">＋</span>
+                </div>
+                <div class="faq-a">
+                    はい、工業製品製造業は特定技能2号の対象分野です。特定技能1号で一定の実務経験を積み、技能評価試験（2号相当）に合格することで、在留期間の上限なく日本で就労できる特定技能2号へ移行できます。家族の帯同も可能になります。
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ====== CTA ====== -->
+<div class="cta-section">
+    <h2>製造業の人材採用、まずはご相談ください</h2>
+    <p>金属加工・機械・電子・印刷など業種を問わず、最適な採用プランをご提案します</p>
+    <div class="cta-buttons">
+        <a href="https://line.me/ti/p/YOUR_LINE_ID" class="btn-line-cta" target="_blank">
+            <span class="line-icon">
+                <svg viewBox="0 0 24 24" fill="#06C755" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2C6.48 2 2 6.02 2 11c0 3.04 1.6 5.73 4.09 7.47L5 21l3.18-1.56C9.35 19.79 10.65 20 12 20c5.52 0 10-4.02 10-9S17.52 2 12 2zm1 13H8v-1.5h5V15zm3-3H8v-1.5h8V12zm0-3H8V7.5h8V9z"/>
+                </svg>
+            </span>
+            LINEで無料相談
+        </a>
+        <a href="tel:078-XXX-XXXX" class="btn-tel-cta">📞 電話で相談</a>
+    </div>
+</div>
+
+<!-- ====== FOOTER ====== -->
+<footer>
+    <div class="foot-links">
+        <a href="../index.html">TOP</a>
+        <a href="../index.html#about">事務所概要</a>
+        <a href="../index.html#contact">お問い合わせ</a>
+        <a href="construction.html">建設業</a>
+        <a href="auto-repair.html">自動車整備</a>
+        <a href="food-manufacturing.html">食品製造</a>
+    </div>
+    <p>徳永行政書士事務所 ｜ 神戸ファッションマート 4N-07-01</p>
+    <p style="margin-top:6px;">© 2025 徳永行政書士事務所. All Rights Reserved.</p>
+</footer>
+
+<script>
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    document.querySelectorAll('.faq-q').forEach(q => {
+        q.addEventListener('click', () => {
+            const ans = q.parentElement.querySelector('.faq-a');
+            const tog = q.querySelector('.faq-toggle');
+            const open = ans.style.display === 'block';
+            ans.style.display = open ? 'none' : 'block';
+            tog.textContent = open ? '＋' : '－';
+            tog.classList.toggle('open', !open);
+        });
+    });
+
+    function switchLang(lang, btn) {
+        document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+    }
+</script>
+</body>
+</html>
