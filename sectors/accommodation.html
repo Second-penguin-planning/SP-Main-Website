@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>宿泊業 特定技能サポート | 徳永行政書士事務所</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Hiragino Sans', 'Yu Gothic', sans-serif;
+            color: #333;
+            background: #fff;
+        }
+
+        /* ヘッダー */
+        header {
+            background: linear-gradient(135deg, #1a4a6b 0%, #2980b9 100%);
+            color: white;
+            padding: 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 30px;
+        }
+
+        .logo {
+            font-size: 1.1rem;
+            font-weight: bold;
+            line-height: 1.4;
+        }
+
+        .logo span {
+            font-size: 0.75rem;
+            opacity: 0.85;
+            display: block;
+        }
+
+        .header-contact {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .lang-switcher {
+            display: flex;
+            gap: 6px;
+        }
+
+        .lang-btn {
+            background: rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,255,0.4);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.75rem;
+            transition: background 0.2s;
+        }
+
+        .lang-btn:hover, .lang-btn.active {
+            background: rgba(255,255,255,0.4);
+        }
+
+        .line-btn-header {
+            background: #06C755;
+            color: white;
+            padding: 8px 18px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: background 0.2s;
+        }
+
+        .line-btn-header:hover { background: #05a847; }
+
+        /* セクターナビ */
+        .sector-nav {
+            background: rgba(0,0,0,0.25);
+            padding: 8px 30px;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        .sector-nav a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            font-size: 0.78rem;
+            margin-right: 20px;
+            padding: 4px 0;
+            border-bottom: 2px solid transparent;
+            transition: all 0.2s;
+            display: inline-block;
+        }
+
+        .sector-nav a:hover { color: white; }
+        .sector-nav a.active {
+            color: white;
+            border-bottom-color: #ffd700;
+            font-weight: bold;
+        }
+
+        /* ヒーロー */
+        .hero {
+            background: linear-gradient(135deg, #1a4a6b 0%, #2980b9 60%, #3498db 100%);
+            color: white;
+            padding: 60px 30px;
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,255,0.4);
+            padding: 6px 20px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero h1 span {
+            font-size: 1rem;
+            display: block;
+            opacity: 0.85;
+            margin-top: 5px;
+            font-weight: normal;
+        }
+
+        .hero-desc {
+            font-size: 1rem;
+            max-width: 600px;
+            margin: 20px auto 0;
+            opacity: 0.9;
+            line-height: 1.8;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 35px;
+            flex-wrap: wrap;
+        }
+
+        .hero-stat .num {
+            font-size: 2rem;
+            font-weight: bold;
+            display: block;
+        }
+
+        .hero-stat .label {
+            font-size: 0.78rem;
+            opacity: 0.85;
+        }
+
+        /* セクション */
+        section { padding: 60px 0; }
+        section:nth-child(even) { background: #f8f8f8; }
+
+        .section-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            font-size: 1.6rem;
+            color: #1a4a6b;
+            margin-bottom: 10px;
+            padding-bottom: 12px;
+            border-bottom: 3px solid #1a4a6b;
+        }
+
+        .section-subtitle {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 30px;
+        }
+
+        /* 業種カード */
+        .industry-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .industry-card {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            border-left: 4px solid #1a4a6b;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .industry-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(26,74,107,0.15);
+        }
+
+        .industry-card .icon {
+            font-size: 2rem;
+            margin-bottom: 12px;
+        }
+
+        .industry-card h3 {
+            font-size: 1.05rem;
+            color: #1a4a6b;
+            margin-bottom: 8px;
+        }
+
+        .industry-card p {
+            font-size: 0.85rem;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        /* 業務グリッド */
+        .job-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .job-item {
+            background: white;
+            border-radius: 8px;
+            padding: 18px;
+            text-align: center;
+            border: 2px solid #d0e8f5;
+            transition: border-color 0.2s;
+        }
+
+        .job-item:hover { border-color: #1a4a6b; }
+
+        .job-item .job-icon {
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+        }
+
+        .job-item h4 {
+            font-size: 0.9rem;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .job-item p {
+            font-size: 0.78rem;
+            color: #666;
+        }
+
+        /* 要件ボックス */
+        .requirement-box {
+            background: #f0f7ff;
+            border: 1px solid #d0e8f5;
+            border-radius: 10px;
+            padding: 25px;
+            margin-top: 25px;
+        }
+
+        .requirement-box h3 {
+            color: #1a4a6b;
+            margin-bottom: 15px;
+            font-size: 1.05rem;
+        }
+
+        .requirement-list { list-style: none; }
+
+        .requirement-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #d0e8f5;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .requirement-list li:last-child { border-bottom: none; }
+
+        .requirement-list li::before {
+            content: "✓";
+            color: #1a4a6b;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        /* 試験カード */
+        .exam-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .exam-card {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .exam-card::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: #1a4a6b;
+        }
+
+        .exam-card h3 {
+            color: #1a4a6b;
+            margin-bottom: 12px;
+            font-size: 1rem;
+        }
+
+        .exam-card p {
+            font-size: 0.85rem;
+            color: #555;
+            line-height: 1.7;
+        }
+
+        .exam-tag {
+            display: inline-block;
+            background: #1a4a6b;
+            color: white;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.72rem;
+            margin-bottom: 10px;
+        }
+
+        /* 特徴ボックス */
+        .feature-box {
+            background: #1a4a6b;
+            color: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-top: 30px;
+        }
+
+        .feature-box h3 {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .feature-item {
+            background: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            padding: 15px;
+        }
+
+        .feature-item .f-icon {
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+        }
+
+        .feature-item h4 {
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        .feature-item p {
+            font-size: 0.78rem;
+            opacity: 0.85;
+        }
+
+        /* フロー */
+        .flow-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 0;
+            margin-top: 30px;
+        }
+
+        .flow-step {
+            text-align: center;
+            padding: 20px 10px;
+            position: relative;
+        }
+
+        .flow-step:not(:last-child)::after {
+            content: "→";
+            position: absolute;
+            right: -8px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #1a4a6b;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .step-num {
+            width: 40px;
+            height: 40px;
+            background: #1a4a6b;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin: 0 auto 10px;
+            font-size: 0.9rem;
+        }
+
+        .step-title {
+            font-size: 0.82rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .step-desc {
+            font-size: 0.72rem;
+            color: #666;
+            line-height: 1.4;
+        }
+
+        /* 料金 */
+        .pricing-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .pricing-card {
+            background: white;
+            border-radius: 12px;
+            padding: 28px;
+            text-align: center;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            border: 2px solid transparent;
+            transition: border-color 0.2s;
+        }
+
+        .pricing-card:hover { border-color: #1a4a6b; }
+
+        .pricing-card.featured {
+            border-color: #1a4a6b;
+            background: #f0f7ff;
+        }
+
+        .pricing-card h3 {
+            font-size: 0.95rem;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .pricing-card .price {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #1a4a6b;
+        }
+
+        .pricing-card .price-unit {
+            font-size: 0.8rem;
+            color: #888;
+            margin-bottom: 15px;
+        }
+
+        .pricing-card ul { list-style: none; text-align: left; }
+
+        .pricing-card ul li {
+            font-size: 0.82rem;
+            color: #555;
+            padding: 5px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .pricing-card ul li::before {
+            content: "・";
+            color: #1a4a6b;
+        }
+
+        /* FAQ */
+        .faq-list { margin-top: 25px; }
+
+        .faq-item {
+            background: white;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .faq-q {
+            padding: 18px 20px;
+            font-weight: bold;
+            color: #333;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+
+        .faq-q::before {
+            content: "Q";
+            color: white;
+            background: #1a4a6b;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            flex-shrink: 0;
+            margin-right: 10px;
+        }
+
+        .faq-q-text { flex: 1; }
+        .faq-toggle { color: #1a4a6b; font-size: 1.2rem; flex-shrink: 0; }
+
+        .faq-a {
+            padding: 0 20px 18px 54px;
+            font-size: 0.85rem;
+            color: #555;
+            line-height: 1.7;
+        }
+
+        /* CTA */
+        .cta-section {
+            background: linear-gradient(135deg, #1a4a6b, #2980b9);
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .cta-section h2 { font-size: 1.6rem; margin-bottom: 10px; }
+        .cta-section p { font-size: 0.95rem; opacity: 0.9; margin-bottom: 30px; }
+
+        .cta-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-btn-line {
+            background: #06C755;
+            color: white;
+            padding: 14px 35px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: background 0.2s;
+        }
+
+        .cta-btn-line:hover { background: #05a847; }
+
+        .cta-btn-tel {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            padding: 14px 35px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            border: 2px solid rgba(255,255,255,0.5);
+            transition: background 0.2s;
+        }
+
+        .cta-btn-tel:hover { background: rgba(255,255,255,0.3); }
+
+        footer {
+            background: #2c2c2c;
+            color: rgba(255,255,255,0.7);
+            text-align: center;
+            padding: 25px 20px;
+            font-size: 0.8rem;
+        }
+
+        footer a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        /* アニメーション */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 1.6rem; }
+            .hero-stats { gap: 20px; }
+            .flow-step:not(:last-child)::after { display: none; }
+            .flow-steps { grid-template-columns: repeat(2, 1fr); }
+            .header-top { flex-wrap: wrap; gap: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ヘッダー -->
+<header>
+    <div class="header-top">
+        <div class="logo">
+            徳永行政書士事務所
+            <span>Tokunaga Immigration & Administrative Office | 特定技能専門</span>
+        </div>
+        <div class="header-contact">
+            <div class="lang-switcher">
+                <button class="lang-btn active" onclick="switchLang('ja')">JP</button>
+                <button class="lang-btn" onclick="switchLang('en')">EN</button>
+                <button class="lang-btn" onclick="switchLang('id')">ID</button>
+                <button class="lang-btn" onclick="switchLang('tl')">TL</button>
+            </div>
+            <a href="https://line.me/ti/p/YOUR_LINE_ID" class="line-btn-header" target="_blank">
+                💬 LINE相談
+            </a>
+        </div>
+    </div>
+    <nav class="sector-nav">
+        <a href="../index.html">🏠 TOP</a>
+        <a href="construction.html">🏗️ 建設業</a>
+        <a href="transport.html">🚛 運輸業</a>
+        <a href="auto-repair.html">🔧 自動車整備</a>
+        <a href="food.html">🍽️ 外食業</a>
+        <a href="accommodation.html" class="active">🏨 宿泊業</a>
+        <a href="agriculture.html">🌾 農業</a>
+        <a href="fishery.html">🐟 漁業</a>
+        <a href="food-manufacturing.html">🏭 食品製造</a>
+        <a href="nursing.html">👩‍⚕️ 介護</a>
+        <a href="industrial-machinery.html">⚙️ 産業機械</a>
+    </nav>
+</header>
+
+<!-- ヒーロー -->
+<div class="hero">
+    <div class="hero-badge">🏨 特定技能 対応分野</div>
+    <h1>
+        宿泊業
+        <span>Accommodation Industry</span>
+    </h1>
+    <p class="hero-desc">
+        インバウンド需要の回復と深刻な人手不足が同時進行する宿泊業界。ホテル・旅館・民泊など幅広い施設で特定技能外国人の受入れが可能です。
+    </p>
+    <div class="hero-stats">
+        <div class="hero-stat">
+            <span class="num">22,000人</span>
+            <span class="label">受入れ見込み数（5年間）</span>
+        </div>
+        <div class="hero-stat">
+            <span class="num">5業務</span>
+            <span class="label">対象業務区分</span>
+        </div>
+        <div class="hero-stat">
+            <span class="num">旅館業法</span>
+            <span class="label">許可施設が対象</span>
+        </div>
+    </div>
+</div>
+
+<!-- 対象施設 -->
+<section>
+    <div class="section-inner">
+        <h2 class="section-title fade-in">対象となる施設</h2>
+        <p class="section-subtitle fade-in">旅館業法に基づく許可を受けた宿泊施設が対象です</p>
+        <div class="industry-cards">
+            <div class="industry-card fade-in">
+                <div class="icon">🏨</div>
+                <h3>ホテル・旅館</h3>
+                <p>シティホテル・ビジネスホテル・リゾートホテル・旅館など、旅館業法の旅館・ホテル営業許可を持つ施設が対象です。</p>
+            </div>
+            <div class="industry-card fade-in">
+                <div class="icon">🏯</div>
+                <h3>簡易宿所</h3>
+                <p>ゲストハウス・ホステル・民宿・ペンションなど、簡易宿所営業許可を持つ施設も特定技能の受入れが可能です。</p>
+            </div>
+            <div class="industry-card fade-in">
+                <div class="icon">🌸</div>
+                <h3>リゾート・温泉旅館</h3>
+                <p>温泉旅館・高級リゾート施設なども対象。外国人観光客への接客やホスピタリティ業務での活躍が期待されます。</p>
+            </div>
+        </div>
+
+        <div class="requirement-box fade-in" style="margin-top: 30px; background: #fff3cd; border-color: #ffc107;">
+            <h3>⚠️ 注意：民泊（住宅宿泊事業法）について</h3>
+            <ul class="requirement-list" style="border-color: #ffc107;">
+                <li style="border-color: #ffc107;">住宅宿泊事業法（民泊新法）に基づく民泊は、特定技能の受入れ対象外です</li>
+                <li style="border-color: #ffc107;">旅館業法の許可を取得している施設のみが対象となります</li>
+                <li style="border-color: #ffc107;">許可の種類について不明な場合はご相談ください</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- 業務区分 -->
+<section style="background: #f8f8f8;">
+    <div class="section-inner">
+        <h2 class="section-title fade-in">対象となる業務区分</h2>
+        <p class="section-subtitle fade-in">宿泊施設での幅広い業務に従事できます</p>
+        <div class="job-grid">
+            <div class="job-item fade-in">
+                <div class="job-icon">🛎️</div>
+                <h4>フロント業務</h4>
+                <p>チェックイン・チェックアウト・予約対応・案内業務</p>
+            </div>
+            <div class="job-item fade-in">
+                <div class="job-icon">🛏️</div>
+                <h4>客室清掃・整備</h4>
+                <p>客室のクリーンアップ・リネン交換・アメニティ補充</p>
+            </div>
+            <div class="job-item fade-in">
+                <div class="job-icon">🍽️</div>
+                <h4>レストランサービス</h4>
+                <p>朝食・夕食の提供、宴会サービス、食器洗浄</p>
+            </div>
+            <div class="job-item fade-in">
+                <div class="job-icon">🧹</div>
+                <h4>館内清掃・整備</h4>
+                <p>ロビー・廊下・大浴場などの共有スペース清掃</p>
+            </div>
+            <div class="job-item fade-in">
+                <div class="job-icon">🎒</div>
+                <h4>接客・コンシェルジュ</h4>
+                <p>観光案内・荷物対応・多言語での案内サービス</p>
+            </div>
+        </div>
+
+        <div class="feature-box fade-in">
+            <h3>🌍 外国人スタッフが活躍できる理由</h3>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <div class="f-icon">🗣️</div>
+                    <h4>多言語対応</h4>
+                    <p>英語・中国語・タガログ語などで外国人宿泊客への対応が可能</p>
+                </div>
+                <div class="feature-item">
+                    <div class="f-icon">🌏</div>
+                    <h4>インバウンド対応</h4>
+                    <p>訪日外国人観光客のニーズに寄り添ったサービス提供</p>
+                </div>
+                <div class="feature-item">
+                    <div class="f-icon">🏆</div>
+                    <h4>ホスピタリティ</h4>
+                    <p>母国でのサービス業経験を活かした高品質な接客</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 試験・資格 -->
+<section>
+    <div class="section-inner">
+        <h2 class="section-title fade-in">試験・資格要件</h2>
+        <p class="section-subtitle fade-in">特定技能「宿泊業」の要件を満たす方法</p>
+        <div class="exam-cards">
+            <div class="exam-card fade-in">
+                <span class="exam-tag">方法①</span>
+                <h3>宿泊業技能測定試験</h3>
+                <p>
+                    ・学科試験（衛生・安全・宿泊サービス・法令等）<br>
+                    ・実技試験（フロント業務・接客応対等）<br>
+                    ・観光庁が指定した実施機関が運営<br>
+                    ・合格後、日本語試験（N4相当）も必要
+                </p>
+            </div>
+            <div class="exam-card fade-in">
+                <span class="exam-tag">方法②</span>
+                <h3>技能実習2号修了</h3>
+                <p>
+                    ・宿泊業の技能実習2号を修了した方<br>
+                    ・試験免除で特定技能1号へ移行可能<br>
+                    ・移行時も日本語要件の確認が必要<br>
+                    ・実習先と同種の業務が推奨
+                </p>
+            </div>
+        </div>
+
+        <div class="requirement-box fade-in">
+            <h3>📋 受入れ機関（宿泊施設）の主な要件</h3>
+            <ul class="requirement-list">
+                <li>旅館業法に基づく旅館・ホテル営業または簡易宿所営業の許可取得</li>
+                <li>宿泊業分野特定技能協議会（観光庁所管）への加入（4ヶ月以内）</li>
+                <li>同等業務に従事する日本人と同等以上の賃金・待遇</li>
+                <li>適切な1号特定技能外国人支援計画の作成・実施</li>
+                <li>旅行業法・消防法等の関連法令を遵守していること</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- サポートフロー -->
+<section style="background: #f8f8f8;">
+    <div class="section-inner">
+        <h2 class="section-title fade-in">サポートの流れ</h2>
+        <p class="section-subtitle fade-in">宿泊施設の採用から就労開始まで、一貫してサポートします</p>
+        <div class="flow-steps">
+            <div class="flow-step fade-in">
+                <div class="step-num">1</div>
+                <div class="step-title">無料相談</div>
+                <div class="step-desc">施設の規模・業態・必要人数の確認</div>
+            </div>
+            <div class="flow-step fade-in">
+                <div class="step-num">2</div>
+                <div class="step-title">許可証確認</div>
+                <div class="step-desc">旅館業法許可証・各種届出の確認</div>
+            </div>
+            <div class="flow-step fade-in">
+                <div class="step-num">3</div>
+                <div class="step-title">人材マッチング</div>
+                <div class="step-desc">試験合格者・実習修了者の紹介・面接</div>
+            </div>
+            <div class="flow-step fade-in">
+                <div class="step-num">4</div>
+                <div class="step-title">在留資格申請</div>
+                <div class="step-desc">特定技能ビザ申請・入管対応（2〜4ヶ月）</div>
+            </div>
+            <div class="flow-step fade-in">
+                <div class="step-num">5</div>
+                <div class="step-title">入国・入社</div>
+                <div class="step-desc">住居確保・役所手続き・研修サポート</div>
+            </div>
+            <div class="flow-step fade-in">
+                <div class="step-num">6</div>
+                <div class="step-title">継続支援</div>
+                <div class="step-desc">協議会加入・定期面談・更新手続き</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 料金 -->
+<section>
+    <div class="section-inner">
+        <h2 class="section-title fade-in">料金プラン</h2>
+        <p class="section-subtitle fade-in">施設規模・採用人数に応じた柔軟なプランをご用意</p>
+        <div class="pricing-cards">
+            <div class="pricing-card fade-in">
+                <h3>📋 在留資格申請</h3>
+                <div class="price">150,000<small style="font-size:1rem">円〜</small></div>
+                <div class="price-unit">/ 1名あたり（税別）</div>
+                <ul>
+                    <li>申請書類作成・翻訳</li>
+                    <li>入管申請・審査対応</li>
+                    <li>不許可時の再申請サポート</li>
+                    <li>協議会加入手続き</li>
+                </ul>
+            </div>
+            <div class="pricing-card featured fade-in">
+                <h3>🏠 受入れ初期設定</h3>
+                <div class="price">50,000<small style="font-size:1rem">円〜</small></div>
+                <div class="price-unit">/ セット（税別）</div>
+                <ul>
+                    <li>住居確保サポート</li>
+                    <li>役所・銀行手続き同行</li>
+                    <li>宿泊業務オリエンテーション</li>
+                    <li>多言語接客マニュアル準備</li>
+                </ul>
+            </div>
+            <div class="pricing-card fade-in">
+                <h3>📅 月次サポート</h3>
+                <div class="price">15,000<small style="font-size:1rem">円〜</small></div>
+                <div class="price-unit">/ 人・月（税別）</div>
+                <ul>
+                    <li>定期面談（月1回）</li>
+                    <li>多言語相談窓口</li>
+                    <li>労務トラブル対応</li>
+                    <li>在留期間更新手続き</li>
+                </ul>
+            </div>
+        </div>
+        <p class="fade-in" style="text-align:center; margin-top:20px; color:#888; font-size:0.82rem;">
+            ※ 複数名採用・複数施設の場合は割引あり。詳細はお問い合わせください。
+        </p>
+    </div>
+</section>
+
+<!-- FAQ -->
+<section style="background: #f8f8f8;">
+    <div class="section-inner">
+        <h2 class="section-title fade-in">よくあるご質問</h2>
+        <p class="section-subtitle fade-in">宿泊業での特定技能受入れに関するQ&A</p>
+        <div class="faq-list">
+            <div class="faq-item fade-in">
+                <div class="faq-q">
+                    <span class="faq-q-text">小規模なゲストハウスでも受入れできますか？</span>
+                    <span class="faq-toggle">＋</span>
+                </div>
+                <div class="faq-a">
+                    はい、規模にかかわらず旅館業法の許可（旅館・ホテル営業または簡易宿所営業）を取得していれば受入れ可能です。ただし、1名の採用でも支援計画の作成・実施義務は発生します。
+                </div>
+            </div>
+            <div class="faq-item fade-in">
+                <div class="faq-q">
+                    <span class="faq-q-text">フロントとレストランを兼務させることはできますか？</span>
+                    <span class="faq-toggle">＋</span>
+                </div>
+                <div class="faq-a">
+                    はい、宿泊業分野内の複数業務を兼務させることは可能です。フロント業務と館内レストランのサービス業務を組み合わせて従事させることができます。ただし、外食業や食品製造業など別分野の業務への兼務は認められません。
+                </div>
+            </div>
+            <div class="faq-item fade-in">
+                <div class="faq-q">
+                    <span class="faq-q-text">特定技能外国人に夜勤をさせることはできますか？</span>
+                    <span class="faq-toggle">＋</span>
+                </div>
+                <div class="faq-a">
+                    法令上、夜勤を禁止する規定はありません。日本人スタッフと同等の条件であれば夜勤勤務も可能です。ただし、深夜割増賃金の支払いなど、労働基準法を遵守した適切な処遇が必要です。
+                </div>
+            </div>
+            <div class="faq-item fade-in">
+                <div class="faq-q">
+                    <span class="faq-q-text">宿泊業特定技能協議会への加入はいつまでに必要ですか？</span>
+                    <span class="faq-toggle">＋</span>
+                </div>
+                <div class="faq-a">
+                    特定技能外国人を初めて受け入れてから4ヶ月以内に、観光庁所管の宿泊業特定技能協議会へ加入する必要があります。加入が遅れると在留資格更新に影響する可能性があります。当事務所では加入手続きもサポートします。
+                </div>
+            </div>
+            <div class="faq-item fade-in">
+                <div class="faq-q">
+                    <span class="faq-q-text">インバウンド対応で特に活躍できる国籍はありますか？</span>
+                    <span class="faq-toggle">＋</span>
+                </div>
+                <div class="faq-a">
+                    訪日外国人の多い出身国（フィリピン・ベトナム・インドネシア等）出身のスタッフは、英語や自国語でのコミュニケーション能力に加え、日本語も習得しているため、外国人宿泊客対応で大きな強みを発揮します。採用する方の出身国と施設のターゲット顧客を考慮した人材マッチングもご提案できます。
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-section">
+    <h2>宿泊施設の人材採用、まずはご相談ください</h2>
+    <p>ホテル・旅館・ゲストハウスなど施設の規模を問わず、最適な採用プランをご提案します</p>
+    <div class="cta-buttons">
+        <a href="https://line.me/ti/p/YOUR_LINE_ID" class="cta-btn-line" target="_blank">
+            💬 LINEで無料相談
+        </a>
+        <a href="tel:078-XXX-XXXX" class="cta-btn-tel">
+            📞 電話で相談
+        </a>
+    </div>
+</div>
+
+<!-- フッター -->
+<footer>
+    <p>徳永行政書士事務所 | 神戸ファッションマート 4N-07-01</p>
+    <p style="margin-top: 8px;">
+        <a href="../index.html">TOP</a>
+        <a href="../index.html#about">事務所概要</a>
+        <a href="../index.html#contact">お問い合わせ</a>
+    </p>
+    <p style="margin-top: 10px;">© 2025 徳永行政書士事務所. All Rights Reserved.</p>
+</footer>
+
+<script>
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    document.querySelectorAll('.faq-q').forEach(q => {
+        q.addEventListener('click', () => {
+            const item = q.parentElement;
+            const answer = item.querySelector('.faq-a');
+            const toggle = q.querySelector('.faq-toggle');
+            const isOpen = answer.style.display === 'block';
+            answer.style.display = isOpen ? 'none' : 'block';
+            toggle.textContent = isOpen ? '＋' : '－';
+        });
+    });
+
+    function switchLang(lang) {
+        document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+        event.target.classList.add('active');
+    }
+</script>
+
+</body>
+</html>
