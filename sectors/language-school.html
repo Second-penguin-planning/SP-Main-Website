@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<link rel="icon" type="image/png" sizes="32x32" href="../images/penguin_logo_192.png">
+<link rel="apple-touch-icon" sizes="192x192" href="../images/penguin_logo_192.png">
+<meta name="theme-color" content="#005bac">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>日本語学校・専門学校向け支援 | セコンドペンギン企画</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --main-blue: #005bac;
+        --accent-green: #006400;
+        --sky-blue: #e0f4ff;
+        --text-color: #333;
+        --white: #ffffff;
+        --accent-orange: #ff8c00;
+        --sector-color: #1a4a6c;   /* 日本語学校テーマカラー：深めの青緑 */
+        --sector-light: #e6f2f8;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+        font-family: 'Noto Sans JP', sans-serif;
+        line-height: 1.8;
+        color: var(--text-color);
+        background-color: var(--sky-blue);
+        overflow-x: hidden;
+    }
+
+    /* ===== HEADER ===== */
+    header {
+        background: var(--white);
+        padding: 8px 3%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: bold;
+        font-size: 1.1rem;
+        color: var(--main-blue);
+        text-decoration: none;
+    }
+    .logo img { height: 38px; width: auto; }
+
+    .header-right {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+    .back-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 7px 16px;
+        background: var(--sector-color);
+        color: white;
+        text-decoration: none;
+        border-radius: 20px;
+        font-size: 0.82rem;
+        font-weight: bold;
+        transition: 0.3s;
+    }
+    .back-btn:hover { background: var(--main-blue); transform: translateX(-3px); }
+
+    /* ===== SECTOR NAV ===== */
+    .sector-nav-bar {
+        background: var(--sector-color);
+        padding: 10px 16px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        justify-content: center;
+    }
+    .sector-nav-bar a {
+        display: inline-flex;
+        align-items: center;
+        gap: 3px;
+        padding: 4px 12px;
+        background: rgba(255,255,255,0.15);
+        color: #fff;
+        text-decoration: none;
+        font-size: 0.72rem;
+        font-weight: 600;
+        border: 1px solid rgba(255,255,255,0.3);
+        border-radius: 16px;
+        transition: all 0.2s ease;
+        white-space: nowrap;
+    }
+    .sector-nav-bar a:hover,
+    .sector-nav-bar a.current {
+        background: rgba(255,255,255,0.9);
+        color: var(--sector-color);
+        border-color: transparent;
+    }
+    @media (max-width: 600px) {
+        .sector-nav-bar a { font-size: 0.65rem; padding: 3px 9px; }
+    }
+
+    /* ===== HERO ===== */
+    .page-hero {
+        position: relative;
+        background: url("https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1400") center/cover no-repeat;
+        padding: 80px 10% 60px;
+        color: #fff;
+        text-align: center;
+        min-height: 380px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .page-hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(10, 40, 70, 0.65);
+        z-index: 0;
+    }
+    .page-hero > * { position: relative; z-index: 1; }
+    .page-hero .sector-badge {
+        display: inline-block;
+        background: rgba(255,255,255,0.2);
+        border: 1px solid rgba(255,255,255,0.5);
+        padding: 4px 18px;
+        border-radius: 20px;
+        font-size: 0.82rem;
+        margin-bottom: 16px;
+        letter-spacing: 0.1em;
+    }
+    .page-hero h1 {
+        font-size: clamp(1.8rem, 4vw, 2.8rem);
+        line-height: 1.35;
+        text-shadow: 0 3px 15px rgba(0,0,0,0.6);
+        margin-bottom: 16px;
+    }
+    .page-hero p {
+        font-size: 1rem;
+        color: #dde8f5;
+        max-width: 640px;
+    }
+
+    /* ===== 共通 ===== */
+    .section {
+        padding: 70px 10%;
+        background: var(--white);
+        margin: 20px 0;
+    }
+    .section-gray { background: var(--sky-blue); }
+    .section-accent { background: var(--sector-light); }
+
+    h2 {
+        text-align: center;
+        color: var(--sector-color);
+        font-size: 1.7rem;
+        margin-bottom: 40px;
+        position: relative;
+        padding-bottom: 12px;
+    }
+    h2::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 50px;
+        height: 3px;
+        background: var(--accent-orange);
+        border-radius: 2px;
+    }
+    h3 { color: var(--sector-color); margin-bottom: 10px; }
+
+    .lead-text {
+        text-align: center;
+        color: #555;
+        font-size: 0.97rem;
+        margin-top: -28px;
+        margin-bottom: 44px;
+        line-height: 1.9;
+    }
+
+    /* ===== INTRO CARDS ===== */
+    .intro-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 24px;
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+    .intro-card {
+        background: var(--sector-light);
+        border-radius: 14px;
+        padding: 28px 24px;
+        border-left: 5px solid var(--sector-color);
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .intro-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+    .intro-card .icon { font-size: 2rem; margin-bottom: 12px; display: block; }
+    .intro-card h3 { font-size: 1rem; margin-bottom: 8px; }
+    .intro-card p { font-size: 0.88rem; color: #555; line-height: 1.75; }
+
+    /* ===== 支援内容 カード ===== */
+    .support-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 24px;
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+    .support-card {
+        background: white;
+        border-radius: 14px;
+        padding: 30px 26px;
+        box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+        border-top: 4px solid var(--sector-color);
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .support-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 28px rgba(0,0,0,0.12);
+    }
+    .support-card .s-icon { font-size: 2.2rem; margin-bottom: 14px; display: block; }
+    .support-card h3 { font-size: 1.05rem; margin-bottom: 10px; }
+    .support-card p { font-size: 0.88rem; color: #555; line-height: 1.75; }
+    .support-card ul {
+        margin-top: 10px;
+        padding-left: 18px;
+        font-size: 0.85rem;
+        color: #555;
+        line-height: 1.85;
+    }
+
+    /* ===== 対象者バナー ===== */
+    .target-band {
+        background: linear-gradient(135deg, var(--sector-color) 0%, #2a6496 100%);
+        border-radius: 16px;
+        padding: 36px 40px;
+        color: white;
+        max-width: 900px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 24px;
+        text-align: center;
+    }
+    .target-item .t-icon { font-size: 2rem; margin-bottom: 8px; display: block; }
+    .target-item h3 { font-size: 0.95rem; color: #fff; margin-bottom: 6px; }
+    .target-item p { font-size: 0.82rem; color: #c5dff0; line-height: 1.7; }
+
+    /* ===== 関西エリア ===== */
+    .area-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 16px;
+        max-width: 860px;
+        margin: 0 auto;
+    }
+    .area-card {
+        background: var(--sector-light);
+        border-radius: 12px;
+        padding: 20px 14px;
+        text-align: center;
+        border: 2px solid transparent;
+        transition: border-color 0.3s, transform 0.3s;
+        cursor: default;
+    }
+    .area-card:hover {
+        border-color: var(--sector-color);
+        transform: translateY(-4px);
+    }
+    .area-card .a-icon { font-size: 1.8rem; margin-bottom: 8px; display: block; }
+    .area-card h3 { font-size: 0.9rem; color: var(--sector-color); margin-bottom: 4px; }
+    .area-card p { font-size: 0.78rem; color: #666; line-height: 1.6; }
+
+    /* ===== FLOW ===== */
+    .flow-list { max-width: 800px; margin: 0 auto; }
+    .flow-item {
+        display: flex;
+        gap: 20px;
+        align-items: flex-start;
+        margin-bottom: 28px;
+        position: relative;
+    }
+    .flow-item:not(:last-child)::after {
+        content: '';
+        position: absolute;
+        left: 22px;
+        top: 50px;
+        bottom: -10px;
+        width: 2px;
+        background: linear-gradient(to bottom, var(--sector-color), transparent);
+    }
+    .flow-num {
+        flex-shrink: 0;
+        width: 46px;
+        height: 46px;
+        background: var(--sector-color);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1rem;
+        font-weight: bold;
+        box-shadow: 0 4px 12px rgba(26,74,108,0.3);
+    }
+    .flow-body h3 { font-size: 1rem; margin-bottom: 4px; }
+    .flow-body p { font-size: 0.87rem; color: #555; line-height: 1.7; }
+
+    /* ===== タグ ===== */
+    .tag {
+        display: inline-block;
+        padding: 2px 10px;
+        border-radius: 12px;
+        font-size: 0.72rem;
+        font-weight: bold;
+        margin: 2px 2px 2px 0;
+    }
+    .tag-blue   { background: #d0e8ff; color: #003a70; }
+    .tag-green  { background: #d4f0dd; color: #1a6b33; }
+    .tag-orange { background: #ffe8cc; color: #8a4500; }
+    .tag-purple { background: #ede0ff; color: #5a2d8a; }
+
+    /* ===== PRICE ===== */
+    .price-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 20px;
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+    .price-card {
+        background: white;
+        border-radius: 14px;
+        padding: 28px 22px;
+        box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+        text-align: center;
+        border-top: 4px solid var(--sector-color);
+        transition: transform 0.3s;
+    }
+    .price-card:hover { transform: translateY(-5px); }
+    .price-card .price-icon { font-size: 2.2rem; margin-bottom: 12px; display: block; }
+    .price-card h3 { font-size: 0.95rem; margin-bottom: 10px; color: var(--sector-color); }
+    .price-card .price-amount {
+        font-size: 1.4rem;
+        font-weight: bold;
+        color: var(--accent-orange);
+        margin-bottom: 10px;
+    }
+    .price-card p { font-size: 0.82rem; color: #666; line-height: 1.7; }
+    .price-note {
+        text-align: center;
+        font-size: 0.82rem;
+        color: #888;
+        margin-top: 20px;
+    }
+
+    /* ===== FAQ ===== */
+    .faq-list { max-width: 800px; margin: 0 auto; }
+    .faq-item {
+        background: white;
+        border-radius: 12px;
+        margin-bottom: 14px;
+        overflow: hidden;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    }
+    .faq-q {
+        padding: 18px 22px;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        cursor: pointer;
+        font-weight: bold;
+        font-size: 0.95rem;
+        color: var(--sector-color);
+        user-select: none;
+        transition: background 0.2s;
+    }
+    .faq-q:hover { background: var(--sector-light); }
+    .faq-q .q-mark {
+        flex-shrink: 0;
+        width: 32px;
+        height: 32px;
+        background: var(--sector-color);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.9rem;
+        font-weight: bold;
+    }
+    .faq-q .faq-arrow {
+        margin-left: auto;
+        transition: transform 0.3s;
+        font-size: 0.9rem;
+        color: #999;
+    }
+    .faq-item.open .faq-arrow { transform: rotate(180deg); }
+    .faq-a {
+        display: none;
+        padding: 0 22px 18px 68px;
+        font-size: 0.9rem;
+        color: #555;
+        line-height: 1.8;
+        border-top: 1px solid #edf2f8;
+    }
+    .faq-item.open .faq-a { display: block; }
+
+    /* ===== CTA ===== */
+    .cta-section {
+        background: linear-gradient(135deg, var(--sector-color) 0%, #2a6496 100%);
+        padding: 70px 10%;
+        text-align: center;
+        color: white;
+    }
+    .cta-section h2 { color: white; font-size: 1.6rem; margin-bottom: 12px; }
+    .cta-section h2::after { background: rgba(255,255,255,0.5); }
+    .cta-section p { color: #c8dcf5; margin-bottom: 32px; font-size: 0.97rem; }
+    .cta-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .btn-white {
+        display: inline-block;
+        padding: 14px 32px;
+        background: white;
+        color: var(--sector-color);
+        text-decoration: none;
+        border-radius: 50px;
+        font-weight: bold;
+        font-size: 1rem;
+        transition: 0.3s;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+    }
+    .btn-white:hover { transform: scale(1.05); box-shadow: 0 10px 24px rgba(0,0,0,0.3); }
+    .btn-line {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 14px 28px;
+        background: #06c755;
+        color: white;
+        text-decoration: none;
+        border-radius: 50px;
+        font-weight: bold;
+        font-size: 1rem;
+        transition: 0.3s;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+    }
+    .btn-line:hover { background: #05a647; transform: scale(1.05); }
+    .btn-line img { width: 22px; height: 22px; }
+
+    /* ===== LINE固定 ===== */
+    .line-fixed-btn {
+        position: fixed;
+        top: 90px;
+        right: 20px;
+        width: 120px;
+        height: 60px;
+        background: #06C755;
+        border-radius: 30px;
+        border: 3px solid white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+        z-index: 9999;
+        transition: 0.3s;
+        text-decoration: none;
+    }
+    .line-fixed-btn:hover { transform: scale(1.1); }
+    .line-inner {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 11px;
+        font-weight: bold;
+        color: white;
+    }
+    .line-inner img { width: 28px; height: 28px; }
+
+    @media (max-width: 768px) {
+        .page-hero { min-height: 280px; padding: 60px 6% 40px; }
+        .section { padding: 50px 6%; }
+        .target-band { padding: 28px 20px; }
+        .line-fixed-btn { top: 120px; right: 12px; width: 80px; height: 50px; border-radius: 25px; }
+        .line-inner img { width: 26px; height: 26px; }
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+        background: #333;
+        color: white;
+        text-align: center;
+        padding: 30px;
+    }
+    footer a { color: #fff; text-decoration: underline; }
+
+    /* ===== FADE IN ===== */
+    .fade-in {
+        opacity: 0;
+        transform: translateY(28px);
+        transition: opacity 0.75s ease-out, transform 0.75s ease-out;
+    }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header>
+    <a href="../index.html" class="logo">
+        <img src="../images/penguin_logo_192.png" alt="セコンドペンギン企画ロゴ">
+        <span>セコンドペンギン企画</span>
+    </a>
+    <div class="header-right">
+        <a href="../index.html#contact" class="back-btn">📩 無料相談</a>
+        <a href="../index.html" class="back-btn">← TOPへ戻る</a>
+    </div>
+</header>
+
+<!-- ===== 他業種ナビ ===== -->
+<nav class="sector-nav-bar">
+    <a href="transport.html">自動車運送業 →</a>
+    <a href="construction.html">建設 →</a>
+    <a href="care.html">介護 →</a>
+    <a href="accommodation.html">宿泊 →</a>
+    <a href="food.html">外食業 →</a>
+    <a href="food-manufacturing.html">飲食料品製造業 →</a>
+    <a href="industrial-manufacturing.html">工業製品製造業 →</a>
+    <a href="registration-support.html">登録支援機関 →</a>
+    <a href="union.html">組合 →</a>
+    <a href="language-school.html" class="current">日本語学校/専門学校 →</a>
+</nav>
+
+<!-- ===== HERO ===== -->
+<div class="page-hero">
+    <span class="sector-badge">🎓 関西地方の学校向け 総合サポート</span>
+    <h1>日本語学校・専門学校の<br>留学生支援を、まるごとお任せ</h1>
+    <p>入管業務から生活支援、進学・就職相談まで。<br>関西地方の組合と連携し、留学生の安心な学校生活を支えます。</p>
+</div>
+
+
+<!-- ===== こんなお悩みありませんか ===== -->
+<section class="section fade-in">
+    <h2>こんなお悩みはありませんか？</h2>
+    <p class="lead-text">
+        留学生の受入れ・在籍管理・卒業後の進路対応まで、<br>学校担当者の業務は多岐にわたります。
+    </p>
+    <div class="intro-grid">
+        <div class="intro-card">
+            <span class="icon">📂</span>
+            <h3>入管手続きが煩雑で手が回らない</h3>
+            <p>在留資格の更新・変更、資格外活動許可、在籍証明書の管理など、入管関連業務が増加する一方で専任担当者が不足している。</p>
+        </div>
+        <div class="intro-card">
+            <span class="icon">🏠</span>
+            <h3>生活面のトラブル対応に追われている</h3>
+            <p>住居・銀行・携帯・健康保険など、来日直後の生活セットアップや日常トラブルへの対応が学校スタッフの大きな負担になっている。</p>
+        </div>
+        <div class="intro-card">
+            <span class="icon">🎯</span>
+            <h3>進学・就職の相談体制が整っていない</h3>
+            <p>卒業後の進路支援（大学・専門学校進学、就職活動、在留資格変更）について、専門知識を持つスタッフがおらず学生への対応が後手になっている。</p>
+        </div>
+        <div class="intro-card">
+            <span class="icon">🌐</span>
+            <h3>多言語対応が難しい</h3>
+            <p>ベトナム語・中国語・インドネシア語など多様な母語を持つ学生への情報提供や相談対応が難しく、コミュニケーションロスが生じている。</p>
+        </div>
+    </div>
+</section>
+
+
+<!-- ===== セコンドペンギン企画が選ばれる理由 ===== -->
+<section class="section section-accent fade-in">
+    <h2>セコンドペンギン企画が選ばれる理由</h2>
+    <p class="lead-text">
+        関西の組合と緊密に連携し、入管業務から生活・進路まで<br>ワンストップでサポートできる体制を整えています。
+    </p>
+    <div class="target-band">
+        <div class="target-item">
+            <span class="t-icon">⚖️</span>
+            <h3>行政書士による入管業務</h3>
+            <p>在留資格の申請・変更・更新を行政書士が確実に対応。不許可リスクを最小化します。</p>
+        </div>
+        <div class="target-item">
+            <span class="t-icon">🤝</span>
+            <h3>関西組合との連携</h3>
+            <p>大阪・京都・兵庫・奈良を中心とした組合ネットワークで、地域密着のきめ細かいサポートを提供。</p>
+        </div>
+        <div class="target-item">
+            <span class="t-icon">🌏</span>
+            <h3>多言語対応スタッフ</h3>
+            <p>英語・ベトナム語・中国語・インドネシア語に対応するスタッフが学生の不安を解消します。</p>
+        </div>
+        <div class="target-item">
+            <span class="t-icon">🏫</span>
+            <h3>進路まで一貫サポート</h3>
+            <p>在学中の生活支援から卒業後の進学・就職・在留資格変更まで途切れなくサポートします。</p>
+        </div>
+    </div>
+</section>
+
+
+<!-- ===== 支援内容 ===== -->
+<section class="section fade-in">
+    <h2>4つの主要サポートメニュー</h2>
+    <p class="lead-text">
+        学校と留学生、双方に寄り添うサービスを4つの柱でご提供します。
+    </p>
+    <div class="support-grid">
+
+        <div class="support-card">
+            <span class="s-icon">📋</span>
+            <h3>① 入管業務サポート</h3>
+            <p>留学生に関わるすべての入管手続きを行政書士がサポートします。学校担当者の業務負担を大幅に軽減します。</p>
+            <ul>
+                <li>在留資格「留学」の新規申請・更新</li>
+                <li>資格外活動許可申請</li>
+                <li>在留資格変更（就労・特定活動等）</li>
+                <li>在籍・在留管理のアドバイス</li>
+                <li>不法滞在・オーバーステイ防止指導</li>
+            </ul>
+            <div style="margin-top:12px;">
+                <span class="tag tag-blue">行政書士対応</span>
+                <span class="tag tag-green">学校担当者サポート</span>
+            </div>
+        </div>
+
+        <div class="support-card">
+            <span class="s-icon">🏡</span>
+            <h3>② 生活支援サービス</h3>
+            <p>来日直後から安定した生活が送れるよう、住居から日常生活のあらゆる場面をサポートします。</p>
+            <ul>
+                <li>住居探し・入居手続き同行</li>
+                <li>住民登録・マイナンバー手続き</li>
+                <li>銀行口座・携帯電話の開設支援</li>
+                <li>国民健康保険・年金の案内</li>
+                <li>生活トラブル相談窓口（多言語対応）</li>
+            </ul>
+            <div style="margin-top:12px;">
+                <span class="tag tag-orange">多言語対応</span>
+                <span class="tag tag-green">関西エリア密着</span>
+            </div>
+        </div>
+
+        <div class="support-card">
+            <span class="s-icon">🎓</span>
+            <h3>③ 進学相談サポート</h3>
+            <p>卒業後の大学・専門学校への進学を希望する学生に対し、進学に伴う在留手続きや情報提供を行います。</p>
+            <ul>
+                <li>進学先の在留資格継続・変更案内</li>
+                <li>出願スケジュール・書類準備アドバイス</li>
+                <li>奨学金・経費支弁書類の説明</li>
+                <li>学校選び・進路相談（個別対応）</li>
+                <li>保護者向け多言語説明資料の提供</li>
+            </ul>
+            <div style="margin-top:12px;">
+                <span class="tag tag-blue">進学サポート</span>
+                <span class="tag tag-purple">在留資格変更</span>
+            </div>
+        </div>
+
+        <div class="support-card">
+            <span class="s-icon">💼</span>
+            <h3>④ 就職相談サポート</h3>
+            <p>日本での就職を目指す学生に対し、就活の準備から内定後の在留資格変更まで一貫してサポートします。</p>
+            <ul>
+                <li>就職活動ガイダンス（履歴書・面接対策）</li>
+                <li>在留資格「技術・人文知識・国際業務」等への変更申請</li>
+                <li>特定技能・育成就労への移行支援</li>
+                <li>求人企業とのマッチングサポート</li>
+                <li>内定後の各種手続き代行</li>
+            </ul>
+            <div style="margin-top:12px;">
+                <span class="tag tag-orange">就職支援</span>
+                <span class="tag tag-blue">在留資格変更</span>
+                <span class="tag tag-green">企業マッチング</span>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ===== 対応エリア ===== -->
+<section class="section section-gray fade-in">
+    <h2>関西地方 対応エリア</h2>
+    <p class="lead-text">
+        関西圏の組合と連携し、下記エリアの日本語学校・専門学校を重点的にサポートしています。
+    </p>
+    <div class="area-grid">
+        <div class="area-card">
+            <span class="a-icon">🏙️</span>
+            <h3>大阪府</h3>
+            <p>大阪市・堺市・東大阪市など府内全域対応</p>
+        </div>
+        <div class="area-card">
+            <span class="a-icon">⛩️</span>
+            <h3>京都府</h3>
+            <p>京都市・宇治市・亀岡市など</p>
+        </div>
+        <div class="area-card">
+            <span class="a-icon">🌊</span>
+            <h3>兵庫県</h3>
+            <p>神戸市・尼崎市・姫路市など</p>
+        </div>
+        <div class="area-card">
+            <span class="a-icon">🦌</span>
+            <h3>奈良県</h3>
+            <p>奈良市・橿原市・生駒市など</p>
+        </div>
+        <div class="area-card">
+            <span class="a-icon">🏯</span>
+            <h3>滋賀県</h3>
+            <p>大津市・草津市・彦根市など</p>
+        </div>
+        <div class="area-card">
+            <span class="a-icon">🌸</span>
+            <h3>和歌山県</h3>
+            <p>和歌山市・田辺市など</p>
+        </div>
+    </div>
+    <p style="text-align:center; margin-top:24px; font-size:0.85rem; color:#666;">
+        ※ 上記エリア外でもご相談ください。オンライン対応も可能です。
+    </p>
+</section>
+
+
+<!-- ===== サポートフロー ===== -->
+<section class="section fade-in">
+    <h2>ご利用の流れ</h2>
+    <p class="lead-text">
+        学校担当者様からのご相談から、学生への支援開始まで迅速に対応します。
+    </p>
+    <div class="flow-list">
+        <div class="flow-item">
+            <div class="flow-num">1</div>
+            <div class="flow-body">
+                <h3>無料初回相談（学校担当者様）</h3>
+                <p>現在の課題・受入れ学生数・対応が必要な業務内容をヒアリングします。オンライン・訪問どちらにも対応可能です。</p>
+            </div>
+        </div>
+        <div class="flow-item">
+            <div class="flow-num">2</div>
+            <div class="flow-body">
+                <h3>サービス内容・プランのご提案</h3>
+                <p>入管業務のみ・生活支援のみ・進路相談まで一括など、学校のニーズに合わせたプランをご提案します。</p>
+            </div>
+        </div>
+        <div class="flow-item">
+            <div class="flow-num">3</div>
+            <div class="flow-body">
+                <h3>契約・担当者アサイン</h3>
+                <p>サービス内容を確定後、学校専任の担当者をアサイン。学校・組合・弊社の連絡体制を整えます。</p>
+            </div>
+        </div>
+        <div class="flow-item">
+            <div class="flow-num">4</div>
+            <div class="flow-body">
+                <h3>学生向けオリエンテーション</h3>
+                <p>新入生・在校生へのオリエンテーションにて、入管ルール・生活支援・相談窓口を多言語でご案内します（学校への出張対応可）。</p>
+            </div>
+        </div>
+        <div class="flow-item">
+            <div class="flow-num">5</div>
+            <div class="flow-body">
+                <h3>在学中の継続サポート</h3>
+                <p>在留期間の管理・更新通知、生活トラブル対応、定期個別相談を実施。学生の学校生活を安定させます。</p>
+            </div>
+        </div>
+        <div class="flow-item">
+            <div class="flow-num">6</div>
+            <div class="flow-body">
+                <h3>卒業前・進路サポート</h3>
+                <p>卒業前に進学・就職の希望を確認し、在留資格変更・手続きをスムーズに完了。卒業後も継続してフォローします。</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ===== 料金 ===== -->
+<section class="section section-accent fade-in">
+    <h2>料金目安</h2>
+    <p class="lead-text">
+        学校の規模・学生数・ご依頼内容により変動します。<br>まずはお気軽にご相談ください。
+    </p>
+    <div class="price-grid">
+        <div class="price-card">
+            <span class="price-icon">💬</span>
+            <h3>初回相談</h3>
+            <div class="price-amount">無料</div>
+            <p>課題の整理・サービス範囲のご相談。オンライン・訪問どちらも対応可。</p>
+        </div>
+        <div class="price-card">
+            <span class="price-icon">📋</span>
+            <h3>入管業務サポート</h3>
+            <div class="price-amount">30,000円〜/件</div>
+            <p>在留資格の更新・変更申請。複数学生の一括対応プランもあり。</p>
+        </div>
+        <div class="price-card">
+            <span class="price-icon">🏠</span>
+            <h3>生活支援セットアップ</h3>
+            <div class="price-amount">40,000円〜/人</div>
+            <p>来日直後の住居・役所・銀行・携帯手続きの同行サポート。</p>
+        </div>
+        <div class="price-card">
+            <span class="price-icon">🎓</span>
+            <h3>進学・就職相談サポート</h3>
+            <div class="price-amount">20,000円〜/人</div>
+            <p>在留資格変更を含む進学・就職手続きのトータルサポート。</p>
+        </div>
+        <div class="price-card">
+            <span class="price-icon">🏫</span>
+            <h3>学校顧問プラン（月額）</h3>
+            <div class="price-amount">50,000円〜/月</div>
+            <p>入管・生活・進路相談を月定額で一括対応。学生数に応じて調整可能。</p>
+        </div>
+        <div class="price-card">
+            <span class="price-icon">🎤</span>
+            <h3>出張オリエンテーション</h3>
+            <div class="price-amount">30,000円〜/回</div>
+            <p>学校への出張訪問。新入生向け入管ルール・生活案内を多言語で実施。</p>
+        </div>
+    </div>
+    <p class="price-note">※上記はすべて目安です。学校の規模・学生数・対応言語により個別にお見積りいたします。</p>
+</section>
+
+
+<!-- ===== FAQ ===== -->
+<section class="section fade-in">
+    <h2>よくあるご質問</h2>
+    <div class="faq-list">
+
+        <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+                <span class="q-mark">Q</span>
+                学校側の担当者が入管業務に慣れていなくても依頼できますか？
+                <span class="faq-arrow">▼</span>
+            </div>
+            <div class="faq-a">
+                はい、まったく問題ありません。むしろ「よくわからない」という状態からご支援するケースが多くございます。必要な書類・手続きの流れを担当者様にわかりやすく説明しながら進めますのでご安心ください。
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+                <span class="q-mark">Q</span>
+                留学生が無断欠席・行方不明になった場合の対応はできますか？
+                <span class="faq-arrow">▼</span>
+            </div>
+            <div class="faq-a">
+                在籍管理のアドバイスや、早期発見のための連絡体制構築をご支援します。万が一の際には入管への届出手続きのサポートも行います。不法残留・失踪防止のための事前指導も実施しております。
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+                <span class="q-mark">Q</span>
+                学生が卒業後に就職する場合、在留資格変更は必要ですか？
+                <span class="faq-arrow">▼</span>
+            </div>
+            <div class="faq-a">
+                はい、「留学」から就労系の在留資格（技術・人文知識・国際業務、特定技能等）への変更申請が必要です。内定先の業務内容と学生の専攻・経歴を確認した上で、最適な在留資格への変更申請を行政書士が代行いたします。
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+                <span class="q-mark">Q</span>
+                対応できる言語を教えてください。
+                <span class="faq-arrow">▼</span>
+            </div>
+            <div class="faq-a">
+                日本語・英語・ベトナム語・中国語（普通話）・インドネシア語に対応しております。その他の言語については連携スタッフの手配を検討しますので、まずはご相談ください。
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+                <span class="q-mark">Q</span>
+                関西以外の学校でも依頼できますか？
+                <span class="faq-arrow">▼</span>
+            </div>
+            <div class="faq-a">
+                基本的には関西地方（大阪・京都・兵庫・奈良・滋賀・和歌山）が主な対応エリアです。関西以外の場合はオンライン対応が中心となりますが、まずはご相談ください。状況に応じて対応可否をご案内します。
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+                <span class="q-mark">Q</span>
+                在留資格の更新を忘れた学生がいます。今からでも対応できますか？
+                <span class="faq-arrow">▼</span>
+            </div>
+            <div class="faq-a">
+                在留期限が過ぎてしまっている場合でも、状況によっては対応できるケースがございます。早急にご連絡ください。時間が経てば経つほど対応が難しくなりますので、気づいた時点でお早めにご相談いただくことを強くお勧めします。
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ===== CTA ===== -->
+<section class="cta-section fade-in">
+    <h2>まずは無料相談から</h2>
+    <p>
+        日本語学校・専門学校での留学生サポートについて、<br>
+        どんな些細なことでもお気軽にご相談ください。<br>
+        関西の組合と連携した専門スタッフが、貴校の状況に合った最適なプランをご提案します。
+    </p>
+    <div class="cta-btns">
+        <a href="../index.html#contact" class="btn-white">📩 お問合せフォームへ</a>
+        <a href="https://line.me/R/ti/p/@556fihjp/" target="_blank" class="btn-line">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/LINE_logo.svg" alt="LINE">
+            LINEで相談する
+        </a>
+    </div>
+</section>
+
+
+<footer>
+    <p><a href="../privacy.html">プライバシーポリシー</a></p>
+    <p style="margin-top:10px;">© 2024-2026 Second Penguin Planning. All Rights Reserved.</p>
+</footer>
+
+
+<!-- LINE固定ボタン -->
+<a href="https://line.me/R/ti/p/@556fihjp/" class="line-fixed-btn" target="_blank">
+    <div class="line-inner">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/LINE_logo.svg" alt="LINE">
+        <span>無料 相談</span>
+    </div>
+</a>
+
+
+<script>
+/* FAQ アコーディオン */
+function toggleFaq(el) {
+    const item = el.closest('.faq-item');
+    item.classList.toggle('open');
+}
+
+/* Fade-in */
+window.addEventListener('DOMContentLoaded', () => {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) entry.target.classList.add('visible');
+        });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+});
+</script>
+
+</body>
+</html>
