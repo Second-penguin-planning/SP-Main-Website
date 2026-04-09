@@ -241,18 +241,19 @@
         }
 
         /* ===== HERO ===== */
-        .hero {
-            position: relative;
-            background: url("https://images.unsplash.com/photo-1454165804606-c3d57bc86b40") center/cover no-repeat;
-            padding: 50px 10% 70px;
-            color: #fff;
-            min-height: 70vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
+     .hero {
+    position: relative;
+    background: url("https://images.unsplash.com/photo-1454165804606-c3d57bc86b40") center/cover no-repeat;
+    padding: 20px 10% 50px;  /* ← 上を50px→20px に縮小 */
+    color: #fff;
+    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;  /* ← center→flex-start に変更 */
+    align-items: center;
+    text-align: center;
+}
+
         .hero::before {
             content: "";
             position: absolute;
