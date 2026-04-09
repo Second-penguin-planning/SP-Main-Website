@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#005bac">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>運送業（自動車運転）| セコンドペンギン企画</title>
+<title>自動車整備業 | セコンドペンギン企画</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
 <style>
     :root {
@@ -16,8 +16,8 @@
         --text-color: #333;
         --white: #ffffff;
         --accent-orange: #ff8c00;
-        --sector-color: #7b3f00;
-        --sector-light: #fdf3e8;
+        --sector-color: #2c3e50;
+        --sector-light: #eaf0f6;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -109,7 +109,7 @@
     /* ===== HERO ===== */
     .page-hero {
         position: relative;
-        background: url("https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=1400") center/cover no-repeat;
+        background: url("https://images.unsplash.com/photo-1625047509168-a7026f36de04?w=1400") center/cover no-repeat;
         padding: 80px 10% 60px;
         color: #fff;
         text-align: center;
@@ -123,7 +123,7 @@
         content: "";
         position: absolute;
         inset: 0;
-        background: rgba(60, 25, 0, 0.62);
+        background: rgba(20, 30, 44, 0.65);
         z-index: 0;
     }
     .page-hero > * { position: relative; z-index: 1; }
@@ -145,7 +145,7 @@
     }
     .page-hero p {
         font-size: 1rem;
-        color: #f5dfc8;
+        color: #c8d8e8;
         max-width: 640px;
     }
 
@@ -207,19 +207,19 @@
     .intro-card h3 { font-size: 1rem; margin-bottom: 8px; }
     .intro-card p { font-size: 0.88rem; color: #555; line-height: 1.75; }
 
-    /* ===== NOTICE BOX ===== */
-    .notice-box {
-        background: #fff8e6;
-        border-left: 5px solid var(--accent-orange);
+    /* ===== HIGHLIGHT BOX ===== */
+    .highlight-box {
+        background: #eaf0f6;
+        border-left: 5px solid var(--sector-color);
         border-radius: 10px;
         padding: 20px 24px;
         margin: 0 auto 36px;
         max-width: 860px;
         font-size: 0.92rem;
         line-height: 1.85;
-        color: #5a3a00;
+        color: #2c3e50;
     }
-    .notice-box strong { color: #8a4500; }
+    .highlight-box strong { color: #1a252f; }
 
     /* ===== 業務区分テーブル ===== */
     .job-table-wrap { overflow-x: auto; margin-top: 10px; }
@@ -227,7 +227,7 @@
         width: 100%;
         border-collapse: collapse;
         font-size: 0.9rem;
-        min-width: 560px;
+        min-width: 540px;
     }
     .job-table th {
         background: var(--sector-color);
@@ -238,11 +238,11 @@
     }
     .job-table td {
         padding: 12px 16px;
-        border-bottom: 1px solid #f0e0cc;
+        border-bottom: 1px solid #d8e4ef;
         vertical-align: top;
     }
-    .job-table tr:nth-child(even) td { background: #fdf8f2; }
-    .job-table tr:hover td { background: #fdeedd; }
+    .job-table tr:nth-child(even) td { background: #f4f7fa; }
+    .job-table tr:hover td { background: #deeaf5; }
     .tag {
         display: inline-block;
         padding: 2px 10px;
@@ -251,9 +251,29 @@
         font-weight: bold;
         margin: 2px 2px 2px 0;
     }
-    .tag-brown { background: #ffe0b2; color: #6d3b00; }
+    .tag-navy  { background: #d0ddf0; color: #1a2a50; }
     .tag-green { background: #d4f0dd; color: #1a6b33; }
-    .tag-red   { background: #fde8e8; color: #8b0000; }
+    .tag-gray  { background: #e8e8e8; color: #444; }
+
+    /* ===== 資格・試験 ===== */
+    .exam-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 20px;
+        max-width: 900px;
+        margin: 0 auto;
+    }
+    .exam-card {
+        background: white;
+        border-radius: 12px;
+        padding: 24px 20px;
+        box-shadow: 0 3px 14px rgba(0,0,0,0.08);
+        border-top: 4px solid var(--sector-color);
+        text-align: center;
+    }
+    .exam-card .exam-icon { font-size: 2rem; margin-bottom: 10px; display: block; }
+    .exam-card h3 { font-size: 0.95rem; margin-bottom: 8px; color: var(--sector-color); }
+    .exam-card p { font-size: 0.84rem; color: #555; line-height: 1.7; }
 
     /* ===== FLOW ===== */
     .flow-list { max-width: 800px; margin: 0 auto; }
@@ -285,7 +305,7 @@
         justify-content: center;
         font-size: 1rem;
         font-weight: bold;
-        box-shadow: 0 4px 12px rgba(123,63,0,0.3);
+        box-shadow: 0 4px 12px rgba(44,62,80,0.3);
     }
     .flow-body h3 { font-size: 1rem; margin-bottom: 4px; }
     .flow-body p { font-size: 0.87rem; color: #555; line-height: 1.7; }
@@ -372,20 +392,20 @@
         font-size: 0.9rem;
         color: #555;
         line-height: 1.8;
-        border-top: 1px solid #f0e8dc;
+        border-top: 1px solid #dde8f0;
     }
     .faq-item.open .faq-a { display: block; }
 
     /* ===== CTA ===== */
     .cta-section {
-        background: linear-gradient(135deg, var(--sector-color) 0%, #a0522d 100%);
+        background: linear-gradient(135deg, var(--sector-color) 0%, #3d566e 100%);
         padding: 70px 10%;
         text-align: center;
         color: white;
     }
     .cta-section h2 { color: white; font-size: 1.6rem; margin-bottom: 12px; }
     .cta-section h2::after { background: rgba(255,255,255,0.5); }
-    .cta-section p { color: #f5dfc8; margin-bottom: 32px; font-size: 0.97rem; }
+    .cta-section p { color: #c8d8e8; margin-bottom: 32px; font-size: 0.97rem; }
     .cta-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
     .btn-white {
         display: inline-block;
@@ -480,54 +500,56 @@
 
 <!-- ===== 他業種ナビ ===== -->
 <nav class="sector-nav-bar">
-        <a href="sectors/transport.html"              class="active">自動車運送業 <span class="arrow">→</span></a>
-        <a href="sectors/construction.html"           class="active">建設 <span class="arrow">→</span></a>
-        <a href="sectors/care.html"                   class="active">介護 <span class="arrow">→</span></a>
-        <a href="sectors/accommodation.html"          class="active">宿泊 <span class="arrow">→</span></a>
-        <a href="sectors/food.html"         　　　　　 class="active">外食業 <span class="arrow">→</span></a>
-        <a href="sectors/food-manufacturing.html"     class="active">飲食料品製造業 <span class="arrow">→</span></a>
-        <a href="sectors/industrial-manufacturing.html" class="active">工業製品製造業 <span class="arrow">→</span></a>
-        <a href="sectors/registration-support.html"   class="active">登録支援機関 <span class="arrow">→</span></a>
-        <a href="sectors/union.html"                  class="active">組合 <span class="arrow">→</span></a>
-        <a href="sectors/language-school.html"        class="active">日本語学校/専門学校 <span class="arrow">→</span></a>
+        <a href="transport.html"              class="active">自動車運送業 <span class="arrow">→</span></a>
+        <a href="construction.html"           class="active">建設 <span class="arrow">→</span></a>
+        <a href="care.html"                   class="active">介護 <span class="arrow">→</span></a>
+        <a href="accommodation.html"          class="active">宿泊 <span class="arrow">→</span></a>
+        <a href="food.html"         　　　　　 class="active">外食業 <span class="arrow">→</span></a>
+        <a href="food-manufacturing.html"     class="active">飲食料品製造業 <span class="arrow">→</span></a>
+        <a href="industrial-manufacturing.html" class="active">工業製品製造業 <span class="arrow">→</span></a>
+        <a href="registration-support.html"   class="active">登録支援機関 <span class="arrow">→</span></a>
+        <a href="union.html"                  class="active">組合 <span class="arrow">→</span></a>
+        <a href="language-school.html"        class="active">日本語学校/専門学校 <span class="arrow">→</span></a>
 </nav>
 
 <!-- ===== HERO ===== -->
 <div class="page-hero">
-    <span class="sector-badge">🚛 特定技能 対応分野（自動車運転）</span>
-    <h1>運送業における<br>外国人材の採用・定着支援</h1>
-    <p>2024年問題で加速する人手不足に対し、<br>特定技能「自動車運転」でドライバー確保を実現します。</p>
+    <span class="sector-badge">🔧 特定技能 対応分野（自動車整備）</span>
+    <h1>自動車整備業における<br>外国人材の採用・定着支援</h1>
+    <p>整備士不足が深刻化する自動車整備業に、<br>技術力の高い海外人材をお届けします。</p>
 </div>
 
 
 <!-- ===== INTRO ===== -->
 <section class="section fade-in">
-    <h2>運送業で外国人を雇用する理由</h2>
+    <h2>自動車整備業で外国人を雇用する理由</h2>
     <p class="lead-text">
-        2024年の時間外労働規制により、さらに深刻化するドライバー不足。<br>
-        特定技能「自動車運転」は2024年3月に新設された注目の制度です。
+        整備士の高齢化・若手離れにより、業界全体で深刻な人材不足が続いています。<br>
+        特定技能「自動車整備」は、即戦力となる技術者を確保できる有力な制度です。
     </p>
 
-    <div class="notice-box">
-        ⚠️ <strong>重要：特定技能「自動車運転」は2024年3月新設の制度です。</strong><br>
-        対象は<strong>トラック・バス・タクシー</strong>の3区分。日本の運転免許（大型・中型・普通など）の取得が就労の前提条件となります。免許取得のルートや要件について、弊社が最新情報に基づきご案内します。
+    <div class="highlight-box">
+        🔩 <strong>自動車整備士の不足は業界全体の課題です。</strong><br>
+        国土交通省の調査では、2030年には約5万人の整備士が不足すると推計されています。
+        特定技能「自動車整備」では、<strong>日常点検・定期点検・分解整備</strong>の業務に従事できる人材の受入れが可能です。
+        弊社では技術力のある候補者のスクリーニングから在留申請・定着支援まで完全サポートします。
     </div>
 
     <div class="intro-grid">
         <div class="intro-card">
-            <span class="icon">🚚</span>
-            <h3>2024年問題で加速する不足</h3>
-            <p>時間外労働の上限規制により、輸送能力が最大14%減少するとも試算されています。外国人ドライバーの確保は業界の急務です。</p>
+            <span class="icon">🔍</span>
+            <h3>深刻な整備士不足</h3>
+            <p>整備士の平均年齢は上昇し続け、若手の新規参入も減少。外国人材の活用が業界の持続的な経営に直結しています。</p>
         </div>
         <div class="intro-card">
-            <span class="icon">🆕</span>
-            <h3>2024年新設の特定技能区分</h3>
-            <p>「自動車運転」分野は2024年3月に特定技能対象として追加。トラック・バス・タクシーの3業務区分で受入れが可能になりました。</p>
+            <span class="icon">🛠️</span>
+            <h3>技術水準の高い人材</h3>
+            <p>フィリピン・インドネシアでは自動車整備の職業訓練が充実しており、基礎技術をしっかり身に付けた人材が多く存在します。</p>
         </div>
         <div class="intro-card">
-            <span class="icon">🪪</span>
-            <h3>免許取得サポートも対応</h3>
-            <p>入国後に日本の運転免許を取得するルートも整備されています。弊社ではその手続きや教習所連携についてもアドバイスします。</p>
+            <span class="icon">📜</span>
+            <h3>資格取得サポートも対応</h3>
+            <p>入国後に日本の自動車整備士技能検定3級の取得を目指すルートも。弊社では学習支援・受験手続きもサポートします。</p>
         </div>
     </div>
 </section>
@@ -535,95 +557,122 @@
 
 <!-- ===== 業務区分 ===== -->
 <section class="section section-accent fade-in">
-    <h2>自動車運転の業務区分一覧</h2>
+    <h2>自動車整備の対象業務</h2>
     <p class="lead-text">
-        特定技能「自動車運転」では、以下の3区分で就労が認められています。
+        特定技能「自動車整備」では、以下の業務に従事することができます。
     </p>
     <div class="job-table-wrap">
         <table class="job-table">
             <thead>
                 <tr>
-                    <th style="width:20%">業務区分</th>
-                    <th style="width:40%">主な作業内容</th>
-                    <th style="width:22%">必要免許（目安）</th>
-                    <th style="width:18%">技能レベル</th>
+                    <th style="width:28%">業務区分</th>
+                    <th style="width:50%">主な作業内容</th>
+                    <th style="width:22%">技能レベル</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td><strong>トラック</strong></td>
-                    <td>貨物自動車による貨物の運送業務（集配・幹線輸送など）</td>
-                    <td>大型・中型・準中型・普通</td>
-                    <td><span class="tag tag-brown">特定技能1号</span></td>
+                    <td><strong>日常点検整備</strong></td>
+                    <td>エンジン・ブレーキ・タイヤ・灯火類など日常的な点検・調整作業</td>
+                    <td><span class="tag tag-navy">特定技能1号</span></td>
                 </tr>
                 <tr>
-                    <td><strong>バス</strong></td>
-                    <td>路線バス・貸切バスなどによる旅客の運送業務</td>
-                    <td>大型第二種</td>
-                    <td><span class="tag tag-brown">特定技能1号</span></td>
+                    <td><strong>定期点検整備</strong></td>
+                    <td>法定点検（3か月・6か月・12か月点検等）に伴う点検・整備作業</td>
+                    <td><span class="tag tag-navy">特定技能1号</span></td>
                 </tr>
                 <tr>
-                    <td><strong>タクシー</strong></td>
-                    <td>一般乗用旅客自動車による旅客の運送業務</td>
-                    <td>普通第二種</td>
-                    <td><span class="tag tag-brown">特定技能1号</span></td>
+                    <td><strong>分解整備</strong></td>
+                    <td>エンジン・ブレーキ・動力伝達装置等の分解・組立・調整</td>
+                    <td><span class="tag tag-navy">特定技能1号</span></td>
+                </tr>
+                <tr>
+                    <td><strong>関連業務（付随）</strong></td>
+                    <td>洗車・部品交換補助・受付補助など整備業務に付随する作業</td>
+                    <td><span class="tag tag-gray">補助的業務</span></td>
                 </tr>
             </tbody>
         </table>
     </div>
     <p style="font-size:0.82rem; color:#888; margin-top:14px; text-align:center;">
-        ※必要免許は業務・車種により異なります。詳細はお問合せください。
+        ※分解整備は道路運送車両法上の認証工場での業務が前提です。
     </p>
 </section>
 
 
-<!-- ===== 支援フロー ===== -->
+<!-- ===== 資格・試験 ===== -->
 <section class="section fade-in">
+    <h2>必要な資格・試験について</h2>
+    <p class="lead-text">
+        特定技能「自動車整備」で就労するためには、以下のいずれかの要件を満たす必要があります。
+    </p>
+    <div class="exam-grid">
+        <div class="exam-card">
+            <span class="exam-icon">📋</span>
+            <h3>自動車整備分野<br>特定技能評価試験</h3>
+            <p>国土交通省が実施する技能評価試験（学科・実技）に合格することで特定技能1号の要件を満たします。海外でも受験可能です。</p>
+        </div>
+        <div class="exam-card">
+            <span class="exam-icon">🏅</span>
+            <h3>自動車整備士<br>技能検定3級</h3>
+            <p>日本の国家資格である自動車整備士技能検定3級（ガソリン・ジーゼル等）の合格者は試験免除となります。</p>
+        </div>
+        <div class="exam-card">
+            <span class="exam-icon">🗣️</span>
+            <h3>日本語能力試験<br>N4以上</h3>
+            <p>日本語能力試験N4以上、または「日本語基礎テスト」の合格が必要です。弊社の日本語学習サポートで取得を支援します。</p>
+        </div>
+    </div>
+</section>
+
+
+<!-- ===== 支援フロー ===== -->
+<section class="section section-gray fade-in">
     <h2>採用から定着までのサポートフロー</h2>
     <p class="lead-text">
-        特定技能「自動車運転」特有の手続きも含め、一気通貫でサポートします。
+        自動車整備業特有の資格・試験対応も含め、一気通貫でサポートします。
     </p>
     <div class="flow-list">
         <div class="flow-item">
             <div class="flow-num">1</div>
             <div class="flow-body">
                 <h3>無料初回相談・雇用計画の設計</h3>
-                <p>業務区分（トラック・バス・タクシー）の選定、受入人数、スケジュールをヒアリングし、最適なプランをご提案します。</p>
+                <p>貴社の業務内容・必要なスキルレベル・受入人数・時期をヒアリングし、最適な採用プランをご提案します。</p>
             </div>
         </div>
         <div class="flow-item">
             <div class="flow-num">2</div>
             <div class="flow-body">
-                <h3>試験・技能水準の確認</h3>
-                <p>特定技能「自動車運転」の技能評価試験（業務区分別）の概要をご説明し、候補者の受験準備をサポートします。</p>
+                <h3>候補者の選定・スクリーニング</h3>
+                <p>フィリピン・インドネシアの連携機関から、整備技術・日本語力・安全意識を総合評価した候補者をご紹介。ビデオ面接も対応します。</p>
             </div>
         </div>
         <div class="flow-item">
             <div class="flow-num">3</div>
             <div class="flow-body">
-                <h3>候補者の選定・マッチング</h3>
-                <p>フィリピン・インドネシアの連携機関から、運転適性・安全意識・日本語力を総合評価した候補者をご紹介します。</p>
+                <h3>技能評価試験・日本語試験のサポート</h3>
+                <p>特定技能評価試験および日本語試験の受験準備を支援。試験スケジュールや申込み手続きもご案内します。</p>
             </div>
         </div>
         <div class="flow-item">
             <div class="flow-num">4</div>
             <div class="flow-body">
                 <h3>在留資格申請（行政書士対応）</h3>
-                <p>特定技能「自動車運転」の在留資格申請書類を行政書士が作成・申請。運送業特有の審査ポイントを熟知した対応をします。</p>
+                <p>特定技能「自動車整備」の在留資格申請書類を行政書士が作成・申請。国土交通省への確認手続きも対応します。</p>
             </div>
         </div>
         <div class="flow-item">
             <div class="flow-num">5</div>
             <div class="flow-body">
-                <h3>入国・日本免許取得サポート</h3>
-                <p>入国後の住居確保・生活立ち上げに加え、日本の運転免許取得に向けた教習所連携や書類準備もサポートします。</p>
+                <h3>入国・生活セットアップ</h3>
+                <p>空港送迎・住居確保・住民登録・銀行口座・携帯契約など、来日直後の生活立ち上げをまるごとサポートします。</p>
             </div>
         </div>
         <div class="flow-item">
             <div class="flow-num">6</div>
             <div class="flow-body">
-                <h3>就業開始・定期面談（登録支援機関）</h3>
-                <p>就業開始後も義務的支援（定期面談・相談対応）を継続実施。長く安心して働ける環境を支えます。</p>
+                <h3>就業開始・整備士3級取得支援・定期面談</h3>
+                <p>就業後も定期面談・相談対応を実施。希望者には自動車整備士技能検定3級の取得に向けた学習支援も行います。</p>
             </div>
         </div>
     </div>
@@ -631,10 +680,10 @@
 
 
 <!-- ===== 料金 ===== -->
-<section class="section section-gray fade-in">
+<section class="section fade-in">
     <h2>料金目安</h2>
     <p class="lead-text">
-        業務区分・人数・サポート範囲により変動します。まずはお気軽にご相談ください。
+        人数・国・サポート範囲により変動します。まずはお気軽にご相談ください。
     </p>
     <div class="price-grid">
         <div class="price-card">
@@ -647,7 +696,7 @@
             <span class="price-icon">✈️</span>
             <h3>入国まで一括サポート</h3>
             <div class="price-amount">150,000円〜</div>
-            <p>在留申請・マッチング・入国前サポートを含むパッケージ。</p>
+            <p>在留申請・マッチング・試験サポート・入国前準備を含むパッケージ。</p>
         </div>
         <div class="price-card">
             <span class="price-icon">🏠</span>
@@ -659,7 +708,7 @@
             <span class="price-icon">🤝</span>
             <h3>登録支援機関 月次サポート</h3>
             <div class="price-amount">15,000円〜/人・月</div>
-            <p>義務的支援（面談・相談対応・情報提供）を代行。</p>
+            <p>義務的支援（面談・相談対応・情報提供）＋整備士資格取得支援。</p>
         </div>
     </div>
     <p class="price-note">※上記は目安です。フルサポートパッケージは個別にお見積りいたします。</p>
@@ -667,57 +716,57 @@
 
 
 <!-- ===== FAQ ===== -->
-<section class="section fade-in">
-    <h2>よくあるご質問（運送業）</h2>
+<section class="section section-accent fade-in">
+    <h2>よくあるご質問（自動車整備業）</h2>
     <div class="faq-list">
         <div class="faq-item">
             <div class="faq-q" onclick="toggleFaq(this)">
                 <span class="q-mark">Q</span>
-                特定技能「自動車運転」はいつから受入れできますか？
+                認証工場でなくても受入れできますか？
                 <span class="faq-arrow">▼</span>
             </div>
             <div class="faq-a">
-                2024年3月29日に閣議決定・告示され、受入れが可能となりました。ただし、技能評価試験の整備・実施スケジュールが業務区分により異なります。最新情報は弊社にお問合せください。
+                分解整備を伴う業務については、道路運送車両法上の認証を受けた工場であることが必要です。認証のない事業所でも、日常点検・洗車補助などの付随業務は可能ですが、詳細は個別にご相談ください。
             </div>
         </div>
         <div class="faq-item">
             <div class="faq-q" onclick="toggleFaq(this)">
                 <span class="q-mark">Q</span>
-                外国人が日本の運転免許を取得できますか？
+                技能評価試験はどこで受験できますか？
                 <span class="faq-arrow">▼</span>
             </div>
             <div class="faq-a">
-                はい、可能です。本国の運転免許を持っている場合、切替え（外免切替）が利用できるケースがあります。また、教習所での取得も可能です。業務区分・必要免許種別に応じてご案内します。
+                国内では各都道府県で実施されています。フィリピンなど海外での試験実施も一部行われています。試験日程・申込み方法は弊社が最新情報をご案内しますのでお問合せください。
             </div>
         </div>
         <div class="faq-item">
             <div class="faq-q" onclick="toggleFaq(this)">
                 <span class="q-mark">Q</span>
-                トラック・バス・タクシーで受入れ条件は違いますか？
+                外国人が日本の整備士3級を取得できますか？
                 <span class="faq-arrow">▼</span>
             </div>
             <div class="faq-a">
-                はい、業務区分ごとに必要な技能試験・免許・日本語レベルが異なります。特にバス・タクシーは第二種免許が必要なため、より高度な準備が求められます。区分ごとに最適なプランをご提案します。
+                はい、可能です。日本語での学科試験と実技試験があります。弊社では就業後の学習支援・受験手続きのサポートを行い、キャリアアップを後押しします。3級取得後はさらなる資格取得も視野に入ります。
             </div>
         </div>
         <div class="faq-item">
             <div class="faq-q" onclick="toggleFaq(this)">
                 <span class="q-mark">Q</span>
-                日本語でのコミュニケーションは大丈夫ですか？
+                EV（電気自動車）の整備はできますか？
                 <span class="faq-arrow">▼</span>
             </div>
             <div class="faq-a">
-                特定技能の要件としてN4相当の日本語試験合格が必要です。運送業では乗客・取引先とのやり取りが伴うため、弊社の日本語学習サポートを活用いただき、就業後も継続的にスキルアップを支援します。
+                EV整備には「低圧電気取扱業務特別教育」などの追加資格が必要です。就業後の研修受講で対応可能なケースもあります。貴社の整備車種に合わせて対応策をご提案します。
             </div>
         </div>
         <div class="faq-item">
             <div class="faq-q" onclick="toggleFaq(this)">
                 <span class="q-mark">Q</span>
-                フィリピン・インドネシアにドライバー経験者はいますか？
+                フィリピン・インドネシアには整備士経験者がいますか？
                 <span class="faq-arrow">▼</span>
             </div>
             <div class="faq-a">
-                両国ともにトラックやバスの運転経験を持つ人材が多く存在します。弊社の連携機関を通じて、経験・適性・安全意識を丁寧にスクリーニングした候補者をご紹介します。
+                はい、両国とも自動車整備の職業訓練校が充実しており、一定の整備経験を持つ人材が多くいます。弊社の連携機関を通じて、技術レベル・経験年数・車種対応力を丁寧にスクリーニングした候補者をご紹介します。
             </div>
         </div>
     </div>
@@ -727,7 +776,7 @@
 <!-- ===== CTA ===== -->
 <section class="cta-section fade-in">
     <h2>まずは無料相談から</h2>
-    <p>運送業での外国人雇用について、新制度の活用方法も含めてお気軽にご相談ください。<br>専門スタッフが貴社の状況に合わせた最適プランをご提案します。</p>
+    <p>自動車整備業での外国人雇用について、資格・試験対応も含めてお気軽にご相談ください。<br>専門スタッフが貴社の状況に合わせた最適プランをご提案します。</p>
     <div class="cta-btns">
         <a href="../index.html#contact" class="btn-white">📩 お問合せフォームへ</a>
         <a href="https://line.me/R/ti/p/@556fihjp/" target="_blank" class="btn-line">
