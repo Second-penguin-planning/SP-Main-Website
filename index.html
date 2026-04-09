@@ -172,17 +172,39 @@
         }
 
         /* ===== SECTOR NAV ===== */
+        /* ヘッダー直下・写真背景の上に乗せるバー */
+        .sector-nav-bar {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+        }
+
+        /* 写真背景レイヤー */
+        .sector-nav-bg {
+            position: absolute;
+            inset: 0;
+            background: url("https://images.unsplash.com/photo-1454165804606-c3d57bc86b40") center/cover no-repeat;
+            z-index: 0;
+        }
+        .sector-nav-bg::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(120, 140, 160, 0.35);
+        }
+
+        /* ボタンが乗る半透明黒帯 */
         .sector-nav {
+            position: relative;
+            z-index: 2;
             background: rgba(0, 0, 0, 0.72);
             backdrop-filter: blur(4px);
-            padding: 10px 16px;
+            padding: 12px 16px;
             display: flex;
             flex-wrap: wrap;
             gap: 7px;
             justify-content: center;
             width: 100%;
-            position: relative;
-            z-index: 2;
         }
 
         .sector-btn {
@@ -224,10 +246,10 @@
             background: url("https://images.unsplash.com/photo-1454165804606-c3d57bc86b40") center/cover no-repeat;
             padding: 50px 10% 70px;
             color: #fff;
-            min-height: 75vh;
+            min-height: 70vh;
             display: flex;
             flex-direction: column;
-            justify-content: flex-start;
+            justify-content: center;
             align-items: center;
             text-align: center;
         }
@@ -710,22 +732,28 @@
 </header>
 
 
-<!-- ===== HERO ===== -->
-<section class="hero" id="top">
+<!-- ===== SECTOR NAV BAR（ヘッダー直下・写真背景） ===== -->
+<div class="sector-nav-bar" id="top">
+    <!-- 写真背景（ボタン帯の後ろに薄く見せる装飾） -->
+    <div class="sector-nav-bg"></div>
 
-    <!-- セクターナビゲーション -->
+    <!-- ボタン帯（現在の半透明黒） -->
     <nav class="sector-nav">
-        <a href="sectors/construction.html" class="sector-btn">建設業 <span class="arrow">→</span></a>
-        <a href="sectors/transport.html" class="sector-btn">運送業 <span class="arrow">→</span></a>
-        <a href="sectors/auto-repair.html" class="sector-btn">自動車整備 <span class="arrow">→</span></a>
-        <a href="sectors/accommodation.html" class="sector-btn">宿泊業 <span class="arrow">→</span></a>
-        <a href="sectors/food.html" class="sector-btn">外食業 <span class="arrow">→</span></a>
-        <a href="sectors/food-manufacturing.html" class="sector-btn">飲食料品製造業 <span class="arrow">→</span></a>
-        <a href="sectors/industrial-manufacturing.html" class="sector-btn">工業製品製造業 <span class="arrow">→</span></a>
-        <a href="sectors/care.html" class="sector-btn">介護 <span class="arrow">→</span></a>
-        <a href="sectors/union.html" class="sector-btn">組合 <span class="arrow">→</span></a>
-        <a href="sectors/registration-support.html" class="sector-btn">登録支援機関 <span class="arrow">→</span></a>
+        <a href="sectors/transport.html"              class="sector-btn">🚚 運送業 <span class="arrow">→</span></a>
+        <a href="sectors/construction.html"           class="sector-btn">🏗️ 建設業 <span class="arrow">→</span></a>
+        <a href="sectors/care.html"                   class="sector-btn">🤝 介護 <span class="arrow">→</span></a>
+        <a href="sectors/accommodation.html"          class="sector-btn">🏨 宿泊業 <span class="arrow">→</span></a>
+        <a href="sectors/food-manufacturing.html"     class="sector-btn">🍱 飲食料品製造業 <span class="arrow">→</span></a>
+        <a href="sectors/industrial-manufacturing.html" class="sector-btn">🏭 製造業 <span class="arrow">→</span></a>
+        <a href="sectors/registration-support.html"   class="sector-btn">📋 登録支援機関 <span class="arrow">→</span></a>
+        <a href="sectors/union.html"                  class="sector-btn">🤜 組合 <span class="arrow">→</span></a>
+        <a href="sectors/language-school.html"        class="sector-btn">🎓 日本語学校/専門学校 <span class="arrow">→</span></a>
     </nav>
+</div>
+
+
+<!-- ===== HERO ===== -->
+<section class="hero">
 
     <div class="hero-main-copy">
         <div class="hero-status">
