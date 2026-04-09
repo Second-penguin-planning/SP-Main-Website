@@ -16,7 +16,7 @@
         --text-color: #333;
         --white: #ffffff;
         --accent-orange: #ff8c00;
-        --sector-color: #1a4a6c;   /* 日本語学校テーマカラー：深めの青緑 */
+        --sector-color: #1a4a6c;
         --sector-light: #e6f2f8;
     }
 
@@ -108,46 +108,111 @@
     }
 
     /* ===== HERO ===== */
-   .page-hero {
-    position: relative;
-    background: url("https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1400") center/cover no-repeat;
-    padding: 80px 10% 60px;
-    color: #fff;
-    text-align: center;
-    min-height: 380px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
+    .page-hero {
+        position: relative;
+        background: linear-gradient(135deg, #0d2d4a 0%, #1a4a6c 40%, #2a6496 70%, #1a4a6c 100%);
+        padding: 80px 10% 60px;
+        color: #fff;
+        text-align: center;
+        min-height: 420px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+    }
+
+    /* 背景の装飾パターン */
     .page-hero::before {
         content: "";
         position: absolute;
         inset: 0;
-        background: rgba(10, 40, 70, 0.65);
+        background-image:
+            radial-gradient(circle at 20% 30%, rgba(255,255,255,0.06) 0%, transparent 50%),
+            radial-gradient(circle at 80% 70%, rgba(255,200,100,0.08) 0%, transparent 50%),
+            radial-gradient(circle at 50% 50%, rgba(42,100,150,0.3) 0%, transparent 70%);
         z-index: 0;
     }
+
+    /* 浮遊する絵文字装飾 */
+    .hero-deco {
+        position: absolute;
+        font-size: 4rem;
+        opacity: 0.08;
+        z-index: 0;
+        user-select: none;
+        pointer-events: none;
+    }
+    .hero-deco-1 { top: 8%;  left: 4%;  font-size: 5rem; transform: rotate(-15deg); }
+    .hero-deco-2 { top: 15%; right: 6%; font-size: 4rem; transform: rotate(10deg); }
+    .hero-deco-3 { bottom: 12%; left: 8%;  font-size: 3.5rem; transform: rotate(20deg); }
+    .hero-deco-4 { bottom: 10%; right: 5%; font-size: 4.5rem; transform: rotate(-8deg); }
+    .hero-deco-5 { top: 45%; left: 2%;  font-size: 3rem; transform: rotate(5deg); }
+    .hero-deco-6 { top: 40%; right: 3%; font-size: 3rem; transform: rotate(-12deg); }
+
     .page-hero > * { position: relative; z-index: 1; }
+
     .page-hero .sector-badge {
         display: inline-block;
-        background: rgba(255,255,255,0.2);
-        border: 1px solid rgba(255,255,255,0.5);
-        padding: 4px 18px;
+        background: rgba(255,255,255,0.18);
+        border: 1px solid rgba(255,255,255,0.45);
+        padding: 5px 20px;
         border-radius: 20px;
-        font-size: 0.82rem;
-        margin-bottom: 16px;
-        letter-spacing: 0.1em;
+        font-size: 0.83rem;
+        margin-bottom: 20px;
+        letter-spacing: 0.08em;
+        backdrop-filter: blur(4px);
     }
     .page-hero h1 {
         font-size: clamp(1.8rem, 4vw, 2.8rem);
-        line-height: 1.35;
-        text-shadow: 0 3px 15px rgba(0,0,0,0.6);
-        margin-bottom: 16px;
+        line-height: 1.4;
+        text-shadow: 0 3px 20px rgba(0,0,0,0.5);
+        margin-bottom: 18px;
     }
     .page-hero p {
         font-size: 1rem;
-        color: #dde8f5;
+        color: #cde4f5;
         max-width: 640px;
+        line-height: 1.9;
+    }
+
+    /* ヒーロー下部のアイコンバー */
+    .hero-icon-bar {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        gap: 28px;
+        margin-top: 36px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .hero-icon-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+    }
+    .hero-icon-item .hi-icon {
+        width: 52px;
+        height: 52px;
+        background: rgba(255,255,255,0.15);
+        border: 1px solid rgba(255,255,255,0.3);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        backdrop-filter: blur(4px);
+        transition: background 0.3s;
+    }
+    .hero-icon-item:hover .hi-icon {
+        background: rgba(255,255,255,0.28);
+    }
+    .hero-icon-item span {
+        font-size: 0.72rem;
+        color: rgba(255,255,255,0.85);
+        font-weight: 600;
+        letter-spacing: 0.04em;
     }
 
     /* ===== 共通 ===== */
@@ -491,7 +556,10 @@
     .line-inner img { width: 28px; height: 28px; }
 
     @media (max-width: 768px) {
-        .page-hero { min-height: 280px; padding: 60px 6% 40px; }
+        .page-hero { min-height: 320px; padding: 60px 6% 40px; }
+        .hero-icon-bar { gap: 16px; margin-top: 28px; }
+        .hero-icon-item .hi-icon { width: 44px; height: 44px; font-size: 1.2rem; }
+        .hero-deco { display: none; }
         .section { padding: 50px 6%; }
         .target-band { padding: 28px 20px; }
         .line-fixed-btn { top: 120px; right: 12px; width: 80px; height: 50px; border-radius: 25px; }
@@ -532,24 +600,56 @@
 
 <!-- ===== 他業種ナビ ===== -->
 <nav class="sector-nav-bar">
-        <a href="transport.html"              class="active">運送業 <span class="arrow">→</span></a>
-        <a href="auto-repair.html"            class="active">自動車整備業 <span class="arrow">→</span></a>
-        <a href="construction.html"           class="active">建設 <span class="arrow">→</span></a>
-        <a href="care.html"                   class="active">介護 <span class="arrow">→</span></a>
-        <a href="accommodation.html"          class="active">宿泊 <span class="arrow">→</span></a>
-        <a href="food.html"         　　　　　 class="active">外食業 <span class="arrow">→</span></a>
-        <a href="food-manufacturing.html"     class="active">飲食料品製造業 <span class="arrow">→</span></a>
-        <a href="industrial-manufacturing.html" class="active">工業製品製造業 <span class="arrow">→</span></a>     
-        <a href="registration-support.html"   class="active">登録支援機関 <span class="arrow">→</span></a>
-        <a href="union.html"                  class="active">組合 <span class="arrow">→</span></a>
-        <a href="language-school.html"        class="active">日本語学校/専門学校 <span class="arrow">→</span></a>
+    <a href="transport.html">運送業 <span class="arrow">→</span></a>
+    <a href="auto-repair.html">自動車整備業 <span class="arrow">→</span></a>
+    <a href="construction.html">建設 <span class="arrow">→</span></a>
+    <a href="care.html">介護 <span class="arrow">→</span></a>
+    <a href="accommodation.html">宿泊 <span class="arrow">→</span></a>
+    <a href="food.html">外食業 <span class="arrow">→</span></a>
+    <a href="food-manufacturing.html">飲食料品製造業 <span class="arrow">→</span></a>
+    <a href="industrial-manufacturing.html">工業製品製造業 <span class="arrow">→</span></a>
+    <a href="registration-support.html">登録支援機関 <span class="arrow">→</span></a>
+    <a href="union.html">組合 <span class="arrow">→</span></a>
+    <a href="language-school.html" class="current">日本語学校/専門学校 <span class="arrow">→</span></a>
 </nav>
 
 <!-- ===== HERO ===== -->
 <div class="page-hero">
+    <!-- 背景装飾（絵文字） -->
+    <span class="hero-deco hero-deco-1">🎓</span>
+    <span class="hero-deco hero-deco-2">📚</span>
+    <span class="hero-deco hero-deco-3">✏️</span>
+    <span class="hero-deco hero-deco-4">🌏</span>
+    <span class="hero-deco hero-deco-5">📝</span>
+    <span class="hero-deco hero-deco-6">🏫</span>
+
     <span class="sector-badge">🎓 関西地方の学校向け 総合サポート</span>
     <h1>日本語学校・専門学校の<br>留学生支援を、まるごとお任せ</h1>
     <p>入管業務から生活支援、進学・就職相談まで。<br>関西地方の組合と連携し、留学生の安心な学校生活を支えます。</p>
+
+    <!-- アイコンバー -->
+    <div class="hero-icon-bar">
+        <div class="hero-icon-item">
+            <div class="hi-icon">⚖️</div>
+            <span>入管業務</span>
+        </div>
+        <div class="hero-icon-item">
+            <div class="hi-icon">🏠</div>
+            <span>生活支援</span>
+        </div>
+        <div class="hero-icon-item">
+            <div class="hi-icon">🎓</div>
+            <span>進学相談</span>
+        </div>
+        <div class="hero-icon-item">
+            <div class="hi-icon">💼</div>
+            <span>就職支援</span>
+        </div>
+        <div class="hero-icon-item">
+            <div class="hi-icon">🌏</div>
+            <span>多言語対応</span>
+        </div>
+    </div>
 </div>
 
 
