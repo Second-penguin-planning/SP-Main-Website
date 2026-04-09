@@ -1,1231 +1,1101 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>登録支援機関サポート | Second Penguin</title>
-    <style>
-        /* ===== リセット & 基本設定 ===== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary: #1a3a5c;
-            --secondary: #c8a951;
-            --accent: #2e6da4;
-            --light: #f4f7fb;
-            --dark: #111827;
-            --gray: #6b7280;
-            --border: #d1dce8;
-            --white: #ffffff;
-        }
-
-        body {
-            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
-            color: var(--dark);
-            background: var(--white);
-            line-height: 1.7;
-        }
-
-        /* ===== ヒーローセクション ===== */
-        .hero {
-            position: relative;
-            width: 100%;
-            height: 520px;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .hero-bg {
-            position: absolute;
-            inset: 0;
-            background:
-                linear-gradient(135deg, rgba(26,58,92,0.85) 0%, rgba(46,109,164,0.75) 100%),
-                url('https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1600&q=80') center/cover no-repeat;
-            z-index: 0;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            text-align: center;
-            color: var(--white);
-            padding: 0 20px;
-        }
-
-        .hero-badge {
-            display: inline-block;
-            background: var(--secondary);
-            color: var(--white);
-            font-size: 0.8rem;
-            font-weight: 700;
-            letter-spacing: 0.12em;
-            padding: 6px 18px;
-            border-radius: 2px;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-        }
-
-        .hero h1 {
-            font-size: clamp(1.8rem, 4vw, 3rem);
-            font-weight: 800;
-            line-height: 1.25;
-            margin-bottom: 16px;
-            text-shadow: 0 2px 12px rgba(0,0,0,0.3);
-        }
-
-        .hero h1 span {
-            color: var(--secondary);
-        }
-
-        .hero p {
-            font-size: clamp(0.95rem, 2vw, 1.15rem);
-            opacity: 0.92;
-            max-width: 600px;
-            margin: 0 auto 28px;
-        }
-
-        .hero-btn {
-            display: inline-block;
-            background: var(--secondary);
-            color: var(--white);
-            padding: 14px 36px;
-            border-radius: 3px;
-            font-weight: 700;
-            font-size: 1rem;
-            text-decoration: none;
-            letter-spacing: 0.05em;
-            transition: background 0.25s, transform 0.2s;
-            box-shadow: 0 4px 18px rgba(0,0,0,0.2);
-        }
-
-        .hero-btn:hover {
-            background: #b8922e;
-            transform: translateY(-2px);
-        }
-
-        /* ===== セクション共通 ===== */
-        .section {
-            padding: 80px 20px;
-        }
-
-        .section-inner {
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .section-label {
-            font-size: 0.75rem;
-            font-weight: 700;
-            letter-spacing: 0.18em;
-            color: var(--secondary);
-            text-transform: uppercase;
-            margin-bottom: 10px;
-        }
-
-        .section-title {
-            font-size: clamp(1.5rem, 3vw, 2.2rem);
-            font-weight: 800;
-            color: var(--primary);
-            margin-bottom: 16px;
-            line-height: 1.3;
-        }
-
-        .section-title span {
-            color: var(--secondary);
-        }
-
-        .section-desc {
-            font-size: 1rem;
-            color: var(--gray);
-            max-width: 680px;
-            line-height: 1.8;
-        }
-
-        .divider {
-            width: 48px;
-            height: 4px;
-            background: var(--secondary);
-            margin: 16px 0 32px;
-            border-radius: 2px;
-        }
-
-        /* ===== 課題セクション ===== */
-        .issues {
-            background: var(--light);
-        }
-
-        .issues-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 24px;
-            margin-top: 40px;
-        }
-
-        .issue-card {
-            background: var(--white);
-            border-left: 5px solid var(--secondary);
-            border-radius: 4px;
-            padding: 28px 24px;
-            box-shadow: 0 2px 12px rgba(26,58,92,0.07);
-            display: flex;
-            gap: 16px;
-            align-items: flex-start;
-            transition: transform 0.25s, box-shadow 0.25s;
-        }
-
-        .issue-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 28px rgba(26,58,92,0.13);
-        }
-
-        .issue-icon {
-            font-size: 2rem;
-            flex-shrink: 0;
-            margin-top: 2px;
-        }
-
-        .issue-card h3 {
-            font-size: 1rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 8px;
-        }
-
-        .issue-card p {
-            font-size: 0.88rem;
-            color: var(--gray);
-            line-height: 1.7;
-        }
-
-        /* ===== サービス内容 ===== */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 32px;
-            margin-top: 48px;
-        }
-
-        .service-card {
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            overflow: hidden;
-            transition: transform 0.25s, box-shadow 0.25s;
-            background: var(--white);
-        }
-
-        .service-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 12px 36px rgba(26,58,92,0.12);
-        }
-
-        .service-card-header {
-            background: var(--primary);
-            padding: 24px 28px;
-            display: flex;
-            align-items: center;
-            gap: 14px;
-        }
-
-        .service-icon-wrap {
-            width: 48px;
-            height: 48px;
-            background: rgba(200,169,81,0.25);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            flex-shrink: 0;
-        }
-
-        .service-card-header h3 {
-            color: var(--white);
-            font-size: 1.05rem;
-            font-weight: 700;
-        }
-
-        .service-card-header p {
-            color: rgba(255,255,255,0.7);
-            font-size: 0.8rem;
-            margin-top: 2px;
-        }
-
-        .service-card-body {
-            padding: 24px 28px;
-        }
-
-        .service-list {
-            list-style: none;
-        }
-
-        .service-list li {
-            padding: 9px 0;
-            border-bottom: 1px solid var(--light);
-            font-size: 0.9rem;
-            color: var(--dark);
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-        }
-
-        .service-list li:last-child {
-            border-bottom: none;
-        }
-
-        .service-list li::before {
-            content: '✓';
-            color: var(--secondary);
-            font-weight: 700;
-            font-size: 0.9rem;
-            flex-shrink: 0;
-            margin-top: 1px;
-        }
-
-        /* ===== 対応エリア ===== */
-        .area {
-            background: var(--light);
-        }
-
-        .area-flex {
-            display: flex;
-            gap: 48px;
-            align-items: center;
-            margin-top: 40px;
-            flex-wrap: wrap;
-        }
-
-        .area-map {
-            flex: 1 1 340px;
-            min-height: 320px;
-            background: linear-gradient(135deg, #dce8f5 0%, #b8d0e8 100%);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 4px 20px rgba(26,58,92,0.1);
-        }
-
-        .area-map-inner {
-            text-align: center;
-            color: var(--primary);
-        }
-
-        .area-map-inner .map-icon {
-            font-size: 4rem;
-            display: block;
-            margin-bottom: 12px;
-        }
-
-        .area-map-inner p {
-            font-size: 1rem;
-            font-weight: 700;
-        }
-
-        .area-dots {
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            opacity: 0.12;
-            background-image: radial-gradient(circle, var(--primary) 1.5px, transparent 1.5px);
-            background-size: 24px 24px;
-        }
-
-        .area-info {
-            flex: 1 1 340px;
-        }
-
-        .area-prefectures {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 28px;
-        }
-
-        .pref-tag {
-            background: var(--primary);
-            color: var(--white);
-            font-size: 0.82rem;
-            font-weight: 600;
-            padding: 6px 14px;
-            border-radius: 2px;
-            letter-spacing: 0.05em;
-        }
-
-        .pref-tag.secondary {
-            background: var(--secondary);
-        }
-
-        .area-note {
-            background: var(--white);
-            border-left: 4px solid var(--accent);
-            border-radius: 2px;
-            padding: 16px 20px;
-            font-size: 0.88rem;
-            color: var(--gray);
-            line-height: 1.8;
-        }
-
-        /* ===== 入管業務 ===== */
-        .immigration-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 24px;
-            margin-top: 40px;
-        }
-
-        .imm-card {
-            background: var(--white);
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            padding: 28px 20px;
-            text-align: center;
-            transition: all 0.25s;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .imm-card::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-            transform: scaleX(0);
-            transition: transform 0.3s;
-        }
-
-        .imm-card:hover {
-            box-shadow: 0 8px 28px rgba(26,58,92,0.12);
-            transform: translateY(-4px);
-        }
-
-        .imm-card:hover::after {
-            transform: scaleX(1);
-        }
-
-        .imm-card .imm-icon {
-            font-size: 2.4rem;
-            margin-bottom: 16px;
-            display: block;
-        }
-
-        .imm-card h3 {
-            font-size: 0.95rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 10px;
-        }
-
-        .imm-card p {
-            font-size: 0.82rem;
-            color: var(--gray);
-            line-height: 1.7;
-        }
-
-        /* ===== フロー ===== */
-        .flow {
-            background: var(--primary);
-            color: var(--white);
-        }
-
-        .flow .section-label {
-            color: var(--secondary);
-        }
-
-        .flow .section-title {
-            color: var(--white);
-        }
-
-        .flow-steps {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0;
-            margin-top: 48px;
-            position: relative;
-        }
-
-        .flow-step {
-            flex: 1 1 180px;
-            text-align: center;
-            padding: 24px 16px;
-            position: relative;
-        }
-
-        .flow-step:not(:last-child)::after {
-            content: '→';
-            position: absolute;
-            right: -12px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 1.4rem;
-            color: var(--secondary);
-            z-index: 1;
-        }
-
-        .step-num {
-            width: 52px;
-            height: 52px;
-            background: var(--secondary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.1rem;
-            font-weight: 800;
-            margin: 0 auto 14px;
-            color: var(--white);
-        }
-
-        .flow-step h3 {
-            font-size: 0.95rem;
-            font-weight: 700;
-            margin-bottom: 8px;
-            color: var(--white);
-        }
-
-        .flow-step p {
-            font-size: 0.8rem;
-            color: rgba(255,255,255,0.65);
-            line-height: 1.6;
-        }
-
-        /* ===== 強み ===== */
-        .strengths-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 28px;
-            margin-top: 48px;
-        }
-
-        .strength-card {
-            background: var(--white);
-            border-radius: 6px;
-            padding: 32px 24px;
-            box-shadow: 0 2px 16px rgba(26,58,92,0.07);
-            border-top: 4px solid var(--secondary);
-            transition: transform 0.25s, box-shadow 0.25s;
-        }
-
-        .strength-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 32px rgba(26,58,92,0.13);
-        }
-
-        .strength-num {
-            font-size: 2.8rem;
-            font-weight: 900;
-            color: rgba(26,58,92,0.1);
-            line-height: 1;
-            margin-bottom: 12px;
-        }
-
-        .strength-card h3 {
-            font-size: 1rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 10px;
-        }
-
-        .strength-card p {
-            font-size: 0.87rem;
-            color: var(--gray);
-            line-height: 1.75;
-        }
-
-        /* ===== 料金 ===== */
-        .pricing {
-            background: var(--light);
-        }
-
-        .pricing-note {
-            background: var(--white);
-            border: 1px solid var(--border);
-            border-radius: 4px;
-            padding: 18px 24px;
-            margin-bottom: 32px;
-            font-size: 0.88rem;
-            color: var(--gray);
-            display: flex;
-            gap: 10px;
-            align-items: flex-start;
-        }
-
-        .pricing-note::before {
-            content: 'ℹ️';
-            flex-shrink: 0;
-        }
-
-        .pricing-table {
-            width: 100%;
-            border-collapse: collapse;
-            background: var(--white);
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 16px rgba(26,58,92,0.07);
-            font-size: 0.92rem;
-        }
-
-        .pricing-table thead tr {
-            background: var(--primary);
-            color: var(--white);
-        }
-
-        .pricing-table thead th {
-            padding: 16px 20px;
-            font-weight: 700;
-            text-align: left;
-            font-size: 0.88rem;
-            letter-spacing: 0.05em;
-        }
-
-        .pricing-table tbody tr {
-            border-bottom: 1px solid var(--light);
-            transition: background 0.2s;
-        }
-
-        .pricing-table tbody tr:last-child {
-            border-bottom: none;
-        }
-
-        .pricing-table tbody tr:hover {
-            background: var(--light);
-        }
-
-        .pricing-table tbody td {
-            padding: 14px 20px;
-            color: var(--dark);
-        }
-
-        .pricing-table tbody td:last-child {
-            color: var(--accent);
-            font-weight: 700;
-        }
-
-        .badge-custom {
-            display: inline-block;
-            background: rgba(200,169,81,0.15);
-            color: var(--secondary);
-            font-size: 0.72rem;
-            font-weight: 700;
-            padding: 2px 8px;
-            border-radius: 2px;
-            margin-left: 6px;
-            border: 1px solid var(--secondary);
-        }
-
-        /* ===== FAQ ===== */
-        .faq-list {
-            margin-top: 40px;
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .faq-item {
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            overflow: hidden;
-            background: var(--white);
-        }
-
-        .faq-question {
-            padding: 20px 24px;
-            font-weight: 700;
-            color: var(--primary);
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: 12px;
-            font-size: 0.95rem;
-            transition: background 0.2s;
-        }
-
-        .faq-question:hover {
-            background: var(--light);
-        }
-
-        .faq-q-mark {
-            background: var(--secondary);
-            color: var(--white);
-            width: 26px;
-            height: 26px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.82rem;
-            font-weight: 800;
-            flex-shrink: 0;
-        }
-
-        .faq-question-text {
-            flex: 1;
-        }
-
-        .faq-toggle {
-            font-size: 1.2rem;
-            color: var(--gray);
-            transition: transform 0.3s;
-            flex-shrink: 0;
-        }
-
-        .faq-answer {
-            padding: 0 24px 20px 24px;
-            font-size: 0.88rem;
-            color: var(--gray);
-            line-height: 1.8;
-            border-top: 1px solid var(--light);
-            padding-top: 16px;
-        }
-
-        /* ===== CTA ===== */
-        .cta {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-            color: var(--white);
-            text-align: center;
-        }
-
-        .cta-title {
-            font-size: clamp(1.5rem, 3vw, 2.2rem);
-            font-weight: 800;
-            margin-bottom: 16px;
-        }
-
-        .cta-desc {
-            font-size: 1rem;
-            opacity: 0.85;
-            max-width: 560px;
-            margin: 0 auto 36px;
-            line-height: 1.8;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn-primary {
-            display: inline-block;
-            background: var(--secondary);
-            color: var(--white);
-            padding: 15px 40px;
-            border-radius: 3px;
-            font-weight: 700;
-            font-size: 1rem;
-            text-decoration: none;
-            letter-spacing: 0.05em;
-            transition: background 0.25s, transform 0.2s;
-            box-shadow: 0 4px 18px rgba(0,0,0,0.25);
-        }
-
-        .btn-primary:hover {
-            background: #b8922e;
-            transform: translateY(-2px);
-        }
-
-        .btn-outline {
-            display: inline-block;
-            border: 2px solid rgba(255,255,255,0.7);
-            color: var(--white);
-            padding: 14px 36px;
-            border-radius: 3px;
-            font-weight: 700;
-            font-size: 1rem;
-            text-decoration: none;
-            letter-spacing: 0.05em;
-            transition: all 0.25s;
-        }
-
-        .btn-outline:hover {
-            background: rgba(255,255,255,0.12);
-            border-color: var(--white);
-        }
-
-        /* ===== レスポンシブ ===== */
-        @media (max-width: 768px) {
-            .hero {
-                height: 440px;
-            }
-
-            .flow-step:not(:last-child)::after {
-                display: none;
-            }
-
-            .flow-steps {
-                flex-direction: column;
-                gap: 16px;
-            }
-
-            .area-flex {
-                flex-direction: column;
-            }
-
-            .pricing-table {
-                font-size: 0.82rem;
-            }
-
-            .pricing-table thead th,
-            .pricing-table tbody td {
-                padding: 12px 12px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .section {
-                padding: 60px 16px;
-            }
-
-            .hero h1 {
-                font-size: 1.5rem;
-            }
-        }
-    </style>
+<link rel="icon" type="image/png" sizes="32x32" href="../images/penguin_logo_192.png">
+<link rel="apple-touch-icon" sizes="192x192" href="../images/penguin_logo_192.png">
+<meta name="theme-color" content="#005bac">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>登録支援機関 | セコンドペンギン企画</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --main-blue: #005bac;
+        --accent-green: #006400;
+        --sky-blue: #e0f4ff;
+        --text-color: #333;
+        --white: #ffffff;
+        --accent-orange: #ff8c00;
+        --sector-color: #1a3a5c;
+        --sector-light: #e8f0f8;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+        font-family: 'Noto Sans JP', sans-serif;
+        line-height: 1.8;
+        color: var(--text-color);
+        background-color: var(--sky-blue);
+        overflow-x: hidden;
+    }
+
+    /* ===== HEADER ===== */
+    header {
+        background: var(--white);
+        padding: 8px 3%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: bold;
+        font-size: 1.1rem;
+        color: var(--main-blue);
+        text-decoration: none;
+    }
+    .logo img { height: 38px; width: auto; }
+
+    .header-right {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+    .back-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 7px 16px;
+        background: var(--sector-color);
+        color: white;
+        text-decoration: none;
+        border-radius: 20px;
+        font-size: 0.82rem;
+        font-weight: bold;
+        transition: 0.3s;
+    }
+    .back-btn:hover { background: var(--main-blue); transform: translateX(-3px); }
+
+    /* ===== SECTOR NAV ===== */
+    .sector-nav-bar {
+        background: var(--sector-color);
+        padding: 10px 16px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        justify-content: center;
+    }
+    .sector-nav-bar a {
+        display: inline-flex;
+        align-items: center;
+        gap: 3px;
+        padding: 4px 12px;
+        background: rgba(255,255,255,0.15);
+        color: #fff;
+        text-decoration: none;
+        font-size: 0.72rem;
+        font-weight: 600;
+        border: 1px solid rgba(255,255,255,0.3);
+        border-radius: 16px;
+        transition: all 0.2s ease;
+        white-space: nowrap;
+    }
+    .sector-nav-bar a:hover,
+    .sector-nav-bar a.active {
+        background: rgba(255,255,255,0.9);
+        color: var(--sector-color);
+        border-color: transparent;
+    }
+    .sector-nav-bar a.current {
+        background: var(--accent-orange);
+        color: #fff;
+        border-color: transparent;
+    }
+    @media (max-width: 600px) {
+        .sector-nav-bar a { font-size: 0.65rem; padding: 3px 9px; }
+    }
+
+    /* ===== HERO ===== */
+    .page-hero {
+        position: relative;
+        background: url("https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1400") center/cover no-repeat;
+        padding: 80px 10% 60px;
+        color: #fff;
+        text-align: center;
+        min-height: 380px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .page-hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(15, 35, 60, 0.62);
+        z-index: 0;
+    }
+    .page-hero > * { position: relative; z-index: 1; }
+    .page-hero .sector-badge {
+        display: inline-block;
+        background: rgba(255,255,255,0.2);
+        border: 1px solid rgba(255,255,255,0.5);
+        padding: 4px 18px;
+        border-radius: 20px;
+        font-size: 0.82rem;
+        margin-bottom: 16px;
+        letter-spacing: 0.1em;
+    }
+    .page-hero h1 {
+        font-size: clamp(1.8rem, 4vw, 2.8rem);
+        line-height: 1.35;
+        text-shadow: 0 3px 15px rgba(0,0,0,0.6);
+        margin-bottom: 16px;
+    }
+    .page-hero p {
+        font-size: 1rem;
+        color: #dde8f5;
+        max-width: 640px;
+    }
+
+    /* ===== HERO ボタン ===== */
+    .hero-cta-btns {
+        display: flex;
+        gap: 14px;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 28px;
+    }
+    .hero-btn-primary {
+        display: inline-block;
+        padding: 13px 30px;
+        background: var(--accent-orange);
+        color: white;
+        text-decoration: none;
+        border-radius: 50px;
+        font-weight: bold;
+        font-size: 0.97rem;
+        transition: 0.3s;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+    }
+    .hero-btn-primary:hover { background: #e07800; transform: scale(1.05); }
+    .hero-btn-line {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 13px 26px;
+        background: #06c755;
+        color: white;
+        text-decoration: none;
+        border-radius: 50px;
+        font-weight: bold;
+        font-size: 0.97rem;
+        transition: 0.3s;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+    }
+    .hero-btn-line:hover { background: #05a647; transform: scale(1.05); }
+    .hero-btn-line img { width: 22px; height: 22px; }
+
+    /* ===== 共通 ===== */
+    .section {
+        padding: 70px 10%;
+        background: var(--white);
+        margin: 20px 0;
+    }
+    .section-gray { background: var(--sky-blue); }
+    .section-accent { background: var(--sector-light); }
+
+    h2 {
+        text-align: center;
+        color: var(--sector-color);
+        font-size: 1.7rem;
+        margin-bottom: 40px;
+        position: relative;
+        padding-bottom: 12px;
+    }
+    h2::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 50px;
+        height: 3px;
+        background: var(--accent-orange);
+        border-radius: 2px;
+    }
+    h3 { color: var(--sector-color); margin-bottom: 10px; }
+
+    .lead-text {
+        text-align: center;
+        color: #555;
+        font-size: 0.97rem;
+        margin-top: -28px;
+        margin-bottom: 44px;
+        line-height: 1.9;
+    }
+
+    /* ===== INTRO CARDS ===== */
+    .intro-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 24px;
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+    .intro-card {
+        background: var(--sector-light);
+        border-radius: 14px;
+        padding: 28px 24px;
+        border-left: 5px solid var(--sector-color);
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .intro-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+    .intro-card .icon { font-size: 2rem; margin-bottom: 12px; display: block; }
+    .intro-card h3 { font-size: 1rem; margin-bottom: 8px; }
+    .intro-card p { font-size: 0.88rem; color: #555; line-height: 1.75; }
+
+    /* ===== 義務的支援テーブル ===== */
+    .job-table-wrap { overflow-x: auto; margin-top: 10px; }
+    .job-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.9rem;
+        min-width: 560px;
+    }
+    .job-table th {
+        background: var(--sector-color);
+        color: white;
+        padding: 12px 16px;
+        text-align: left;
+        font-weight: 600;
+    }
+    .job-table td {
+        padding: 12px 16px;
+        border-bottom: 1px solid #dde8f5;
+        vertical-align: top;
+    }
+    .job-table tr:nth-child(even) td { background: #f5f8fc; }
+    .job-table tr:hover td { background: #e4eef8; }
+    .tag {
+        display: inline-block;
+        padding: 2px 10px;
+        border-radius: 12px;
+        font-size: 0.72rem;
+        font-weight: bold;
+        margin: 2px 2px 2px 0;
+    }
+    .tag-blue   { background: #d0e8ff; color: #003a70; }
+    .tag-green  { background: #d4f0dd; color: #1a6b33; }
+    .tag-orange { background: #ffe8cc; color: #8a4500; }
+    .tag-red    { background: #fde0e0; color: #7a1a1a; }
+
+    /* ===== 支援内容カード（2列） ===== */
+    .support-two-col {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 28px;
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+    .support-box {
+        background: var(--white);
+        border-radius: 14px;
+        padding: 28px 26px;
+        box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+        border-top: 4px solid var(--sector-color);
+    }
+    .support-box.accent { border-top-color: var(--accent-orange); }
+    .support-box h3 {
+        font-size: 1rem;
+        margin-bottom: 14px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .support-box ul {
+        padding-left: 0;
+        list-style: none;
+    }
+    .support-box ul li {
+        font-size: 0.88rem;
+        color: #444;
+        padding: 7px 0;
+        border-bottom: 1px solid #edf2f8;
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+        line-height: 1.65;
+    }
+    .support-box ul li:last-child { border-bottom: none; }
+    .support-box ul li::before {
+        content: '✓';
+        color: var(--sector-color);
+        font-weight: bold;
+        flex-shrink: 0;
+        margin-top: 2px;
+    }
+    .support-box.accent ul li::before { color: var(--accent-orange); }
+
+    @media (max-width: 700px) {
+        .support-two-col { grid-template-columns: 1fr; }
+    }
+
+    /* ===== FLOW ===== */
+    .flow-list { max-width: 800px; margin: 0 auto; }
+    .flow-item {
+        display: flex;
+        gap: 20px;
+        align-items: flex-start;
+        margin-bottom: 28px;
+        position: relative;
+    }
+    .flow-item:not(:last-child)::after {
+        content: '';
+        position: absolute;
+        left: 22px;
+        top: 50px;
+        bottom: -10px;
+        width: 2px;
+        background: linear-gradient(to bottom, var(--sector-color), transparent);
+    }
+    .flow-num {
+        flex-shrink: 0;
+        width: 46px;
+        height: 46px;
+        background: var(--sector-color);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1rem;
+        font-weight: bold;
+        box-shadow: 0 4px 12px rgba(26,58,92,0.3);
+    }
+    .flow-body h3 { font-size: 1rem; margin-bottom: 4px; }
+    .flow-body p { font-size: 0.87rem; color: #555; line-height: 1.7; }
+
+    /* ===== PRICE ===== */
+    .price-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 20px;
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+    .price-card {
+        background: white;
+        border-radius: 14px;
+        padding: 28px 22px;
+        box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+        text-align: center;
+        border-top: 4px solid var(--sector-color);
+        transition: transform 0.3s;
+    }
+    .price-card:hover { transform: translateY(-5px); }
+    .price-card .price-icon { font-size: 2.2rem; margin-bottom: 12px; display: block; }
+    .price-card h3 { font-size: 0.95rem; margin-bottom: 10px; color: var(--sector-color); }
+    .price-card .price-amount {
+        font-size: 1.4rem;
+        font-weight: bold;
+        color: var(--accent-orange);
+        margin-bottom: 10px;
+    }
+    .price-card p { font-size: 0.82rem; color: #666; line-height: 1.7; }
+    .price-note {
+        text-align: center;
+        font-size: 0.82rem;
+        color: #888;
+        margin-top: 20px;
+    }
+
+    /* ===== 比較表 ===== */
+    .compare-table-wrap { overflow-x: auto; margin-top: 10px; }
+    .compare-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.88rem;
+        min-width: 540px;
+    }
+    .compare-table th {
+        background: var(--sector-color);
+        color: white;
+        padding: 12px 16px;
+        text-align: center;
+        font-weight: 600;
+    }
+    .compare-table th:first-child { text-align: left; }
+    .compare-table td {
+        padding: 11px 16px;
+        border-bottom: 1px solid #dde8f5;
+        vertical-align: middle;
+        text-align: center;
+    }
+    .compare-table td:first-child { text-align: left; font-weight: 600; color: var(--sector-color); }
+    .compare-table tr:nth-child(even) td { background: #f5f8fc; }
+    .compare-table tr:hover td { background: #e4eef8; }
+    .check-yes { color: #1a7a3a; font-size: 1.1rem; font-weight: bold; }
+    .check-no  { color: #bbb; font-size: 1rem; }
+    .check-tri { color: var(--accent-orange); font-size: 1rem; }
+
+    /* ===== FAQ ===== */
+    .faq-list { max-width: 800px; margin: 0 auto; }
+    .faq-item {
+        background: white;
+        border-radius: 12px;
+        margin-bottom: 14px;
+        overflow: hidden;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    }
+    .faq-q {
+        padding: 18px 22px;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        cursor: pointer;
+        font-weight: bold;
+        font-size: 0.95rem;
+        color: var(--sector-color);
+        user-select: none;
+        transition: background 0.2s;
+    }
+    .faq-q:hover { background: var(--sector-light); }
+    .faq-q .q-mark {
+        flex-shrink: 0;
+        width: 32px;
+        height: 32px;
+        background: var(--sector-color);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.9rem;
+        font-weight: bold;
+    }
+    .faq-q .faq-arrow {
+        margin-left: auto;
+        transition: transform 0.3s;
+        font-size: 0.9rem;
+        color: #999;
+    }
+    .faq-item.open .faq-arrow { transform: rotate(180deg); }
+    .faq-a {
+        display: none;
+        padding: 0 22px 18px 68px;
+        font-size: 0.9rem;
+        color: #555;
+        line-height: 1.8;
+        border-top: 1px solid #edf2f8;
+    }
+    .faq-item.open .faq-a { display: block; }
+
+    /* ===== CTA ===== */
+    .cta-section {
+        background: linear-gradient(135deg, var(--sector-color) 0%, #2a5298 100%);
+        padding: 70px 10%;
+        text-align: center;
+        color: white;
+    }
+    .cta-section h2 { color: white; font-size: 1.6rem; margin-bottom: 12px; }
+    .cta-section h2::after { background: rgba(255,255,255,0.5); }
+    .cta-section p { color: #c8dcf5; margin-bottom: 32px; font-size: 0.97rem; }
+    .cta-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .btn-white {
+        display: inline-block;
+        padding: 14px 32px;
+        background: white;
+        color: var(--sector-color);
+        text-decoration: none;
+        border-radius: 50px;
+        font-weight: bold;
+        font-size: 1rem;
+        transition: 0.3s;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+    }
+    .btn-white:hover { transform: scale(1.05); box-shadow: 0 10px 24px rgba(0,0,0,0.3); }
+    .btn-line {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 14px 28px;
+        background: #06c755;
+        color: white;
+        text-decoration: none;
+        border-radius: 50px;
+        font-weight: bold;
+        font-size: 1rem;
+        transition: 0.3s;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+    }
+    .btn-line:hover { background: #05a647; transform: scale(1.05); }
+    .btn-line img { width: 22px; height: 22px; }
+
+    /* ===== LINE固定 ===== */
+    .line-fixed-btn {
+        position: fixed;
+        top: 90px;
+        right: 20px;
+        width: 120px;
+        height: 60px;
+        background: #06C755;
+        border-radius: 30px;
+        border: 3px solid white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+        z-index: 9999;
+        transition: 0.3s;
+        text-decoration: none;
+    }
+    .line-fixed-btn:hover { transform: scale(1.1); }
+    .line-inner {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 11px;
+        font-weight: bold;
+        color: white;
+    }
+    .line-inner img { width: 28px; height: 28px; }
+
+    /* ===== FOOTER ===== */
+    footer {
+        background: #333;
+        color: white;
+        text-align: center;
+        padding: 30px;
+    }
+    footer a { color: #fff; text-decoration: underline; }
+
+    /* ===== FADE IN ===== */
+    .fade-in {
+        opacity: 0;
+        transform: translateY(28px);
+        transition: opacity 0.75s ease-out, transform 0.75s ease-out;
+    }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* ===== レスポンシブ ===== */
+    @media (max-width: 768px) {
+        .page-hero { min-height: 280px; padding: 60px 6% 40px; }
+        .section { padding: 50px 6%; }
+        .line-fixed-btn { top: 120px; right: 12px; width: 80px; height: 50px; border-radius: 25px; }
+        .line-inner img { width: 26px; height: 26px; }
+        .line-inner span { display: none; }
+    }
+</style>
 </head>
 <body>
 
-<!-- ===== ヒーロー ===== -->
-<section class="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-content">
-        <span class="hero-badge">登録支援機関 サポートサービス</span>
-        <h1>登録支援機関の<span>業務負担</span>を<br>私たちが支えます</h1>
-        <p>関西・中国地方の登録支援機関様の業務委託・入管申請をトータルサポート。<br>
-        専門知識と豊富な実績で、外国人材の定着をともに実現します。</p>
-        <a href="#contact" class="hero-btn">無料相談はこちら →</a>
+<!-- ===== HEADER ===== -->
+<header>
+    <a href="../index.html" class="logo">
+        <img src="../images/penguin_logo_192.png" alt="セコンドペンギン企画ロゴ">
+        <span>セコンドペンギン企画</span>
+    </a>
+    <div class="header-right">
+        <a href="../index.html#contact" class="back-btn">📩 無料相談</a>
+        <a href="../index.html" class="back-btn">← TOPへ戻る</a>
     </div>
-</section>
+</header>
 
-<!-- ===== 課題セクション ===== -->
-<section class="section issues">
-    <div class="section-inner">
-        <p class="section-label">Common Issues</p>
-        <h2 class="section-title">登録支援機関が抱える<span>よくある課題</span></h2>
-        <div class="divider"></div>
-        <p class="section-desc">特定技能外国人の支援は多岐にわたり、人手や専門知識が追いつかないケースが増えています。こうしたお悩みに、私たちはお応えします。</p>
+<!-- ===== 業種ナビ ===== -->
+<nav class="sector-nav-bar">
+    <a href="transport.html">自動車運送業</a>
+    <a href="construction.html">建設</a>
+    <a href="care.html">介護</a>
+    <a href="accommodation.html">宿泊</a>
+    <a href="food.html">外食業</a>
+    <a href="food-manufacturing.html">飲食料品製造業</a>
+    <a href="industrial-manufacturing.html">工業製品製造業</a>
+    <a href="registration-support.html" class="current">登録支援機関</a>
+    <a href="union.html">組合</a>
+    <a href="language-school.html">日本語学校/専門学校</a>
+</nav>
 
-        <div class="issues-grid">
-            <div class="issue-card">
-                <div class="issue-icon">📋</div>
-                <div>
-                    <h3>書類作成・申請の負担が大きい</h3>
-                    <p>在留資格の申請書類や各種届出の準備に時間がかかり、本来の支援業務に集中できない。</p>
-                </div>
-            </div>
-            <div class="issue-card">
-                <div class="issue-icon">🌏</div>
-                <div>
-                    <h3>多言語対応が難しい</h3>
-                    <p>外国人材との日常的なコミュニケーションや、相談対応に言語の壁を感じている。</p>
-                </div>
-            </div>
-            <div class="issue-card">
-                <div class="issue-icon">⚖️</div>
-                <div>
-                    <h3>法改正への対応が追いつかない</h3>
-                    <p>入管法や特定技能制度の改正が頻繁で、最新情報のキャッチアップが大変。</p>
-                </div>
-            </div>
-            <div class="issue-card">
-                <div class="issue-icon">🏢</div>
-                <div>
-                    <h3>地方での案件対応に限界がある</h3>
-                    <p>関西・中国地方など広域に案件が分散し、現地対応の人員確保が難しい。</p>
-                </div>
-            </div>
-            <div class="issue-card">
-                <div class="issue-icon">📞</div>
-                <div>
-                    <h3>24時間対応・緊急連絡が難しい</h3>
-                    <p>外国人材からの急なトラブルや相談に、少人数では対応しきれない。</p>
-                </div>
-            </div>
-            <div class="issue-card">
-                <div class="issue-icon">💡</div>
-                <div>
-                    <h3>支援の質を均一に保てない</h3>
-                    <p>担当者によって支援の質にばらつきが生じ、外国人材や雇用企業からのクレームが発生。</p>
-                </div>
-            </div>
+<!-- ===== HERO ===== -->
+<div class="page-hero">
+    <span class="sector-badge">🤝 登録支援機関 / 特定技能サポート</span>
+    <h1>登録支援機関として<br>外国人材の受入れを<br>完全サポートします</h1>
+    <p>
+        義務的支援から任意的支援まで、<br>
+        受入れ企業に代わって外国人材の生活・就労定着を<br>
+        法令に基づき丁寧に支えます。
+    </p>
+    <div class="hero-cta-btns">
+        <a href="../index.html#contact" class="hero-btn-primary">📩 無料相談はこちら</a>
+        <a href="https://line.me/R/ti/p/@556fihjp/" target="_blank" class="hero-btn-line">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/LINE_logo.svg" alt="LINE">
+            LINEで相談する
+        </a>
+    </div>
+</div>
+
+
+<!-- ===== 登録支援機関とは ===== -->
+<section class="section fade-in">
+    <h2>登録支援機関とは？</h2>
+    <p class="lead-text">
+        特定技能外国人を受け入れる企業（特定技能所属機関）に代わり、<br>
+        法令で定められた支援計画の全部または一部を実施する機関です。<br>
+        出入国在留管理庁に登録された専門機関のみが業務を行えます。
+    </p>
+    <div class="intro-grid">
+        <div class="intro-card">
+            <span class="icon">📜</span>
+            <h3>法令に基づく登録機関</h3>
+            <p>出入国在留管理庁への登録が必要で、一定の要件を満たした機関のみが業務を行えます。セコンドペンギン企画は登録支援機関として適切な支援体制を整えています。</p>
+        </div>
+        <div class="intro-card">
+            <span class="icon">🏢</span>
+            <h3>受入れ企業の負担を軽減</h3>
+            <p>特定技能外国人の受入れには10種類以上の義務的支援が課されます。業務多忙な受入れ企業に代わり、専門機関であるセコンドペンギン企画が全て代行します。</p>
+        </div>
+        <div class="intro-card">
+            <span class="icon">🌏</span>
+            <h3>多言語・多文化に対応</h3>
+            <p>ベトナム・インドネシア・フィリピンなど主要な特定技能人材の出身国の言語・文化背景に配慮した支援を実施。外国人材が安心して日本で働き続けられる環境を整えます。</p>
+        </div>
+        <div class="intro-card">
+            <span class="icon">⚖️</span>
+            <h3>行政書士との連携で安心</h3>
+            <p>在留資格の更新・変更申請など入管手続きは、提携する行政書士が対応。支援業務と入管申請をワンストップで依頼できるため、書類の抜け漏れや期限切れのリスクを防ぎます。</p>
         </div>
     </div>
 </section>
 
-<!-- ===== サービス内容 ===== -->
-<section class="section">
-    <div class="section-inner">
-        <p class="section-label">Our Services</p>
-        <h2 class="section-title">提供する<span>サービス内容</span></h2>
-        <div class="divider"></div>
-        <p class="section-desc">登録支援機関の業務の一部をアウトソーシングいただけます。入管業務との一括対応も可能です。</p>
 
-        <div class="services-grid">
-            <!-- 支援業務代行 -->
-            <div class="service-card">
-                <div class="service-card-header">
-                    <div class="service-icon-wrap">🤝</div>
-                    <div>
-                        <h3>支援業務の代行・補助</h3>
-                        <p>Support Operation Outsourcing</p>
-                    </div>
-                </div>
-                <div class="service-card-body">
-                    <ul class="service-list">
-                        <li>事前ガイダンスの実施・補助</li>
-                        <li>住居確保・生活インフラ手続きの支援</li>
-                        <li>生活オリエンテーションの実施</li>
-                        <li>定期面談（対面・オンライン対応）</li>
-                        <li>相談・苦情対応の窓口業務</li>
-                        <li>転職支援・求職活動補助</li>
-                        <li>定期報告書の作成補助</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- 入管申請業務 -->
-            <div class="service-card">
-                <div class="service-card-header">
-                    <div class="service-icon-wrap">📝</div>
-                    <div>
-                        <h3>入管申請・行政書士業務</h3>
-                        <p>Immigration Application Services</p>
-                    </div>
-                </div>
-                <div class="service-card-body">
-                    <ul class="service-list">
-                        <li>特定技能在留資格の申請・更新</li>
-                        <li>在留資格変更申請（技能実習→特定技能）</li>
-                        <li>就労資格証明書の取得</li>
-                        <li>各種届出（転職・住所変更等）</li>
-                        <li>在留資格認定証明書交付申請</li>
-                        <li>永住許可申請のサポート</li>
-                        <li>申請取次業務（一部在留資格）</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- コンサル・教育 -->
-            <div class="service-card">
-                <div class="service-card-header">
-                    <div class="service-icon-wrap">🎓</div>
-                    <div>
-                        <h3>コンサルティング・教育</h3>
-                        <p>Consulting & Training</p>
-                    </div>
-                </div>
-                <div class="service-card-body">
-                    <ul class="service-list">
-                        <li>登録支援機関の設立・運営サポート</li>
-                        <li>スタッフへの制度研修・OJT</li>
-                        <li>支援計画書の作成支援</li>
-                        <li>コンプライアンス体制の整備</li>
-                        <li>法改正情報の定期共有</li>
-                        <li>外国人雇用企業への説明・提案</li>
-                        <li>業務マニュアルの整備</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ===== 対応エリア ===== -->
-<section class="section area">
-    <div class="section-inner">
-        <p class="section-label">Service Area</p>
-        <h2 class="section-title">対応<span>エリア</span></h2>
-        <div class="divider"></div>
-
-        <div class="area-flex">
-            <div class="area-map">
-                <div class="area-dots"></div>
-                <div class="area-map-inner">
-                    <span class="map-icon">🗾</span>
-                    <p>関西・中国地方を中心に<br>広域で対応可能</p>
-                </div>
-            </div>
-
-            <div class="area-info">
-                <h3 style="font-size:1.1rem; font-weight:700; color:var(--primary); margin-bottom:16px;">
-                    主要対応エリア
-                </h3>
-                <div class="area-prefectures">
-                    <span class="pref-tag secondary">大阪府</span>
-                    <span class="pref-tag secondary">兵庫県</span>
-                    <span class="pref-tag secondary">京都府</span>
-                    <span class="pref-tag secondary">奈良県</span>
-                    <span class="pref-tag secondary">滋賀県</span>
-                    <span class="pref-tag secondary">和歌山県</span>
-                    <span class="pref-tag">広島県</span>
-                    <span class="pref-tag">岡山県</span>
-                    <span class="pref-tag">山口県</span>
-                    <span class="pref-tag">鳥取県</span>
-                    <span class="pref-tag">島根県</span>
-                </div>
-                <div class="area-note">
-                    <strong>※ 上記エリア外もご相談ください。</strong><br>
-                    オンライン対応・出張対応など、柔軟に対応方法をご提案いたします。
-                    関西を拠点に、中国地方への出張訪問も定期的に実施しています。
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ===== 入管業務詳細 ===== -->
-<section class="section">
-    <div class="section-inner">
-        <p class="section-label">Immigration Services</p>
-        <h2 class="section-title">入管業務の<span>詳細サービス</span></h2>
-        <div class="divider"></div>
-        <p class="section-desc">複雑な入管手続きを、専門家がワンストップで代行します。貴機関の申請業務をまるごとお任せください。</p>
-
-        <div class="immigration-grid">
-            <div class="imm-card">
-                <span class="imm-icon">🔄</span>
-                <h3>在留資格変更</h3>
-                <p>技能実習から特定技能への移行をはじめ、各種在留資格変更申請を代行します。</p>
-            </div>
-            <div class="imm-card">
-                <span class="imm-icon">📅</span>
-                <h3>在留期間更新</h3>
-                <p>更新時期の管理から申請書類の作成、提出まで一括サポート。期限切れを防ぎます。</p>
-            </div>
-            <div class="imm-card">
-                <span class="imm-icon">🏛️</span>
-                <h3>各種届出手続き</h3>
-                <p>転職・住所変更・氏名変更など、出入国在留管理局への各種届出を代行します。</p>
-            </div>
-            <div class="imm-card">
-                <span class="imm-icon">✈️</span>
-                <h3>在留資格認定</h3>
-                <p>海外からの新規受入れに必要な在留資格認定証明書の交付申請を代行します。</p>
-            </div>
-            <div class="imm-card">
-                <span class="imm-icon">⚡</span>
-                <h3>緊急・優先対応</h3>
-                <p>在留期限が迫っているケースや、急な転職に伴う手続きにも迅速に対応します。</p>
-            </div>
-            <div class="imm-card">
-                <span class="imm-icon">🔍</span>
-                <h3>コンプライアンス診断</h3>
-                <p>受入れ企業・支援機関の法令遵守状況を確認し、リスク回避をサポートします。</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ===== ご依頼の流れ ===== -->
-<section class="section flow">
-    <div class="section-inner">
-        <p class="section-label">Process</p>
-        <h2 class="section-title">ご依頼の流れ</h2>
-        <div class="divider"></div>
-
-        <div class="flow-steps">
-            <div class="flow-step">
-                <div class="step-num">1</div>
-                <h3>無料相談</h3>
-                <p>お電話・メール・オンラインでまずはお気軽にご相談ください。</p>
-            </div>
-            <div class="flow-step">
-                <div class="step-num">2</div>
-                <h3>ヒアリング<br>&amp;提案</h3>
-                <p>現状の課題・ニーズをお聞きし、最適なプランをご提案します。</p>
-            </div>
-            <div class="flow-step">
-                <div class="step-num">3</div>
-                <h3>契約締結</h3>
-                <p>業務委託契約・秘密保持契約を締結し、業務を開始します。</p>
-            </div>
-            <div class="flow-step">
-                <div class="step-num">4</div>
-                <h3>業務開始</h3>
-                <p>担当者がアサインされ、速やかに支援・申請業務を開始します。</p>
-            </div>
-            <div class="flow-step">
-                <div class="step-num">5</div>
-                <h3>定期報告</h3>
-                <p>月次レポートや定期ミーティングで進捗・課題を共有します。</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ===== 強み ===== -->
-<section class="section">
-    <div class="section-inner">
-        <p class="section-label">Why Choose Us</p>
-        <h2 class="section-title">選ばれる<span>4つの理由</span></h2>
-        <div class="divider"></div>
-
-        <div class="strengths-grid">
-            <div class="strength-card">
-                <div class="strength-num">01</div>
-                <h3>関西・中国地方に精通した専門家</h3>
-                <p>地域の産業・労働市場・行政事情を熟知した専門家が直接対応。地元に根ざしたきめ細やかなサポートを提供します。</p>
-            </div>
-            <div class="strength-card">
-                <div class="strength-num">02</div>
-                <h3>支援業務と入管申請の一体対応</h3>
-                <p>登録支援機関の支援業務と入管申請手続きを一括でお任せいただけます。複数業者への依頼が不要でコスト削減にも貢献。</p>
-            </div>
-            <div class="strength-card">
-                <div class="strength-num">03</div>
-                <h3>最新の制度・法改正に常時対応</h3>
-                <p>頻繁に変わる入管法や特定技能制度の改正を常時追跡。貴機関に最新情報をいち早くお届けし、コンプライアンスをサポート。</p>
-            </div>
-            <div class="strength-card">
-                <div class="strength-num">04</div>
-                <h3>柔軟な業務委託プラン</h3>
-                <p>業務全体のアウトソーシングから、特定業務のみの部分委託まで対応。貴機関の規模・予算に合わせた最適プランをご提案します。</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ===== 料金 ===== -->
-<section class="section pricing">
-    <div class="section-inner">
-        <p class="section-label">Pricing</p>
-        <h2 class="section-title">料金の<span>目安</span></h2>
-        <div class="divider"></div>
-
-        <div class="pricing-note">
-            料金は対応内容・件数・地域等によって異なります。まずはお気軽にご相談ください。お見積りは無料です。
-        </div>
-
-        <table class="pricing-table">
+<!-- ===== 義務的支援の内容 ===== -->
+<section class="section section-accent fade-in">
+    <h2>義務的支援の内容（10項目）</h2>
+    <p class="lead-text">
+        受入れ企業が特定技能外国人を雇用する際、法令で定められた10種類の支援を実施しなければなりません。<br>
+        これらすべてをセコンドペンギン企画が代行します。
+    </p>
+    <div class="job-table-wrap">
+        <table class="job-table">
             <thead>
                 <tr>
-                    <th>サービス</th>
-                    <th>内容</th>
-                    <th>料金目安</th>
+                    <th style="width:5%">No.</th>
+                    <th style="width:30%">支援項目</th>
+                    <th style="width:45%">具体的な内容</th>
+                    <th style="width:20%">実施タイミング</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>支援業務 月次サポート<span class="badge-custom">人気</span></td>
-                    <td>定期面談・相談対応・報告書作成（1名あたり）</td>
-                    <td>¥8,000〜/月</td>
+                    <td>①</td>
+                    <td><strong>事前ガイダンス</strong></td>
+                    <td>入国前に労働条件・生活環境・支援内容を母国語で説明</td>
+                    <td><span class="tag tag-blue">入国前</span></td>
                 </tr>
                 <tr>
-                    <td>事前ガイダンス代行</td>
-                    <td>入国前・入国後ガイダンスの実施（1名あたり）</td>
-                    <td>¥15,000〜</td>
+                    <td>②</td>
+                    <td><strong>出入国時の送迎</strong></td>
+                    <td>入国時の空港送迎・帰国時の空港への送迎</td>
+                    <td><span class="tag tag-blue">入国時</span><span class="tag tag-orange">帰国時</span></td>
                 </tr>
                 <tr>
-                    <td>在留資格変更申請</td>
-                    <td>技能実習→特定技能 等（1名あたり）</td>
-                    <td>¥50,000〜</td>
+                    <td>③</td>
+                    <td><strong>住居確保・生活の立ち上げ支援</strong></td>
+                    <td>住居の確保・銀行口座開設・携帯電話契約・ライフラインの手続き補助</td>
+                    <td><span class="tag tag-blue">入国後</span></td>
                 </tr>
                 <tr>
-                    <td>在留期間更新申請</td>
-                    <td>書類作成・申請代行（1名あたり）</td>
-                    <td>¥30,000〜</td>
+                    <td>④</td>
+                    <td><strong>生活オリエンテーション</strong></td>
+                    <td>日本のルール・マナー・医療・交通・災害対応等を母国語で説明</td>
+                    <td><span class="tag tag-blue">入国後</span></td>
                 </tr>
                 <tr>
-                    <td>業務一括アウトソーシング<span class="badge-custom">おすすめ</span></td>
-                    <td>支援業務＋入管申請をまとめてご依頼（要見積）</td>
-                    <td>要お見積り</td>
+                    <td>⑤</td>
+                    <td><strong>日本語学習機会の提供</strong></td>
+                    <td>日本語教室・オンライン学習ツール等の案内・受講支援</td>
+                    <td><span class="tag tag-green">随時</span></td>
                 </tr>
                 <tr>
-                    <td>コンサルティング</td>
-                    <td>制度整備・研修・マニュアル作成</td>
-                    <td>¥30,000〜/回</td>
+                    <td>⑥</td>
+                    <td><strong>相談・苦情対応</strong></td>
+                    <td>生活・職場のトラブル・ハラスメント等の相談を母国語で受付・対応</td>
+                    <td><span class="tag tag-green">随時</span></td>
+                </tr>
+                <tr>
+                    <td>⑦</td>
+                    <td><strong>日本人との交流促進</strong></td>
+                    <td>地域行事への参加案内・社内交流活動の企画支援</td>
+                    <td><span class="tag tag-green">随時</span></td>
+                </tr>
+                <tr>
+                    <td>⑧</td>
+                    <td><strong>非自発的離職時の転職支援</strong></td>
+                    <td>やむを得ない離職の際の新たな受入れ機関の探索・手続き支援</td>
+                    <td><span class="tag tag-orange">必要時</span></td>
+                </tr>
+                <tr>
+                    <td>⑨</td>
+                    <td><strong>定期面談・行政機関への通報</strong></td>
+                    <td>3か月ごとの定期面談実施・問題があれば行政機関へ通知</td>
+                    <td><span class="tag tag-green">3か月毎</span></td>
+                </tr>
+                <tr>
+                    <td>⑩</td>
+                    <td><strong>行政手続きに関する情報提供</strong></td>
+                    <td>住民登録・国民健康保険・年金等の各種行政手続きの案内・同行</td>
+                    <td><span class="tag tag-blue">入国後</span><span class="tag tag-green">随時</span></td>
                 </tr>
             </tbody>
         </table>
     </div>
 </section>
 
-<!-- ===== FAQ ===== -->
-<section class="section">
-    <div class="section-inner">
-        <p class="section-label">FAQ</p>
-        <h2 class="section-title">よくある<span>ご質問</span></h2>
-        <div class="divider"></div>
 
-        <div class="faq-list">
-            <div class="faq-item">
-                <div class="faq-question">
-                    <div class="faq-q-mark">Q</div>
-                    <div class="faq-question-text">登録支援機関として登録していない企業でも依頼できますか？</div>
-                </div>
-                <div class="faq-answer">
-                    はい、可能です。これから登録支援機関として登録をお考えの企業様への支援も承っております。登録申請のサポートからご相談ください。
-                </div>
+<!-- ===== 支援内容詳細（義務的・任意的） ===== -->
+<section class="section fade-in">
+    <h2>セコンドペンギン企画の支援メニュー</h2>
+    <p class="lead-text">
+        法令で定められた義務的支援に加え、外国人材の定着・成長を促す任意的支援もご用意しています。
+    </p>
+    <div class="support-two-col">
+        <div class="support-box">
+            <h3>📋 義務的支援（全件対応）</h3>
+            <ul>
+                <li>入国前ガイダンス（母国語で実施）</li>
+                <li>空港送迎（入国・帰国時）</li>
+                <li>住居確保・生活セットアップ同行</li>
+                <li>生活オリエンテーションの実施</li>
+                <li>日本語学習機会の案内・申込補助</li>
+                <li>相談・苦情の母国語受付・対応</li>
+                <li>地域行事・交流機会の情報提供</li>
+                <li>非自発的離職時の転職先探索支援</li>
+                <li>3か月ごとの定期面談・記録作成</li>
+                <li>行政機関への各種届出・同行支援</li>
+            </ul>
+        </div>
+        <div class="support-box accent">
+            <h3>🌟 任意的支援（オプション）</h3>
+            <ul>
+                <li>在留期間更新申請の代行（行政書士連携）</li>
+                <li>転職・在留資格変更時の申請サポート</li>
+                <li>日本語レベルアップ個別指導のご紹介</li>
+                <li>職場内コミュニケーション研修</li>
+                <li>受入れ企業スタッフへの多文化理解研修</li>
+                <li>特定技能2号への移行支援</li>
+                <li>メンタルヘルス・医療機関紹介サポート</li>
+                <li>家族帯同手続きのサポート（2号取得後）</li>
+                <li>永住申請に向けたキャリア相談</li>
+                <li>緊急時24時間対応（別途相談）</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+
+<!-- ===== 受入れフロー ===== -->
+<section class="section section-gray fade-in">
+    <h2>受入れから定着までのサポートフロー</h2>
+    <p class="lead-text">
+        初回相談から外国人材の入国・定着まで、セコンドペンギン企画が一貫してサポートします。
+    </p>
+    <div class="flow-list">
+        <div class="flow-item">
+            <div class="flow-num">1</div>
+            <div class="flow-body">
+                <h3>無料初回相談・受入れ計画の確認</h3>
+                <p>雇用予定の人数・業種・時期・予算感をヒアリング。特定技能の要件を満たしているか確認し、必要な手続きとスケジュールをご説明します。</p>
             </div>
-            <div class="faq-item">
-                <div class="faq-question">
-                    <div class="faq-q-mark">Q</div>
-                    <div class="faq-question-text">業務の一部だけ委託することはできますか？</div>
-                </div>
-                <div class="faq-answer">
-                    はい、特定の業務のみの部分委託にも対応しています。例えば、定期面談のみ、申請書類作成のみ、といった形でのご依頼も承っております。まずはご要望をお聞かせください。
-                </div>
+        </div>
+        <div class="flow-item">
+            <div class="flow-num">2</div>
+            <div class="flow-body">
+                <h3>支援計画の策定・契約締結</h3>
+                <p>義務的支援の内容を盛り込んだ「1号特定技能外国人支援計画」を作成。受入れ企業との業務委託契約を締結し、支援の実施体制を整えます。</p>
             </div>
-            <div class="faq-item">
-                <div class="faq-question">
-                    <div class="faq-q-mark">Q</div>
-                    <div class="faq-question-text">関西・中国地方以外の案件にも対応できますか？</div>
-                </div>
-                <div class="faq-answer">
-                    基本的には関西・中国地方を対応エリアとしておりますが、オンライン対応・書類業務については全国対応も可能です。まずはご相談ください。
-                </div>
+        </div>
+        <div class="flow-item">
+            <div class="flow-num">3</div>
+            <div class="flow-body">
+                <h3>在留資格申請（行政書士連携）</h3>
+                <p>特定技能の在留資格認定証明書交付申請または在留資格変更申請を、提携行政書士が代行。申請書類の準備から出入国在留管理局への提出まで対応します。</p>
             </div>
-            <div class="faq-item">
-                <div class="faq-question">
-                    <div class="faq-q-mark">Q</div>
-                    <div class="faq-question-text">契約開始までどれくらいの期間がかかりますか？</div>
-                </div>
-                <div class="faq-answer">
-                    ご相談からご契約まで、通常1〜2週間程度を目安としています。急ぎの案件についてはご相談ください。最短で即日対応できるケースもございます。
-                </div>
+        </div>
+        <div class="flow-item">
+            <div class="flow-num">4</div>
+            <div class="flow-body">
+                <h3>入国前ガイダンス・事前準備</h3>
+                <p>ビザ取得後、入国前に母国語で労働条件・生活環境・日本のルールについてオンラインでガイダンスを実施。不安を解消した状態で来日できるよう準備します。</p>
             </div>
-            <div class="faq-item">
-                <div class="faq-question">
-                    <div class="faq-q-mark">Q</div>
-                    <div class="faq-question-text">入管申請は行政書士が行うのですか？</div>
-                </div>
-                <div class="faq-answer">
-                    はい、入管申請に関する業務は、行政書士または申請取次行政書士が担当します。法律に基づいた適切な手続きで対応いたします。
-                </div>
+        </div>
+        <div class="flow-item">
+            <div class="flow-num">5</div>
+            <div class="flow-body">
+                <h3>入国・生活立ち上げ支援</h3>
+                <p>空港への送迎から始まり、住民登録・銀行口座開設・健康保険加入・携帯契約など来日直後の生活立ち上げを担当者が同行してサポートします。</p>
+            </div>
+        </div>
+        <div class="flow-item">
+            <div class="flow-num">6</div>
+            <div class="flow-body">
+                <h3>就業開始・定期面談による定着支援</h3>
+                <p>就業開始後も3か月ごとの定期面談を実施。職場・生活の困りごとを早期に把握し、離職防止・長期定着を支援します。相談は母国語で随時対応します。</p>
+            </div>
+        </div>
+        <div class="flow-item">
+            <div class="flow-num">7</div>
+            <div class="flow-body">
+                <h3>在留期間更新・特定技能2号移行支援</h3>
+                <p>在留期限の管理から更新申請の代行まで一括対応。将来的に特定技能2号への移行を希望する方には、要件確認・申請まで一貫してサポートします。</p>
             </div>
         </div>
     </div>
 </section>
+
+
+<!-- ===== 他社との比較 ===== -->
+<section class="section section-accent fade-in">
+    <h2>セコンドペンギン企画が選ばれる理由</h2>
+    <p class="lead-text">
+        登録支援機関は数多くありますが、関西・中国地方に特化した現地対応力と<br>
+        行政書士連携によるワンストップ体制が私たちの強みです。
+    </p>
+    <div class="compare-table-wrap">
+        <table class="compare-table">
+            <thead>
+                <tr>
+                    <th>サービス・強み</th>
+                    <th>セコンドペンギン企画</th>
+                    <th>一般的な<br>登録支援機関</th>
+                    <th>受入れ企業<br>自社対応</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>義務的支援10項目の完全代行</td>
+                    <td><span class="check-yes">◎</span></td>
+                    <td><span class="check-yes">○</span></td>
+                    <td><span class="check-tri">△</span></td>
+                </tr>
+                <tr>
+                    <td>母国語（多言語）での対応</td>
+                    <td><span class="check-yes">◎</span></td>
+                    <td><span class="check-tri">△</span></td>
+                    <td><span class="check-no">✕</span></td>
+                </tr>
+                <tr>
+                    <td>在留資格申請の代行（行政書士連携）</td>
+                    <td><span class="check-yes">◎</span></td>
+                    <td><span class="check-tri">△</span></td>
+                    <td><span class="check-no">✕</span></td>
+                </tr>
+                <tr>
+                    <td>関西・中国地方への現地訪問対応</td>
+                    <td><span class="check-yes">◎</span></td>
+                    <td><span class="check-no">✕</span></td>
+                    <td><span class="check-no">✕</span></td>
+                </tr>
+                <tr>
+                    <td>特定技能2号移行サポート</td>
+                    <td><span class="check-yes">◎</span></td>
+                    <td><span class="check-tri">△</span></td>
+                    <td><span class="check-no">✕</span></td>
+                </tr>
+                <tr>
+                    <td>受入れ企業向け多文化研修</td>
+                    <td><span class="check-yes">○</span></td>
+                    <td><span class="check-no">✕</span></td>
+                    <td><span class="check-no">✕</span></td>
+                </tr>
+                <tr>
+                    <td>緊急・トラブル時の迅速対応</td>
+                    <td><span class="check-yes">◎</span></td>
+                    <td><span class="check-tri">△</span></td>
+                    <td><span class="check-no">✕</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+
+<!-- ===== 料金 ===== -->
+<section class="section fade-in">
+    <h2>料金目安</h2>
+    <p class="lead-text">
+        受入れ人数・業種・支援範囲により変動します。<br>
+        まずはお気軽にご相談ください。お見積りは無料です。
+    </p>
+    <div class="price-grid">
+        <div class="price-card">
+            <span class="price-icon">📝</span>
+            <h3>初回相談・プラン提案</h3>
+            <div class="price-amount">無料</div>
+            <p>受入れ計画・必要手続き・スケジュールのご相談。オンライン対応可。</p>
+        </div>
+        <div class="price-card">
+            <span class="price-icon">✈️</span>
+            <h3>入国前後 一括サポート</h3>
+            <div class="price-amount">100,000円〜</div>
+            <p>在留資格申請・ガイダンス・空港送迎・生活セットアップを含むパッケージ（1名）。</p>
+        </div>
+        <div class="price-card">
+            <span class="price-icon">🤝</span>
+            <h3>義務的支援 月次サポート</h3>
+            <div class="price-amount">15,000円〜/人・月</div>
+            <p>定期面談・相談対応・情報提供・記録作成など義務的支援10項目を代行。</p>
+        </div>
+        <div class="price-card">
+            <span class="price-icon">📋</span>
+            <h3>在留期間更新申請</h3>
+            <div class="price-amount">30,000円〜/件</div>
+            <p>書類作成から出入国在留管理局への申請代行まで。提携行政書士が対応。</p>
+        </div>
+        <div class="price-card">
+            <span class="price-icon">🔄</span>
+            <h3>在留資格変更申請</h3>
+            <div class="price-amount">50,000円〜/件</div>
+            <p>育成就労→特定技能・特定技能1号→2号など、変更申請を代行。</p>
+        </div>
+        <div class="price-card">
+            <span class="price-icon">📦</span>
+            <h3>フルサポートパック</h3>
+            <div class="price-amount">要お見積り</div>
+            <p>在留申請・入国前後支援・月次サポートをすべて含むワンストップパッケージ。</p>
+        </div>
+    </div>
+    <p class="price-note">
+        ※ 上記はすべて税別の目安金額です。複数名ご依頼の場合は割引制度あり。<br>
+        ※ 交通費等の実費は別途請求となります。
+    </p>
+</section>
+
+
+<!-- ===== FAQ ===== -->
+<section class="section section-gray fade-in">
+    <h2>よくあるご質問</h2>
+    <div class="faq-list">
+        <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+                <span class="q-mark">Q</span>
+                登録支援機関への委託は義務ですか？
+                <span class="faq-arrow">▼</span>
+            </div>
+            <div class="faq-a">
+                義務ではありませんが、受入れ企業が自社で支援計画を適切に実施できない場合は、登録支援機関への委託が現実的な選択肢です。多くの企業が義務的支援の煩雑さから、専門機関への委託を選択されています。
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+                <span class="q-mark">Q</span>
+                特定技能の受入れは初めてですが、手続きの複雑さが心配です。
+                <span class="faq-arrow">▼</span>
+            </div>
+            <div class="faq-a">
+                ご安心ください。初回の無料相談で必要な手続き・書類・スケジュールをわかりやすくご説明します。在留資格申請から入国後の支援まですべて代行しますので、受入れ企業様のご負担を最小限に抑えられます。
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+                <span class="q-mark">Q</span>
+                定期面談はどのように実施されますか？
+                <span class="faq-arrow">▼</span>
+            </div>
+            <div class="faq-a">
+                原則として3か月に1回、対面またはオンラインで実施します。外国人材本人と受入れ企業担当者それぞれと個別に面談し、職場環境・生活状況・困りごとを確認します。面談記録は書面で作成し、受入れ企業へもご共有します。
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+                <span class="q-mark">Q</span>
+                対応できる言語はどの国ですか？
+                <span class="faq-arrow">▼</span>
+            </div>
+            <div class="faq-a">
+                ベトナム語・インドネシア語・フィリピン語（タガログ語）・中国語・ミャンマー語に対応しています。その他の言語については、翻訳ツールや外部通訳者の活用で対応可能な場合がありますので、まずはご相談ください。
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+                <span class="q-mark">Q</span>
+                外国人材が急にトラブルを起こした場合、すぐ対応してもらえますか？
+                <span class="faq-arrow">▼</span>
+            </div>
+            <div class="faq-a">
+                はい、緊急の相談には迅速に対応します。職場内のトラブル・人間関係の問題・体調不良・失踪等のリスクに対し、初期対応から関係機関との調整まで丁寧にサポートします。深夜・休日の緊急対応については別途ご相談ください。
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+                <span class="q-mark">Q</span>
+                すでに雇用している外国人材の支援を途中から依頼できますか？
+                <span class="faq-arrow">▼</span>
+            </div>
+            <div class="faq-a">
+                可能です。現在の支援状況・在留期限・支援計画の内容を確認した上で、引継ぎのうえ支援を開始します。在留資格更新が近い場合も、速やかに対応しますのでご相談ください。
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+                <span class="q-mark">Q</span>
+                関西・中国地方以外の企業でも依頼できますか？
+                <span class="faq-arrow">▼</span>
+            </div>
+            <div class="faq-a">
+                書類業務・オンライン面談・相談対応は全国対応が可能です。現地訪問が必要な場合は、対応エリアや交通費について個別にご相談ください。まずはお気軽にお問合せください。
+            </div>
+        </div>
+    </div>
+</section>
+
 
 <!-- ===== CTA ===== -->
-<section class="section cta" id="contact">
-    <div class="section-inner" style="text-align:center;">
-        <p class="section-label" style="color:var(--secondary);">Contact Us</p>
-        <h2 class="cta-title">まずは無料相談から<br>始めましょう</h2>
-        <p class="cta-desc">
-            業務の課題やお悩みをお聞かせください。<br>
-            貴機関に最適なサポートプランをご提案します。<br>
-            ご相談・お見積りは無料です。
-        </p>
-        <div class="cta-buttons">
-            <a href="mailto:info@second-penguin.com" class="btn-primary">📧 メールで相談する</a>
-            <a href="tel:0120-000-000" class="btn-outline">📞 お電話はこちら</a>
-        </div>
-        <p style="margin-top:24px; font-size:0.82rem; opacity:0.65;">
-            受付時間：平日 9:00〜18:00　※メールは24時間受付
-        </p>
+<section class="cta-section fade-in">
+    <h2>外国人材の受入れ、<br>まずはご相談ください</h2>
+    <p>
+        義務的支援の代行から在留資格申請まで、<br>
+        貴社の状況に合わせた最適なプランをご提案します。<br>
+        ご相談・お見積りは完全無料です。
+    </p>
+    <div class="cta-btns">
+        <a href="../index.html#contact" class="btn-white">📩 お問合せフォームへ</a>
+        <a href="https://line.me/R/ti/p/@556fihjp/" target="_blank" class="btn-line">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/LINE_logo.svg" alt="LINE">
+            LINEで相談する
+        </a>
     </div>
 </section>
 
+
+<footer>
+    <p><a href="../privacy.html">プライバシーポリシー</a></p>
+    <p style="margin-top:10px;">© 2024-2026 Second Penguin Planning. All Rights Reserved.</p>
+</footer>
+
+<!-- LINE固定ボタン -->
+<a href="https://line.me/R/ti/p/@556fihjp/" class="line-fixed-btn" target="_blank">
+    <div class="line-inner">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/LINE_logo.svg" alt="LINE">
+        <span>無料相談</span>
+    </div>
+</a>
+
+<script>
+/* FAQ アコーディオン */
+function toggleFaq(el) {
+    const item = el.closest('.faq-item');
+    item.classList.toggle('open');
+}
+
+/* Fade-in */
+window.addEventListener('DOMContentLoaded', () => {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) entry.target.classList.add('visible');
+        });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+});
+</script>
 </body>
 </html>
