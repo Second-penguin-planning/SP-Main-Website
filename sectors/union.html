@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>組合サポート（技能実習・育成就労）| セカンドペンギン</title>
+    <meta name="description" content="技能実習・育成就労の組合サポート。関西・中国地方を中心に、多言語対応とビザ手続きをワンストップで提供します。">
+    <style>
+        /* ==================== BASE RESET ==================== */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kano Gothic Pro', 'Meiryo', sans-serif;
+            background: #f8f9fa;
+            color: #333;
+            line-height: 1.7;
+        }
+        a { text-decoration: none; color: inherit; }
+        img { max-width: 100%; }
+
+        /* ==================== VARIABLES ==================== */
+        :root {
+            --navy: #1a3a5c;
+            --navy-dark: #122840;
+            --navy-light: #234d7a;
+            --gold: #ff8c00;
+            --gold-light: #ffa733;
+            --gold-pale: #fff3e0;
+            --white: #ffffff;
+            --gray-light: #f0f4f8;
+            --gray-mid: #dde4ed;
+            --gray-text: #555;
+            --shadow: 0 4px 20px rgba(26,58,92,0.12);
+            --shadow-hover: 0 8px 32px rgba(26,58,92,0.2);
+            --radius: 12px;
+            --radius-sm: 8px;
+            --transition: all 0.3s ease;
+        }
+
+        /* ==================== HEADER / NAV ==================== */
+        header {
+            background: var(--navy);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+        }
+        nav {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 68px;
+        }
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--white);
+            letter-spacing: 0.04em;
+        }
+        .logo span { color: var(--gold); }
+        .nav-links {
+            display: flex;
+            gap: 8px;
+            list-style: none;
+        }
+        .nav-links a {
+            color: rgba(255,255,255,0.85);
+            font-size: 0.88rem;
+            font-weight: 600;
+            padding: 8px 14px;
+            border-radius: var(--radius-sm);
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+        .nav-links a:hover,
+        .nav-links a.active {
+            background: var(--gold);
+            color: var(--white);
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+        }
+        .hamburger span {
+            display: block;
+            width: 26px;
+            height: 3px;
+            background: var(--white);
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+
+        /* ==================== HERO ==================== */
+        .hero {
+            background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 50%, var(--navy-light) 100%);
+            color: var(--white);
+            padding: 100px 24px 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at 20% 50%, rgba(255,140,0,0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255,140,0,0.1) 0%, transparent 40%);
+        }
+        .hero-badge {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--white);
+            font-size: 0.82rem;
+            font-weight: 700;
+            padding: 6px 18px;
+            border-radius: 30px;
+            margin-bottom: 20px;
+            letter-spacing: 0.08em;
+            position: relative;
+        }
+        .hero h1 {
+            font-size: clamp(1.8rem, 5vw, 3rem);
+            font-weight: 900;
+            line-height: 1.25;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        .hero h1 em {
+            color: var(--gold);
+            font-style: normal;
+        }
+        .hero-sub {
+            font-size: clamp(0.95rem, 2vw, 1.15rem);
+            color: rgba(255,255,255,0.85);
+            max-width: 680px;
+            margin: 0 auto 36px;
+            position: relative;
+        }
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            position: relative;
+        }
+        .hero-stat {
+            text-align: center;
+        }
+        .hero-stat .num {
+            display: block;
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: var(--gold);
+            line-height: 1;
+        }
+        .hero-stat .label {
+            font-size: 0.82rem;
+            color: rgba(255,255,255,0.75);
+            margin-top: 4px;
+        }
+
+        /* ==================== SECTION COMMON ==================== */
+        section { padding: 80px 24px; }
+        .container { max-width: 1100px; margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 56px; }
+        .section-tag {
+            display: inline-block;
+            background: var(--gold-pale);
+            color: var(--gold);
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 5px 16px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+            letter-spacing: 0.06em;
+        }
+        .section-title {
+            font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+            font-weight: 800;
+            color: var(--navy);
+            line-height: 1.3;
+        }
+        .section-title span { color: var(--gold); }
+        .section-desc {
+            color: var(--gray-text);
+            font-size: 1rem;
+            max-width: 600px;
+            margin: 12px auto 0;
+        }
+        .divider {
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(to right, var(--navy), var(--gold));
+            margin: 16px auto 0;
+            border-radius: 2px;
+        }
+
+        /* ==================== ABOUT / TWO PROGRAMS ==================== */
+        .programs-bg { background: var(--white); }
+        .programs-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+        }
+        .program-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+        .program-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-hover); }
+        .program-card-header {
+            padding: 28px 32px 20px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .program-card-header.intern { background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%); }
+        .program-card-header.ikusei { background: linear-gradient(135deg, #b85c00 0%, var(--gold) 100%); }
+        .program-icon {
+            width: 56px;
+            height: 56px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            flex-shrink: 0;
+        }
+        .program-card-title { color: var(--white); }
+        .program-card-title h3 { font-size: 1.25rem; font-weight: 800; }
+        .program-card-title p { font-size: 0.82rem; opacity: 0.85; margin-top: 2px; }
+        .program-card-body { padding: 28px 32px; }
+        .program-list { list-style: none; }
+        .program-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--gray-mid);
+            font-size: 0.93rem;
+            color: var(--gray-text);
+        }
+        .program-list li:last-child { border-bottom: none; }
+        .program-list li::before {
+            content: '✓';
+            color: var(--gold);
+            font-weight: 700;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        .program-note {
+            margin-top: 16px;
+            padding: 12px 16px;
+            background: var(--gold-pale);
+            border-left: 4px solid var(--gold);
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            font-size: 0.85rem;
+            color: var(--navy);
+        }
+
+        /* ==================== DIFFERENCE TABLE ==================== */
+        .diff-bg { background: var(--gray-light); }
+        .diff-table-wrap {
+            overflow-x: auto;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+        .diff-table {
+            width: 100%;
+            min-width: 700px;
+            border-collapse: collapse;
+            background: var(--white);
+        }
+        .diff-table th {
+            background: var(--navy);
+            color: var(--white);
+            padding: 16px 20px;
+            font-size: 0.92rem;
+            font-weight: 700;
+            text-align: center;
+        }
+        .diff-table th:first-child { text-align: left; }
+        .diff-table th.highlight { background: var(--gold); }
+        .diff-table td {
+            padding: 14px 20px;
+            font-size: 0.9rem;
+            color: var(--gray-text);
+            border-bottom: 1px solid var(--gray-mid);
+            text-align: center;
+        }
+        .diff-table td:first-child { text-align: left; font-weight: 600; color: var(--navy); }
+        .diff-table tr:last-child td { border-bottom: none; }
+        .diff-table tr:hover td { background: var(--gold-pale); }
+        .diff-table td.highlight { background: rgba(255,140,0,0.06); font-weight: 600; color: var(--navy); }
+        .badge-yes { color: #2a8a2a; font-weight: 700; }
+        .badge-no { color: #cc0000; }
+        .badge-part { color: #b85c00; }
+
+        /* ==================== 10 SUPPORT ITEMS ==================== */
+        .support-bg { background: var(--white); }
+        .support-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 24px;
+        }
+        .support-item {
+            background: var(--white);
+            border: 2px solid var(--gray-mid);
+            border-radius: var(--radius);
+            padding: 24px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        .support-item::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: linear-gradient(to right, var(--navy), var(--gold));
+        }
+        .support-item:hover {
+            border-color: var(--gold);
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-4px);
+        }
+        .support-num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background: var(--navy);
+            color: var(--white);
+            font-size: 0.9rem;
+            font-weight: 800;
+            border-radius: 50%;
+            margin-bottom: 12px;
+        }
+        .support-item h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 8px;
+        }
+        .support-item p {
+            font-size: 0.875rem;
+            color: var(--gray-text);
+            line-height: 1.6;
+        }
+
+        /* ==================== FLOW ==================== */
+        .flow-bg { background: var(--gray-light); }
+        .flow-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            max-width: 860px;
+            margin: 0 auto;
+        }
+        .flow-step {
+            display: grid;
+            grid-template-columns: 80px 1fr;
+            gap: 24px;
+            align-items: flex-start;
+            position: relative;
+        }
+        .flow-step:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 40px;
+            top: 72px;
+            width: 2px;
+            height: calc(100% - 32px);
+            background: linear-gradient(to bottom, var(--gold), var(--navy));
+        }
+        .flow-num-wrap {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 4px;
+        }
+        .flow-circle {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--navy), var(--navy-light));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.3rem;
+            font-weight: 900;
+            box-shadow: 0 4px 16px rgba(26,58,92,0.3);
+            flex-shrink: 0;
+            position: relative;
+            z-index: 1;
+        }
+        .flow-content {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 24px 28px;
+            margin-bottom: 32px;
+            box-shadow: var(--shadow);
+            border-left: 4px solid var(--gold);
+        }
+        .flow-content h4 {
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--navy);
+            margin-bottom: 8px;
+        }
+        .flow-content p {
+            font-size: 0.9rem;
+            color: var(--gray-text);
+            line-height: 1.65;
+        }
+        .flow-tag {
+            display: inline-block;
+            background: var(--gold-pale);
+            color: var(--gold);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 12px;
+            margin-bottom: 8px;
+        }
+
+        /* ==================== LANGUAGES ==================== */
+        .lang-bg { background: var(--navy); }
+        .lang-grid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .lang-card {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: var(--radius);
+            padding: 24px 32px;
+            text-align: center;
+            color: var(--white);
+            transition: var(--transition);
+            min-width: 140px;
+        }
+        .lang-card:hover {
+            background: var(--gold);
+            border-color: var(--gold);
+            transform: translateY(-4px);
+        }
+        .lang-flag { font-size: 2.4rem; margin-bottom: 8px; }
+        .lang-name { font-size: 1rem; font-weight: 700; }
+        .lang-sub { font-size: 0.78rem; opacity: 0.8; margin-top: 2px; }
+        .lang-bg .section-tag { background: rgba(255,140,0,0.2); color: var(--gold); }
+        .lang-bg .section-title { color: var(--white); }
+        .lang-bg .divider { background: linear-gradient(to right, var(--gold), rgba(255,255,255,0.5)); }
+
+        /* ==================== PRICING ==================== */
+        .price-bg { background: var(--white); }
+        .price-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 24px;
+        }
+        .price-card {
+            background: var(--white);
+            border: 2px solid var(--gray-mid);
+            border-radius: var(--radius);
+            padding: 28px 24px;
+            text-align: center;
+            transition: var(--transition);
+            position: relative;
+        }
+        .price-card.featured {
+            border-color: var(--gold);
+            box-shadow: 0 0 0 4px rgba(255,140,0,0.12);
+        }
+        .price-card:hover {
+            border-color: var(--gold);
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-4px);
+        }
+        .price-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--gold);
+            color: var(--white);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 4px 16px;
+            border-radius: 20px;
+            white-space: nowrap;
+        }
+        .price-icon { font-size: 2rem; margin-bottom: 12px; }
+        .price-card h4 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 12px;
+        }
+        .price-amount {
+            font-size: 1.6rem;
+            font-weight: 900;
+            color: var(--gold);
+            line-height: 1;
+        }
+        .price-unit {
+            font-size: 0.82rem;
+            color: var(--gray-text);
+            margin-top: 4px;
+        }
+        .price-note {
+            font-size: 0.8rem;
+            color: var(--gray-text);
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid var(--gray-mid);
+        }
+        .price-free {
+            font-size: 2rem;
+            font-weight: 900;
+            color: #2a8a2a;
+            line-height: 1;
+        }
+
+        /* ==================== REGIONS ==================== */
+        .region-bg { background: var(--gray-light); }
+        .region-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+        }
+        .region-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 32px;
+            box-shadow: var(--shadow);
+        }
+        .region-card h3 {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--navy);
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 3px solid var(--gold);
+        }
+        .region-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+        .region-list li {
+            font-size: 0.9rem;
+            color: var(--gray-text);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .region-list li::before {
+            content: '📍';
+            font-size: 0.8rem;
+        }
+
+        /* ==================== CTA ==================== */
+        .cta-section {
+            background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 60%, var(--navy-light) 100%);
+            padding: 80px 24px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(255,140,0,0.15) 0%, transparent 60%);
+        }
+        .cta-section h2 {
+            font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+            font-weight: 900;
+            color: var(--white);
+            margin-bottom: 16px;
+            position: relative;
+        }
+        .cta-section h2 span { color: var(--gold); }
+        .cta-section p {
+            color: rgba(255,255,255,0.8);
+            font-size: 1rem;
+            max-width: 540px;
+            margin: 0 auto 36px;
+            position: relative;
+        }
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            position: relative;
+        }
+        .btn-primary {
+            background: var(--gold);
+            color: var(--white);
+            padding: 16px 40px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 800;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-block;
+            box-shadow: 0 4px 20px rgba(255,140,0,0.4);
+        }
+        .btn-primary:hover {
+            background: var(--gold-light);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(255,140,0,0.5);
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--white);
+            padding: 16px 40px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 700;
+            border: 2px solid rgba(255,255,255,0.6);
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-block;
+        }
+        .btn-outline:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        /* ==================== FOOTER ==================== */
+        footer {
+            background: var(--navy-dark);
+            color: rgba(255,255,255,0.7);
+            padding: 48px 24px 24px;
+        }
+        .footer-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .footer-top {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .footer-brand .logo { font-size: 1.1rem; }
+        .footer-brand p {
+            margin-top: 12px;
+            font-size: 0.85rem;
+            line-height: 1.7;
+        }
+        .footer-col h4 {
+            color: var(--white);
+            font-size: 0.92rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+        .footer-col ul { list-style: none; }
+        .footer-col li {
+            margin-bottom: 8px;
+            font-size: 0.85rem;
+        }
+        .footer-col a {
+            color: rgba(255,255,255,0.65);
+            transition: var(--transition);
+        }
+        .footer-col a:hover { color: var(--gold); }
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.12);
+            padding-top: 20px;
+            text-align: center;
+            font-size: 0.82rem;
+        }
+
+        /* ==================== RESPONSIVE ==================== */
+        @media (max-width: 768px) {
+            .hamburger { display: flex; }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 68px;
+                left: 0; right: 0;
+                background: var(--navy-dark);
+                flex-direction: column;
+                padding: 16px;
+                gap: 4px;
+                box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+            }
+            .nav-links.open { display: flex; }
+            .nav-links a { padding: 12px 16px; }
+            header { position: relative; }
+
+            .programs-grid { grid-template-columns: 1fr; }
+            .region-grid { grid-template-columns: 1fr; }
+            .flow-step { grid-template-columns: 60px 1fr; gap: 16px; }
+            .flow-circle { width: 50px; height: 50px; font-size: 1.1rem; }
+            .flow-step:not(:last-child)::after { left: 30px; }
+            .footer-top { grid-template-columns: 1fr; gap: 24px; }
+            .hero-stats { gap: 24px; }
+            .support-grid { grid-template-columns: 1fr; }
+            .price-grid { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 480px) {
+            section { padding: 56px 16px; }
+            .price-grid { grid-template-columns: 1fr; }
+            .lang-grid { gap: 12px; }
+            .lang-card { padding: 18px 22px; min-width: 120px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ==================== HEADER ==================== -->
+<header>
+    <nav>
+        <div class="logo">Second<span>Penguin</span></div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="../index.html">ホーム</a></li>
+            <li><a href="construction.html">建設・土木</a></li>
+            <li><a href="union.html" class="active">組合サポート</a></li>
+            <li><a href="registration-support.html">登録支援機関</a></li>
+            <li><a href="../index.html#contact">お問い合わせ</a></li>
+        </ul>
+        <button class="hamburger" id="hamburger" aria-label="メニュー">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+</header>
+
+<!-- ==================== HERO ==================== -->
+<section class="hero">
+    <div class="container">
+        <div class="hero-badge">技能実習 ／ 育成就労</div>
+        <h1>外国人受入れを<em>組合がトータル支援</em><br>技能実習・育成就労の<em>専門組合</em></h1>
+        <p class="hero-sub">
+            関西・中国地方を拠点に、技能実習制度と新たな育成就労制度の両方に対応。
+            送り出し機関との連携から実習計画認定・在留資格申請まで、一貫サポートします。
+        </p>
+        <div class="hero-stats">
+            <div class="hero-stat">
+                <span class="num">2</span>
+                <span class="label">制度対応<br>（技能実習・育成就労）</span>
+            </div>
+            <div class="hero-stat">
+                <span class="num">5</span>
+                <span class="label">対応言語</span>
+            </div>
+            <div class="hero-stat">
+                <span class="num">2</span>
+                <span class="label">対応地域<br>（関西・中国地方）</span>
+            </div>
+            <div class="hero-stat">
+                <span class="num">無料</span>
+                <span class="label">初回相談</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== TWO PROGRAMS ==================== -->
+<section class="programs-bg">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-tag">2つの制度に対応</div>
+            <h2 class="section-title">技能実習 ＆ <span>育成就労</span>の違い</h2>
+            <div class="divider"></div>
+            <p class="section-desc">2027年度を目途に技能実習制度は廃止され、育成就労制度へ移行予定です。両制度を熟知した組合が、移行期もしっかり伴走します。</p>
+        </div>
+        <div class="programs-grid">
+            <!-- 技能実習 -->
+            <div class="program-card">
+                <div class="program-card-header intern">
+                    <div class="program-icon">🏭</div>
+                    <div class="program-card-title">
+                        <h3>技能実習制度</h3>
+                        <p>Ginou Jisshu Program</p>
+                    </div>
+                </div>
+                <div class="program-card-body">
+                    <ul class="program-list">
+                        <li>在留資格「技能実習1号・2号・3号」に対応</li>
+                        <li>実習計画の作成・認定申請サポート</li>
+                        <li>送り出し機関との適正な連携</li>
+                        <li>監理団体として実習先へ定期訪問・指導</li>
+                        <li>技能検定の受験サポート（2号・3号移行）</li>
+                        <li>帰国時の在留資格変更・抹消手続き</li>
+                    </ul>
+                    <div class="program-note">
+                        ⚠️ 2027年度廃止予定。現行実習生の育成就労制度への移行準備も支援します。
+                    </div>
+                </div>
+            </div>
+
+            <!-- 育成就労 -->
+            <div class="program-card">
+                <div class="program-card-header ikusei">
+                    <div class="program-icon">🌱</div>
+                    <div class="program-card-title">
+                        <h3>育成就労制度</h3>
+                        <p>Ikusei Shuro Program（新制度）</p>
+                    </div>
+                </div>
+                <div class="program-card-body">
+                    <ul class="program-list">
+                        <li>在留資格「育成就労」への対応（2027年〜）</li>
+                        <li>3年間の育成期間で特定技能1号水準を目指す</li>
+                        <li>本人の意向による転籍が可能（1年後〜）</li>
+                        <li>育成就労計画の作成・認定申請</li>
+                        <li>特定技能への移行支援（試験免除ルート活用）</li>
+                        <li>管理支援機関として定期面談・指導</li>
+                    </ul>
+                    <div class="program-note">
+                        ✅ 技能実習から育成就労へのスムーズな切り替えも、ワンストップでサポートします。
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== COMPARISON TABLE ==================== -->
+<section class="diff-bg">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-tag">比較表</div>
+            <h2 class="section-title">組合・登録支援機関・<span>自社管理の違い</span></h2>
+            <div class="divider"></div>
+            <p class="section-desc">どの受入れ形態があなたの企業に適しているか、わかりやすく比較しました。</p>
+        </div>
+        <div class="diff-table-wrap">
+            <table class="diff-table">
+                <thead>
+                    <tr>
+                        <th>比較項目</th>
+                        <th class="highlight">当組合（推奨）</th>
+                        <th>登録支援機関</th>
+                        <th>自社管理</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>対応制度</td>
+                        <td class="highlight">技能実習・育成就労</td>
+                        <td>特定技能のみ</td>
+                        <td>各制度で異なる</td>
+                    </tr>
+                    <tr>
+                        <td>監理・管理支援</td>
+                        <td class="highlight"><span class="badge-yes">◎ 組合が直接実施</span></td>
+                        <td><span class="badge-part">△ 登録支援機関が委託</span></td>
+                        <td><span class="badge-no">✕ 自社対応が必要</span></td>
+                    </tr>
+                    <tr>
+                        <td>在留資格申請サポート</td>
+                        <td class="highlight"><span class="badge-yes">◎ 行政書士と連携</span></td>
+                        <td><span class="badge-yes">○ 行政書士と連携</span></td>
+                        <td><span class="badge-no">✕ 自社または外注</span></td>
+                    </tr>
+                    <tr>
+                        <td>日本語教育</td>
+                        <td class="highlight"><span class="badge-yes">◎ 多言語でサポート</span></td>
+                        <td><span class="badge-yes">○ 紹介対応</span></td>
+                        <td><span class="badge-no">✕ 自社手配</span></td>
+                    </tr>
+                    <tr>
+                        <td>定期訪問・面談</td>
+                        <td class="highlight"><span class="badge-yes">◎ 3ヶ月ごと実施</span></td>
+                        <td><span class="badge-yes">○ 3ヶ月ごと実施</span></td>
+                        <td><span class="badge-no">✕ 実施義務あり・自社</span></td>
+                    </tr>
+                    <tr>
+                        <td>送り出し機関連携</td>
+                        <td class="highlight"><span class="badge-yes">◎ 複数国と提携済</span></td>
+                        <td><span class="badge-no">✕ 対象外</span></td>
+                        <td><span class="badge-no">✕ 個別交渉が必要</span></td>
+                    </tr>
+                    <tr>
+                        <td>育成就労→特定技能 移行支援</td>
+                        <td class="highlight"><span class="badge-yes">◎ 試験免除ルート対応</span></td>
+                        <td><span class="badge-part">△ 特定技能受入れ後から</span></td>
+                        <td><span class="badge-no">✕ 個別対応</span></td>
+                    </tr>
+                    <tr>
+                        <td>初期費用の目安</td>
+                        <td class="highlight">組合費 + サポート料</td>
+                        <td>月額支援料</td>
+                        <td>内部コスト大</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== MANDATORY SUPPORT ITEMS ==================== -->
+<section class="support-bg">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-tag">組合の主な業務</div>
+            <h2 class="section-title">監理・管理支援の<span>10の業務</span></h2>
+            <div class="divider"></div>
+            <p class="section-desc">技能実習・育成就労いずれにおいても、組合は法令に基づく以下の業務を確実に実施します。</p>
+        </div>
+        <div class="support-grid">
+            <div class="support-item">
+                <div class="support-num">1</div>
+                <h4>実習計画／育成就労計画の作成</h4>
+                <p>企業の業務内容・職種に応じた実習計画・育成就労計画を作成し、認定申請まで代行します。</p>
+            </div>
+            <div class="support-item">
+                <div class="support-num">2</div>
+                <h4>送り出し機関との連携</h4>
+                <p>ベトナム・インドネシア・フィリピン・ミャンマー等の信頼できる送り出し機関と提携。入国前の選考・手続きを支援します。</p>
+            </div>
+            <div class="support-item">
+                <div class="support-num">3</div>
+                <h4>在留資格申請（COE・更新・変更）</h4>
+                <p>連携する行政書士が、技能実習・育成就労の在留資格認定証明書交付、更新、特定技能への変更申請を行います。</p>
+            </div>
+            <div class="support-item">
+                <div class="support-num">4</div>
+                <h4>入国前・入国時オリエンテーション</h4>
+                <p>入国前に送り出し国で事前講習、入国時には日本のルール・文化・職場でのマナーを多言語でガイダンスします。</p>
+            </div>
+            <div class="support-item">
+                <div class="support-num">5</div>
+                <h4>住居・生活環境の整備支援</h4>
+                <p>宿舎の確保補助、銀行口座開設、公共料金手続きなど、生活立ち上げをスムーズにサポートします。</p>
+            </div>
+            <div class="support-item">
+                <div class="support-num">6</div>
+                <h4>日本語教育・技能向上支援</h4>
+                <p>日本語学習機会の提供・紹介に加え、技能検定（2号・3号移行）の受験手続き・準備をサポートします。</p>
+            </div>
+            <div class="support-item">
+                <div class="support-num">7</div>
+                <h4>定期訪問・実習状況の確認</h4>
+                <p>3ヶ月ごとに実習先を訪問し、実習・就労状況、労働環境、本人の相談を確認。法令遵守を監理します。</p>
+            </div>
+            <div class="support-item">
+                <div class="support-num">8</div>
+                <h4>相談・苦情対応（多言語）</h4>
+                <p>外国人本人・受入れ企業どちらからの相談・苦情も、母国語で対応できる体制を整えています。</p>
+            </div>
+            <div class="support-item">
+                <div class="support-num">9</div>
+                <h4>転籍・転職時のサポート</h4>
+                <p>育成就労における本人の意向転籍、技能実習での転籍（やむを得ない事情）に対し、適切に対応します。</p>
+            </div>
+            <div class="support-item">
+                <div class="support-num">10</div>
+                <h4>帰国・在留資格切替え手続き</h4>
+                <p>実習修了後の帰国手続きや、育成就労から特定技能1号への移行申請（試験免除ルート含む）をサポートします。</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== FLOW ==================== -->
+<section class="flow-bg">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-tag">受入れの流れ</div>
+            <h2 class="section-title">入組から入国まで<span>8ステップ</span></h2>
+            <div class="divider"></div>
+            <p class="section-desc">お申し込みから外国人が就労開始するまでの流れをわかりやすく説明します。</p>
+        </div>
+        <div class="flow-steps">
+            <div class="flow-step">
+                <div class="flow-num-wrap"><div class="flow-circle">1</div></div>
+                <div class="flow-content">
+                    <div class="flow-tag">STEP 1</div>
+                    <h4>無料相談・ヒアリング</h4>
+                    <p>受入れ希望の職種・人数・時期・体制をお聞きし、技能実習か育成就労かの最適な制度をご提案します。お電話・メール・訪問、どの形式でも対応可能です。</p>
+                </div>
+            </div>
+            <div class="flow-step">
+                <div class="flow-num-wrap"><div class="flow-circle">2</div></div>
+                <div class="flow-content">
+                    <div class="flow-tag">STEP 2</div>
+                    <h4>組合加入・受入れ企業認定</h4>
+                    <p>当組合への加入手続きを行い、受入れ企業としての要件確認・設備確認を実施します。住居の確保もこの段階で進めます。</p>
+                </div>
+            </div>
+            <div class="flow-step">
+                <div class="flow-num-wrap"><div class="flow-circle">3</div></div>
+                <div class="flow-content">
+                    <div class="flow-tag">STEP 3</div>
+                    <h4>実習計画／育成就労計画の作成・認定申請</h4>
+                    <p>職種・作業・指導体制をもとに計画を作成し、外国人技能実習機構（OTIT）または育成就労機構への認定申請を行います。行政書士が書類作成を担当します。</p>
+                </div>
+            </div>
+            <div class="flow-step">
+                <div class="flow-num-wrap"><div class="flow-circle">4</div></div>
+                <div class="flow-content">
+                    <div class="flow-tag">STEP 4</div>
+                    <h4>送り出し機関での選考・マッチング</h4>
+                    <p>連携する送り出し機関が現地で選考を実施。スキル・日本語レベル・人物確認の上、求職者をご紹介します。オンライン面接にも対応します。</p>
+                </div>
+            </div>
+            <div class="flow-step">
+                <div class="flow-num-wrap"><div class="flow-circle">5</div></div>
+                <div class="flow-content">
+                    <div class="flow-tag">STEP 5</div>
+                    <h4>在留資格認定証明書（COE）申請</h4>
+                    <p>採用決定後、連携行政書士が在留資格認定証明書の交付申請を入国管理局に行います。審査期間（約1〜3ヶ月）も組合がスケジュール管理します。</p>
+                </div>
+            </div>
+            <div class="flow-step">
+                <div class="flow-num-wrap"><div class="flow-circle">6</div></div>
+                <div class="flow-content">
+                    <div class="flow-tag">STEP 6</div>
+                    <h4>入国前講習・ビザ取得</h4>
+                    <p>送り出し国で入国前講習（日本語・生活ルール・職場マナー）を実施。COE交付後、現地で査証（ビザ）を取得して入国します。</p>
+                </div>
+            </div>
+            <div class="flow-step">
+                <div class="flow-num-wrap"><div class="flow-circle">7</div></div>
+                <div class="flow-content">
+                    <div class="flow-tag">STEP 7</div>
+                    <h4>入国・入国時オリエンテーション</h4>
+                    <p>空港での出迎えから住居への案内、銀行・役所手続き、日本のルール説明まで、入国直後のサポートを組合スタッフが多言語で行います。</p>
+                </div>
+            </div>
+            <div class="flow-step">
+                <div class="flow-num-wrap"><div class="flow-circle">8</div></div>
+                <div class="flow-content">
+                    <div class="flow-tag">STEP 8</div>
+                    <h4>就労開始・定期監理・継続支援</h4>
+                    <p>就労開始後も3ヶ月ごとの定期訪問・面談を実施。技能検定受験、在留資格更新、育成就労から特定技能への移行まで、継続的に伴走します。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== LANGUAGES ==================== -->
+<section class="lang-bg">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-tag">多言語対応</div>
+            <h2 class="section-title" style="color:var(--white);">5言語で<span>安心サポート</span></h2>
+            <div class="divider"></div>
+            <p class="section-desc" style="color:rgba(255,255,255,0.75);">外国人本人が母国語で相談・質問できる環境を整えています。言語の壁をなくすことが、定着率向上の第一歩です。</p>
+        </div>
+        <div class="lang-grid">
+            <div class="lang-card">
+                <div class="lang-flag">🇻🇳</div>
+                <div class="lang-name">ベトナム語</div>
+                <div class="lang-sub">Tiếng Việt</div>
+            </div>
+            <div class="lang-card">
+                <div class="lang-flag">🇮🇩</div>
+                <div class="lang-name">インドネシア語</div>
+                <div class="lang-sub">Bahasa Indonesia</div>
+            </div>
+            <div class="lang-card">
+                <div class="lang-flag">🇵🇭</div>
+                <div class="lang-name">フィリピン語</div>
+                <div class="lang-sub">Filipino</div>
+            </div>
+            <div class="lang-card">
+                <div class="lang-flag">🇲🇲</div>
+                <div class="lang-name">ミャンマー語</div>
+                <div class="lang-sub">မြန်မာဘာသာ</div>
+            </div>
+            <div class="lang-card">
+                <div class="lang-flag">🇨🇳</div>
+                <div class="lang-name">中国語</div>
+                <div class="lang-sub">中文</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== PRICING ==================== -->
+<section class="price-bg">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-tag">料金案内</div>
+            <h2 class="section-title">透明な<span>料金体系</span></h2>
+            <div class="divider"></div>
+            <p class="section-desc">組合費・サポート料はすべて事前にご説明します。隠れたコストは一切ありません。</p>
+        </div>
+        <div class="price-grid">
+            <div class="price-card">
+                <div class="price-icon">💬</div>
+                <h4>初回相談</h4>
+                <div class="price-free">無料</div>
+                <div class="price-unit">制度説明・ヒアリング</div>
+                <div class="price-note">訪問・オンライン・お電話どちらでも対応します</div>
+            </div>
+            <div class="price-card featured">
+                <div class="price-badge">最も選ばれています</div>
+                <div class="price-icon">📋</div>
+                <h4>計画作成・認定申請</h4>
+                <div class="price-amount">¥50,000〜</div>
+                <div class="price-unit">実習計画・育成就労計画1件あたり</div>
+                <div class="price-note">行政書士報酬含む。職種・複雑度により変動</div>
+            </div>
+            <div class="price-card">
+                <div class="price-icon">🏢</div>
+                <h4>月次監理・管理支援費</h4>
+                <div class="price-amount">¥5,000〜</div>
+                <div class="price-unit">1名あたり・月額</div>
+                <div class="price-note">定期訪問・相談対応・日本語支援を含む</div>
+            </div>
+            <div class="price-card">
+                <div class="price-icon">🔍</div>
+                <h4>定期訪問・監査</h4>
+                <div class="price-amount">¥20,000〜</div>
+                <div class="price-unit">1回あたり（3ヶ月ごと）</div>
+                <div class="price-note">遠方（関西・中国地方内）の場合は交通費別途</div>
+            </div>
+            <div class="price-card">
+                <div class="price-icon">📄</div>
+                <h4>在留資格認定（COE）申請</h4>
+                <div class="price-amount">¥40,000〜</div>
+                <div class="price-unit">1名あたり</div>
+                <div class="price-note">行政書士報酬含む</div>
+            </div>
+            <div class="price-card">
+                <div class="price-icon">🔄</div>
+                <h4>特定技能への移行申請</h4>
+                <div class="price-amount">¥60,000〜</div>
+                <div class="price-unit">在留資格変更1件あたり</div>
+                <div class="price-note">育成就労→特定技能1号の変更申請。試験免除ルート対応</div>
+            </div>
+        </div>
+        <p style="text-align:center; color:var(--gray-text); font-size:0.85rem; margin-top:24px;">
+            ※ 上記は目安金額です。正確なお見積もりは無料相談にてご提示します。組合加入費・組合費は別途ご案内します。
+        </p>
+    </div>
+</section>
+
+<!-- ==================== REGIONS ==================== -->
+<section class="region-bg">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-tag">対応エリア</div>
+            <h2 class="section-title">関西・中国地方を<span>地域密着でサポート</span></h2>
+            <div class="divider"></div>
+            <p class="section-desc">現地スタッフが直接訪問対応します。エリア外もご相談ください。</p>
+        </div>
+        <div class="region-grid">
+            <div class="region-card">
+                <h3>🏯 関西エリア</h3>
+                <ul class="region-list">
+                    <li>大阪府</li>
+                    <li>兵庫県</li>
+                    <li>京都府</li>
+                    <li>滋賀県</li>
+                    <li>奈良県</li>
+                    <li>和歌山県</li>
+                </ul>
+            </div>
+            <div class="region-card">
+                <h3>⛩️ 中国地方エリア</h3>
+                <ul class="region-list">
+                    <li>広島県</li>
+                    <li>岡山県</li>
+                    <li>山口県</li>
+                    <li>鳥取県</li>
+                    <li>島根県</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== CTA ==================== -->
+<section class="cta-section">
+    <div class="container">
+        <h2>技能実習・育成就労の<span>ご相談は無料です</span></h2>
+        <p>どの制度が最適か、費用はどのくらいかかるか、まずはお気軽にご相談ください。組合スタッフが丁寧にご説明します。</p>
+        <div class="cta-buttons">
+            <a href="mailto:info@second-penguin.com" class="btn-primary">📧 メールで無料相談する</a>
+            <a href="tel:0X0-XXXX-XXXX" class="btn-outline">📞 電話で問い合わせる</a>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== FOOTER ==================== -->
+<footer>
+    <div class="footer-inner">
+        <div class="footer-top">
+            <div class="footer-brand">
+                <div class="logo">Second<span style="color:var(--gold)">Penguin</span></div>
+                <p>関西・中国地方を拠点に、外国人労働者の受入れ・就労支援をトータルサポート。技能実習・育成就労・特定技能・建設業まで、ワンストップでご対応します。</p>
+            </div>
+            <div class="footer-col">
+                <h4>サービス</h4>
+                <ul>
+                    <li><a href="construction.html">建設・土木業支援</a></li>
+                    <li><a href="union.html">組合サポート</a></li>
+                    <li><a href="registration-support.html">登録支援機関（RSO）</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>お問い合わせ</h4>
+                <ul>
+                    <li>📧 info@second-penguin.com</li>
+                    <li>📞 0X0-XXXX-XXXX</li>
+                    <li>🕐 平日 9:00〜18:00</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 SecondPenguin. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<!-- ==================== JS ==================== -->
+<script>
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('open');
+    });
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => navLinks.classList.remove('open'));
+    });
+</script>
+</body>
+</html>
