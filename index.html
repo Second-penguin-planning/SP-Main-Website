@@ -173,11 +173,13 @@
 
         /* ===== SECTOR NAV ===== */
         /* ヘッダー直下・写真背景の上に乗せるバー */
-        .sector-nav-bar {
-            position: relative;
-            z-index: 10;
-            width: 100%;
-        }
+     .sector-nav-bar {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    display: block;
+    margin-bottom: -1px;  /* ← これを追加 */
+}
 
         /* 写真背景レイヤー */
         .sector-nav-bg {
