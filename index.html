@@ -631,30 +631,6 @@
             .line-text, .line-hover-text { font-size: 10px; }
         }
 
-        /* ===== LANG FIXED ===== */
-        .lang-fixed {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            display: flex;
-            gap: 6px;
-            background: white;
-            padding: 6px;
-            border-radius: 30px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            z-index: 3000;
-        }
-        .lang-fixed button {
-            font-size: 12px;
-            padding: 6px 10px;
-            border: 1px solid #005bac;
-            background: white;
-            color: #005bac;
-            border-radius: 20px;
-            cursor: pointer;
-        }
-        .lang-fixed button:hover { background: #005bac; color: white; }
-
         /* ===== MOBILE LANG ===== */
         .mobile-lang { display: none; }
         @media (max-width: 768px) {
@@ -1118,15 +1094,6 @@
         <span class="line-hover-text">今すぐ相談！</span>
     </div>
 </a>
-
-<!-- 言語切替固定ボタン -->
-<div class="lang-fixed">
-    <button onclick="translatePage('ja')">JP</button>
-    <button onclick="translatePage('en')">EN</button>
-    <button onclick="translatePage('id')">ID</button>
-    <button onclick="translatePage('tl')">TL</button>
-</div>
-
 
 <script>
 function toggleMenu() {
