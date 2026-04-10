@@ -47,7 +47,7 @@
 
         /* ===== HEADER ===== */
         header {
-            background: var(--white);
+            background: rgba(255,255,255,0.92);
             padding: 8px 3%;
             display: flex;
             justify-content: space-between;
@@ -56,6 +56,8 @@
             top: 0;
             z-index: 1000;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
         }
 
         .logo {
@@ -66,8 +68,16 @@
             font-size: 1.2rem;
             color: var(--main-blue);
             text-decoration: none;
+            min-width: 0;
+            max-width: 70%;
         }
-        .logo img { height: 40px; width: auto; }
+        .logo img { height: 40px; width: auto; flex-shrink: 0; }
+        .logo span {
+            display: block;
+            line-height: 1.3;
+            word-break: break-word;
+            overflow-wrap: anywhere;
+        }
 
         nav a {
             text-decoration: none;
@@ -117,6 +127,7 @@
             height: 21px;
             cursor: pointer;
             z-index: 1100;
+            flex-shrink: 0;
         }
         .menu-toggle span {
             display: block;
@@ -132,6 +143,27 @@
 
         @media (max-width: 768px) {
             .menu-toggle { display: flex; }
+
+            header {
+                padding: 8px 12px;
+                gap: 10px;
+            }
+
+            .logo {
+                max-width: calc(100% - 50px);
+                font-size: 0.95rem;
+                gap: 8px;
+            }
+
+            .logo img {
+                height: 34px;
+            }
+
+            .logo span {
+                font-size: 0.82rem;
+                line-height: 1.25;
+            }
+
             nav {
                 position: fixed;
                 top: 0;
@@ -153,7 +185,6 @@
             }
             nav.active { right: 0; }
             nav a { margin: 20px 0; font-size: 1.3rem; }
-            /* モバイルではヘッダーのlang-switchを非表示 */
             .lang-switch { display: none; }
         }
 
@@ -176,12 +207,10 @@
             margin-bottom: 0;
         }
 
-        /* 写真背景レイヤーは非表示 */
         .sector-nav-bg {
             display: none;
         }
 
-        /* ボタン帯 */
         .sector-nav {
             position: relative;
             z-index: 2;
@@ -232,12 +261,12 @@
         .hero {
             position: relative;
             background: url("https://images.unsplash.com/photo-1454165804606-c3d57bc86b40") center/cover no-repeat;
-            padding: 20px 10% 50px;
+            padding: 32px 10% 40px;
             color: #fff;
             min-height: 70vh;
             display: flex;
             flex-direction: column;
-            justify-content: flex-start;
+            justify-content: center;
             align-items: center;
             text-align: center;
             margin-top: 0;
@@ -247,21 +276,36 @@
             position: absolute;
             top: 0; left: 0;
             width: 100%; height: 100%;
-            background: rgba(120, 140, 160, 0.35);
+            background: linear-gradient(to bottom, rgba(70, 90, 110, 0.45), rgba(70, 90, 110, 0.4));
             z-index: 0;
         }
         .hero > * { position: relative; z-index: 1; }
-        .hero-status { margin-bottom: 10px; font-size: 1.5rem; }
+        .hero-status {
+            margin-bottom: 12px;
+            font-size: 1.25rem;
+        }
         .hero h1 {
             color: #ffffff;
-            font-size: 1.7rem;
-            line-height: 1.4;
+            font-size: clamp(1.6rem, 3vw, 2.4rem);
+            line-height: 1.45;
             text-shadow: 0 4px 15px rgba(0,0,0,0.7);
         }
-        .hero-subtext { color: #eaeaea; }
+        .hero-subtext {
+            color: #f3f3f3;
+            margin-top: 14px;
+            font-size: 1rem;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.45);
+        }
         .hero-main-copy {
             max-width: 900px;
-            margin: 0 auto 20px;
+            margin: 0 auto;
+        }
+
+        /* ===== HERO LINKS ===== */
+        .hero-links {
+            background: var(--sky-blue);
+            padding: 32px 10% 24px;
+            margin: 0;
         }
 
         /* ===== PILLAR GRID ===== */
@@ -619,16 +663,75 @@
         .line-fixed-btn:hover .line-hover-text { display: block; }
 
         @media (max-width: 768px) {
-            .hero h1 { font-size: 1.4rem; }
+            .hero {
+                min-height: auto;
+                padding: 24px 16px 28px;
+            }
+
+            .hero-status {
+                font-size: 1rem;
+                margin-bottom: 10px;
+            }
+
+            .hero h1 {
+                font-size: 1.3rem;
+                line-height: 1.5;
+            }
+
+            .hero-subtext {
+                font-size: 0.92rem;
+            }
+
+            .hero-links {
+                padding: 20px 16px 12px;
+            }
+
+            .pillar-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .pillar-body {
+                padding: 16px;
+            }
+
+            .pillar-body h3 {
+                font-size: 1rem;
+            }
+
+            .pillar-body p {
+                font-size: 0.84rem;
+            }
+
             .line-fixed-btn {
-                top: 120px;
+                top: auto;
+                bottom: 16px;
                 right: 12px;
-                width: 80px;
-                height: 50px;
-                border-radius: 25px;
+                width: 88px;
+                height: 52px;
+                border-radius: 26px;
             }
             .line-inner img { width: 26px; height: 26px; }
             .line-text, .line-hover-text { font-size: 10px; }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.15rem;
+            }
+
+            .hero-status {
+                font-size: 0.9rem;
+            }
+
+            .marker {
+                display: inline;
+                line-height: 1.8;
+            }
+
+            .logo span {
+                font-size: 0.76rem;
+            }
         }
 
         /* ===== MOBILE LANG ===== */
@@ -700,18 +803,18 @@
 <div class="sector-nav-bar" id="top">
     <div class="sector-nav-bg"></div>
     <nav class="sector-nav">
-        <a href="sectors/transport.html"              class="sector-btn">自動車運送業 <span class="arrow">→</span></a>
-        <a href="sectors/auto-repair.html"            class="sector-btn">自動車整備 <span class="arrow">→</span></a>
-        <a href="sectors/construction.html"           class="sector-btn">建設 <span class="arrow">→</span></a>
-        <a href="sectors/care.html"                   class="sector-btn">介護 <span class="arrow">→</span></a>
-        <a href="sectors/accommodation.html"          class="sector-btn">宿泊 <span class="arrow">→</span></a>
-        <a href="sectors/building-cleaning.html"      class="sector-btn">ビルクリーニング <span class="arrow">→</span></a>
-        <a href="sectors/food.html"                   class="sector-btn">外食業 <span class="arrow">→</span></a>
-        <a href="sectors/food-manufacturing.html"     class="sector-btn">飲食料品製造業 <span class="arrow">→</span></a>
-        <a href="sectors/industrial-machinery.html"   class="sector-btn">工業製品製造業 <span class="arrow">→</span></a>
-        <a href="sectors/registration-support.html"   class="sector-btn">登録支援機関 <span class="arrow">→</span></a>
-        <a href="sectors/union.html"                  class="sector-btn">組合 <span class="arrow">→</span></a>
-        <a href="sectors/language-school.html"        class="sector-btn">日本語学校/専門学校 <span class="arrow">→</span></a>
+        <a href="sectors/transport.html" class="sector-btn">自動車運送業 <span class="arrow">→</span></a>
+        <a href="sectors/auto-repair.html" class="sector-btn">自動車整備 <span class="arrow">→</span></a>
+        <a href="sectors/construction.html" class="sector-btn">建設 <span class="arrow">→</span></a>
+        <a href="sectors/care.html" class="sector-btn">介護 <span class="arrow">→</span></a>
+        <a href="sectors/accommodation.html" class="sector-btn">宿泊 <span class="arrow">→</span></a>
+        <a href="sectors/building-cleaning.html" class="sector-btn">ビルクリーニング <span class="arrow">→</span></a>
+        <a href="sectors/food.html" class="sector-btn">外食業 <span class="arrow">→</span></a>
+        <a href="sectors/food-manufacturing.html" class="sector-btn">飲食料品製造業 <span class="arrow">→</span></a>
+        <a href="sectors/industrial-machinery.html" class="sector-btn">工業製品製造業 <span class="arrow">→</span></a>
+        <a href="sectors/registration-support.html" class="sector-btn">登録支援機関 <span class="arrow">→</span></a>
+        <a href="sectors/union.html" class="sector-btn">組合 <span class="arrow">→</span></a>
+        <a href="sectors/language-school.html" class="sector-btn">日本語学校/専門学校 <span class="arrow">→</span></a>
     </nav>
 </div>
 
@@ -725,7 +828,10 @@
         <h1>フィリピン・インドネシアなどの優れた人材を雇用、共に成長する<br>そのすべてを、プロの伴走で「成功」へ。</h1>
         <p class="hero-subtext">実務と現場の経験を活かし、皆様の「挑戦」を一気通貫で支援します。</p>
     </div>
+</section>
 
+<!-- ===== HERO LINKS ===== -->
+<section class="hero-links">
     <div class="pillar-grid">
         <a href="#employment-detail" class="pillar-card p-employment">
             <div class="pillar-header"><span>FOR CORPORATE</span><span>🤝</span></div>
@@ -1069,8 +1175,8 @@
                 <input type="email" id="email" name="email" placeholder="example@company.com" required>
             </div>
             <div class="form-group">
-                <label for="message">お問い合わせ内容 <span class="required-badge">必須</span></label>
-                <textarea id="message" name="message" rows="6" placeholder="お気軽にご相談ください..." required></textarea>
+                <label for="inquiry-message">お問い合わせ内容 <span class="required-badge">必須</span></label>
+                <textarea id="inquiry-message" name="message" rows="6" placeholder="お気軽にご相談ください..." required></textarea>
             </div>
             <button type="submit" class="btn" style="width:100%; padding:15px; font-size:1.1rem;">
                 送信する
