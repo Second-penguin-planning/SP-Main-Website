@@ -1,16 +1,10 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<!-- ファビコン（ブラウザタブ） -->
 <link rel="icon" type="image/png" sizes="32x32" href="./images/penguin_logo_192.png">
-
-<!-- スマホホーム画面（iPhone） -->
 <link rel="apple-touch-icon" sizes="192x192" href="./images/penguin_logo_192.png">
-
-<!-- Android / PWA用 -->
 <link rel="icon" type="image/png" sizes="192x192" href="./images/penguin_logo_192.png">
 <link rel="icon" type="image/png" sizes="512x512" href="./images/penguin_logo_512.png">
-
 <meta name="theme-color" content="#005bac">
 <link rel="manifest" href="manifest.json">
     <meta charset="UTF-8">
@@ -88,7 +82,7 @@
         .lang-switch {
             display: flex;
             gap: 6px;
-            margin-left: auto;
+            margin-left: 15px;
         }
         .lang-switch button {
             font-size: 0.7rem;
@@ -159,6 +153,7 @@
             }
             nav.active { right: 0; }
             nav a { margin: 20px 0; font-size: 1.3rem; }
+            /* モバイルではヘッダーのlang-switchを非表示 */
             .lang-switch { display: none; }
         }
 
@@ -172,47 +167,46 @@
         }
 
         /* ===== SECTOR NAV ===== */
-        /* ヘッダー直下・写真背景の上に乗せるバー */
-   .sector-nav-bar {
-    position: relative;
-    z-index: 10;
-    width: 100%;
-    display: block;
-    background: #e0f4ff;   /* ← 水色背景を追加 */
-    margin-bottom: 0;       /* ← -1px → 0 */
-}
+        .sector-nav-bar {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            display: block;
+            background: #e0f4ff;
+            margin-bottom: 0;
+        }
 
-        /* 写真背景レイヤー */
-.sector-nav-bg {
-    display: none;   /* ← 写真背景を完全に非表示 */
-}
+        /* 写真背景レイヤーは非表示 */
+        .sector-nav-bg {
+            display: none;
+        }
 
-        /* ボタンが乗る半透明黒帯 */
- .sector-nav {
-    position: relative;
-    z-index: 2;
-    background: #e0f4ff;   /* ← 水色に変更 */
-    backdrop-filter: none;
-    padding: 8px 16px;      /* ← 上下余白を少し縮小 */
-    display: flex;
-    flex-wrap: wrap;
-    gap: 4px;               /* ← 6px → 4px に詰める */
-    justify-content: center;
-    width: 100%;
-}
+        /* ボタン帯 */
+        .sector-nav {
+            position: relative;
+            z-index: 2;
+            background: #e0f4ff;
+            backdrop-filter: none;
+            padding: 8px 16px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            justify-content: center;
+            width: 100%;
+        }
 
         .sector-btn {
             display: inline-flex;
             align-items: center;
             gap: 4px;
             padding: 5px 13px;
-             background: #fff;
-             color: #133a5a; 
+            background: #fff;
+            color: #133a5a;
             text-decoration: none;
             font-size: 0.75rem;
             font-weight: 600;
             border: 1px solid rgba(0,0,0,0.08);
-            border-radius: 999px;  
+            border-radius: 999px;
             transition: all 0.25s ease;
             white-space: nowrap;
             letter-spacing: 0.03em;
@@ -235,19 +229,19 @@
         }
 
         /* ===== HERO ===== */
-.hero {
-    position: relative;
-    background: url("https://images.unsplash.com/photo-1454165804606-c3d57bc86b40") center/cover no-repeat;
-    padding: 20px 10% 50px;   /* ← そのまま（sector-navがぴったりつくのでOK） */
-    color: #fff;
-    min-height: 70vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    text-align: center;
-    margin-top: 0;    
-
+        .hero {
+            position: relative;
+            background: url("https://images.unsplash.com/photo-1454165804606-c3d57bc86b40") center/cover no-repeat;
+            padding: 20px 10% 50px;
+            color: #fff;
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            text-align: center;
+            margin-top: 0;
+        }
         .hero::before {
             content: "";
             position: absolute;
@@ -265,7 +259,6 @@
             text-shadow: 0 4px 15px rgba(0,0,0,0.7);
         }
         .hero-subtext { color: #eaeaea; }
-
         .hero-main-copy {
             max-width: 900px;
             margin: 0 auto 20px;
@@ -727,32 +720,28 @@
 </header>
 
 
-<!-- ===== SECTOR NAV BAR（ヘッダー直下・写真背景） ===== -->
+<!-- ===== SECTOR NAV BAR ===== -->
 <div class="sector-nav-bar" id="top">
-    <!-- 写真背景（ボタン帯の後ろに薄く見せる装飾） -->
     <div class="sector-nav-bg"></div>
-
-    <!-- ボタン帯（現在の半透明黒） -->
     <nav class="sector-nav">
         <a href="sectors/transport.html"              class="sector-btn">運送業 <span class="arrow">→</span></a>
-        <a href="sectors/auto-repair.html"              class="sector-btn">自動車運送業 <span class="arrow">→</span></a>
+        <a href="sectors/auto-repair.html"            class="sector-btn">自動車運送業 <span class="arrow">→</span></a>
         <a href="sectors/construction.html"           class="sector-btn">建設 <span class="arrow">→</span></a>
         <a href="sectors/care.html"                   class="sector-btn">介護 <span class="arrow">→</span></a>
         <a href="sectors/accommodation.html"          class="sector-btn">宿泊 <span class="arrow">→</span></a>
         <a href="sectors/building-cleaning.html"      class="sector-btn">ビルクリーニング <span class="arrow">→</span></a>
-        <a href="sectors/food.html"         　　　　　 class="sector-btn">外食業 <span class="arrow">→</span></a>
+        <a href="sectors/food.html"                   class="sector-btn">外食業 <span class="arrow">→</span></a>
         <a href="sectors/food-manufacturing.html"     class="sector-btn">飲食料品製造業 <span class="arrow">→</span></a>
-        <a href="sectors/industrial-machinery.html" class="sector-btn">工業製品製造業 <span class="arrow">→</span></a>
+        <a href="sectors/industrial-machinery.html"   class="sector-btn">工業製品製造業 <span class="arrow">→</span></a>
         <a href="sectors/registration-support.html"   class="sector-btn">登録支援機関 <span class="arrow">→</span></a>
         <a href="sectors/union.html"                  class="sector-btn">組合 <span class="arrow">→</span></a>
         <a href="sectors/language-school.html"        class="sector-btn">日本語学校/専門学校 <span class="arrow">→</span></a>
-         </nav>
+    </nav>
 </div>
 
 
 <!-- ===== HERO ===== -->
 <section class="hero">
-
     <div class="hero-main-copy">
         <div class="hero-status">
             <span class="marker">建設業、自動車運送業、自動車整備、宿泊、介護、その他分野で求人を行う企業様</span>
