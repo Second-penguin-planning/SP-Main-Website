@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<link rel="icon" type="image/png" sizes="32x32" href="../images/penguin_logo_192.png">
+<link rel="apple-touch-icon" sizes="192x192" href="../images/penguin_logo_192.png">
+<meta name="theme-color" content="#005bac">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ビルクリーニング業 | セコンドペンギン企画</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --main-blue: #005bac;
+        --accent-green: #006400;
+        --sky-blue: #e0f4ff;
+        --text-color: #333;
+        --white: #ffffff;
+        --accent-orange: #ff8c00;
+        --sector-color: #1a5c3a;   /* ビルクリーニングテーマカラー */
+        --sector-light: #e8f5ee;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+        font-family: 'Noto Sans JP', sans-serif;
+        line-height: 1.8;
+        color: var(--text-color);
+        background-color: var(--sky-blue);
+        overflow-x: hidden;
+    }
+
+    /* ===== HEADER ===== */
+    header {
+        background: var(--white);
+        padding: 8px 3%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: bold;
+        font-size: 1.1rem;
+        color: var(--main-blue);
+        text-decoration: none;
+    }
+    .logo img { height: 38px; width: auto; }
+
+    .header-right {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+    .back-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 7px 16px;
+        background: var(--sector-color);
+        color: white;
+        text-decoration: none;
+        border-radius: 20px;
+        font-size: 0.82rem;
+        font-weight: bold;
+        transition: 0.3s;
+    }
+    .back-btn:hover { background: var(--main-blue); transform: translateX(-3px); }
+
+    /* ===== SECTOR NAV ===== */
+    .sector-nav-bar {
+        background: var(--sector-color);
+        padding: 10px 16px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        justify-content: center;
+    }
+    .sector-nav-bar a {
+        display: inline-flex;
+        align-items: center;
+        gap: 3px;
+        padding: 4px 12px;
+        background: rgba(255,255,255,0.15);
+        color: #fff;
+        text-decoration: none;
+        font-size: 0.72rem;
+        font-weight: 600;
+        border: 1px solid rgba(255,255,255,0.3);
+        border-radius: 16px;
+        transition: all 0.2s ease;
+        white-space: nowrap;
+    }
+    .sector-nav-bar a:hover,
+    .sector-nav-bar a.active {
+        background: rgba(255,255,255,0.9);
+        color: var(--sector-color);
+        border-color: transparent;
+    }
+    @media (max-width: 600px) {
+        .sector-nav-bar a { font-size: 0.65rem; padding: 3px 9px; }
+    }
+
+    /* ===== HERO ===== */
+    .page-hero {
+        position: relative;
+        background: url("https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1400") center/cover no-repeat;
+        padding: 80px 10% 60px;
+        color: #fff;
+        text-align: center;
+        min-height: 380px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .page-hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(10, 40, 20, 0.65);
+        z-index: 0;
+    }
+    .page-hero > * { position: relative; z-index: 1; }
+    .page-hero .sector-badge {
+        display: inline-block;
+        background: rgba(255,255,255,0.2);
+        border: 1px solid rgba(255,255,255,0.5);
+        padding: 4px 18px;
+        border-radius: 20px;
+        font-size: 0.82rem;
+        margin-bottom: 16px;
+        letter-spacing: 0.1em;
+    }
+    .page-hero h1 {
+        font-size: clamp(1.8rem, 4vw, 2.8rem);
+        line-height: 1.35;
+        text-shadow: 0 3px 15px rgba(0,0,0,0.6);
+        margin-bottom: 16px;
+    }
+    .page-hero p {
+        font-size: 1rem;
+        color: #dde8f5;
+        max-width: 640px;
+    }
+
+    /* ===== 共通 ===== */
+    .section {
+        padding: 70px 10%;
+        background: var(--white);
+        margin: 20px 0;
+    }
+    .section-gray { background: var(--sky-blue); }
+    .section-accent { background: var(--sector-light); }
+
+    h2 {
+        text-align: center;
+        color: var(--sector-color);
+        font-size: 1.7rem;
+        margin-bottom: 40px;
+        position: relative;
+        padding-bottom: 12px;
+    }
+    h2::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 50px;
+        height: 3px;
+        background: var(--accent-orange);
+        border-radius: 2px;
+    }
+    h3 { color: var(--sector-color); margin-bottom: 10px; }
+
+    .lead-text {
+        text-align: center;
+        color: #555;
+        font-size: 0.97rem;
+        margin-top: -28px;
+        margin-bottom: 44px;
+        line-height: 1.9;
+    }
+
+    /* ===== INTRO CARDS ===== */
+    .intro-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 24px;
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+    .intro-card {
+        background: var(--sector-light);
+        border-radius: 14px;
+        padding: 28px 24px;
+        border-left: 5px solid var(--sector-color);
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .intro-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+    .intro-card .icon { font-size: 2rem; margin-bottom: 12px; display: block; }
+    .intro-card h3 { font-size: 1rem; margin-bottom: 8px; }
+    .intro-card p { font-size: 0.88rem; color: #555; line-height: 1.75; }
+
+    /* ===== 業務区分テーブル ===== */
+    .job-table-wrap { overflow-x: auto; margin-top: 10px; }
+    .job-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.9rem;
+        min-width: 560px;
+    }
+    .job-table th {
+        background: var(--sector-color);
+        color: white;
+        padding: 12px 16px;
+        text-align: left;
+        font-weight: 600;
+    }
+    .job-table td {
+        padding: 12px 16px;
+        border-bottom: 1px solid #dde8f5;
+        vertical-align: top;
+    }
+    .job-table tr:nth-child(even) td { background: #f2f9f5; }
+    .job-table tr:hover td { background: #e0f0e8; }
+    .tag {
+        display: inline-block;
+        padding: 2px 10px;
+        border-radius: 12px;
+        font-size: 0.72rem;
+        font-weight: bold;
+        margin: 2px 2px 2px 0;
+    }
+    .tag-blue { background: #d0e8ff; color: #003a70; }
+    .tag-green { background: #d4f0dd; color: #1a6b33; }
+    .tag-orange { background: #ffe8cc; color: #8a4500; }
+
+    /* ===== FLOW ===== */
+    .flow-list { max-width: 800px; margin: 0 auto; }
+    .flow-item {
+        display: flex;
+        gap: 20px;
+        align-items: flex-start;
+        margin-bottom: 28px;
+        position: relative;
+    }
+    .flow-item:not(:last-child)::after {
+        content: '';
+        position: absolute;
+        left: 22px;
+        top: 50px;
+        bottom: -10px;
+        width: 2px;
+        background: linear-gradient(to bottom, var(--sector-color), transparent);
+    }
+    .flow-num {
+        flex-shrink: 0;
+        width: 46px;
+        height: 46px;
+        background: var(--sector-color);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1rem;
+        font-weight: bold;
+        box-shadow: 0 4px 12px rgba(26,92,58,0.3);
+    }
+    .flow-body h3 { font-size: 1rem; margin-bottom: 4px; }
+    .flow-body p { font-size: 0.87rem; color: #555; line-height: 1.7; }
+
+    /* ===== PRICE ===== */
+    .price-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 20px;
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+    .price-card {
+        background: white;
+        border-radius: 14px;
+        padding: 28px 22px;
+        box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+        text-align: center;
+        border-top: 4px solid var(--sector-color);
+        transition: transform 0.3s;
+    }
+    .price-card:hover { transform: translateY(-5px); }
+    .price-card .price-icon { font-size: 2.2rem; margin-bottom: 12px; display: block; }
+    .price-card h3 { font-size: 0.95rem; margin-bottom: 10px; color: var(--sector-color); }
+    .price-card .price-amount {
+        font-size: 1.4rem;
+        font-weight: bold;
+        color: var(--accent-orange);
+        margin-bottom: 10px;
+    }
+    .price-card p { font-size: 0.82rem; color: #666; line-height: 1.7; }
+    .price-note {
+        text-align: center;
+        font-size: 0.82rem;
+        color: #888;
+        margin-top: 20px;
+    }
+
+    /* ===== FAQ ===== */
+    .faq-list { max-width: 800px; margin: 0 auto; }
+    .faq-item {
+        background: white;
+        border-radius: 12px;
+        margin-bottom: 14px;
+        overflow: hidden;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    }
+    .faq-q {
+        padding: 18px 22px;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        cursor: pointer;
+        font-weight: bold;
+        font-size: 0.95rem;
+        color: var(--sector-color);
+        user-select: none;
+        transition: background 0.2s;
+    }
+    .faq-q:hover { background: var(--sector-light); }
+    .faq-q .q-mark {
+        flex-shrink: 0;
+        width: 32px;
+        height: 32px;
+        background: var(--sector-color);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.9rem;
+        font-weight: bold;
+    }
+    .faq-q .faq-arrow {
+        margin-left: auto;
+        transition: transform 0.3s;
+        font-size: 0.9rem;
+        color: #999;
+    }
+    .faq-item.open .faq-arrow { transform: rotate(180deg); }
+    .faq-a {
+        display: none;
+        padding: 0 22px 18px 68px;
+        font-size: 0.9rem;
+        color: #555;
+        line-height: 1.8;
+        border-top: 1px solid #edf2f8;
+    }
+    .faq-item.open .faq-a { display: block; }
+
+    /* ===== CTA ===== */
+    .cta-section {
+        background: linear-gradient(135deg, var(--sector-color) 0%, #2a7a50 100%);
+        padding: 70px 10%;
+        text-align: center;
+        color: white;
+    }
+    .cta-section h2 {
+        color: white;
+        font-size: 1.6rem;
+        margin-bottom: 12px;
+    }
+    .cta-section h2::after { background: rgba(255,255,255,0.5); }
+    .cta-section p { color: #c8f0d8; margin-bottom: 32px; font-size: 0.97rem; }
+    .cta-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .btn-white {
+        display: inline-block;
+        padding: 14px 32px;
+        background: white;
+        color: var(--sector-color);
+        text-decoration: none;
+        border-radius: 50px;
+        font-weight: bold;
+        font-size: 1rem;
+        transition: 0.3s;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+    }
+    .btn-white:hover { transform: scale(1.05); box-shadow: 0 10px 24px rgba(0,0,0,0.3); }
+    .btn-line {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 14px 28px;
+        background: #06c755;
+        color: white;
+        text-decoration: none;
+        border-radius: 50px;
+        font-weight: bold;
+        font-size: 1rem;
+        transition: 0.3s;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+    }
+    .btn-line:hover { background: #05a647; transform: scale(1.05); }
+    .btn-line img { width: 22px; height: 22px; }
+
+    /* ===== LINE固定 ===== */
+    .line-fixed-btn {
+        position: fixed;
+        top: 90px;
+        right: 20px;
+        width: 120px;
+        height: 60px;
+        background: #06C755;
+        border-radius: 30px;
+        border: 3px solid white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+        z-index: 9999;
+        transition: 0.3s;
+        text-decoration: none;
+    }
+    .line-fixed-btn:hover { transform: scale(1.1); }
+    .line-inner {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 11px;
+        font-weight: bold;
+        color: white;
+    }
+    .line-inner img { width: 28px; height: 28px; }
+    @media (max-width: 768px) {
+        .page-hero { min-height: 280px; padding: 60px 6% 40px; }
+        .section { padding: 50px 6%; }
+        .line-fixed-btn { top: 120px; right: 12px; width: 80px; height: 50px; border-radius: 25px; }
+        .line-inner img { width: 26px; height: 26px; }
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+        background: #333;
+        color: white;
+        text-align: center;
+        padding: 30px;
+    }
+    footer a { color: #fff; text-decoration: underline; }
+
+    /* ===== FADE IN ===== */
+    .fade-in {
+        opacity: 0;
+        transform: translateY(28px);
+        transition: opacity 0.75s ease-out, transform 0.75s ease-out;
+    }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header>
+    <a href="../index.html" class="logo">
+        <img src="../images/penguin_logo_192.png" alt="セコンドペンギン企画ロゴ">
+        <span>セコンドペンギン企画</span>
+    </a>
+    <div class="header-right">
+        <a href="../index.html#contact" class="back-btn">📩 無料相談</a>
+        <a href="../index.html" class="back-btn">← TOPへ戻る</a>
+    </div>
+</header>
+
+<!-- ===== 他業種ナビ ===== -->
+<nav class="sector-nav-bar">
+    <a href="transport.html">自動車運送業 <span class="arrow">→</span></a>
+    <a href="auto-repair.html">自動車整備業 <span class="arrow">→</span></a>
+    <a href="construction.html">建設 <span class="arrow">→</span></a>
+    <a href="care.html">介護 <span class="arrow">→</span></a>
+    <a href="accommodation.html">宿泊 <span class="arrow">→</span></a>
+    <a href="building-cleaning.html" class="active">ビルクリーニング <span class="arrow">→</span></a>
+    <a href="food.html">外食業 <span class="arrow">→</span></a>
+    <a href="food-manufacturing.html">飲食料品製造業 <span class="arrow">→</span></a>
+    <a href="industrial-manufacturing.html">工業製品製造業 <span class="arrow">→</span></a>
+    <a href="registration-support.html">登録支援機関 <span class="arrow">→</span></a>
+    <a href="union.html">組合 <span class="arrow">→</span></a>
+    <a href="language-school.html">日本語学校/専門学校 <span class="arrow">→</span></a>
+</nav>
+
+<!-- ===== HERO ===== -->
+<div class="page-hero">
+    <span class="sector-badge">🧹 特定技能 対応分野</span>
+    <h1>ビルクリーニング業における<br>外国人材の採用・定着支援</h1>
+    <p>慢性的な人手不足が続くビルクリーニング業界へ、<br>専門知識と現場経験に基づいた確かなサポートをお届けします。</p>
+</div>
+
+
+<!-- ===== INTRO ===== -->
+<section class="section fade-in">
+    <h2>ビルクリーニング業で外国人を雇用する理由</h2>
+    <p class="lead-text">
+        ビルクリーニング業は高齢化・人手不足・夜間作業の敬遠が重なる深刻な担い手不足の分野です。<br>
+        特定技能制度を活用することで、清掃技術を持つ意欲ある海外人材が即戦力として活躍できます。
+    </p>
+    <div class="intro-grid">
+        <div class="intro-card">
+            <span class="icon">📉</span>
+            <h3>慢性的な人手不足</h3>
+            <p>清掃スタッフの高齢化と若年層の離職が深刻で、オフィスビル・商業施設・医療機関などで人材確保が困難な状態が続いています。外国人材の活用は業界存続に直結する課題です。</p>
+        </div>
+        <div class="intro-card">
+            <span class="icon">🧽</span>
+            <h3>専門技術を持つ即戦力</h3>
+            <p>特定技能「ビルクリーニング」は、フロアポリッシャーや高所ガラス清掃など専門的な清掃技術を持つ人材が対象。試験合格者は現場で即戦力として活躍できます。</p>
+        </div>
+        <div class="intro-card">
+            <span class="icon">📋</span>
+            <h3>手続きをプロが一括サポート</h3>
+            <p>ビルクリーニング業特有の技能評価試験・日本語要件・在留資格申請など複雑な手続きを、経験豊富なスタッフがワンストップで対応します。</p>
+        </div>
+    </div>
+</section>
+
+
+<!-- ===== 業務区分 ===== -->
+<section class="section section-accent fade-in">
+    <h2>ビルクリーニング業の業務内容一覧</h2>
+    <p class="lead-text">
+        特定技能「ビルクリーニング」では、建築物内部の清掃業務全般が対象となります。
+    </p>
+    <div class="job-table-wrap">
+        <table class="job-table">
+            <thead>
+                <tr>
+                    <th style="width:28%">業務区分</th>
+                    <th style="width:47%">主な作業内容</th>
+                    <th style="width:25%">技能レベル</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>日常清掃</strong></td>
+                    <td>廊下・エントランス・トイレ・エレベーター内の日常的な清掃・ゴミ回収・拭き上げなど</td>
+                    <td><span class="tag tag-blue">特定技能1号</span></td>
+                </tr>
+                <tr>
+                    <td><strong>定期清掃</strong></td>
+                    <td>フロアポリッシャーによる床面洗浄・ワックスがけ・カーペットシャンプー洗浄など</td>
+                    <td><span class="tag tag-blue">特定技能1号</span></td>
+                </tr>
+                <tr>
+                    <td><strong>ガラス・外壁清掃</strong></td>
+                    <td>窓ガラスのスクイージー清掃・高所ガラス清掃（ゴンドラ・高所作業車使用）など</td>
+                    <td><span class="tag tag-blue">特定技能1号</span></td>
+                </tr>
+                <tr>
+                    <td><strong>特別清掃</strong></td>
+                    <td>エアコンフィルター清掃・換気口清掃・厨房フード清掃・害虫防除補助など</td>
+                    <td><span class="tag tag-blue">特定技能1号</span></td>
+                </tr>
+                <tr>
+                    <td><strong>衛生設備管理</strong></td>
+                    <td>トイレ・洗面台の衛生管理・消耗品補充・芳香剤・衛生用品の交換管理</td>
+                    <td><span class="tag tag-blue">特定技能1号</span></td>
+                </tr>
+                <tr>
+                    <td><strong>廃棄物処理補助</strong></td>
+                    <td>ゴミの分別・集積・搬出補助・資源ごみの整理管理など</td>
+                    <td><span class="tag tag-blue">特定技能1号</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <p style="margin-top:16px; font-size:0.82rem; color:#666; text-align:center;">
+        ※ビルクリーニング分野は現在特定技能1号のみ設定されています。対象は「建築物内部の清掃」に限定されます。
+    </p>
+</section>
+
+
+<!-- ===== 支援フロー ===== -->
+<section class="section fade-in">
+    <h2>採用から定着までのサポートフロー</h2>
+    <p class="lead-text">
+        セコンドペンギン企画では、初回相談から就業定着まで一気通貫でお任せいただけます。
+    </p>
+    <div class="flow-list">
+        <div class="flow-item">
+            <div class="flow-num">1</div>
+            <div class="flow-body">
+                <h3>無料初回相談・雇用計画の設計</h3>
+                <p>清掃現場の規模・勤務シフト（昼間・夜間・早朝）・受入人数・時期などをヒアリングし、最適な採用戦略をご提案します。</p>
+            </div>
+        </div>
+        <div class="flow-item">
+            <div class="flow-num">2</div>
+            <div class="flow-body">
+                <h3>受入れ企業の要件確認・整備</h3>
+                <p>特定技能受入れに必要な労働条件・雇用契約・就業規則の整備をサポート。ビルクリーニング業特有のチェックポイントを漏れなく確認します。</p>
+            </div>
+        </div>
+        <div class="flow-item">
+            <div class="flow-num">3</div>
+            <div class="flow-body">
+                <h3>候補者の選定・マッチング</h3>
+                <p>フィリピン・インドネシア・ベトナムの連携機関から、清掃技術・日本語力・体力・コミュニケーション能力を考慮した候補者をご紹介。オンライン面接もサポートします。</p>
+            </div>
+        </div>
+        <div class="flow-item">
+            <div class="flow-num">4</div>
+            <div class="flow-body">
+                <h3>技能評価試験・日本語試験のサポート</h3>
+                <p>「ビルクリーニング技能評価試験」および日本語試験（N4相当）の受験案内・学習教材の提供・試験対策をサポートします。</p>
+            </div>
+        </div>
+        <div class="flow-item">
+            <div class="flow-num">5</div>
+            <div class="flow-body">
+                <h3>在留資格申請（行政書士対応）</h3>
+                <p>特定技能「ビルクリーニング」の在留資格申請書類を行政書士が作成・申請。不許可リスクを最小化するよう徹底サポートします。</p>
+            </div>
+        </div>
+        <div class="flow-item">
+            <div class="flow-num">6</div>
+            <div class="flow-body">
+                <h3>入国・生活セットアップ</h3>
+                <p>空港送迎、住居確保、住民登録・銀行口座・携帯契約など来日直後の生活立ち上げを完全サポート。夜勤・早朝勤務がある現場への生活リズム調整もご支援します。</p>
+            </div>
+        </div>
+        <div class="flow-item">
+            <div class="flow-num">7</div>
+            <div class="flow-body">
+                <h3>就業開始・定期面談（登録支援機関）</h3>
+                <p>就業開始後も定期的な面談・相談対応を実施。職場定着を促し、清掃現場特有の悩み（夜間作業・孤独感・体力面）にも丁寧に対応します。義務的支援も完全代行。</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ===== 料金 ===== -->
+<section class="section section-gray fade-in">
+    <h2>料金目安</h2>
+    <p class="lead-text">
+        人数・国・業務範囲により変動します。まずはお気軽にご相談ください。
+    </p>
+    <div class="price-grid">
+        <div class="price-card">
+            <span class="price-icon">📝</span>
+            <h3>初回相談</h3>
+            <div class="price-amount">無料</div>
+            <p>雇用計画・制度選定・スケジュール感のご相談。オンライン対応可。</p>
+        </div>
+        <div class="price-card">
+            <span class="price-icon">✈️</span>
+            <h3>入国まで一括サポート</h3>
+            <div class="price-amount">120,000円〜</div>
+            <p>候補者選定・試験サポート・在留申請・入国前準備を含むパッケージ。</p>
+        </div>
+        <div class="price-card">
+            <span class="price-icon">🏠</span>
+            <h3>入国後 生活セットアップ</h3>
+            <div class="price-amount">50,000円〜</div>
+            <p>住居確保・役所手続き・銀行・携帯など来日直後のセットアップ。</p>
+        </div>
+        <div class="price-card">
+            <span class="price-icon">🤝</span>
+            <h3>登録支援機関 月次サポート</h3>
+            <div class="price-amount">15,000円〜/人・月</div>
+            <p>義務的支援（面談・相談対応・情報提供）を代行。夜勤帯の対応にも柔軟に対応。</p>
+        </div>
+    </div>
+    <p class="price-note">※上記は目安です。フルサポートパッケージは個別にお見積りいたします。</p>
+</section>
+
+
+<!-- ===== FAQ ===== -->
+<section class="section fade-in">
+    <h2>よくあるご質問（ビルクリーニング業）</h2>
+    <div class="faq-list">
+        <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+                <span class="q-mark">Q</span>
+                ビルクリーニング分野の技能評価試験とはどのようなものですか？
+                <span class="faq-arrow">▼</span>
+            </div>
+            <div class="faq-a">
+                「ビルクリーニング技能評価試験」は、公益社団法人全国ビルメンテナンス協会が実施する試験です。学科試験（清掃に関する知識）と実技試験（モップ掛け・機械操作など）で構成されています。弊社では試験対策の教材提供や学習サポートを行います。
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+                <span class="q-mark">Q</span>
+                夜間・早朝勤務のシフトに外国人材は対応できますか？
+                <span class="faq-arrow">▼</span>
+            </div>
+            <div class="faq-a">
+                はい、対応可能です。ビルクリーニングは閉店後の夜間や開店前の早朝作業が多い業態ですが、事前に勤務条件を説明・合意した上でマッチングを行いますので、条件に合った人材をご紹介します。入国後の生活リズム調整もサポートします。
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+                <span class="q-mark">Q</span>
+                何人から受け入れ可能ですか？
+                <span class="faq-arrow">▼</span>
+            </div>
+            <div class="faq-a">
+                1名からでも受入れ可能です。ビルクリーニング分野では現場ごと・契約施設ごとに人員を配置するケースも多いため、少人数から段階的に受け入れることも可能です。詳細はご相談ください。
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+                <span class="q-mark">Q</span>
+                日本語がどの程度できれば現場で働けますか？
+                <span class="faq-arrow">▼</span>
+            </div>
+            <div class="faq-a">
+                特定技能の要件としてN4相当の日本語力が必要です。清掃現場では複雑な日本語よりも、安全確認・作業指示の理解・報告ができれば問題なく業務遂行できるケースがほとんどです。弊社では就業後も日本語学習サポートを継続提供します。
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+                <span class="q-mark">Q</span>
+                清掃機器の操作研修は誰が行いますか？
+                <span class="faq-arrow">▼</span>
+            </div>
+            <div class="faq-a">
+                基本的には受入れ企業様に現場でのOJT研修をお願いしておりますが、弊社でも多言語対応の作業マニュアル作成支援や、入国直後の基礎的な清掃技術研修のご案内が可能です。安全・衛生に関する重要事項は多言語資料を活用してお伝えします。
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q" onclick="toggleFaq(this)">
+                <span class="q-mark">Q</span>
+                ビルクリーニング分野に特定技能2号はありますか？
+                <span class="faq-arrow">▼</span>
+            </div>
+            <div class="faq-a">
+                現時点（2025年）では、ビルクリーニング分野の特定技能2号は設定されていません。そのため在留期間は最長5年（更新可）となります。2号の設定に関する政府の動向については、随時最新情報をお知らせします。
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ===== CTA ===== -->
+<section class="cta-section fade-in">
+    <h2>まずは無料相談から</h2>
+    <p>ビルクリーニング業での外国人雇用について、どんな些細なことでもお気軽にご相談ください。<br>専門スタッフが貴社の現場環境に合わせた最適プランをご提案します。</p>
+    <div class="cta-btns">
+        <a href="../index.html#contact" class="btn-white">📩 お問合せフォームへ</a>
+        <a href="https://line.me/R/ti/p/@556fihjp/" target="_blank" class="btn-line">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/LINE_logo.svg" alt="LINE">
+            LINEで相談する
+        </a>
+    </div>
+</section>
+
+
+<footer>
+    <p><a href="../privacy.html">プライバシーポリシー</a></p>
+    <p style="margin-top:10px;">© 2024-2026 Second Penguin Planning. All Rights Reserved.</p>
+</footer>
+
+
+<!-- LINE固定ボタン -->
+<a href="https://line.me/R/ti/p/@556fihjp/" class="line-fixed-btn" target="_blank">
+    <div class="line-inner">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/LINE_logo.svg" alt="LINE">
+        <span>無料 相談</span>
+    </div>
+</a>
+
+
+<script>
+/* FAQ アコーディオン */
+function toggleFaq(el) {
+    const item = el.closest('.faq-item');
+    item.classList.toggle('open');
+}
+
+/* Fade-in */
+window.addEventListener('DOMContentLoaded', () => {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) entry.target.classList.add('visible');
+        });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+});
+</script>
+
+</body>
+</html>
