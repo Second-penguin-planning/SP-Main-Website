@@ -232,9 +232,9 @@
         .hero {
             position: relative;
             background: url("https://images.unsplash.com/photo-1454165804606-c3d57bc86b40") center/cover no-repeat;
-            padding: 20px 10% 50px;
+            padding: 20px 4% 30px;
             color: #fff;
-            min-height: 70vh;
+            min-height: auto;
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
@@ -254,7 +254,7 @@
         .hero-status { margin-bottom: 10px; font-size: 1.5rem; }
         .hero h1 {
             color: #ffffff;
-            font-size: 1.7rem;
+            font-size: 1.2rem;
             line-height: 1.4;
             text-shadow: 0 4px 15px rgba(0,0,0,0.7);
         }
@@ -267,8 +267,8 @@
         /* ===== PILLAR GRID ===== */
         .pillar-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 20px;
+            grid-template-columns: 1fr);
+            gap: 12px;
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -717,7 +717,7 @@
 
 
 <!-- ===== HERO ===== -->
-<section class="hero">
+<div class="hero">
     <div class="hero-main-copy">
         <div class="hero-status">
             <span class="marker">運送業、建設業、宿泊、介護、その他分野で求人を行う企業様</span>
@@ -760,7 +760,7 @@
             <div class="pillar-footer">外国人従業員の暮らしの充実を →</div>
         </a>
     </div>
-</section>
+</div>
 
 
 <!-- ===== 選ばれる理由 ===== -->
