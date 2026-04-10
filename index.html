@@ -141,6 +141,9 @@
         .menu-toggle.active span:nth-child(2) { opacity: 0; }
         .menu-toggle.active span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
 
+        /* スマホ専用メニュー（PC版では非表示） */
+        .mobile-sector-menu { display: none; }
+
         @media (max-width: 768px) {
             .menu-toggle { display: flex; }
 
@@ -173,19 +176,58 @@
                 background: white;
                 display: flex;
                 flex-direction: column;
-                justify-content: center;
+                /* 項目が増えるため、上揃え＆スクロール可能に修正 */
+                justify-content: flex-start;
                 align-items: center;
+                overflow-y: auto;
+                padding: 80px 0 40px;
                 transition: right 0.4s ease;
                 z-index: 1050;
             }
             .foreigner-menu-btn {
-                font-size: 1.2rem;
-                padding: 12px 24px;
-                margin: 20px 0;
+                font-size: 1.1rem;
+                padding: 8px 24px;
+                margin: 10px 0;
             }
             nav.active { right: 0; }
-            nav a { margin: 20px 0; font-size: 1.3rem; }
+            nav a { margin: 10px 0; font-size: 1.1rem; }
             .lang-switch { display: none; }
+
+            /* スマホ版ではヒーロー上の分野ボタンを非表示にする */
+            .sector-nav-bar { display: none; }
+
+            /* ハンバーガーメニュー内の分野メニュースタイル */
+            .mobile-sector-menu {
+                display: block;
+                width: 90%;
+                margin: 15px 0;
+                padding: 15px 0;
+                border-top: 1px dashed #ccc;
+                border-bottom: 1px dashed #ccc;
+                text-align: center;
+            }
+            .mobile-sector-title {
+                font-size: 0.9rem;
+                font-weight: bold;
+                color: #666;
+                margin-bottom: 12px;
+            }
+            .mobile-sector-grid {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 8px;
+                justify-content: center;
+            }
+            nav .mobile-sector-grid a {
+                margin: 0;
+                font-size: 0.8rem;
+                padding: 6px 12px;
+                background: #f0f7ff;
+                border: 1px solid var(--main-blue);
+                border-radius: 20px;
+                color: var(--main-blue);
+                font-weight: 600;
+            }
         }
 
         html { scroll-behavior: smooth; }
@@ -777,6 +819,27 @@
         <a href="#strengths">選ばれる理由</a>
         <a href="#appeals">アピール点</a>
         <a href="#employment-detail">法人様支援</a>
+        
+        <!-- ▼ スマホ専用の分野メニュー ▼ -->
+        <div class="mobile-sector-menu">
+            <div class="mobile-sector-title">【対応分野】</div>
+            <div class="mobile-sector-grid">
+                <a href="sectors/transport.html">自動車運送業</a>
+                <a href="sectors/auto-repair.html">自動車整備</a>
+                <a href="sectors/construction.html">建設</a>
+                <a href="sectors/care.html">介護</a>
+                <a href="sectors/accommodation.html">宿泊</a>
+                <a href="sectors/building-cleaning.html">ビルクリーニング</a>
+                <a href="sectors/food.html">外食業</a>
+                <a href="sectors/food-manufacturing.html">飲食料品製造業</a>
+                <a href="sectors/industrial-machinery.html">工業製品製造業</a>
+                <a href="sectors/registration-support.html">登録支援機関</a>
+                <a href="sectors/union.html">組合</a>
+                <a href="sectors/language-school.html">日本語学校/専門学校</a>
+            </div>
+        </div>
+        <!-- ▲ スマホ専用の分野メニュー ▲ -->
+
         <a href="https://second-penguin-planning.github.io/Foreigners-Website/"
            class="foreigner-menu-btn" target="_blank">Foreigner</a>
         <a href="#message">代表メッセージ</a>
@@ -799,7 +862,7 @@
 </header>
 
 
-<!-- ===== SECTOR NAV BAR ===== -->
+<!-- ===== SECTOR NAV BAR (PC版のみ表示) ===== -->
 <div class="sector-nav-bar" id="top">
     <div class="sector-nav-bg"></div>
     <nav class="sector-nav">
