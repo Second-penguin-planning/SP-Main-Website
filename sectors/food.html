@@ -16,7 +16,7 @@
         --text-color: #333;
         --white: #ffffff;
         --accent-orange: #ff8c00;
-        --sector-color: #b5451b;   /* 外食業テーマカラー（レストランレッド） */
+        --sector-color: #b5451b;
         --sector-light: #fdf0eb;
     }
 
@@ -28,6 +28,107 @@
         color: var(--text-color);
         background-color: var(--sky-blue);
         overflow-x: hidden;
+    }
+
+    /* ===== 一時停止バナー ===== */
+    .suspension-banner {
+        background: #fff0f0;
+        border: 3px solid #cc0000;
+        border-radius: 0;
+        padding: 24px 5%;
+        position: relative;
+        box-shadow: 0 4px 20px rgba(204,0,0,0.18);
+    }
+    .suspension-banner::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border: 6px solid #cc0000;
+        pointer-events: none;
+        z-index: 1;
+        animation: blink-border 2s ease-in-out infinite;
+    }
+    @keyframes blink-border {
+        0%, 100% { opacity: 1; }
+        50%       { opacity: 0.4; }
+    }
+    .suspension-inner {
+        max-width: 900px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 2;
+    }
+    .suspension-title {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 14px;
+        flex-wrap: wrap;
+    }
+    .suspension-badge {
+        display: inline-block;
+        background: #cc0000;
+        color: #fff;
+        font-size: 0.78rem;
+        font-weight: bold;
+        padding: 4px 14px;
+        border-radius: 4px;
+        letter-spacing: 0.08em;
+        white-space: nowrap;
+    }
+    .suspension-title h2 {
+        font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+        color: #cc0000;
+        font-weight: bold;
+        text-align: left;
+        padding-bottom: 0;
+        margin-bottom: 0;
+    }
+    .suspension-title h2::after { display: none; }
+    .suspension-date {
+        font-size: 0.82rem;
+        color: #888;
+        margin-left: auto;
+        white-space: nowrap;
+    }
+    .suspension-body {
+        font-size: 0.93rem;
+        color: #333;
+        line-height: 1.85;
+        margin-bottom: 16px;
+    }
+    .suspension-body strong { color: #cc0000; }
+    .suspension-ok-box {
+        background: #fff8e1;
+        border: 2px solid #f5a623;
+        border-radius: 10px;
+        padding: 16px 20px;
+        margin-top: 14px;
+    }
+    .suspension-ok-box .ok-title {
+        font-weight: bold;
+        color: #b36b00;
+        font-size: 0.95rem;
+        margin-bottom: 8px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .suspension-ok-box ul {
+        padding-left: 1.4em;
+        font-size: 0.9rem;
+        color: #444;
+        line-height: 2;
+    }
+    .suspension-ok-box ul li strong { color: #b36b00; }
+    .suspension-note {
+        margin-top: 14px;
+        font-size: 0.82rem;
+        color: #666;
+        background: #fdf0eb;
+        border-radius: 8px;
+        padding: 10px 16px;
+        border-left: 4px solid var(--sector-color);
     }
 
     /* ===== HEADER ===== */
@@ -500,6 +601,7 @@
         .section { padding: 50px 6%; }
         .line-fixed-btn { top: 120px; right: 12px; width: 80px; height: 50px; border-radius: 25px; }
         .line-inner img { width: 26px; height: 26px; }
+        .suspension-date { margin-left: 0; width: 100%; }
     }
 
     /* ===== FOOTER ===== */
@@ -533,6 +635,47 @@
         <a href="../index.html" class="back-btn">← TOPへ戻る</a>
     </div>
 </header>
+
+<!-- ===== ⚠️ 一時停止バナー ===== -->
+<div class="suspension-banner">
+    <div class="suspension-inner">
+        <div class="suspension-title">
+            <span class="suspension-badge">⚠️ 重要なお知らせ</span>
+            <h2>在留資格認定証明書交付申請の一時停止について</h2>
+            <span class="suspension-date">2026年4月13日〜</span>
+        </div>
+        <div class="suspension-body">
+            <strong>2026年4月13日をもって、特定技能「外食業」分野は受入れ上限数（定数）に達したため、新規の在留資格認定証明書（Certificate of Eligibility）交付申請の受付が一時停止となっております。</strong><br><br>
+            これは、外食業分野の特定技能外国人の受入れ枠が上限に到達したことによる措置であり、出入国在留管理庁の方針に基づくものです。
+            現時点では再開時期は未定となっており、今後の状況については出入国在留管理庁の公式発表をご確認ください。<br><br>
+            なお、<strong>海外在住の新規外国人材を呼び寄せるための「在留資格認定証明書交付申請」が対象</strong>となります。
+            すでに日本国内に在留している外国人に関する各種申請は引き続き受付されています（下記参照）。
+        </div>
+
+        <div class="suspension-ok-box">
+            <div class="ok-title">✅ 引き続き申請が可能な手続き</div>
+            <ul>
+                <li>
+                    <strong>在留期間更新許可申請</strong>
+                    ── すでに特定技能「外食業」で日本に在留している外国人の在留期間更新は通常どおり申請可能です。
+                </li>
+                <li>
+                    <strong>在留資格変更許可申請（特定技能1号 → 特定技能2号）</strong>
+                    ── 現在、外食業の特定技能1号として在留中の方が特定技能2号へ変更する申請は引き続き可能です。2号への変更により在留期間の制限がなくなり、家族帯同も可能になります。
+                </li>
+                <li>
+                    <strong>在留資格変更許可申請（他在留資格 → 特定技能1号「外食業」）</strong>
+                    ── 留学・技術・人文知識・国際業務・技能実習など、すでに日本国内に在留している外国人が特定技能「外食業」へ在留資格を変更する申請は対象外となりますので、引き続き申請可能です。
+                </li>
+            </ul>
+        </div>
+
+        <div class="suspension-note">
+            📌 ご不明な点やご相談がございましたら、お気軽に弊社までお問合せください。最新情報をもとに最適な対応方針をご提案いたします。<br>
+            また、他分野（飲食料品製造業・建設・介護 等）での受入れをご検討の場合もご相談ください。
+        </div>
+    </div>
+</div>
 
 <!-- ===== 他業種ナビ ===== -->
 <nav class="sector-nav-bar">
