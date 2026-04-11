@@ -167,7 +167,8 @@
                 line-height: 1.25;
             }
 
-            nav {
+            /* ▼ バグ防止のため nav 全体ではなく #mainNav に限定 ▼ */
+            #mainNav {
                 position: fixed;
                 top: 0;
                 right: -100%;
@@ -188,12 +189,12 @@
                 padding: 8px 24px;
                 margin: 10px 0;
             }
-            nav.active { right: 0; }
-            nav a { margin: 10px 0; font-size: 1.1rem; }
+            #mainNav.active { right: 0; }
+            #mainNav a { margin: 10px 0; font-size: 1.1rem; }
             .lang-switch { display: none; }
 
             /* スマホ版ではヒーロー上の分野ボタンを非表示にする */
-            .sector-nav-bar { display: none; }
+            .sector-nav-bar { display: none !important; }
 
             /* ハンバーガーメニュー内の分野メニュースタイル */
             .mobile-sector-menu {
@@ -217,7 +218,7 @@
                 gap: 8px;
                 justify-content: center;
             }
-            nav .mobile-sector-grid a {
+            #mainNav .mobile-sector-grid a {
                 margin: 0;
                 font-size: 0.8rem;
                 padding: 6px 12px;
@@ -301,7 +302,8 @@
         /* ===== HERO ===== */
         .hero {
             position: relative;
-            background: url("https://images.unsplash.com/photo-1454165804606-c3d57bc86b40") center/cover no-repeat;
+            /* 画像読み込み前の水色化を防ぐため、暗いグレーを指定 */
+            background: #465a6e url("https://images.unsplash.com/photo-1454165804606-c3d57bc86b40") center/cover no-repeat;
             padding: 32px 10% 40px;
             color: #fff;
             min-height: 70vh;
@@ -706,16 +708,16 @@
         /* ===== MOBILE STYLES ===== */
         @media (max-width: 768px) {
 
-            /* ▼▼▼ ここが今回の核心修正 ▼▼▼ */
+            /* ▼▼▼ スマホでの高さを強制的に解除し、文字をすぐ上に表示させる ▼▼▼ */
             .hero {
-                /* min-heightを廃止し、上寄せに変更 */
-                min-height: 0;
-                justify-content: flex-start;
-                align-items: flex-start;
-                text-align: left;
-                padding: 28px 18px 32px;
+                min-height: auto !important;
+                height: auto !important;
+                justify-content: flex-start !important;
+                align-items: flex-start !important;
+                text-align: left !important;
+                padding: 30px 18px 40px !important;
             }
-            /* ▲▲▲ ここが今回の核心修正 ▲▲▲ */
+            /* ▲▲▲ ▲▲▲ ▲▲▲ */
 
             .hero-main-copy {
                 margin: 0;
