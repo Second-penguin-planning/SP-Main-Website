@@ -245,7 +245,7 @@
             z-index: 10;
             width: 100%;
             display: block;
-            background: #e0f4ff;
+           background: #c8e6f7;
             margin-bottom: 0;
         }
 
@@ -256,7 +256,7 @@
         .sector-nav {
             position: relative;
             z-index: 2;
-            background: #e0f4ff;
+           background: #c8e6f7; 
             backdrop-filter: none;
             padding: 6px 10px;
             display: flex;
@@ -266,29 +266,29 @@
             width: 100%;
         }
 
-        .sector-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            padding: 2px 6px;
-            background: #fff;
-            color: #133a5a;
-            text-decoration: none;
-            font-size: 0.72rem;
-            font-weight: 600;
-            border: 1px solid rgba(0,0,0,0.08);
-            border-radius: 999px;
-            transition: all 0.25s ease;
-            white-space: nowrap;
-            letter-spacing: 0.03em;
-        }
-        .sector-btn:hover {
-            background: rgba(255,255,255,0.95);
-            color: #1a3a5c;
-            border-color: transparent;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.10);
-        }
+.sector-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 6px;
+    background: #4a6fa5;      /* ← スレートブルー */
+    color: #ffffff;            /* ← 白抜き文字 */
+    text-decoration: none;
+    font-size: 0.72rem;
+    font-weight: 600;
+    border: 1px solid rgba(255,255,255,0.25);   /* ← 淡い白ボーダー */
+    border-radius: 999px;
+    transition: all 0.25s ease;
+    white-space: nowrap;
+    letter-spacing: 0.03em;
+}
+.sector-btn:hover {
+    background: #2d5390;       /* ← ホバーで少し濃いブルー */
+    color: #ffffff;
+    border-color: transparent;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.22);
+}
         .sector-btn .arrow {
             font-size: 0.7rem;
             transition: transform 0.25s ease;
