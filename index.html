@@ -302,11 +302,11 @@
         /* ===== HERO ===== */
         .hero {
             position: relative;
-            /* 画像読み込み前の水色化を防ぐため、暗いグレーを指定 */
             background: #465a6e url("https://images.unsplash.com/photo-1454165804606-c3d57bc86b40") center/cover no-repeat;
-            padding: 32px 10% 40px;
+            /* ②PC版の縦の長さを半分に：70vh→35vh、paddingも縮小 */
+            padding: 16px 10% 20px;
             color: #fff;
-            min-height: 70vh;
+            min-height: 35vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -327,9 +327,10 @@
             margin-bottom: 12px;
             font-size: 1.25rem;
         }
+        /* ③「フィリピン・インドネシア…」h1を2段階小さく：clamp(1.6rem,3vw,2.4rem)→clamp(1.1rem,2vw,1.6rem) */
         .hero h1 {
             color: #ffffff;
-            font-size: clamp(1.6rem, 3vw, 2.4rem);
+            font-size: clamp(1.1rem, 2vw, 1.6rem);
             line-height: 1.45;
             text-shadow: 0 4px 15px rgba(0,0,0,0.7);
         }
@@ -829,6 +830,13 @@
     </div>
 
     <nav id="mainNav">
+        <!-- ①言語ボタンをメニューの最初に配置 -->
+        <div class="mobile-lang" style="margin-top: 0; margin-bottom: 10px;">
+            <button onclick="translatePage('ja')">JP</button>
+            <button onclick="translatePage('en')">EN</button>
+            <button onclick="translatePage('id')">ID</button>
+            <button onclick="translatePage('tl')">TL</button>
+        </div>
         <a href="#top">TOP</a>
         <a href="#strengths">選ばれる理由</a>
         <a href="#appeals">アピール点</a>
@@ -859,12 +867,6 @@
         <a href="#message">代表メッセージ</a>
         <a href="#company">会社概要</a>
         <a href="#contact">お問合せ</a>
-        <div class="mobile-lang">
-            <button onclick="translatePage('ja')">JP</button>
-            <button onclick="translatePage('en')">EN</button>
-            <button onclick="translatePage('id')">ID</button>
-            <button onclick="translatePage('tl')">TL</button>
-        </div>
     </nav>
 
     <div class="lang-switch">
@@ -877,7 +879,6 @@
 
 
 <!-- ===== SECTOR NAV BAR (PC版のみ表示) ===== -->
-<!-- ↓ id="top" をここから hero に移動 -->
 <div class="sector-nav-bar">
     <div class="sector-nav-bg"></div>
     <nav class="sector-nav">
@@ -898,7 +899,6 @@
 
 
 <!-- ===== HERO ===== -->
-<!-- ↓ id="top" をここに移動（スマホでsector-nav-barが消えてもアンカーが機能するように） -->
 <section class="hero" id="top">
     <div class="hero-main-copy">
         <div class="hero-status">
