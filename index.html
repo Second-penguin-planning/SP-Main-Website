@@ -141,7 +141,7 @@
         .menu-toggle.active span:nth-child(2) { opacity: 0; }
         .menu-toggle.active span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
 
-        /* ===== スマホ専用・ヒーロー下の分野ボタンエリア ===== */
+        /* ===== スマホ専用・pillar-grid内の分野ボタンエリア ===== */
         /* PC では非表示、スマホでのみ表示 */
         .hero-mobile-sector-menu {
             display: none;
@@ -170,7 +170,6 @@
                 line-height: 1.25;
             }
 
-            /* ▼ バグ防止のため nav 全体ではなく #mainNav に限定 ▼ */
             #mainNav {
                 position: fixed;
                 top: 0;
@@ -199,15 +198,17 @@
             /* スマホ版ではヒーロー上の分野ボタンを非表示にする */
             .sector-nav-bar { display: none !important; }
 
-            /* ===== ヒーロー下・スマホ専用分野メニュー ===== */
+            /* ===== pillar-grid内・スマホ専用分野メニュー ===== */
             .hero-mobile-sector-menu {
                 display: block;
                 width: 100%;
                 background: #dff0fa;
                 padding: 14px 16px 16px;
-                border-top: 1px dashed #aad4ef;
-                border-bottom: 1px dashed #aad4ef;
+                border-radius: 12px;
+                border: 1px dashed #aad4ef;
                 text-align: center;
+                /* pillar-gridのgridアイテムとして全幅を占める */
+                grid-column: 1 / -1;
             }
             .hero-mobile-sector-title {
                 font-size: 0.85rem;
@@ -275,29 +276,29 @@
             width: 100%;
         }
 
-.sector-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    padding: 2px 6px;
-    background: #4a6fa5;      /* ← スレートブルー */
-    color: #ffffff;            /* ← 白抜き文字 */
-    text-decoration: none;
-    font-size: 0.72rem;
-    font-weight: 600;
-    border: 1px solid rgba(255,255,255,0.25);   /* ← 淡い白ボーダー */
-    border-radius: 999px;
-    transition: all 0.25s ease;
-    white-space: nowrap;
-    letter-spacing: 0.03em;
-}
-.sector-btn:hover {
-    background: #2d5390;       /* ← ホバーで少し濃いブルー */
-    color: #ffffff;
-    border-color: transparent;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.22);
-}
+        .sector-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 2px 6px;
+            background: #4a6fa5;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 0.72rem;
+            font-weight: 600;
+            border: 1px solid rgba(255,255,255,0.25);
+            border-radius: 999px;
+            transition: all 0.25s ease;
+            white-space: nowrap;
+            letter-spacing: 0.03em;
+        }
+        .sector-btn:hover {
+            background: #2d5390;
+            color: #ffffff;
+            border-color: transparent;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.22);
+        }
         .sector-btn .arrow {
             font-size: 0.7rem;
             transition: transform 0.25s ease;
@@ -312,7 +313,6 @@
         .hero {
             position: relative;
             background: #465a6e url("https://images.unsplash.com/photo-1454165804606-c3d57bc86b40") center/cover no-repeat;
-            /* ②PC版の縦の長さを半分に：70vh→35vh、paddingも縮小 */
             padding: 16px 10% 20px;
             color: #fff;
             min-height: 35vh;
@@ -336,7 +336,6 @@
             margin-bottom: 12px;
             font-size: 1.25rem;
         }
-        /* ③「フィリピン・インドネシア…」h1を2段階小さく：clamp(1.6rem,3vw,2.4rem)→clamp(1.1rem,2vw,1.6rem) */
         .hero h1 {
             color: #ffffff;
             font-size: clamp(1.1rem, 2vw, 1.6rem);
@@ -718,7 +717,6 @@
         /* ===== MOBILE STYLES ===== */
         @media (max-width: 768px) {
 
-            /* ▼▼▼ スマホでの高さを強制的に解除し、文字をすぐ上に表示させる ▼▼▼ */
             .hero {
                 min-height: auto !important;
                 height: auto !important;
@@ -727,7 +725,6 @@
                 text-align: left !important;
                 padding: 30px 18px 40px !important;
             }
-            /* ▲▲▲ ▲▲▲ ▲▲▲ */
 
             .hero-main-copy {
                 margin: 0;
@@ -839,7 +836,7 @@
     </div>
 
     <nav id="mainNav">
-        <!-- ①言語ボタンをメニューの最初に配置 -->
+        <!-- 言語ボタンをメニューの最初に配置 -->
         <div class="mobile-lang" style="margin-top: 0; margin-bottom: 10px;">
             <button onclick="translatePage('ja')">JP</button>
             <button onclick="translatePage('en')">EN</button>
@@ -850,9 +847,6 @@
         <a href="#strengths">選ばれる理由</a>
         <a href="#appeals">アピール点</a>
         <a href="#employment-detail">法人様支援</a>
-
-        <!-- ▼ スマホ専用の分野メニューはハンバーガー内から削除済み ▼ -->
-
         <a href="https://second-penguin-planning.github.io/Foreigners-Website/"
            class="foreigner-menu-btn" target="_blank">Foreigner</a>
         <a href="#message">代表メッセージ</a>
@@ -900,29 +894,12 @@
     </div>
 </section>
 
-<!-- ===== スマホ専用・分野ボタン（ヒーロー直下、hero-links の外・上） ===== -->
-<div class="hero-mobile-sector-menu">
-    <div class="hero-mobile-sector-title">【対応分野を選ぶ】</div>
-    <div class="hero-mobile-sector-grid">
-        <a href="sectors/transport.html">自動車運送業</a>
-        <a href="sectors/auto-repair.html">自動車整備</a>
-        <a href="sectors/construction.html">建設</a>
-        <a href="sectors/care.html">介護</a>
-        <a href="sectors/accommodation.html">宿泊</a>
-        <a href="sectors/building-cleaning.html">ビルクリーニング</a>
-        <a href="sectors/food.html">外食業</a>
-        <a href="sectors/food-manufacturing.html">飲食料品製造業</a>
-        <a href="sectors/industrial-machinery.html">工業製品製造業</a>
-        <a href="sectors/registration-support.html">登録支援機関</a>
-        <a href="sectors/union.html">組合</a>
-        <a href="sectors/language-school.html">日本語学校/専門学校</a>
-    </div>
-</div>
-
 
 <!-- ===== HERO LINKS ===== -->
 <section class="hero-links">
     <div class="pillar-grid">
+
+        <!-- 1枚目：FOR CORPORATE -->
         <a href="#employment-detail" class="pillar-card p-employment">
             <div class="pillar-header"><span>FOR CORPORATE</span><span>🤝</span></div>
             <div class="pillar-body">
@@ -931,6 +908,28 @@
             </div>
             <div class="pillar-footer">外国人雇用のトータルサポート→</div>
         </a>
+
+        <!-- ▼▼▼ スマホ専用・分野ボタン（FOR CORPORATEの直後、ADVISERの前） ▼▼▼ -->
+        <div class="hero-mobile-sector-menu">
+            <div class="hero-mobile-sector-title">【対応分野を選ぶ】</div>
+            <div class="hero-mobile-sector-grid">
+                <a href="sectors/transport.html">自動車運送業</a>
+                <a href="sectors/auto-repair.html">自動車整備</a>
+                <a href="sectors/construction.html">建設</a>
+                <a href="sectors/care.html">介護</a>
+                <a href="sectors/accommodation.html">宿泊</a>
+                <a href="sectors/building-cleaning.html">ビルクリーニング</a>
+                <a href="sectors/food.html">外食業</a>
+                <a href="sectors/food-manufacturing.html">飲食料品製造業</a>
+                <a href="sectors/industrial-machinery.html">工業製品製造業</a>
+                <a href="sectors/registration-support.html">登録支援機関</a>
+                <a href="sectors/union.html">組合</a>
+                <a href="sectors/language-school.html">日本語学校/専門学校</a>
+            </div>
+        </div>
+        <!-- ▲▲▲ スマホ専用・分野ボタン ▲▲▲ -->
+
+        <!-- 2枚目：ADVISER -->
         <a href="#advisor-detail" class="pillar-card p-life">
             <div class="pillar-header"><span>ADVISER</span><span>🏠</span></div>
             <div class="pillar-body">
@@ -939,6 +938,8 @@
             </div>
             <div class="pillar-footer">外国人雇用のプロを顧問に →</div>
         </a>
+
+        <!-- 3枚目：ENTRY SUPPORT -->
         <a href="#setup-detail" class="pillar-card p-edu">
             <div class="pillar-header"><span>ENTRY SUPPORT</span><span>📖</span></div>
             <div class="pillar-body">
@@ -947,6 +948,8 @@
             </div>
             <div class="pillar-footer">入国と生活立ち上げをお手伝い →</div>
         </a>
+
+        <!-- 4枚目：LIFE SUPPORT -->
         <a href="#life-detail" class="pillar-card p-sight">
             <div class="pillar-header"><span>LIFE SUPPORT</span><span>📸</span></div>
             <div class="pillar-body">
@@ -955,6 +958,7 @@
             </div>
             <div class="pillar-footer">外国人従業員の暮らしの充実を →</div>
         </a>
+
     </div>
 </section>
 
