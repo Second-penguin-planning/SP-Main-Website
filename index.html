@@ -141,8 +141,11 @@
         .menu-toggle.active span:nth-child(2) { opacity: 0; }
         .menu-toggle.active span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
 
-        /* スマホ専用メニュー（PC版では非表示） */
-        .mobile-sector-menu { display: none; }
+        /* ===== スマホ専用・ヒーロー下の分野ボタンエリア ===== */
+        /* PC では非表示、スマホでのみ表示 */
+        .hero-mobile-sector-menu {
+            display: none;
+        }
 
         @media (max-width: 768px) {
             .menu-toggle { display: flex; }
@@ -196,37 +199,43 @@
             /* スマホ版ではヒーロー上の分野ボタンを非表示にする */
             .sector-nav-bar { display: none !important; }
 
-            /* ハンバーガーメニュー内の分野メニュースタイル */
-            .mobile-sector-menu {
+            /* ===== ヒーロー下・スマホ専用分野メニュー ===== */
+            .hero-mobile-sector-menu {
                 display: block;
-                width: 90%;
-                margin: 15px 0;
-                padding: 15px 0;
-                border-top: 1px dashed #ccc;
-                border-bottom: 1px dashed #ccc;
+                width: 100%;
+                background: #dff0fa;
+                padding: 14px 16px 16px;
+                border-top: 1px dashed #aad4ef;
+                border-bottom: 1px dashed #aad4ef;
                 text-align: center;
             }
-            .mobile-sector-title {
-                font-size: 0.9rem;
+            .hero-mobile-sector-title {
+                font-size: 0.85rem;
                 font-weight: bold;
-                color: #666;
-                margin-bottom: 12px;
+                color: #555;
+                margin-bottom: 10px;
             }
-            .mobile-sector-grid {
+            .hero-mobile-sector-grid {
                 display: flex;
                 flex-wrap: wrap;
-                gap: 8px;
+                gap: 7px;
                 justify-content: center;
             }
-            #mainNav .mobile-sector-grid a {
-                margin: 0;
-                font-size: 0.8rem;
-                padding: 6px 12px;
-                background: #f0f7ff;
-                border: 1px solid var(--main-blue);
-                border-radius: 20px;
-                color: var(--main-blue);
+            .hero-mobile-sector-grid a {
+                font-size: 0.78rem;
+                padding: 5px 11px;
+                background: #4a6fa5;
+                border: 1px solid rgba(255,255,255,0.25);
+                border-radius: 999px;
+                color: #ffffff;
                 font-weight: 600;
+                text-decoration: none;
+                transition: background 0.2s, transform 0.2s;
+                white-space: nowrap;
+            }
+            .hero-mobile-sector-grid a:hover {
+                background: #2d5390;
+                transform: translateY(-2px);
             }
         }
 
@@ -842,25 +851,7 @@
         <a href="#appeals">アピール点</a>
         <a href="#employment-detail">法人様支援</a>
 
-        <!-- ▼ スマホ専用の分野メニュー ▼ -->
-        <div class="mobile-sector-menu">
-            <div class="mobile-sector-title">【対応分野】</div>
-            <div class="mobile-sector-grid">
-                <a href="sectors/transport.html">自動車運送業</a>
-                <a href="sectors/auto-repair.html">自動車整備</a>
-                <a href="sectors/construction.html">建設</a>
-                <a href="sectors/care.html">介護</a>
-                <a href="sectors/accommodation.html">宿泊</a>
-                <a href="sectors/building-cleaning.html">ビルクリーニング</a>
-                <a href="sectors/food.html">外食業</a>
-                <a href="sectors/food-manufacturing.html">飲食料品製造業</a>
-                <a href="sectors/industrial-machinery.html">工業製品製造業</a>
-                <a href="sectors/registration-support.html">登録支援機関</a>
-                <a href="sectors/union.html">組合</a>
-                <a href="sectors/language-school.html">日本語学校/専門学校</a>
-            </div>
-        </div>
-        <!-- ▲ スマホ専用の分野メニュー ▲ -->
+        <!-- ▼ スマホ専用の分野メニューはハンバーガー内から削除済み ▼ -->
 
         <a href="https://second-penguin-planning.github.io/Foreigners-Website/"
            class="foreigner-menu-btn" target="_blank">Foreigner</a>
@@ -908,6 +899,25 @@
         <p class="hero-subtext">実務と現場の経験を活かし、皆様の「挑戦」を一気通貫で支援します。</p>
     </div>
 </section>
+
+<!-- ===== スマホ専用・分野ボタン（ヒーロー直下、hero-links の外・上） ===== -->
+<div class="hero-mobile-sector-menu">
+    <div class="hero-mobile-sector-title">【対応分野を選ぶ】</div>
+    <div class="hero-mobile-sector-grid">
+        <a href="sectors/transport.html">自動車運送業</a>
+        <a href="sectors/auto-repair.html">自動車整備</a>
+        <a href="sectors/construction.html">建設</a>
+        <a href="sectors/care.html">介護</a>
+        <a href="sectors/accommodation.html">宿泊</a>
+        <a href="sectors/building-cleaning.html">ビルクリーニング</a>
+        <a href="sectors/food.html">外食業</a>
+        <a href="sectors/food-manufacturing.html">飲食料品製造業</a>
+        <a href="sectors/industrial-machinery.html">工業製品製造業</a>
+        <a href="sectors/registration-support.html">登録支援機関</a>
+        <a href="sectors/union.html">組合</a>
+        <a href="sectors/language-school.html">日本語学校/専門学校</a>
+    </div>
+</div>
 
 
 <!-- ===== HERO LINKS ===== -->
