@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<link rel="icon" type="image/png" sizes="32x32" href="../images/penguin_logo_192.png">
+<link rel="apple-touch-icon" sizes="192x192" href="../images/penguin_logo_192.png">
+<meta name="theme-color" content="#005bac">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI活用セットアップ支援 | スマホで指示するとパソコンが仕事を進める | セコンドペンギン企画</title>
+<meta name="description" content="63歳の代表が10か月で組み上げた、スマホで指示するとパソコンがメール返信案・書類・アプリまで作るAI環境を、企業・個人事業主・個人の方のパソコンに合わせて整えます。導入プラン5万円、全国オンライン対応。">
+<link rel="canonical" href="https://second-penguin.com/ai/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://second-penguin.com/ai/">
+<meta property="og:title" content="AI活用セットアップ支援 | セコンドペンギン企画">
+<meta property="og:description" content="63歳の代表が10か月で組み上げた、スマホで指示するとパソコンがメール返信案・書類・アプリまで作るAI環境を、企業・個人事業主・個人の方のパソコンに合わせて整えます。導入プラン5万円、全国オンライン対応。">
+<meta property="og:image" content="https://second-penguin.com/images/penguin_logo_192.png">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --main-blue: #005bac;
+        --sky-blue: #e0f4ff;
+        --text-color: #333;
+        --white: #ffffff;
+        --accent-orange: #ff8c00;
+        --col-employment: #003a70;
+        --line: #d5e6f3;
+        --muted: #5b6b7c;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+        font-family: 'Noto Sans JP', sans-serif;
+        line-height: 1.8;
+        color: var(--text-color);
+        background-color: var(--white);
+        overflow-x: hidden;
+    }
+    img { max-width: 100%; }
+
+    /* ===== HEADER ===== */
+    header {
+        background: var(--white);
+        padding: 8px 3%;
+        display: flex; justify-content: space-between; align-items: center; gap: 10px;
+        position: sticky; top: 0; z-index: 1000;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .logo { display: flex; align-items: center; gap: 10px; font-weight: bold; font-size: 1.1rem; color: var(--main-blue); text-decoration: none; min-width: 0; }
+    .logo img { height: 38px; width: auto; }
+    .header-right { display: flex; align-items: center; gap: 10px; }
+    .back-btn {
+        display: inline-flex; align-items: center; gap: 6px; padding: 7px 16px;
+        background: var(--col-employment); color: white; text-decoration: none;
+        border-radius: 20px; font-size: 0.82rem; font-weight: bold; transition: 0.3s; white-space: nowrap;
+    }
+    .back-btn:hover { background: var(--main-blue); }
+    @media (max-width: 520px) {
+        .logo span { font-size: .9rem; }
+        .header-right .back-btn:first-child { display: none; }
+    }
+
+    /* ===== HERO（トップページ nh-hero と同じ配色） ===== */
+    section.nh-hero {
+        position: relative; overflow: hidden; padding: 56px 16px 48px;
+        background: radial-gradient(1200px 500px at 90% -10%, #cfe9ff 0%, transparent 60%),
+                    linear-gradient(180deg, #f4faff 0%, var(--sky-blue) 100%);
+    }
+    .nh-inner { max-width: 1080px; margin: 0 auto; }
+    .nh-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: .82rem; font-weight: 700; color: var(--main-blue);
+        background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: 4px 14px; }
+    .nh-eyebrow img { width: 20px; height: 20px; }
+    .nh-hero h1 { font-size: clamp(1.6rem, 4.4vw, 2.6rem); font-weight: 700; line-height: 1.4; margin: 18px 0 12px; color: var(--col-employment); }
+    .nh-hero h1 em { font-style: normal; color: var(--main-blue); background: linear-gradient(transparent 68%, #ffd9a8 68%); }
+    .nh-lead { font-size: clamp(.95rem, 2vw, 1.05rem); color: var(--muted); max-width: 720px; }
+    .nh-cta { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
+    .nh-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 13px 22px; border-radius: 999px;
+        font-weight: 700; text-decoration: none; font-size: .98rem; transition: .2s; }
+    .nh-btn img { width: 22px; height: 22px; }
+    .nh-btn-main { background: var(--accent-orange); color: #fff; box-shadow: 0 6px 16px rgba(255,140,0,.3); }
+    .nh-btn-main:hover { background: #e65c00; }
+    .nh-btn-sub { background: #fff; color: var(--col-employment); border: 2px solid var(--col-employment); }
+    .nh-btn-sub:hover { background: var(--sky-blue); }
+    .nh-btn-line { background: #06c755; color: #fff; }
+    .nh-btn-line:hover { background: #05a647; }
+    .nh-trust { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-top: 22px; font-size: .85rem; color: var(--col-employment); }
+    .nh-trust span::before { content: "✓ "; color: var(--main-blue); font-weight: 700; }
+
+    /* ===== 共通セクション ===== */
+    .nh-sec { padding: 64px 16px; }
+    .nh-sec.alt { background: #f4faff; }
+    .nh-sec > .nh-inner > h2 {
+        text-align: center; color: var(--col-employment); font-size: clamp(1.3rem, 3vw, 1.7rem);
+        line-height: 1.5; margin-bottom: 10px; position: relative; padding-bottom: 12px;
+    }
+    .nh-sec > .nh-inner > h2::after {
+        content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+        width: 50px; height: 3px; background: var(--accent-orange); border-radius: 2px;
+    }
+    .nh-sec-lead { text-align: center; color: var(--muted); font-size: .95rem; margin: 14px auto 32px; max-width: 720px; }
+
+    /* お悩み */
+    .nh-pains { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    .nh-pain { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 18px 16px; line-height: 1.7; }
+    .nh-pain .nh-ico { font-size: 1.5rem; display: block; }
+    .nh-pain h3 { font-size: .98rem; color: var(--col-employment); margin: 6px 0 4px; line-height: 1.5; }
+    .nh-pain p { font-size: .85rem; color: var(--muted); }
+
+    /* ご提供内容（トップと同じ nh-offer） */
+    .nh-offers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .nh-offer { border: 1px solid var(--line); border-radius: 12px; padding: 18px; background: #fbfdff; display: flex; flex-direction: column; line-height: 1.7; }
+    .nh-offer .nh-tag { font-size: .72rem; font-weight: 700; color: var(--main-blue); }
+    .nh-offer h3 { font-size: 1.02rem; margin: 4px 0 6px; line-height: 1.5; color: var(--col-employment); }
+    .nh-offer p { font-size: .88rem; color: var(--muted); }
+    .nh-offer ul { list-style: none; margin-top: 10px; flex: 1; }
+    .nh-offer li { font-size: .85rem; padding: 3px 0 3px 1.2em; position: relative; }
+    .nh-offer li::before { content: "✓"; position: absolute; left: 0; color: var(--main-blue); font-weight: 700; }
+    .nh-offer .nh-price { margin-top: 12px; font-weight: 700; color: #e65c00; font-size: .9rem; }
+    .nh-offer.nh-hot { background: #fff8e6; border-color: #f3c98a; }
+
+    /* できること（チェックリスト） */
+    .nh-can { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; max-width: 900px; margin: 0 auto; }
+    .nh-can div { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px 14px 46px; position: relative; line-height: 1.7; }
+    .nh-can div::before { content: "✓"; position: absolute; left: 16px; top: 13px; width: 20px; height: 20px; border-radius: 50%;
+        background: var(--main-blue); color: #fff; font-size: .75rem; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+    .nh-can b { display: block; color: var(--col-employment); font-size: .95rem; }
+    .nh-can span { font-size: .85rem; color: var(--muted); }
+
+    /* アプリ（トップと同じ nh-app） */
+    .nh-app-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; max-width: 820px; margin: 0 auto; }
+    .nh-app { border: 1px solid var(--line); border-radius: 14px; padding: 18px; display: flex; flex-direction: column; background: #fff; line-height: 1.7; }
+    .nh-app .nh-ico { font-size: 1.6rem; }
+    .nh-app h3 { font-size: .98rem; margin: 6px 0 4px; line-height: 1.5; color: var(--col-employment); }
+    .nh-app p { font-size: .85rem; color: var(--muted); flex: 1; }
+    .nh-for { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 10px; }
+    .nh-for b { font-size: .7rem; background: var(--sky-blue); color: var(--main-blue); border-radius: 6px; padding: 1px 7px; }
+    .nh-app a { margin-top: 12px; font-size: .88rem; font-weight: 700; color: var(--main-blue); text-decoration: none; }
+    .nh-app a:hover { text-decoration: underline; }
+
+    /* 説明ボックス */
+    .nh-note { max-width: 860px; margin: 0 auto; background: #fff; border: 1px solid var(--line); border-left: 5px solid var(--main-blue);
+        border-radius: 12px; padding: 22px 22px; line-height: 1.85; font-size: .93rem; }
+    .nh-note ul { list-style: none; margin: 10px 0; }
+    .nh-note li { padding: 3px 0 3px 1.2em; position: relative; }
+    .nh-note li::before { content: "▸"; position: absolute; left: 0; color: var(--main-blue); }
+    .nh-note small { display: block; color: var(--muted); font-size: .82rem; margin-top: 8px; }
+
+    /* 流れ */
+    .nh-flow { list-style: none; max-width: 760px; margin: 0 auto; counter-reset: step; }
+    .nh-flow li { counter-increment: step; position: relative; padding: 0 0 22px 60px; }
+    .nh-flow li::before { content: counter(step); position: absolute; left: 0; top: 0; width: 42px; height: 42px; border-radius: 50%;
+        background: var(--col-employment); color: #fff; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+    .nh-flow li:not(:last-child)::after { content: ""; position: absolute; left: 20px; top: 46px; bottom: 2px; width: 2px; background: var(--line); }
+    .nh-flow b { display: block; color: var(--col-employment); font-size: 1rem; padding-top: 8px; }
+    .nh-flow span { font-size: .87rem; color: var(--muted); }
+
+    /* 料金 */
+    .nh-price-box { max-width: 760px; margin: 0 auto; background: #fff8e6; border: 1px solid #f3c98a; border-left: 5px solid var(--accent-orange); border-radius: 12px; padding: 22px; }
+    .nh-price-box dl { display: grid; grid-template-columns: auto 1fr; gap: 10px 18px; }
+    .nh-price-box dt { font-weight: 700; color: var(--col-employment); font-size: .93rem; }
+    .nh-price-box dd { font-weight: 700; color: #e65c00; font-size: .93rem; }
+    .nh-price-box p { margin-top: 14px; font-size: .82rem; color: var(--muted); }
+
+    /* 選ばれる理由 */
+    .nh-why { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .nh-why div { background: #fff; border: 1px solid var(--line); border-top: 4px solid var(--main-blue); border-radius: 12px; padding: 18px; line-height: 1.7; }
+    .nh-why h3 { font-size: 1rem; color: var(--col-employment); margin-bottom: 6px; line-height: 1.5; }
+    .nh-why p { font-size: .87rem; color: var(--muted); }
+
+    /* FAQ */
+    .faq-list { max-width: 800px; margin: 0 auto; }
+    .faq-item { background: #fff; border: 1px solid var(--line); border-radius: 12px; margin-bottom: 12px; overflow: hidden; }
+    .faq-q { width: 100%; padding: 16px 18px; display: flex; align-items: center; gap: 12px; cursor: pointer; background: none; border: 0;
+        font: inherit; font-weight: 700; font-size: .95rem; color: var(--col-employment); text-align: left; }
+    .faq-q:hover { background: #f4faff; }
+    .faq-q .q-mark { flex-shrink: 0; width: 30px; height: 30px; background: var(--col-employment); color: #fff; border-radius: 50%;
+        display: flex; align-items: center; justify-content: center; font-size: .85rem; }
+    .faq-q .faq-arrow { margin-left: auto; transition: transform .3s; color: #999; flex-shrink: 0; }
+    .faq-item.open .faq-arrow { transform: rotate(180deg); }
+    .faq-a { display: none; padding: 0 18px 16px 60px; font-size: .9rem; color: #555; line-height: 1.8; }
+    .faq-item.open .faq-a { display: block; }
+
+    /* 企業の方へ */
+    .nh-aside { text-align: center; font-size: .9rem; color: var(--muted); padding: 0 16px 40px; }
+    .nh-aside a { color: var(--main-blue); font-weight: 700; }
+
+    /* CTA */
+    .nh-final { background: linear-gradient(135deg, var(--col-employment) 0%, var(--main-blue) 100%); color: #fff; text-align: center; padding: 60px 16px; }
+    .nh-final h2 { font-size: clamp(1.3rem, 3vw, 1.6rem); line-height: 1.5; margin-bottom: 10px; }
+    .nh-final p { color: #d6e8fa; font-size: .95rem; margin-bottom: 26px; }
+    .nh-final .nh-cta { justify-content: center; }
+    .nh-final .nh-btn-sub { border-color: #fff; }
+
+    /* LINE固定 */
+    .line-fixed-btn {
+        position: fixed; top: 90px; right: 20px; width: 120px; height: 60px; background: #06C755; border-radius: 30px; border: 3px solid white;
+        display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 20px rgba(0,0,0,0.35); z-index: 999; transition: 0.3s; text-decoration: none;
+    }
+    .line-fixed-btn:hover { transform: scale(1.1); }
+    .line-inner { display: flex; align-items: center; gap: 6px; font-size: 11px; font-weight: bold; color: white; }
+    .line-inner img { width: 28px; height: 28px; }
+
+    footer { background: #333; color: white; text-align: center; padding: 30px 16px; }
+    footer a { color: #fff; text-decoration: underline; }
+
+    .fade-in { opacity: 0; transform: translateY(24px); transition: opacity .7s ease-out, transform .7s ease-out; }
+    .fade-in.visible { opacity: 1; transform: none; }
+
+    @media (max-width: 960px) {
+        .nh-pains { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 860px) {
+        .nh-offers, .nh-why { grid-template-columns: 1fr; }
+        .nh-can, .nh-app-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+        .line-fixed-btn { top: auto; bottom: 16px; right: 12px; width: 64px; height: 50px; border-radius: 25px; }
+        .line-inner img { width: 26px; height: 26px; }
+        .line-inner span { display: none; }
+    }
+    @media (max-width: 520px) {
+        section.nh-hero { padding: 32px 16px 36px; }
+        .nh-sec { padding: 48px 16px; }
+        .nh-pains { grid-template-columns: 1fr; }
+        .nh-btn { width: 100%; }
+        .nh-price-box dl { grid-template-columns: 1fr; gap: 2px; }
+        .nh-price-box dd { margin-bottom: 8px; }
+        .faq-a { padding-left: 18px; }
+    }
+
+    /* 5つの段階 */
+    .nh-stages { list-style: none; max-width: 760px; margin: 0 auto; display: grid; gap: 8px; }
+    .nh-stages li { background: #fff; border: 1px solid var(--line); border-left: 4px solid var(--line); border-radius: 0 10px 10px 0; padding: 10px 16px; line-height: 1.6; }
+    .nh-stages li b { display: inline-block; min-width: 5.5em; color: var(--main-blue); }
+    .nh-stages li span { display: block; font-size: .85rem; color: var(--muted); }
+    .nh-stages li.nh-now { border-left-color: var(--accent-orange); background: #fff8e6; font-weight: 700; }
+    .nh-stages li.nh-now span { color: #e65c00; }
+    /* 申込みフォーム */
+    .nh-form { max-width: 640px; margin: 0 auto; display: grid; gap: 16px; }
+    .nh-form label { display: block; font-weight: 700; font-size: .92rem; color: var(--col-employment); }
+    .nh-form input, .nh-form select, .nh-form textarea { display: block; margin-top: 6px; width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 8px; font: inherit; font-weight: 400; color: var(--text-color); background: #fff; }
+    .nh-form .req { display: inline-block; font-size: .7rem; background: #e65c00; color: #fff; border-radius: 4px; padding: 0 6px; margin-left: 4px; vertical-align: middle; }
+    .nh-form-note { font-size: .85rem; color: var(--muted); }
+    .nh-form-note a { color: var(--main-blue); }
+    .nh-form button { border: 0; cursor: pointer; justify-self: center; min-width: 220px; }
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header>
+    <a href="../index.html" class="logo">
+        <img src="../images/penguin_logo_192.png" alt="セコンドペンギン企画ロゴ">
+        <span>セコンドペンギン企画</span>
+    </a>
+    <div class="header-right">
+        <a href="#apply" class="back-btn">📩 無料相談</a>
+        <a href="../index.html" class="back-btn">← TOPへ戻る</a>
+    </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="nh-hero">
+  <div class="nh-inner">
+    <span class="nh-eyebrow"><img src="../images/penguin_logo_192.png" alt="">AI活用セットアップ支援</span>
+    <h1>スマホで指示すると、<br><em>パソコンが仕事を進める。</em></h1>
+    <p class="nh-lead">代表の徳永は63歳。2026年1月からAIを使い始め、10か月で、スマホから指示を出すと事務所のパソコンがメールの返信案や書類、アプリまで作る環境を自分で組み上げました。その手順とつまずいた所を、お客様のパソコンと目的に合わせてお伝えします。</p>
+    <div class="nh-cta">
+        <a class="nh-btn nh-btn-main" href="#apply">無料相談を申し込む</a>
+        <a class="nh-btn nh-btn-line" href="https://line.me/R/ti/p/@556fihjp/" target="_blank" rel="noopener"><img src="https://upload.wikimedia.org/wikipedia/commons/4/41/LINE_logo.svg" alt="">LINEで相談する</a>
+    </div>
+    <div class="nh-trust">
+      <span>プログラミングの経験は不要</span>
+      <span>企業・個人事業主・個人の方</span>
+      <span>全国オンライン対応</span>
+      <span>德永良雄 行政書士事務所 併設</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== こんな方に ===== -->
+<section class="nh-sec alt fade-in">
+  <div class="nh-inner">
+    <h2>こんな方に</h2>
+    <p class="nh-sec-lead">AIに質問はしているが、仕事を任せるところまで進めない方に向けたサービスです。</p>
+    <div class="nh-why">
+        <div><h3>🏢 中小企業・お店</h3><p>メールの返信案、見積書・請求書、営業先のリスト、社内マニュアルづくり。</p></div>
+        <div><h3>📑 士業・個人事業主</h3><p>申請ごとの提出書類チェックリスト、書類の下書き、お客様への連絡文。</p></div>
+        <div><h3>🎨 個人・趣味の方</h3><p>作品や活動を紹介するホームページ、記録や資料の整理、調べものと文章づくり。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 5つの段階 ===== -->
+<section class="nh-sec fade-in">
+  <div class="nh-inner">
+    <h2>AI活用の5つの段階</h2>
+    <p class="nh-sec-lead">当事務所での整理です。いまどの段階にいて、どこまで進みたいかを、無料相談でお聞かせください。</p>
+    <ol class="nh-stages">
+        <li><b>第1段階</b>AIに質問する<span>文章づくり・翻訳・調べもの</span></li>
+        <li><b>第2段階</b>AIで書類や資料を作る<span>書類の下書き・表の整理</span></li>
+        <li><b>第3段階</b>AIが一連の仕事をこなす<span>メールを読み、必要な資料と返信案を作る</span></li>
+        <li class="nh-now"><b>第4段階</b>スマホから指示し、パソコンが作業する<span>代表は現在この段階で業務を行っています</span></li>
+        <li><b>第5段階</b>複数のAIが分担し、必要なときだけ人に確認する<span>これからの段階</span></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ===== 代表が作ったもの ===== -->
+<section class="nh-sec alt fade-in">
+  <div class="nh-inner">
+    <h2>代表がAIで作ったもの</h2>
+    <p class="nh-sec-lead">どれもプログラミングを学ばずに、AIへの指示で作りました。</p>
+    <div class="nh-app-grid">
+        <div class="nh-app">
+            <span class="nh-ico">🖼️</span>
+            <h3>徳永美術館（オンライン美術館）</h3>
+            <p>作品の展示、展示会の案内、旅の事前登録までを備えたサイトです。</p>
+            <div class="nh-for"><b>個人・趣味</b></div>
+            <a href="https://second-penguin-planning.github.io/online-museum/" target="_blank" rel="noopener">見てみる →</a>
+        </div>
+        <div class="nh-app">
+            <span class="nh-ico">🧑‍💼</span>
+            <h3>英日履歴書アプリ</h3>
+            <p>質問に答えるとA4一枚の英日履歴書が完成します。データは端末内に保存されます。</p>
+            <div class="nh-for"><b>アプリ</b></div>
+            <a href="https://second-penguin-resume.vercel.app" target="_blank" rel="noopener">使ってみる →</a>
+        </div>
+        <div class="nh-app">
+            <span class="nh-ico">🌐</span>
+            <h3>セコンドペンギン企画のホームページ</h3>
+            <p>このページを含む会社のホームページも、AIへの指示で作り、更新しています。</p>
+            <div class="nh-for"><b>中小企業</b></div>
+            <a href="../index.html">トップを見る →</a>
+        </div>
+        <div class="nh-app">
+            <span class="nh-ico">🗂️</span>
+            <h3>日々の業務の仕組み</h3>
+            <p>メールの仕分けと返信案、雇用契約書類の作成アプリ、申請書類チェックリスト、試験対策アプリ、営業先リストの作成など。</p>
+            <div class="nh-for"><b>士業</b><b>業務用・非公開</b></div>
+        </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 流れ ===== -->
+<section class="nh-sec fade-in">
+  <div class="nh-inner">
+    <h2>ご依頼の流れ</h2>
+    <p class="nh-sec-lead">打合せはオンラインで行います。</p>
+    <ol class="nh-flow">
+        <li><b>無料相談</b><span>いまの使い方と、AIに任せたい仕事を伺います。</span></li>
+        <li><b>アンケート</b><span>パソコン・スマホの環境、業務の内容、どこまで自動化したいかをお答えいただきます。</span></li>
+        <li><b>目標の設定</b><span>アンケートをもとに、導入プランで目指す段階と作るものを決めます。</span></li>
+        <li><b>個別の手順書</b><span>お客様の環境に合わせた手順書を作成してお渡しします。</span></li>
+        <li><b>オンライン2回（1回1時間）</b><span>手順書に沿って導入を一緒に進め、つまずいた所を解消します。</span></li>
+        <li><b>継続サポート</b><span>ご希望の方は、導入後の仕組みづくりをオンラインで続けます。</span></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ===== 料金 ===== -->
+<section class="nh-sec alt fade-in">
+  <div class="nh-inner">
+    <h2>料金</h2>
+    <p class="nh-sec-lead">お一人で導入する場合の料金です。企業・個人を問いません。</p>
+    <div class="nh-offers">
+        <div class="nh-offer">
+            <span class="nh-tag">まずはご相談</span>
+            <h3>無料相談</h3>
+            <p>どこまで整えられるかをご説明します。</p>
+            <ul>
+                <li>いまの使い方の確認</li>
+                <li>任せたい仕事の聞き取り</li>
+                <li>プランのご説明</li>
+            </ul>
+            <span class="nh-price">無料</span>
+        </div>
+        <div class="nh-offer nh-hot">
+            <span class="nh-tag">導入プラン</span>
+            <h3>アンケートから専用の手順書まで</h3>
+            <p>お客様の環境と目標に合わせて、導入の手順を一から用意します。</p>
+            <ul>
+                <li>事前アンケートと目標の設定</li>
+                <li>お客様専用の手順書の作成</li>
+                <li>オンライン（Zoom）2回の導入フォロー（1回1時間）</li>
+            </ul>
+            <span class="nh-price">50,000円（税込）</span>
+        </div>
+        <div class="nh-offer">
+            <span class="nh-tag">継続サポート</span>
+            <h3>ご自分の仕事に合わせて育てる</h3>
+            <p>導入プランを終えた方が対象です。</p>
+            <ul>
+                <li>アプリ・チェックリストづくり</li>
+                <li>メールの読み取りと返信案の仕組み</li>
+                <li>動かないとき・エラーが出たときの対応</li>
+            </ul>
+            <span class="nh-price">50,000円（税込）／オンライン5回（1回1時間）</span>
+        </div>
+    </div>
+    <p class="nh-aside" style="padding:20px 0 0;">継続サポートの有効期間はご購入から6か月です。</p>
+  </div>
+</section>
+
+<!-- ===== お申込みの前に ===== -->
+<section class="nh-sec fade-in">
+  <div class="nh-inner">
+    <h2>お申込みの前に</h2>
+    <div class="nh-note" style="margin-top:32px;">
+        <ul>
+            <li>AIサービスの月額利用料は、お客様ご自身のご契約・ご負担です（プランにより異なります）。</li>
+            <li>Windows または Mac のパソコンが必要です。スマホからの指示には、作業中に電源を入れておけるパソコンを使います。</li>
+            <li>メールや顧客情報をAIに扱わせる範囲は、お客様と決めてから設定します。</li>
+            <li>どこまで進むかは、パソコンの環境と使える時間により異なります。目標はアンケートをもとに一緒に決めます。</li>
+        </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="nh-sec alt fade-in">
+  <div class="nh-inner">
+    <h2>よくあるご質問</h2>
+    <div class="faq-list" style="margin-top:32px;">
+        <div class="faq-item">
+            <button class="faq-q" aria-expanded="false"><span class="q-mark">Q</span>パソコンが得意でなくても大丈夫ですか？<span class="faq-arrow">▼</span></button>
+            <div class="faq-a">はい。代表もプログラミングの経験はありません。手順書は、お客様のパソコンの画面に合わせて、順番どおりに進めれば済む形で作ります。</div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-q" aria-expanded="false"><span class="q-mark">Q</span>どのAIを使いますか？<span class="faq-arrow">▼</span></button>
+            <div class="faq-a">代表が業務で使っている Claude（Anthropic社）を基本にご案内します。目的やご希望に応じてご相談ください。</div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-q" aria-expanded="false"><span class="q-mark">Q</span>AIの利用料は月々いくらかかりますか？<span class="faq-arrow">▼</span></button>
+            <div class="faq-a">AIサービスのプランにより異なります。無料相談で、目的に合ったプランと金額をご説明します。</div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-q" aria-expanded="false"><span class="q-mark">Q</span>会社で複数の人が使えるようにしたいのですが。<span class="faq-arrow">▼</span></button>
+            <div class="faq-a">人数と業務の内容を伺ったうえで、お見積りします。まずは無料相談でお聞かせください。</div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-q" aria-expanded="false"><span class="q-mark">Q</span>遠方でも申し込めますか？<span class="faq-arrow">▼</span></button>
+            <div class="faq-a">はい。無料相談から導入のフォローまで、オンラインで全国に対応しています。</div>
+        </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 申込みフォーム ===== -->
+<section class="nh-sec fade-in" id="apply">
+  <div class="nh-inner">
+    <h2>無料相談のお申込み</h2>
+    <p class="nh-sec-lead">折り返しメールでご連絡します。LINEでも受け付けています。</p>
+    <form class="nh-form" action="https://formspree.io/f/xbdaevyb" method="POST">
+        <input type="hidden" name="_subject" value="【AI活用セットアップ支援】無料相談のお申込み">
+        <label>ご相談者さま <span class="req">必須</span>
+            <select name="type" required>
+                <option value="">選択してください</option>
+                <option>中小企業・お店</option>
+                <option>士業・個人事業主</option>
+                <option>個人・趣味</option>
+                <option>その他</option>
+            </select>
+        </label>
+        <label>お名前 <span class="req">必須</span>
+            <input type="text" name="name" placeholder="山田 太郎" required>
+        </label>
+        <label>メールアドレス <span class="req">必須</span>
+            <input type="email" name="email" placeholder="example@mail.com" required>
+        </label>
+        <label>いまのAIの使い方
+            <select name="ai_level">
+                <option value="">選択してください</option>
+                <option>まだ使っていない</option>
+                <option>質問や文章づくりに使っている</option>
+                <option>書類や資料づくりに使っている</option>
+                <option>仕事の一部を任せている</option>
+            </select>
+        </label>
+        <label>AIに任せたいこと・ご質問
+            <textarea name="message" rows="5" placeholder="例：メールの返信を楽にしたい、見積書を早く作りたい、作品のホームページを作りたい"></textarea>
+        </label>
+        <p class="nh-form-note"><a href="../documents/privacy.html" target="_blank">プライバシーポリシー</a>をご確認のうえ、送信してください。</p>
+        <button type="submit" class="nh-btn nh-btn-main">送信する</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+    <p><a href="../documents/privacy.html">プライバシーポリシー</a></p>
+    <p style="margin-top:10px;">© 2024-2026 Second Penguin Planning. All Rights Reserved.</p>
+</footer>
+
+<!-- LINE固定ボタン -->
+<a href="https://line.me/R/ti/p/@556fihjp/" class="line-fixed-btn" target="_blank" rel="noopener">
+    <div class="line-inner">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/LINE_logo.svg" alt="LINE">
+        <span>無料相談</span>
+    </div>
+</a>
+
+<script>
+/* FAQ アコーディオン */
+document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        btn.setAttribute('aria-expanded', item.classList.toggle('open'));
+    });
+});
+
+/* Fade-in */
+window.addEventListener('DOMContentLoaded', () => {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) entry.target.classList.add('visible');
+        });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+});
+</script>
+</body>
+</html>

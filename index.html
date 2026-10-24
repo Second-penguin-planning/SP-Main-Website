@@ -659,6 +659,12 @@
         .nh-for b { font-size: .7rem; background: var(--sky-blue); color: var(--main-blue); border-radius: 6px; padding: 1px 7px; }
         .nh-app a { margin-top: 12px; font-size: .88rem; font-weight: 700; color: var(--main-blue); text-decoration: none; }
         .nh-app a:hover { text-decoration: underline; }
+        .nh-aibar { display: flex; align-items: center; gap: 14px 20px; flex-wrap: wrap; justify-content: center; text-align: center;
+            background: linear-gradient(135deg, var(--col-employment) 0%, var(--main-blue) 100%); color: #fff; padding: 16px; text-decoration: none; }
+        .nh-aibar b { background: var(--accent-orange); border-radius: 999px; padding: 2px 12px; font-size: .78rem; }
+        .nh-aibar span { font-weight: 700; font-size: clamp(.92rem, 2.2vw, 1.05rem); }
+        .nh-aibar em { font-style: normal; font-size: .88rem; color: #d6e8fa; text-decoration: underline; }
+        .nh-aibar:hover em { color: #fff; }
         .nh-other { display: flex; flex-wrap: wrap; gap: 8px 18px; justify-content: center; font-size: .9rem; }
         .nh-other a { color: var(--main-blue); }
         @media (max-width: 860px) {
@@ -988,6 +994,7 @@
         <a href="#employment-detail">登録支援</a>
         <a href="#advisor-detail">自社支援サポート</a>
         <a href="#ai-detail">AI環境整備</a>
+        <a href="ai/">AI講座</a>
         <a href="#apps">アプリ</a>
         <a href="https://tokunaga-gyosei.jp/en/"
            class="foreigner-menu-btn" target="_blank">Foreigner</a>
@@ -1021,6 +1028,13 @@
     </nav>
 </div>
 
+
+<!-- AI活用セットアップ支援への案内 -->
+<a class="nh-aibar" href="ai/">
+    <b>新サービス</b>
+    <span>AI活用セットアップ支援：スマホで指示すると、パソコンが仕事を進める環境を整えます</span>
+    <em>詳しく見る →</em>
+</a>
 
 <!-- ===== HERO（企業・登録支援機関・日本語学校 切替） ===== -->
 <section class="nh-hero" id="top">
@@ -1543,6 +1557,7 @@
                     <option value="">選択してください</option>
                     <option>企業（登録支援・自社支援）</option>
                     <option>企業（AI環境整備）</option>
+                    <option>AI活用セットアップ支援</option>
                     <option>登録支援機関</option>
                     <option>日本語学校・専門学校</option>
                     <option>その他</option>
