@@ -3,30 +3,34 @@
 <head>
 <link rel="icon" type="image/png" sizes="32x32" href="../images/penguin_logo_192.png">
 <link rel="apple-touch-icon" sizes="192x192" href="../images/penguin_logo_192.png">
-<meta name="theme-color" content="#005bac">
+<meta name="theme-color" content="#002a52">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI活用セットアップ支援 | スマホで指示するとパソコンが仕事を進める | セコンドペンギン企画</title>
-<meta name="description" content="63歳の代表が10か月で組み上げた、スマホで指示するとパソコンがメール返信案・書類・アプリまで作るAI環境を、企業・個人事業主・個人の方のパソコンに合わせて整えます。導入プラン5万円、全国オンライン対応。">
+<title>AI活用セットアップ支援 | スマホで一言、パソコンが仕事を仕上げる | セコンドペンギン企画</title>
+<meta name="description" content="63歳・プログラミング経験ゼロの代表が10か月で作った「スマホで指示すると、パソコンがメール返信案・書類・アプリまで作る」仕組みを、あなたのパソコンにも。導入プラン5万円（税込）、まずは無料診断。全国オンライン対応。">
 <link rel="canonical" href="https://second-penguin.com/ai/">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://second-penguin.com/ai/">
-<meta property="og:title" content="AI活用セットアップ支援 | セコンドペンギン企画">
-<meta property="og:description" content="63歳の代表が10か月で組み上げた、スマホで指示するとパソコンがメール返信案・書類・アプリまで作るAI環境を、企業・個人事業主・個人の方のパソコンに合わせて整えます。導入プラン5万円、全国オンライン対応。">
+<meta property="og:title" content="スマホで一言、パソコンが仕事を仕上げる | AI活用セットアップ支援">
+<meta property="og:description" content="63歳・プログラミング経験ゼロの代表が10か月で作った仕組みを、あなたのパソコンにも。導入プラン5万円（税込）、まずは無料診断。">
 <meta property="og:image" content="https://second-penguin.com/images/penguin_logo_192.png">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
     :root {
         --main-blue: #005bac;
+        --navy: #002a52;
         --sky-blue: #e0f4ff;
         --text-color: #333;
         --white: #ffffff;
         --accent-orange: #ff8c00;
+        --orange-dark: #e65c00;
+        --gold: #ffc566;
         --col-employment: #003a70;
         --line: #d5e6f3;
         --muted: #5b6b7c;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 64px; }
     body {
         font-family: 'Noto Sans JP', sans-serif;
         line-height: 1.8;
@@ -53,117 +57,148 @@
         border-radius: 20px; font-size: 0.82rem; font-weight: bold; transition: 0.3s; white-space: nowrap;
     }
     .back-btn:hover { background: var(--main-blue); }
+    .back-btn.hot { background: var(--accent-orange); }
+    .back-btn.hot:hover { background: var(--orange-dark); }
     @media (max-width: 520px) {
         .logo span { font-size: .9rem; }
-        .header-right .back-btn:first-child { display: none; }
+        .header-right .back-btn:last-child { display: none; }
     }
 
-    /* ===== HERO（トップページ nh-hero と同じ配色） ===== */
-    section.nh-hero {
-        position: relative; overflow: hidden; padding: 56px 16px 48px;
-        background: radial-gradient(1200px 500px at 90% -10%, #cfe9ff 0%, transparent 60%),
-                    linear-gradient(180deg, #f4faff 0%, var(--sky-blue) 100%);
+    /* ===== HERO（最初の画面） ===== */
+    section.hero {
+        position: relative; overflow: hidden; color: #fff; padding: 56px 16px 60px;
+        background: radial-gradient(900px 480px at 85% 0%, rgba(0,140,255,.45) 0%, transparent 60%),
+                    linear-gradient(160deg, var(--navy) 0%, var(--col-employment) 55%, var(--main-blue) 100%);
     }
-    .nh-inner { max-width: 1080px; margin: 0 auto; }
-    .nh-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: .82rem; font-weight: 700; color: var(--main-blue);
-        background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: 4px 14px; }
-    .nh-eyebrow img { width: 20px; height: 20px; }
-    .nh-hero h1 { font-size: clamp(1.6rem, 4.4vw, 2.6rem); font-weight: 700; line-height: 1.4; margin: 18px 0 12px; color: var(--col-employment); }
-    .nh-hero h1 em { font-style: normal; color: var(--main-blue); background: linear-gradient(transparent 68%, #ffd9a8 68%); }
-    .nh-lead { font-size: clamp(.95rem, 2vw, 1.05rem); color: var(--muted); max-width: 720px; }
-    .nh-cta { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
-    .nh-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 13px 22px; border-radius: 999px;
-        font-weight: 700; text-decoration: none; font-size: .98rem; transition: .2s; }
-    .nh-btn img { width: 22px; height: 22px; }
-    .nh-btn-main { background: var(--accent-orange); color: #fff; box-shadow: 0 6px 16px rgba(255,140,0,.3); }
-    .nh-btn-main:hover { background: #e65c00; }
-    .nh-btn-sub { background: #fff; color: var(--col-employment); border: 2px solid var(--col-employment); }
-    .nh-btn-sub:hover { background: var(--sky-blue); }
-    .nh-btn-line { background: #06c755; color: #fff; }
-    .nh-btn-line:hover { background: #05a647; }
-    .nh-trust { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-top: 22px; font-size: .85rem; color: var(--col-employment); }
-    .nh-trust span::before { content: "✓ "; color: var(--main-blue); font-weight: 700; }
+    .hero-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1.15fr .85fr; gap: 40px; align-items: center; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: .85rem; font-weight: 700; color: var(--navy);
+        background: var(--gold); border-radius: 999px; padding: 4px 16px; }
+    .hero h1 { font-size: clamp(2rem, 6vw, 3.4rem); font-weight: 900; line-height: 1.3; margin: 18px 0 16px; letter-spacing: .01em; }
+    .hero h1 em { font-style: normal; color: var(--gold); }
+    .hero-lead { font-size: clamp(1rem, 2.3vw, 1.18rem); color: #dcecff; max-width: 620px; }
+    .hero-lead b { color: #fff; }
+    .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 26px; max-width: 560px; }
+    .stat { background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.25); border-radius: 14px; padding: 12px 8px; text-align: center; line-height: 1.3; }
+    .stat b { display: block; font-size: clamp(1.4rem, 4vw, 2rem); font-weight: 900; color: var(--gold); }
+    .stat span { font-size: .78rem; color: #dcecff; }
+    .cta-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; align-items: center; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 15px 26px; border-radius: 999px;
+        font-weight: 700; text-decoration: none; font-size: 1.02rem; transition: .2s; line-height: 1.4; text-align: center; }
+    .btn img { width: 22px; height: 22px; }
+    .btn-main { background: var(--accent-orange); color: #fff; box-shadow: 0 8px 22px rgba(255,140,0,.45); font-size: 1.12rem; padding: 14px 32px; flex-direction: column; gap: 0; }
+    .btn-main:hover { background: var(--orange-dark); transform: translateY(-2px); }
+    .btn-main small { display: block; font-size: .75rem; font-weight: 700; opacity: .9; }
+    .btn-line { background: #06c755; color: #fff; }
+    .btn-line:hover { background: #05a647; }
+    .hero-price { margin-top: 20px; font-size: .92rem; color: #dcecff; }
+    .hero-price b { color: var(--gold); font-size: 1.3rem; }
+    .hero-price s { color: #9fb8d3; margin-left: 6px; }
+    .hero-price .limit { display: inline-block; background: #ffe14d; color: #8a2300; font-weight: 900; border-radius: 6px; padding: 1px 10px; margin-right: 8px; }
+    .plan .limit { display: inline-block; align-self: flex-start; background: #ffe14d; color: #8a2300; font-weight: 900; font-size: .8rem; border-radius: 6px; padding: 1px 10px; margin-top: 4px; }
+    .plan .regular { font-size: .85rem; color: var(--muted); }
+    .plan .regular s { font-weight: 700; }
+    .sale-banner { max-width: 760px; margin: 0 auto 30px; text-align: center; background: linear-gradient(135deg, #ff8c00 0%, #e63c00 100%); color: #fff;
+        border-radius: 14px; padding: 14px 16px; font-weight: 900; font-size: clamp(1rem, 2.8vw, 1.25rem); line-height: 1.5; box-shadow: 0 8px 20px rgba(230,60,0,.25); }
+    .sale-banner small { display: block; font-weight: 700; font-size: .82rem; opacity: .95; }
+
+    /* スマホ → パソコン の見本 */
+    .demo { position: relative; }
+    .demo-phone { background: #fff; color: var(--text-color); border-radius: 26px; padding: 14px 14px 16px; max-width: 280px;
+        box-shadow: 0 18px 40px rgba(0,0,0,.35); border: 6px solid #1d1d1f; position: relative; z-index: 2; }
+    .demo-phone .bar { font-size: .7rem; color: var(--muted); text-align: center; margin-bottom: 8px; }
+    .bubble { background: #06c755; color: #fff; border-radius: 16px 16px 4px 16px; padding: 9px 12px; font-size: .9rem; line-height: 1.55; margin-left: 24px; }
+    .demo-arrow { text-align: center; font-size: .82rem; color: var(--gold); font-weight: 700; margin: 10px 0; padding-left: 40px; }
+    .demo-pc { background: #fff; color: var(--text-color); border-radius: 12px; overflow: hidden; box-shadow: 0 18px 40px rgba(0,0,0,.35); margin-left: 40px; }
+    .demo-pc .top { background: #e9eef3; padding: 6px 10px; display: flex; gap: 5px; align-items: center; }
+    .demo-pc .top i { width: 9px; height: 9px; border-radius: 50%; background: #ff5f57; display: block; }
+    .demo-pc .top i:nth-child(2) { background: #febc2e; }
+    .demo-pc .top i:nth-child(3) { background: #28c840; }
+    .demo-pc .top span { font-size: .68rem; color: var(--muted); margin-left: 6px; }
+    .demo-pc ul { list-style: none; padding: 12px 14px; font-size: .86rem; line-height: 1.6; }
+    .demo-pc li { padding: 4px 0 4px 1.5em; position: relative; }
+    .demo-pc li::before { content: "✓"; position: absolute; left: 0; color: #28a745; font-weight: 900; }
+    .demo-pc li small { display: block; color: var(--muted); font-size: .76rem; }
+    .demo-note { font-size: .72rem; color: #b8d4f0; margin: 10px 0 0 40px; }
 
     /* ===== 共通セクション ===== */
-    .nh-sec { padding: 64px 16px; }
-    .nh-sec.alt { background: #f4faff; }
-    .nh-sec > .nh-inner > h2 {
-        text-align: center; color: var(--col-employment); font-size: clamp(1.3rem, 3vw, 1.7rem);
-        line-height: 1.5; margin-bottom: 10px; position: relative; padding-bottom: 12px;
-    }
-    .nh-sec > .nh-inner > h2::after {
-        content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
-        width: 50px; height: 3px; background: var(--accent-orange); border-radius: 2px;
-    }
-    .nh-sec-lead { text-align: center; color: var(--muted); font-size: .95rem; margin: 14px auto 32px; max-width: 720px; }
+    .sec { padding: 72px 16px; }
+    .sec.alt { background: #f4faff; }
+    .inner { max-width: 1080px; margin: 0 auto; }
+    .sec-num { display: block; text-align: center; font-size: .8rem; font-weight: 900; color: var(--accent-orange); letter-spacing: .12em; }
+    .sec h2 { text-align: center; color: var(--navy); font-size: clamp(1.5rem, 4vw, 2.1rem); font-weight: 900; line-height: 1.45; margin-top: 4px; }
+    .sec h2 em { font-style: normal; color: var(--main-blue); background: linear-gradient(transparent 65%, #ffd9a8 65%); }
+    .sec-lead { text-align: center; color: var(--muted); font-size: 1rem; margin: 14px auto 36px; max-width: 720px; }
 
-    /* お悩み */
-    .nh-pains { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
-    .nh-pain { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 18px 16px; line-height: 1.7; }
-    .nh-pain .nh-ico { font-size: 1.5rem; display: block; }
-    .nh-pain h3 { font-size: .98rem; color: var(--col-employment); margin: 6px 0 4px; line-height: 1.5; }
-    .nh-pain p { font-size: .85rem; color: var(--muted); }
+    /* ① 何ができるか */
+    .jobs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .job { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 20px; line-height: 1.6; box-shadow: 0 4px 14px rgba(0,58,112,.06); }
+    .job .ico { font-size: 2rem; display: block; line-height: 1.2; }
+    .job h3 { font-size: 1.08rem; color: var(--navy); margin: 8px 0 10px; }
+    .job .ask { background: #e9f9ef; border-radius: 12px 12px 12px 4px; padding: 8px 12px; font-size: .88rem; color: #146c34; }
+    .job .ask::before { content: "📱 "; }
+    .job .done { margin-top: 8px; font-size: .88rem; color: var(--text-color); padding-left: 1.4em; position: relative; }
+    .job .done::before { content: "→"; position: absolute; left: 0; color: var(--accent-orange); font-weight: 900; }
+    .who { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 30px; }
+    .who span { background: #fff; border: 2px solid var(--line); border-radius: 999px; padding: 6px 16px; font-size: .92rem; font-weight: 700; color: var(--col-employment); }
+    .proof { margin-top: 40px; background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 22px; }
+    .proof h3 { text-align: center; color: var(--navy); font-size: 1.05rem; margin-bottom: 14px; }
+    .proof-links { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .proof-links a { display: block; text-decoration: none; background: #f4faff; border-radius: 12px; padding: 14px; color: var(--col-employment); line-height: 1.5; transition: .2s; }
+    .proof-links a:hover { background: var(--sky-blue); }
+    .proof-links b { display: block; font-size: .95rem; }
+    .proof-links span { font-size: .8rem; color: var(--muted); }
+    .proof-links em { font-style: normal; font-size: .82rem; font-weight: 700; color: var(--main-blue); }
+    .proof p { text-align: center; font-size: .82rem; color: var(--muted); margin-top: 12px; }
 
-    /* ご提供内容（トップと同じ nh-offer） */
-    .nh-offers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
-    .nh-offer { border: 1px solid var(--line); border-radius: 12px; padding: 18px; background: #fbfdff; display: flex; flex-direction: column; line-height: 1.7; }
-    .nh-offer .nh-tag { font-size: .72rem; font-weight: 700; color: var(--main-blue); }
-    .nh-offer h3 { font-size: 1.02rem; margin: 4px 0 6px; line-height: 1.5; color: var(--col-employment); }
-    .nh-offer p { font-size: .88rem; color: var(--muted); }
-    .nh-offer ul { list-style: none; margin-top: 10px; flex: 1; }
-    .nh-offer li { font-size: .85rem; padding: 3px 0 3px 1.2em; position: relative; }
-    .nh-offer li::before { content: "✓"; position: absolute; left: 0; color: var(--main-blue); font-weight: 700; }
-    .nh-offer .nh-price { margin-top: 12px; font-weight: 700; color: #e65c00; font-size: .9rem; }
-    .nh-offer.nh-hot { background: #fff8e6; border-color: #f3c98a; }
+    /* ② いくらかかるか */
+    .prices { display: grid; grid-template-columns: 1fr 1.2fr 1fr; gap: 16px; align-items: stretch; }
+    .plan { background: #fff; border: 2px solid var(--line); border-radius: 18px; padding: 24px 20px; display: flex; flex-direction: column; line-height: 1.7; position: relative; }
+    .plan .tag { font-size: .8rem; font-weight: 700; color: var(--main-blue); }
+    .plan h3 { font-size: 1.15rem; color: var(--navy); margin: 2px 0 6px; }
+    .plan .yen { font-size: 2.2rem; font-weight: 900; color: var(--orange-dark); line-height: 1.2; margin: 6px 0 2px; }
+    .plan .yen small { font-size: .85rem; font-weight: 700; }
+    .plan .sub { font-size: .82rem; color: var(--muted); }
+    .plan ul { list-style: none; margin-top: 14px; flex: 1; }
+    .plan li { font-size: .9rem; padding: 4px 0 4px 1.4em; position: relative; }
+    .plan li::before { content: "✓"; position: absolute; left: 0; color: var(--main-blue); font-weight: 900; }
+    .plan.free { border-color: #9fd3b0; }
+    .plan.free .yen { color: #1f9d55; }
+    .plan.best { border: 3px solid var(--accent-orange); background: #fff8e6; box-shadow: 0 12px 30px rgba(255,140,0,.18); }
+    .plan.best .ribbon { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--accent-orange); color: #fff;
+        font-size: .82rem; font-weight: 700; border-radius: 999px; padding: 3px 16px; white-space: nowrap; }
+    .plan.best .yen { font-size: 2.8rem; }
+    .price-notes { max-width: 760px; margin: 26px auto 0; font-size: .85rem; color: var(--muted); list-style: none; }
+    .price-notes li { padding: 2px 0 2px 1.2em; position: relative; }
+    .price-notes li::before { content: "※"; position: absolute; left: 0; }
 
-    /* できること（チェックリスト） */
-    .nh-can { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; max-width: 900px; margin: 0 auto; }
-    .nh-can div { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px 14px 46px; position: relative; line-height: 1.7; }
-    .nh-can div::before { content: "✓"; position: absolute; left: 16px; top: 13px; width: 20px; height: 20px; border-radius: 50%;
-        background: var(--main-blue); color: #fff; font-size: .75rem; font-weight: 700; display: flex; align-items: center; justify-content: center; }
-    .nh-can b { display: block; color: var(--col-employment); font-size: .95rem; }
-    .nh-can span { font-size: .85rem; color: var(--muted); }
-
-    /* アプリ（トップと同じ nh-app） */
-    .nh-app-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; max-width: 820px; margin: 0 auto; }
-    .nh-app { border: 1px solid var(--line); border-radius: 14px; padding: 18px; display: flex; flex-direction: column; background: #fff; line-height: 1.7; }
-    .nh-app .nh-ico { font-size: 1.6rem; }
-    .nh-app h3 { font-size: .98rem; margin: 6px 0 4px; line-height: 1.5; color: var(--col-employment); }
-    .nh-app p { font-size: .85rem; color: var(--muted); flex: 1; }
-    .nh-for { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 10px; }
-    .nh-for b { font-size: .7rem; background: var(--sky-blue); color: var(--main-blue); border-radius: 6px; padding: 1px 7px; }
-    .nh-app a { margin-top: 12px; font-size: .88rem; font-weight: 700; color: var(--main-blue); text-decoration: none; }
-    .nh-app a:hover { text-decoration: underline; }
+    /* ③ 無料診断の流れ */
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; counter-reset: st; }
+    .step { counter-increment: st; background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 26px 20px 20px; position: relative; line-height: 1.7; }
+    .step::before { content: counter(st); position: absolute; top: -18px; left: 20px; width: 40px; height: 40px; border-radius: 50%;
+        background: var(--accent-orange); color: #fff; font-weight: 900; font-size: 1.15rem; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(255,140,0,.35); }
+    .step h3 { font-size: 1.1rem; color: var(--navy); margin-bottom: 6px; }
+    .step p { font-size: .9rem; color: var(--muted); }
+    .step .pill { display: inline-block; margin-top: 10px; font-size: .78rem; font-weight: 700; background: #e9f9ef; color: #146c34; border-radius: 999px; padding: 2px 12px; }
+    .stages-wrap { max-width: 760px; margin: 44px auto 0; }
+    .stages-wrap h3 { text-align: center; color: var(--navy); font-size: 1.1rem; margin-bottom: 4px; }
+    .stages-wrap > p { text-align: center; font-size: .85rem; color: var(--muted); margin-bottom: 14px; }
+    .stages { list-style: none; display: grid; gap: 8px; }
+    .stages li { background: #fff; border: 1px solid var(--line); border-left: 5px solid var(--line); border-radius: 0 10px 10px 0; padding: 10px 16px; line-height: 1.6; }
+    .stages li b { display: inline-block; min-width: 5.5em; color: var(--main-blue); }
+    .stages li span { display: block; font-size: .85rem; color: var(--muted); }
+    .stages li.now { border-left-color: var(--accent-orange); background: #fff8e6; font-weight: 700; }
+    .stages li.now span { color: var(--orange-dark); }
+    .after { max-width: 760px; margin: 36px auto 0; background: #fff; border: 1px solid var(--line); border-left: 5px solid var(--main-blue); border-radius: 12px; padding: 18px 22px; font-size: .92rem; line-height: 1.8; }
+    .after b { color: var(--navy); }
+    .after ol { margin: 6px 0 0 1.4em; }
+    .center-cta { text-align: center; margin-top: 36px; }
 
     /* 説明ボックス */
-    .nh-note { max-width: 860px; margin: 0 auto; background: #fff; border: 1px solid var(--line); border-left: 5px solid var(--main-blue);
-        border-radius: 12px; padding: 22px 22px; line-height: 1.85; font-size: .93rem; }
-    .nh-note ul { list-style: none; margin: 10px 0; }
-    .nh-note li { padding: 3px 0 3px 1.2em; position: relative; }
-    .nh-note li::before { content: "▸"; position: absolute; left: 0; color: var(--main-blue); }
-    .nh-note small { display: block; color: var(--muted); font-size: .82rem; margin-top: 8px; }
-
-    /* 流れ */
-    .nh-flow { list-style: none; max-width: 760px; margin: 0 auto; counter-reset: step; }
-    .nh-flow li { counter-increment: step; position: relative; padding: 0 0 22px 60px; }
-    .nh-flow li::before { content: counter(step); position: absolute; left: 0; top: 0; width: 42px; height: 42px; border-radius: 50%;
-        background: var(--col-employment); color: #fff; font-weight: 700; display: flex; align-items: center; justify-content: center; }
-    .nh-flow li:not(:last-child)::after { content: ""; position: absolute; left: 20px; top: 46px; bottom: 2px; width: 2px; background: var(--line); }
-    .nh-flow b { display: block; color: var(--col-employment); font-size: 1rem; padding-top: 8px; }
-    .nh-flow span { font-size: .87rem; color: var(--muted); }
-
-    /* 料金 */
-    .nh-price-box { max-width: 760px; margin: 0 auto; background: #fff8e6; border: 1px solid #f3c98a; border-left: 5px solid var(--accent-orange); border-radius: 12px; padding: 22px; }
-    .nh-price-box dl { display: grid; grid-template-columns: auto 1fr; gap: 10px 18px; }
-    .nh-price-box dt { font-weight: 700; color: var(--col-employment); font-size: .93rem; }
-    .nh-price-box dd { font-weight: 700; color: #e65c00; font-size: .93rem; }
-    .nh-price-box p { margin-top: 14px; font-size: .82rem; color: var(--muted); }
-
-    /* 選ばれる理由 */
-    .nh-why { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
-    .nh-why div { background: #fff; border: 1px solid var(--line); border-top: 4px solid var(--main-blue); border-radius: 12px; padding: 18px; line-height: 1.7; }
-    .nh-why h3 { font-size: 1rem; color: var(--col-employment); margin-bottom: 6px; line-height: 1.5; }
-    .nh-why p { font-size: .87rem; color: var(--muted); }
+    .note { max-width: 860px; margin: 0 auto; background: #fff; border: 1px solid var(--line); border-left: 5px solid var(--main-blue);
+        border-radius: 12px; padding: 22px; line-height: 1.85; font-size: .93rem; }
+    .note ul { list-style: none; }
+    .note li { padding: 3px 0 3px 1.2em; position: relative; }
+    .note li::before { content: "▸"; position: absolute; left: 0; color: var(--main-blue); }
 
     /* FAQ */
     .faq-list { max-width: 800px; margin: 0 auto; }
@@ -178,18 +213,21 @@
     .faq-a { display: none; padding: 0 18px 16px 60px; font-size: .9rem; color: #555; line-height: 1.8; }
     .faq-item.open .faq-a { display: block; }
 
-    /* 企業の方へ */
-    .nh-aside { text-align: center; font-size: .9rem; color: var(--muted); padding: 0 16px 40px; }
-    .nh-aside a { color: var(--main-blue); font-weight: 700; }
+    /* 申込みフォーム */
+    .sec.apply { background: linear-gradient(160deg, var(--navy) 0%, var(--main-blue) 100%); }
+    .sec.apply h2, .sec.apply .sec-lead { color: #fff; }
+    .sec.apply .sec-num { color: var(--gold); }
+    .form { max-width: 640px; margin: 0 auto; display: grid; gap: 16px; background: #fff; border-radius: 18px; padding: 28px 24px; box-shadow: 0 18px 40px rgba(0,0,0,.25); }
+    .form label { display: block; font-weight: 700; font-size: .92rem; color: var(--col-employment); }
+    .form input, .form select, .form textarea { display: block; margin-top: 6px; width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 8px; font: inherit; font-weight: 400; color: var(--text-color); background: #fff; }
+    .form .req { display: inline-block; font-size: .7rem; background: var(--orange-dark); color: #fff; border-radius: 4px; padding: 0 6px; margin-left: 4px; vertical-align: middle; }
+    .form-note { font-size: .85rem; color: var(--muted); }
+    .form-note a { color: var(--main-blue); }
+    .form button { border: 0; cursor: pointer; justify-self: center; min-width: 240px; font-family: inherit; }
+    .apply-line { text-align: center; margin-top: 22px; color: #dcecff; font-size: .92rem; }
+    .apply-line .btn { margin-top: 8px; }
 
-    /* CTA */
-    .nh-final { background: linear-gradient(135deg, var(--col-employment) 0%, var(--main-blue) 100%); color: #fff; text-align: center; padding: 60px 16px; }
-    .nh-final h2 { font-size: clamp(1.3rem, 3vw, 1.6rem); line-height: 1.5; margin-bottom: 10px; }
-    .nh-final p { color: #d6e8fa; font-size: .95rem; margin-bottom: 26px; }
-    .nh-final .nh-cta { justify-content: center; }
-    .nh-final .nh-btn-sub { border-color: #fff; }
-
-    /* LINE固定 */
+    /* LINE固定（パソコン） */
     .line-fixed-btn {
         position: fixed; top: 90px; right: 20px; width: 120px; height: 60px; background: #06C755; border-radius: 30px; border: 3px solid white;
         display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 20px rgba(0,0,0,0.35); z-index: 999; transition: 0.3s; text-decoration: none;
@@ -198,49 +236,42 @@
     .line-inner { display: flex; align-items: center; gap: 6px; font-size: 11px; font-weight: bold; color: white; }
     .line-inner img { width: 28px; height: 28px; }
 
+    /* 下に固定のボタン（スマホ） */
+    .sticky-cta { display: none; }
+
     footer { background: #333; color: white; text-align: center; padding: 30px 16px; }
     footer a { color: #fff; text-decoration: underline; }
 
     .fade-in { opacity: 0; transform: translateY(24px); transition: opacity .7s ease-out, transform .7s ease-out; }
     .fade-in.visible { opacity: 1; transform: none; }
 
-    @media (max-width: 960px) {
-        .nh-pains { grid-template-columns: 1fr 1fr; }
-    }
-    @media (max-width: 860px) {
-        .nh-offers, .nh-why { grid-template-columns: 1fr; }
-        .nh-can, .nh-app-grid { grid-template-columns: 1fr; }
+    @media (max-width: 900px) {
+        .hero-inner { grid-template-columns: 1fr; gap: 34px; }
+        .demo { max-width: 400px; margin: 0 auto; width: 100%; }
+        .jobs { grid-template-columns: 1fr 1fr; }
+        .prices, .steps, .proof-links { grid-template-columns: 1fr; }
+        .prices { gap: 26px; max-width: 480px; margin: 0 auto; }
+        .steps { gap: 30px; max-width: 520px; margin: 0 auto; }
     }
     @media (max-width: 768px) {
-        .line-fixed-btn { top: auto; bottom: 16px; right: 12px; width: 64px; height: 50px; border-radius: 25px; }
-        .line-inner img { width: 26px; height: 26px; }
-        .line-inner span { display: none; }
+        .line-fixed-btn { display: none; }
+        .sticky-cta { display: flex; position: fixed; left: 0; right: 0; bottom: 0; z-index: 999; gap: 8px; padding: 8px 10px calc(8px + env(safe-area-inset-bottom));
+            background: rgba(255,255,255,.96); box-shadow: 0 -4px 14px rgba(0,0,0,.15); }
+        .sticky-cta a { flex: 1; text-align: center; text-decoration: none; font-weight: 700; border-radius: 999px; padding: 11px 6px; font-size: .95rem; color: #fff; }
+        .sticky-cta .s-main { background: var(--accent-orange); flex: 1.6; }
+        .sticky-cta .s-line { background: #06c755; }
+        footer { padding-bottom: 90px; }
     }
-    @media (max-width: 520px) {
-        section.nh-hero { padding: 32px 16px 36px; }
-        .nh-sec { padding: 48px 16px; }
-        .nh-pains { grid-template-columns: 1fr; }
-        .nh-btn { width: 100%; }
-        .nh-price-box dl { grid-template-columns: 1fr; gap: 2px; }
-        .nh-price-box dd { margin-bottom: 8px; }
+    @media (max-width: 560px) {
+        section.hero { padding: 34px 16px 44px; }
+        .sec { padding: 56px 16px; }
+        .jobs { grid-template-columns: 1fr; }
+        .btn { width: 100%; }
+        .stat span { font-size: .7rem; }
+        .demo-pc, .demo-note { margin-left: 24px; }
         .faq-a { padding-left: 18px; }
+        .form { padding: 22px 16px; }
     }
-
-    /* 5つの段階 */
-    .nh-stages { list-style: none; max-width: 760px; margin: 0 auto; display: grid; gap: 8px; }
-    .nh-stages li { background: #fff; border: 1px solid var(--line); border-left: 4px solid var(--line); border-radius: 0 10px 10px 0; padding: 10px 16px; line-height: 1.6; }
-    .nh-stages li b { display: inline-block; min-width: 5.5em; color: var(--main-blue); }
-    .nh-stages li span { display: block; font-size: .85rem; color: var(--muted); }
-    .nh-stages li.nh-now { border-left-color: var(--accent-orange); background: #fff8e6; font-weight: 700; }
-    .nh-stages li.nh-now span { color: #e65c00; }
-    /* 申込みフォーム */
-    .nh-form { max-width: 640px; margin: 0 auto; display: grid; gap: 16px; }
-    .nh-form label { display: block; font-weight: 700; font-size: .92rem; color: var(--col-employment); }
-    .nh-form input, .nh-form select, .nh-form textarea { display: block; margin-top: 6px; width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 8px; font: inherit; font-weight: 400; color: var(--text-color); background: #fff; }
-    .nh-form .req { display: inline-block; font-size: .7rem; background: #e65c00; color: #fff; border-radius: 4px; padding: 0 6px; margin-left: 4px; vertical-align: middle; }
-    .nh-form-note { font-size: .85rem; color: var(--muted); }
-    .nh-form-note a { color: var(--main-blue); }
-    .nh-form button { border: 0; cursor: pointer; justify-self: center; min-width: 220px; }
 </style>
 </head>
 <body>
@@ -252,206 +283,180 @@
         <span>セコンドペンギン企画</span>
     </a>
     <div class="header-right">
-        <a href="#apply" class="back-btn">📩 無料相談</a>
+        <a href="#apply" class="back-btn hot">無料診断</a>
         <a href="../index.html" class="back-btn">← TOPへ戻る</a>
     </div>
 </header>
 
-<!-- ===== HERO ===== -->
-<section class="nh-hero">
-  <div class="nh-inner">
-    <span class="nh-eyebrow"><img src="../images/penguin_logo_192.png" alt="">AI活用セットアップ支援</span>
-    <h1>スマホで指示すると、<br><em>パソコンが仕事を進める。</em></h1>
-    <p class="nh-lead">代表の徳永は63歳。2026年1月からAIを使い始め、10か月で、スマホから指示を出すと事務所のパソコンがメールの返信案や書類、アプリまで作る環境を自分で組み上げました。その手順とつまずいた所を、お客様のパソコンと目的に合わせてお伝えします。</p>
-    <div class="nh-cta">
-        <a class="nh-btn nh-btn-main" href="#apply">無料相談を申し込む</a>
-        <a class="nh-btn nh-btn-line" href="https://line.me/R/ti/p/@556fihjp/" target="_blank" rel="noopener"><img src="https://upload.wikimedia.org/wikipedia/commons/4/41/LINE_logo.svg" alt="">LINEで相談する</a>
-    </div>
-    <div class="nh-trust">
-      <span>プログラミングの経験は不要</span>
-      <span>企業・個人事業主・個人の方</span>
-      <span>全国オンライン対応</span>
-      <span>德永良雄 行政書士事務所 併設</span>
-    </div>
-  </div>
-</section>
-
-<!-- ===== こんな方に ===== -->
-<section class="nh-sec alt fade-in">
-  <div class="nh-inner">
-    <h2>こんな方に</h2>
-    <p class="nh-sec-lead">AIに質問はしているが、仕事を任せるところまで進めない方に向けたサービスです。</p>
-    <div class="nh-why">
-        <div><h3>🏢 中小企業・お店</h3><p>メールの返信案、見積書・請求書、営業先のリスト、社内マニュアルづくり。</p></div>
-        <div><h3>📑 士業・個人事業主</h3><p>申請ごとの提出書類チェックリスト、書類の下書き、お客様への連絡文。</p></div>
-        <div><h3>🎨 個人・趣味の方</h3><p>作品や活動を紹介するホームページ、記録や資料の整理、調べものと文章づくり。</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== 5つの段階 ===== -->
-<section class="nh-sec fade-in">
-  <div class="nh-inner">
-    <h2>AI活用の5つの段階</h2>
-    <p class="nh-sec-lead">当事務所での整理です。いまどの段階にいて、どこまで進みたいかを、無料相談でお聞かせください。</p>
-    <ol class="nh-stages">
-        <li><b>第1段階</b>AIに質問する<span>文章づくり・翻訳・調べもの</span></li>
-        <li><b>第2段階</b>AIで書類や資料を作る<span>書類の下書き・表の整理</span></li>
-        <li><b>第3段階</b>AIが一連の仕事をこなす<span>メールを読み、必要な資料と返信案を作る</span></li>
-        <li class="nh-now"><b>第4段階</b>スマホから指示し、パソコンが作業する<span>代表は現在この段階で業務を行っています</span></li>
-        <li><b>第5段階</b>複数のAIが分担し、必要なときだけ人に確認する<span>これからの段階</span></li>
-    </ol>
-  </div>
-</section>
-
-<!-- ===== 代表が作ったもの ===== -->
-<section class="nh-sec alt fade-in">
-  <div class="nh-inner">
-    <h2>代表がAIで作ったもの</h2>
-    <p class="nh-sec-lead">どれもプログラミングを学ばずに、AIへの指示で作りました。</p>
-    <div class="nh-app-grid">
-        <div class="nh-app">
-            <span class="nh-ico">🖼️</span>
-            <h3>徳永美術館（オンライン美術館）</h3>
-            <p>作品の展示、展示会の案内、旅の事前登録までを備えたサイトです。</p>
-            <div class="nh-for"><b>個人・趣味</b></div>
-            <a href="https://second-penguin-planning.github.io/online-museum/" target="_blank" rel="noopener">見てみる →</a>
+<!-- ===== 最初の画面 ===== -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+        <span class="eyebrow">AI活用セットアップ支援</span>
+        <h1>スマホで一言。<br><em>パソコンが、</em><br><em>仕事を仕上げる。</em></h1>
+        <p class="hero-lead">63歳の代表が、<b>プログラミングを学ばずに</b>、10か月で作った仕組みです。<br>同じ仕組みを、<b>あなたのパソコンにも</b>整えます。</p>
+        <div class="stats">
+            <div class="stat"><b>63歳</b><span>から始めた</span></div>
+            <div class="stat"><b>10か月</b><span>で組み上げた</span></div>
+            <div class="stat"><b>経験ゼロ</b><span>プログラミング</span></div>
         </div>
-        <div class="nh-app">
-            <span class="nh-ico">🧑‍💼</span>
-            <h3>英日履歴書アプリ</h3>
-            <p>質問に答えるとA4一枚の英日履歴書が完成します。データは端末内に保存されます。</p>
-            <div class="nh-for"><b>アプリ</b></div>
-            <a href="https://second-penguin-resume.vercel.app" target="_blank" rel="noopener">使ってみる →</a>
-        </div>
-        <div class="nh-app">
-            <span class="nh-ico">🌐</span>
-            <h3>セコンドペンギン企画のホームページ</h3>
-            <p>このページを含む会社のホームページも、AIへの指示で作り、更新しています。</p>
-            <div class="nh-for"><b>中小企業</b></div>
-            <a href="../index.html">トップを見る →</a>
-        </div>
-        <div class="nh-app">
-            <span class="nh-ico">🗂️</span>
-            <h3>日々の業務の仕組み</h3>
-            <p>メールの仕分けと返信案、雇用契約書類の作成アプリ、申請書類チェックリスト、試験対策アプリ、営業先リストの作成など。</p>
-            <div class="nh-for"><b>士業</b><b>業務用・非公開</b></div>
+        <p class="hero-price"><span class="limit">11月10日まで・先着10名 特別価格</span>導入プラン <b>50,000円</b>（税込）<s>80,000円</s></p>
+        <div class="cta-row">
+            <a class="btn btn-main" href="#apply">無料診断を申し込む<small>1分で入力・オンライン・全国対応</small></a>
+            <a class="btn btn-line" href="https://line.me/R/ti/p/@556fihjp/" target="_blank" rel="noopener"><img src="https://upload.wikimedia.org/wikipedia/commons/4/41/LINE_logo.svg" alt="">LINEで聞く</a>
         </div>
     </div>
-  </div>
-</section>
 
-<!-- ===== 流れ ===== -->
-<section class="nh-sec fade-in">
-  <div class="nh-inner">
-    <h2>ご依頼の流れ</h2>
-    <p class="nh-sec-lead">打合せはオンラインで行います。</p>
-    <ol class="nh-flow">
-        <li><b>無料相談</b><span>いまの使い方と、AIに任せたい仕事を伺います。</span></li>
-        <li><b>アンケート</b><span>パソコン・スマホの環境、業務の内容、どこまで自動化したいかをお答えいただきます。</span></li>
-        <li><b>目標の設定</b><span>アンケートをもとに、導入プランで目指す段階と作るものを決めます。</span></li>
-        <li><b>個別の手順書</b><span>お客様の環境に合わせた手順書を作成してお渡しします。</span></li>
-        <li><b>オンライン2回（1回1時間）</b><span>手順書に沿って導入を一緒に進め、つまずいた所を解消します。</span></li>
-        <li><b>継続サポート</b><span>ご希望の方は、導入後の仕組みづくりをオンラインで続けます。</span></li>
-    </ol>
-  </div>
-</section>
-
-<!-- ===== 料金 ===== -->
-<section class="nh-sec alt fade-in">
-  <div class="nh-inner">
-    <h2>料金</h2>
-    <p class="nh-sec-lead">お一人で導入する場合の料金です。企業・個人を問いません。</p>
-    <div class="nh-offers">
-        <div class="nh-offer">
-            <span class="nh-tag">まずはご相談</span>
-            <h3>無料相談</h3>
-            <p>どこまで整えられるかをご説明します。</p>
+    <div class="demo" aria-label="スマホで指示し、パソコンが作業する例">
+        <div class="demo-phone">
+            <div class="bar">外出先のスマホから</div>
+            <div class="bubble">今日来たメールに返信案を作って。A社には見積書も。</div>
+        </div>
+        <div class="demo-arrow">▼ 事務所のパソコンが作業</div>
+        <div class="demo-pc">
+            <div class="top"><i></i><i></i><i></i><span>事務所のパソコン</span></div>
             <ul>
-                <li>いまの使い方の確認</li>
-                <li>任せたい仕事の聞き取り</li>
-                <li>プランのご説明</li>
+                <li>メール5件の返信案を作りました<small>送る前に、あなたが確認します</small></li>
+                <li>A社の見積書を作りました<small>見積書_A社.pdf</small></li>
             </ul>
-            <span class="nh-price">無料</span>
         </div>
-        <div class="nh-offer nh-hot">
-            <span class="nh-tag">導入プラン</span>
-            <h3>アンケートから専用の手順書まで</h3>
-            <p>お客様の環境と目標に合わせて、導入の手順を一から用意します。</p>
+        <p class="demo-note">※ 代表が毎日使っている流れを、わかりやすくした例です。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ① 何ができるか ===== -->
+<section class="sec fade-in" id="can">
+  <div class="inner">
+    <span class="sec-num">01</span>
+    <h2>スマホから、<em>こんな仕事を頼めます</em></h2>
+    <p class="sec-lead">ふだんの言葉で頼むだけ。できあがったものを、あなたが確認します。</p>
+    <div class="jobs">
+        <div class="job"><span class="ico">📧</span><h3>メールの返信</h3><p class="ask">今日のメールに返信案を</p><p class="done">返信の下書きが並ぶ。確認して送るだけ</p></div>
+        <div class="job"><span class="ico">🧾</span><h3>見積書・請求書</h3><p class="ask">A社に見積書を作って</p><p class="done">PDFができあがる</p></div>
+        <div class="job"><span class="ico">✅</span><h3>チェックリスト</h3><p class="ask">この手続きの必要書類をまとめて</p><p class="done">漏れのない一覧ができる</p></div>
+        <div class="job"><span class="ico">🌐</span><h3>ホームページ</h3><p class="ask">作品を紹介するページを作って</p><p class="done">このページも、この方法で作りました</p></div>
+        <div class="job"><span class="ico">📱</span><h3>アプリ</h3><p class="ask">お客様が入力できる画面を作って</p><p class="done">スマホで使えるアプリになる</p></div>
+        <div class="job"><span class="ico">📋</span><h3>リスト・資料の整理</h3><p class="ask">営業先のリストを作って</p><p class="done">表にまとめて保存される</p></div>
+    </div>
+    <div class="who">
+        <span>🏢 中小企業・お店</span><span>📑 士業・個人事業主</span><span>🎨 個人・趣味の方</span>
+    </div>
+
+    <div class="proof">
+        <h3>代表が実際に作ったもの（見られます）</h3>
+        <div class="proof-links">
+            <a href="https://second-penguin-planning.github.io/online-museum/" target="_blank" rel="noopener"><b>🖼️ 徳永美術館</b><span>作品の展示と展示会の案内</span><br><em>見てみる →</em></a>
+            <a href="https://second-penguin-resume.vercel.app" target="_blank" rel="noopener"><b>🧑‍💼 英日履歴書アプリ</b><span>質問に答えるとA4一枚の履歴書に</span><br><em>使ってみる →</em></a>
+            <a href="../index.html"><b>🌐 会社のホームページ</b><span>作るのも更新も、AIへの指示で</span><br><em>トップを見る →</em></a>
+        </div>
+        <p>ほかに、メールの仕分け、書類づくりのアプリ、試験対策アプリなどを業務で使っています（非公開）。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ② いくらかかるか ===== -->
+<section class="sec alt fade-in" id="price">
+  <div class="inner">
+    <span class="sec-num">02</span>
+    <h2>あなたも同じ仕組みに。<br><em>かかる費用はこれだけ</em></h2>
+    <p class="sec-lead">企業・個人を問わず、同じ料金です（すべて税込）。</p>
+    <div class="sale-banner">🎉 サービス開始記念　11月10日まで・先着10名さま特別価格<small>導入プラン・継続サポートとも 80,000円 → 50,000円</small></div>
+    <div class="prices">
+        <div class="plan free">
+            <span class="tag">まずはここから</span>
+            <h3>無料診断</h3>
+            <div class="yen">0<small>円</small></div>
+            <span class="sub">オンライン</span>
+            <ul>
+                <li>いまの使い方を確認</li>
+                <li>任せたい仕事を伺う</li>
+                <li>何ができるかをご説明</li>
+            </ul>
+        </div>
+        <div class="plan best">
+            <span class="ribbon">おすすめ</span>
+            <span class="tag">導入プラン</span>
+            <h3>あなた専用の手順書で、導入まで</h3>
+            <span class="limit">11月10日まで・先着10名</span>
+            <div class="yen">50,000<small>円</small></div>
+            <span class="sub">税込・1回きり</span>
+            <span class="regular">11月11日から <s>80,000円</s></span>
             <ul>
                 <li>事前アンケートと目標の設定</li>
-                <li>お客様専用の手順書の作成</li>
-                <li>オンライン（Zoom）2回の導入フォロー（1回1時間）</li>
+                <li>あなたのパソコンに合わせた手順書</li>
+                <li>オンライン2回（1回1時間）で一緒に導入</li>
             </ul>
-            <span class="nh-price">50,000円（税込）</span>
         </div>
-        <div class="nh-offer">
-            <span class="nh-tag">継続サポート</span>
-            <h3>ご自分の仕事に合わせて育てる</h3>
-            <p>導入プランを終えた方が対象です。</p>
+        <div class="plan">
+            <span class="tag">継続サポート</span>
+            <h3>自分の仕事に合わせて育てる</h3>
+            <span class="limit">11月10日まで・先着10名</span>
+            <div class="yen">50,000<small>円</small></div>
+            <span class="sub">オンライン5回（1回1時間）</span>
+            <span class="regular">11月11日から <s>80,000円</s></span>
             <ul>
                 <li>アプリ・チェックリストづくり</li>
-                <li>メールの読み取りと返信案の仕組み</li>
-                <li>動かないとき・エラーが出たときの対応</li>
+                <li>メールの返信案の仕組み</li>
+                <li>動かないときの対応</li>
             </ul>
-            <span class="nh-price">50,000円（税込）／オンライン5回（1回1時間）</span>
         </div>
     </div>
-    <p class="nh-aside" style="padding:20px 0 0;">継続サポートの有効期間はご購入から6か月です。</p>
+    <ul class="price-notes">
+        <li>特別価格は、2026年11月10日までにお申込みいただいた先着10名さまが対象です。10名に達した時点で終了し、その後と11月11日からは通常価格（各80,000円）になります。</li>
+        <li>継続サポートは、導入プランを終えた方が対象です。有効期間はご購入から6か月です。</li>
+        <li>AIサービスの月額利用料は、お客様ご自身のご契約・ご負担です。金額は無料診断でご説明します。</li>
+        <li>会社で複数の人が使う場合は、別途お見積りします。</li>
+    </ul>
   </div>
 </section>
 
-<!-- ===== お申込みの前に ===== -->
-<section class="nh-sec fade-in">
-  <div class="nh-inner">
-    <h2>お申込みの前に</h2>
-    <div class="nh-note" style="margin-top:32px;">
-        <ul>
-            <li>AIサービスの月額利用料は、お客様ご自身のご契約・ご負担です（プランにより異なります）。</li>
-            <li>Windows または Mac のパソコンが必要です。スマホからの指示には、作業中に電源を入れておけるパソコンを使います。</li>
-            <li>メールや顧客情報をAIに扱わせる範囲は、お客様と決めてから設定します。</li>
-            <li>どこまで進むかは、パソコンの環境と使える時間により異なります。目標はアンケートをもとに一緒に決めます。</li>
-        </ul>
+<!-- ===== ③ 無料診断の流れ ===== -->
+<section class="sec fade-in" id="flow">
+  <div class="inner">
+    <span class="sec-num">03</span>
+    <h2>まずは<em>無料診断</em>から</h2>
+    <p class="sec-lead">「自分にもできるのか」を、お金をかけずに確かめられます。</p>
+    <div class="steps">
+        <div class="step"><h3>お申込み</h3><p>下のフォームか、LINEでお申込みください。</p><span class="pill">入力は1分</span></div>
+        <div class="step"><h3>オンラインで診断</h3><p>いまのAIの使い方と、任せたい仕事を伺います。下の「5つの段階」のどこにいるかをお伝えします。</p><span class="pill">全国どこからでも</span></div>
+        <div class="step"><h3>あなたに合う進め方をご提案</h3><p>何ができるか、どこまで進めるかをご説明します。お申込みは、ご納得いただいてからで結構です。</p><span class="pill">ここまで無料</span></div>
     </div>
-  </div>
-</section>
 
-<!-- ===== FAQ ===== -->
-<section class="nh-sec alt fade-in">
-  <div class="nh-inner">
-    <h2>よくあるご質問</h2>
-    <div class="faq-list" style="margin-top:32px;">
-        <div class="faq-item">
-            <button class="faq-q" aria-expanded="false"><span class="q-mark">Q</span>パソコンが得意でなくても大丈夫ですか？<span class="faq-arrow">▼</span></button>
-            <div class="faq-a">はい。代表もプログラミングの経験はありません。手順書は、お客様のパソコンの画面に合わせて、順番どおりに進めれば済む形で作ります。</div>
-        </div>
-        <div class="faq-item">
-            <button class="faq-q" aria-expanded="false"><span class="q-mark">Q</span>どのAIを使いますか？<span class="faq-arrow">▼</span></button>
-            <div class="faq-a">代表が業務で使っている Claude（Anthropic社）を基本にご案内します。目的やご希望に応じてご相談ください。</div>
-        </div>
-        <div class="faq-item">
-            <button class="faq-q" aria-expanded="false"><span class="q-mark">Q</span>AIの利用料は月々いくらかかりますか？<span class="faq-arrow">▼</span></button>
-            <div class="faq-a">AIサービスのプランにより異なります。無料相談で、目的に合ったプランと金額をご説明します。</div>
-        </div>
-        <div class="faq-item">
-            <button class="faq-q" aria-expanded="false"><span class="q-mark">Q</span>会社で複数の人が使えるようにしたいのですが。<span class="faq-arrow">▼</span></button>
-            <div class="faq-a">人数と業務の内容を伺ったうえで、お見積りします。まずは無料相談でお聞かせください。</div>
-        </div>
-        <div class="faq-item">
-            <button class="faq-q" aria-expanded="false"><span class="q-mark">Q</span>遠方でも申し込めますか？<span class="faq-arrow">▼</span></button>
-            <div class="faq-a">はい。無料相談から導入のフォローまで、オンラインで全国に対応しています。</div>
-        </div>
+    <div class="stages-wrap">
+        <h3>診断でわかること：あなたはいま、どの段階？</h3>
+        <p>当事務所での整理です。</p>
+        <ol class="stages">
+            <li><b>第1段階</b>AIに質問する<span>文章づくり・翻訳・調べもの</span></li>
+            <li><b>第2段階</b>AIで書類や資料を作る<span>書類の下書き・表の整理</span></li>
+            <li><b>第3段階</b>AIが一連の仕事をこなす<span>メールを読み、必要な資料と返信案を作る</span></li>
+            <li class="now"><b>第4段階</b>スマホから指示し、パソコンが作業する<span>代表はいま、この段階で仕事をしています</span></li>
+            <li><b>第5段階</b>複数のAIが分担し、必要なときだけ人に確認する<span>これからの段階</span></li>
+        </ol>
     </div>
+
+    <div class="after">
+        <b>導入プランに進んだあとの流れ</b>
+        <ol>
+            <li>アンケート（パソコン・スマホの環境、仕事の内容、どこまで任せたいか）</li>
+            <li>目標の設定</li>
+            <li>あなた専用の手順書をお渡し</li>
+            <li>オンライン2回で一緒に導入</li>
+        </ol>
+    </div>
+
+    <div class="center-cta"><a class="btn btn-main" href="#apply">無料診断を申し込む<small>1分で入力</small></a></div>
   </div>
 </section>
 
 <!-- ===== 申込みフォーム ===== -->
-<section class="nh-sec fade-in" id="apply">
-  <div class="nh-inner">
-    <h2>無料相談のお申込み</h2>
-    <p class="nh-sec-lead">折り返しメールでご連絡します。LINEでも受け付けています。</p>
-    <form class="nh-form" action="https://formspree.io/f/xbdaevyb" method="POST">
-        <input type="hidden" name="_subject" value="【AI活用セットアップ支援】無料相談のお申込み">
+<section class="sec apply" id="apply">
+  <div class="inner">
+    <span class="sec-num">FREE</span>
+    <h2>無料診断のお申込み</h2>
+    <p class="sec-lead">折り返し、メールでご連絡します。</p>
+    <form class="form" action="https://formspree.io/f/xbdaevyb" method="POST">
+        <input type="hidden" name="_subject" value="【AI活用セットアップ支援】無料診断のお申込み">
         <label>ご相談者さま <span class="req">必須</span>
             <select name="type" required>
                 <option value="">選択してください</option>
@@ -477,11 +482,57 @@
             </select>
         </label>
         <label>AIに任せたいこと・ご質問
-            <textarea name="message" rows="5" placeholder="例：メールの返信を楽にしたい、見積書を早く作りたい、作品のホームページを作りたい"></textarea>
+            <textarea name="message" rows="4" placeholder="例：メールの返信を楽にしたい、見積書を早く作りたい、作品のホームページを作りたい"></textarea>
         </label>
-        <p class="nh-form-note"><a href="../documents/privacy.html" target="_blank">プライバシーポリシー</a>をご確認のうえ、送信してください。</p>
-        <button type="submit" class="nh-btn nh-btn-main">送信する</button>
+        <p class="form-note"><a href="../documents/privacy.html" target="_blank">プライバシーポリシー</a>をご確認のうえ、送信してください。</p>
+        <button type="submit" class="btn btn-main">無料診断を申し込む</button>
     </form>
+    <div class="apply-line">LINEでも受け付けています<br>
+        <a class="btn btn-line" href="https://line.me/R/ti/p/@556fihjp/" target="_blank" rel="noopener"><img src="https://upload.wikimedia.org/wikipedia/commons/4/41/LINE_logo.svg" alt="">LINEで申し込む</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== お申込みの前に ===== -->
+<section class="sec alt fade-in">
+  <div class="inner">
+    <h2>お申込みの前に</h2>
+    <div class="note" style="margin-top:28px;">
+        <ul>
+            <li>Windows または Mac のパソコンが必要です。スマホからの指示には、作業中に電源を入れておけるパソコンを使います。</li>
+            <li>メールや顧客情報をAIに扱わせる範囲は、お客様と決めてから設定します。</li>
+            <li>どこまで進むかは、パソコンの環境と使える時間により異なります。目標はアンケートをもとに一緒に決めます。</li>
+        </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="sec fade-in">
+  <div class="inner">
+    <h2>よくあるご質問</h2>
+    <div class="faq-list" style="margin-top:28px;">
+        <div class="faq-item">
+            <button class="faq-q" aria-expanded="false"><span class="q-mark">Q</span>パソコンが得意でなくても大丈夫ですか？<span class="faq-arrow">▼</span></button>
+            <div class="faq-a">はい。代表もプログラミングの経験はありません。手順書は、お客様のパソコンの画面に合わせて、順番どおりに進めれば済む形で作ります。</div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-q" aria-expanded="false"><span class="q-mark">Q</span>どのAIを使いますか？<span class="faq-arrow">▼</span></button>
+            <div class="faq-a">代表が業務で使っている Claude（Anthropic社）を基本にご案内します。目的やご希望に応じてご相談ください。</div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-q" aria-expanded="false"><span class="q-mark">Q</span>AIの利用料は月々いくらかかりますか？<span class="faq-arrow">▼</span></button>
+            <div class="faq-a">AIサービスのプランにより異なります。無料診断で、目的に合ったプランと金額をご説明します。</div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-q" aria-expanded="false"><span class="q-mark">Q</span>会社で複数の人が使えるようにしたいのですが。<span class="faq-arrow">▼</span></button>
+            <div class="faq-a">人数と業務の内容を伺ったうえで、お見積りします。まずは無料診断でお聞かせください。</div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-q" aria-expanded="false"><span class="q-mark">Q</span>遠方でも申し込めますか？<span class="faq-arrow">▼</span></button>
+            <div class="faq-a">はい。無料診断から導入のフォローまで、オンラインで全国に対応しています。</div>
+        </div>
+    </div>
   </div>
 </section>
 
@@ -490,13 +541,19 @@
     <p style="margin-top:10px;">© 2024-2026 Second Penguin Planning. All Rights Reserved.</p>
 </footer>
 
-<!-- LINE固定ボタン -->
+<!-- LINE固定ボタン（パソコン） -->
 <a href="https://line.me/R/ti/p/@556fihjp/" class="line-fixed-btn" target="_blank" rel="noopener">
     <div class="line-inner">
         <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/LINE_logo.svg" alt="LINE">
-        <span>無料相談</span>
+        <span>無料診断</span>
     </div>
 </a>
+
+<!-- 下に固定のボタン（スマホ） -->
+<div class="sticky-cta">
+    <a class="s-main" href="#apply">無料診断を申し込む</a>
+    <a class="s-line" href="https://line.me/R/ti/p/@556fihjp/" target="_blank" rel="noopener">LINE</a>
+</div>
 
 <script>
 /* FAQ アコーディオン */
