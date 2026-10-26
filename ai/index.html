@@ -140,15 +140,41 @@
     .job .done::before { content: "→"; position: absolute; left: 0; color: var(--accent-orange); font-weight: 900; }
     .who { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 30px; }
     .who span { background: #fff; border: 2px solid var(--line); border-radius: 999px; padding: 6px 16px; font-size: .92rem; font-weight: 700; color: var(--col-employment); }
-    .proof { margin-top: 40px; background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 22px; }
-    .proof h3 { text-align: center; color: var(--navy); font-size: 1.05rem; margin-bottom: 14px; }
-    .proof-links { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-    .proof-links a { display: block; text-decoration: none; background: #f4faff; border-radius: 12px; padding: 14px; color: var(--col-employment); line-height: 1.5; transition: .2s; }
-    .proof-links a:hover { background: var(--sky-blue); }
-    .proof-links b { display: block; font-size: .95rem; }
-    .proof-links span { font-size: .8rem; color: var(--muted); }
-    .proof-links em { font-style: normal; font-size: .82rem; font-weight: 700; color: var(--main-blue); }
-    .proof p { text-align: center; font-size: .82rem; color: var(--muted); margin-top: 12px; }
+
+    /* 代表が作ったもの */
+    .works { padding: 72px 16px; color: #fff; background: radial-gradient(800px 400px at 15% 0%, rgba(255,140,0,.25) 0%, transparent 60%), #0b1b2e; }
+    .works-kicker { text-align: center; color: var(--gold); font-weight: 900; letter-spacing: .1em; font-size: .9rem; }
+    .works h2 { text-align: center; font-size: clamp(1.6rem, 5vw, 2.6rem); font-weight: 900; line-height: 1.35; margin-top: 4px; }
+    .works h2 em { font-style: normal; color: var(--gold); }
+    .works-count { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; max-width: 760px; margin: 30px auto 36px; }
+    .works-count div { text-align: center; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.18); border-radius: 16px; padding: 16px 8px; line-height: 1.3; }
+    .works-count b { display: block; font-size: clamp(2.2rem, 7vw, 3.4rem); font-weight: 900; color: var(--gold); }
+    .works-count b small { font-size: .4em; margin-left: 2px; }
+    .works-count span { font-size: .82rem; color: #c9dcf0; }
+    .works-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .work { display: flex; flex-direction: column; text-decoration: none; color: #fff; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.15);
+        border-radius: 14px; padding: 12px; transition: .25s; line-height: 1.5; }
+    .work:hover { transform: translateY(-4px); background: rgba(255,255,255,.12); }
+    .work .shot { display: block; border-radius: 8px; overflow: hidden; background: #fff; box-shadow: 0 10px 24px rgba(0,0,0,.4); margin-bottom: 10px; }
+    .work .shot i { display: block; height: 14px; background: #e9eef3 radial-gradient(circle at 10px 7px, #ff5f57 3px, transparent 3.5px), #e9eef3; }
+    .work .shot img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: top; }
+    .work b { font-size: 1rem; }
+    .work span { font-size: .82rem; color: #c9dcf0; }
+    .work em { font-style: normal; font-size: .85rem; font-weight: 700; color: var(--gold); margin-top: 6px; }
+    .works-private { margin-top: 34px; text-align: center; }
+    .works-private p { font-weight: 700; color: #c9dcf0; margin-bottom: 10px; }
+    .works-private div { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+    .works-private span { background: rgba(255,197,102,.14); border: 1px solid rgba(255,197,102,.5); color: #ffe2b0; border-radius: 999px; padding: 4px 14px; font-size: .88rem; font-weight: 700; }
+
+    /* 代表のある1日 */
+    .day { list-style: none; max-width: 760px; margin: 0 auto; position: relative; }
+    .day::before { content: ""; position: absolute; left: 47px; top: 8px; bottom: 8px; width: 3px; background: linear-gradient(var(--accent-orange), var(--main-blue)); border-radius: 2px; }
+    .day li { display: flex; gap: 18px; align-items: flex-start; margin-bottom: 16px; position: relative; }
+    .day time { flex: 0 0 96px; text-align: center; background: var(--navy); color: var(--gold); font-weight: 900; border-radius: 999px; padding: 6px 0; font-size: .95rem; position: relative; z-index: 1; }
+    .day li > div { flex: 1; background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 12px 16px; line-height: 1.6; box-shadow: 0 4px 12px rgba(0,58,112,.06); }
+    .day b { display: block; color: var(--navy); font-size: 1.05rem; }
+    .day span { font-size: .88rem; color: var(--muted); }
+    .day-note { max-width: 760px; margin: 14px auto 0; font-size: .8rem; color: var(--muted); }
 
     /* ② いくらかかるか */
     .prices { display: grid; grid-template-columns: 1fr 1.2fr 1fr; gap: 16px; align-items: stretch; }
@@ -249,7 +275,8 @@
         .hero-inner { grid-template-columns: 1fr; gap: 34px; }
         .demo { max-width: 400px; margin: 0 auto; width: 100%; }
         .jobs { grid-template-columns: 1fr 1fr; }
-        .prices, .steps, .proof-links { grid-template-columns: 1fr; }
+        .prices, .steps { grid-template-columns: 1fr; }
+        .works-grid { grid-template-columns: 1fr 1fr; }
         .prices { gap: 26px; max-width: 480px; margin: 0 auto; }
         .steps { gap: 30px; max-width: 520px; margin: 0 auto; }
     }
@@ -266,6 +293,16 @@
         section.hero { padding: 34px 16px 44px; }
         .sec { padding: 56px 16px; }
         .jobs { grid-template-columns: 1fr; }
+        .works { padding: 56px 12px; }
+        .works-grid { gap: 10px; }
+        .work { padding: 8px; }
+        .work b { font-size: .88rem; }
+        .work span { font-size: .74rem; }
+        .works-count { gap: 8px; }
+        .works-count span { font-size: .7rem; }
+        .day::before { left: 35px; }
+        .day li { gap: 10px; }
+        .day time { flex-basis: 72px; font-size: .82rem; }
         .btn { width: 100%; }
         .stat span { font-size: .7rem; }
         .demo-pc, .demo-note { margin-left: 24px; }
@@ -325,6 +362,59 @@
   </div>
 </section>
 
+<!-- ===== 代表が作ったもの ===== -->
+<section class="works" id="works">
+  <div class="inner">
+    <p class="works-kicker">証拠をお見せします</p>
+    <h2>これ全部、<em>代表がひとりで</em>作りました</h2>
+    <div class="works-count">
+        <div><b>30<small>以上</small></b><span>作ったアプリ・サイト</span></div>
+        <div><b>10<small>か月</small></b><span>AIを使い始めてから</span></div>
+        <div><b>毎日</b><span>仕事で使っています</span></div>
+    </div>
+    <div class="works-grid">
+        <a class="work" href="https://second-penguin-planning.github.io/online-museum/" target="_blank" rel="noopener">
+            <span class="shot"><i></i><img src="../images/ai/museum.jpg" alt="徳永アートミュージアムの画面" loading="lazy"></span>
+            <b>オンライン美術館</b><span>画家・徳永卓磨の作品と展示会の案内</span><em>見てみる →</em></a>
+        <a class="work" href="https://campo-criptana-lp.vercel.app" target="_blank" rel="noopener">
+            <span class="shot"><i></i><img src="../images/ai/campo.jpg" alt="カンポ・デ・クリプターナ文化広報応援団の画面" loading="lazy"></span>
+            <b>日本・スペイン 2か国語サイト</b><span>文化交流プロジェクトの紹介</span><em>見てみる →</em></a>
+        <a class="work" href="https://tokunaga-gyosei.jp" target="_blank" rel="noopener">
+            <span class="shot"><i></i><img src="../images/ai/gyosei.jpg" alt="徳永行政書士事務所サイトの画面" loading="lazy"></span>
+            <b>行政書士事務所のサイト</b><span>多言語対応・問合せフォーム付き</span><em>見てみる →</em></a>
+        <a class="work" href="../index.html">
+            <span class="shot"><i></i><img src="../images/ai/sp-hp.jpg" alt="セコンドペンギン企画ホームページの画面" loading="lazy"></span>
+            <b>会社のホームページ</b><span>このページも、作るのも更新も指示だけ</span><em>トップを見る →</em></a>
+        <a class="work" href="https://second-penguin-resume.vercel.app" target="_blank" rel="noopener">
+            <span class="shot"><i></i><img src="../images/ai/resume.jpg" alt="英日履歴書アプリの画面" loading="lazy"></span>
+            <b>英日履歴書アプリ</b><span>質問に答えるとA4一枚の履歴書に</span><em>使ってみる →</em></a>
+        <a class="work" href="https://eijuu-checklist.vercel.app" target="_blank" rel="noopener">
+            <span class="shot"><i></i><img src="../images/ai/eijuu.jpg" alt="永住許可申請チェックリストの画面" loading="lazy"></span>
+            <b>申請書類チェックリスト</b><span>進み具合がひと目でわかる</span><em>見てみる →</em></a>
+    </div>
+    <div class="works-private">
+        <p>ほかにも、仕事で毎日使っています（非公開）</p>
+        <div><span>📧 メールの自動チェック</span><span>✉️ 返信案の自動作成</span><span>📇 顧客・営業データベース</span><span>📝 雇用契約書類メーカー</span><span>🧾 見積書・請求書</span><span>💴 経費アプリ</span><span>🎓 試験対策アプリ</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 代表のある1日 ===== -->
+<section class="sec alt fade-in" id="day">
+  <div class="inner">
+    <h2>代表の<em>ある1日</em></h2>
+    <p class="sec-lead">パソコンの前に座っていない時間も、仕事が進んでいます。</p>
+    <ol class="day">
+        <li><time>毎朝</time><div><b>パソコンがGmailを自動でチェック</b><span>今日やるべきことを、一覧にして教えてくれます。</span></div></li>
+        <li><time>7:00</time><div><b>返信案ができあがっている</b><span>前の日に口頭で指示しておいた返信が、自動で作られています。確認して送るだけ。</span></div></li>
+        <li><time>外出先</time><div><b>スマホに話すだけで資料づくり</b><span>Googleドライブのデータをもとに、事務所のパソコンが資料を作ります。</span></div></li>
+        <li><time>空き時間</time><div><b>顧客・営業のデータベースを更新</b><span>これも、話すだけです。</span></div></li>
+        <li><time>夜</time><div><b>ホームページの更新や、新しいアプリづくり</b><span>思いついたことを伝えると、形にしてくれます。</span></div></li>
+    </ol>
+    <p class="day-note">※ 代表の毎日を、わかりやすくまとめたものです。どこまでできるかは、パソコンの環境や使える時間により異なります。</p>
+  </div>
+</section>
+
 <!-- ===== ① 何ができるか ===== -->
 <section class="sec fade-in" id="can">
   <div class="inner">
@@ -341,16 +431,6 @@
     </div>
     <div class="who">
         <span>🏢 中小企業・お店</span><span>📑 士業・個人事業主</span><span>🎨 個人・趣味の方</span>
-    </div>
-
-    <div class="proof">
-        <h3>代表が実際に作ったもの（見られます）</h3>
-        <div class="proof-links">
-            <a href="https://second-penguin-planning.github.io/online-museum/" target="_blank" rel="noopener"><b>🖼️ 徳永美術館</b><span>作品の展示と展示会の案内</span><br><em>見てみる →</em></a>
-            <a href="https://second-penguin-resume.vercel.app" target="_blank" rel="noopener"><b>🧑‍💼 英日履歴書アプリ</b><span>質問に答えるとA4一枚の履歴書に</span><br><em>使ってみる →</em></a>
-            <a href="../index.html"><b>🌐 会社のホームページ</b><span>作るのも更新も、AIへの指示で</span><br><em>トップを見る →</em></a>
-        </div>
-        <p>ほかに、メールの仕分け、書類づくりのアプリ、試験対策アプリなどを業務で使っています（非公開）。</p>
     </div>
   </div>
 </section>
