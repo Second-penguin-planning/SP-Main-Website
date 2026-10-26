@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<link rel="icon" type="image/png" sizes="32x32" href="../../images/penguin_logo_192.png">
+<link rel="apple-touch-icon" sizes="192x192" href="../../images/penguin_logo_192.png">
+<meta name="theme-color" content="#002a52">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI活用タイプ診断（無料・3分） | セコンドペンギン企画</title>
+<meta name="description" content="7つの質問に答えるだけで、あなたに合ったAIの使い方のタイプと、簡単な導入手順がわかります。無料・3分。">
+<link rel="canonical" href="https://second-penguin.com/ai/shindan/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://second-penguin.com/ai/shindan/">
+<meta property="og:title" content="AI活用タイプ診断（無料・3分） | セコンドペンギン企画">
+<meta property="og:description" content="7つの質問に答えるだけで、あなたに合ったAIの使い方のタイプと、簡単な導入手順がわかります。">
+<meta property="og:image" content="https://second-penguin.com/images/penguin_logo_192.png">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --main-blue: #005bac;
+        --navy: #002a52;
+        --sky-blue: #e0f4ff;
+        --text-color: #333;
+        --accent-orange: #ff8c00;
+        --orange-dark: #e65c00;
+        --gold: #ffc566;
+        --line: #d5e6f3;
+        --muted: #5b6b7c;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Noto Sans JP', sans-serif; line-height: 1.8; color: var(--text-color); background: #f4faff; overflow-x: hidden; }
+
+    header { background: #fff; padding: 8px 3%; display: flex; justify-content: space-between; align-items: center; gap: 10px;
+        position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+    .logo { display: flex; align-items: center; gap: 10px; font-weight: bold; font-size: 1.05rem; color: var(--main-blue); text-decoration: none; }
+    .logo img { height: 36px; }
+    .back-btn { padding: 7px 16px; background: var(--navy); color: #fff; text-decoration: none; border-radius: 20px; font-size: .82rem; font-weight: bold; white-space: nowrap; }
+
+    .hero { background: linear-gradient(160deg, var(--navy) 0%, #003a70 55%, var(--main-blue) 100%); color: #fff; text-align: center; padding: 40px 16px 70px; }
+    .hero .tag { display: inline-block; background: var(--gold); color: var(--navy); font-weight: 900; font-size: .85rem; border-radius: 999px; padding: 3px 16px; }
+    .hero h1 { font-size: clamp(1.8rem, 6vw, 2.8rem); font-weight: 900; line-height: 1.3; margin: 14px 0 8px; }
+    .hero h1 em { font-style: normal; color: var(--gold); }
+    .hero p { color: #dcecff; font-size: clamp(.95rem, 2.4vw, 1.08rem); }
+
+    .wrap { max-width: 680px; margin: -46px auto 40px; padding: 0 12px; }
+    .card { background: #fff; border-radius: 18px; box-shadow: 0 14px 34px rgba(0,42,82,.14); padding: 26px 22px; }
+    .card h2 { color: var(--navy); font-size: 1.25rem; font-weight: 900; line-height: 1.5; margin-bottom: 14px; }
+    .hidden { display: none !important; }
+
+    /* 基本情報 */
+    .form { display: grid; gap: 14px; }
+    .form label { display: block; font-weight: 700; font-size: .92rem; color: #003a70; }
+    .form input, .form select { display: block; margin-top: 6px; width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 8px; font: inherit; font-weight: 400; background: #fff; color: var(--text-color); }
+    .form .req { display: inline-block; font-size: .7rem; background: var(--orange-dark); color: #fff; border-radius: 4px; padding: 0 6px; margin-left: 4px; vertical-align: middle; }
+    .form .opt { font-size: .75rem; color: var(--muted); font-weight: 400; margin-left: 4px; }
+    .two { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .agree { display: flex !important; gap: 8px; align-items: flex-start; font-weight: 400 !important; font-size: .88rem !important; color: var(--text-color) !important; }
+    .agree input { width: auto; margin-top: 6px; }
+    .agree a { color: var(--main-blue); }
+    .err { color: #c62828; font-size: .85rem; font-weight: 700; }
+
+    .btn { display: inline-flex; align-items: center; justify-content: center; flex-direction: column; border: 0; cursor: pointer; font-family: inherit; text-decoration: none;
+        background: var(--accent-orange); color: #fff; font-weight: 900; font-size: 1.1rem; border-radius: 999px; padding: 14px 30px; box-shadow: 0 8px 20px rgba(255,140,0,.4); transition: .2s; line-height: 1.4; text-align: center; }
+    .btn:hover { background: var(--orange-dark); }
+    .btn small { font-size: .75rem; font-weight: 700; }
+    .btn-line { background: #06c755; box-shadow: none; }
+    .btn-line:hover { background: #05a647; }
+    .btn-ghost { background: #fff; color: #003a70; border: 2px solid #003a70; box-shadow: none; }
+    .btn-ghost:hover { background: var(--sky-blue); }
+    .center { text-align: center; margin-top: 8px; }
+
+    /* 質問 */
+    .progress { height: 8px; background: #e6eef6; border-radius: 99px; overflow: hidden; margin-bottom: 8px; }
+    .progress i { display: block; height: 100%; background: linear-gradient(90deg, var(--accent-orange), #ffb347); width: 0; transition: width .3s; }
+    .qnum { font-size: .85rem; font-weight: 700; color: var(--orange-dark); }
+    .choices { display: grid; gap: 10px; margin-top: 4px; }
+    .choice { text-align: left; width: 100%; font: inherit; font-size: 1rem; font-weight: 700; color: var(--navy); background: #fff; border: 2px solid var(--line);
+        border-radius: 14px; padding: 13px 16px; cursor: pointer; transition: .15s; display: flex; gap: 12px; align-items: center; }
+    .choice:hover { border-color: var(--accent-orange); background: #fff8e6; }
+    .choice.on { border-color: var(--accent-orange); background: #fff3d6; }
+    .choice b { flex: 0 0 28px; height: 28px; border-radius: 50%; background: var(--sky-blue); color: var(--main-blue); display: flex; align-items: center; justify-content: center; font-size: .85rem; }
+    .qback { margin-top: 14px; background: none; border: 0; color: var(--muted); font: inherit; font-size: .9rem; cursor: pointer; text-decoration: underline; }
+
+    /* 結果 */
+    .res-head { text-align: center; }
+    .res-head .lead { font-size: .9rem; color: var(--muted); }
+    .res-icon { font-size: 3.6rem; line-height: 1.2; margin-top: 6px; }
+    .res-name { font-size: clamp(1.6rem, 6vw, 2.2rem); font-weight: 900; color: var(--navy); line-height: 1.3; }
+    .res-name em { font-style: normal; background: linear-gradient(transparent 62%, #ffd9a8 62%); }
+    .res-catch { margin-top: 8px; font-weight: 700; color: var(--orange-dark); }
+    .res-desc { margin-top: 14px; font-size: .95rem; }
+    .stage { display: flex; align-items: center; justify-content: center; gap: 10px; margin: 18px 0 4px; flex-wrap: wrap; }
+    .stage div { background: #f4faff; border: 1px solid var(--line); border-radius: 12px; padding: 8px 14px; text-align: center; line-height: 1.4; }
+    .stage div small { display: block; font-size: .75rem; color: var(--muted); }
+    .stage div b { color: var(--main-blue); }
+    .stage div.goal { background: #fff8e6; border-color: #f3c98a; }
+    .stage div.goal b { color: var(--orange-dark); }
+    .stage span { font-size: 1.4rem; color: var(--accent-orange); font-weight: 900; }
+    .steps-h { margin: 22px 0 10px; font-size: 1.1rem; font-weight: 900; color: var(--navy); text-align: center; }
+    .steps { list-style: none; counter-reset: s; display: grid; gap: 10px; }
+    .steps li { counter-increment: s; position: relative; background: #fbfdff; border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px 12px 54px; font-size: .93rem; line-height: 1.65; }
+    .steps li::before { content: counter(s); position: absolute; left: 14px; top: 12px; width: 28px; height: 28px; border-radius: 50%; background: var(--navy); color: #fff; font-weight: 900;
+        display: flex; align-items: center; justify-content: center; font-size: .9rem; }
+    .notes { margin-top: 14px; display: grid; gap: 8px; }
+    .notes p { background: #fff8e6; border-left: 4px solid var(--accent-orange); border-radius: 8px; padding: 10px 12px; font-size: .88rem; }
+    .small-note { font-size: .8rem; color: var(--muted); margin-top: 14px; }
+    .next { margin-top: 22px; background: linear-gradient(160deg, var(--navy) 0%, var(--main-blue) 100%); color: #fff; border-radius: 16px; padding: 22px 18px; text-align: center; }
+    .next h3 { font-size: 1.15rem; font-weight: 900; line-height: 1.5; }
+    .next p { color: #dcecff; font-size: .9rem; margin: 6px 0 14px; }
+    .next .row { display: flex; flex-direction: column; gap: 10px; align-items: center; }
+    .next .price { margin-top: 12px; font-size: .88rem; color: #dcecff; }
+    .next .price b { color: var(--gold); }
+
+    footer { background: #333; color: #fff; text-align: center; padding: 26px 16px; font-size: .9rem; }
+    footer a { color: #fff; }
+
+    @media (max-width: 520px) {
+        .logo span { font-size: .88rem; }
+        .card { padding: 22px 16px; }
+        .two { grid-template-columns: 1fr; }
+        .btn { width: 100%; }
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <a href="../../index.html" class="logo">
+        <img src="../../images/penguin_logo_192.png" alt="セコンドペンギン企画ロゴ">
+        <span>セコンドペンギン企画</span>
+    </a>
+    <a href="../" class="back-btn">← AI活用セットアップ支援</a>
+</header>
+
+<section class="hero">
+    <span class="tag">無料・3分</span>
+    <h1>あなたは<em>どのタイプ？</em><br>AI活用タイプ診断</h1>
+    <p>7つの質問に答えるだけで、あなたに合ったAIの使い方と、<br>はじめの手順がわかります。</p>
+</section>
+
+<div class="wrap">
+
+  <!-- 1. 基本情報 -->
+  <div class="card" id="step-info">
+    <h2>はじめに、あなたについて教えてください</h2>
+    <form class="form" id="info-form" novalidate>
+        <label>お名前 <span class="req">必須</span>
+            <input type="text" name="name" placeholder="山田 太郎" required autocomplete="name">
+        </label>
+        <label>メールアドレス <span class="req">必須</span>
+            <input type="email" name="email" placeholder="example@mail.com" required autocomplete="email">
+        </label>
+        <div class="two">
+            <label>年代 <span class="req">必須</span>
+                <select name="age" required>
+                    <option value="">選択してください</option>
+                    <option>10代</option><option>20代</option><option>30代</option><option>40代</option>
+                    <option>50代</option><option>60代</option><option>70代以上</option>
+                </select>
+            </label>
+            <label>性別 <span class="opt">任意</span>
+                <select name="gender">
+                    <option value="">選択してください</option>
+                    <option>男性</option><option>女性</option><option>その他</option><option>回答しない</option>
+                </select>
+            </label>
+        </div>
+        <label>お住まい（都道府県） <span class="req">必須</span>
+            <select name="pref" required id="pref"><option value="">選択してください</option></select>
+        </label>
+        <label class="agree"><input type="checkbox" name="agree" required>
+            <span><a href="../../documents/privacy.html" target="_blank">プライバシーポリシー</a>に同意します。入力内容と診断結果は、セコンドペンギン企画が保存し、ご案内とサービスの改善に使います。</span>
+        </label>
+        <p class="err hidden" id="info-err">未入力の項目があります。</p>
+        <div class="center"><button type="submit" class="btn">診断をはじめる<small>質問は7つです</small></button></div>
+    </form>
+  </div>
+
+  <!-- 2. 質問 -->
+  <div class="card hidden" id="step-q">
+    <div class="progress"><i id="bar"></i></div>
+    <p class="qnum" id="qnum"></p>
+    <h2 id="qtext"></h2>
+    <div class="choices" id="choices"></div>
+    <button type="button" class="qback" id="qback">← 前の質問にもどる</button>
+  </div>
+
+  <!-- 3. 結果 -->
+  <div class="card hidden" id="step-res">
+    <div class="res-head">
+        <p class="lead"><span id="r-user"></span>さんは…</p>
+        <div class="res-icon" id="r-icon"></div>
+        <div class="res-name"><em id="r-name"></em></div>
+        <p class="res-catch" id="r-catch"></p>
+    </div>
+    <p class="res-desc" id="r-desc"></p>
+    <div class="stage">
+        <div><small>いまの段階</small><b id="r-now"></b></div>
+        <span>→</span>
+        <div class="goal"><small>目指す段階</small><b id="r-goal"></b></div>
+    </div>
+    <p class="steps-h">はじめの手順（簡易版）</p>
+    <ol class="steps" id="r-steps"></ol>
+    <div class="notes" id="r-notes"></div>
+    <p class="small-note">※ 簡易版の診断です。お客様のパソコンや仕事に合わせたくわしい手順は、導入プランで作ります。</p>
+    <div class="next">
+        <h3>くわしい進め方は、<br>オンラインの無料診断で</h3>
+        <p>この結果をもとに、代表があなたの環境に合わせてご説明します。</p>
+        <div class="row">
+            <a class="btn" id="r-apply" href="../#apply">オンライン無料診断を申し込む<small>このタイプの結果を引き継ぎます</small></a>
+            <a class="btn btn-line" href="https://line.me/R/ti/p/@556fihjp/" target="_blank" rel="noopener">LINEで相談する</a>
+        </div>
+        <p class="price">導入プラン <b>50,000円</b>（税込）… 11月10日まで・先着10名の特別価格</p>
+    </div>
+    <div class="center" style="margin-top:16px;"><button type="button" class="btn btn-ghost" id="retry">もう一度診断する</button></div>
+  </div>
+
+</div>
+
+<footer>
+    <p><a href="../../documents/privacy.html">プライバシーポリシー</a></p>
+    <p style="margin-top:8px;">© 2024-2026 Second Penguin Planning. All Rights Reserved.</p>
+</footer>
+
+<script>
+/* 送信先：Googleスプレッドシート（Apps Script のウェブアプリURL）。空のあいだはメール（Formspree）だけに送る */
+const SHEET_URL = '';
+const FORMSPREE_URL = 'https://formspree.io/f/xbdaevyb';
+
+const PREFS = ['北海道','青森県','岩手県','宮城県','秋田県','山形県','福島県','茨城県','栃木県','群馬県','埼玉県','千葉県','東京都','神奈川県',
+    '新潟県','富山県','石川県','福井県','山梨県','長野県','岐阜県','静岡県','愛知県','三重県','滋賀県','京都府','大阪府','兵庫県','奈良県','和歌山県',
+    '鳥取県','島根県','岡山県','広島県','山口県','徳島県','香川県','愛媛県','高知県','福岡県','佐賀県','長崎県','熊本県','大分県','宮崎県','鹿児島県','沖縄県','海外'];
+const prefSel = document.getElementById('pref');
+PREFS.forEach(p => prefSel.insertAdjacentHTML('beforeend', `<option>${p}</option>`));
+
+const QUESTIONS = [
+    { key: 'purpose', q: 'AIを、いちばん何に使いたいですか？',
+      a: ['メールや文章を書く', '書類や資料を作る', '顧客や営業などのデータを整理する', 'ホームページやSNSで発信する', '仕事の仕組みやアプリを作る'] },
+    { key: 'level', q: 'いま、AIをどのように使っていますか？',
+      a: ['まだ使っていない', 'たまに質問する程度', '文章や資料づくりに使っている', '仕事の一部を任せている', '仕事の中心として使っている'] },
+    { key: 'freq', q: 'AIを使う回数は？',
+      a: ['使っていない', '月に数回', '週に1〜2回', 'ほぼ毎日', '1日に何度も'] },
+    { key: 'pc', q: 'お使いのパソコンは？',
+      a: ['Windows', 'Mac', 'Windows と Mac の両方', 'パソコンはなく、スマホ・タブレットだけ', 'わからない'] },
+    { key: 'pcage', q: 'パソコンを買ったのは、いつごろですか？',
+      a: ['1〜2年以内', '3〜4年前', '5年以上前', 'わからない', 'パソコンを持っていない'] },
+    { key: 'time', q: 'AIの準備や練習に使える時間は、1週間でどのくらいですか？',
+      a: ['1時間未満', '1〜2時間', '3〜5時間', '5時間以上', 'わからない'] },
+    { key: 'goal', q: 'どこまで進みたいですか？',
+      a: ['AIに質問できれば十分', '書類や資料づくりを楽にしたい', 'メールを読んで返信案まで、一連の仕事を任せたい', 'スマホから指示して、パソコンに作業させたい', '将来は、管理の仕事をすべて自動にしたい'] }
+];
+
+const STAGES = ['まだ使っていない', '第1段階', '第2段階', '第3段階', '第3〜4段階'];
+const GOALS = ['第1段階', '第2段階', '第3段階', '第4段階', '第5段階'];
+
+const TYPES = {
+    start: { icon: '🌱', name: 'はじめの一歩タイプ', catch: 'まずは、AIと話すことに慣れるところから',
+        desc: 'AIはこれからという段階です。むずかしい設定はまだ要りません。毎日少しずつ話しかけるだけで、何が得意かがわかってきます。',
+        steps: ['AIサービスのアカウントを作る（無料のプランから始められます）', '毎日1回、調べものや文章の下書きを頼んでみる', 'うまくいった頼み方を、メモに残しておく', '慣れてきたら、メールの下書きを任せてみる'] },
+    writer: { icon: '✉️', name: '文章・メールおまかせタイプ', catch: '毎日のメールと文章が、ぐっと楽になります',
+        desc: '書く仕事に時間を取られているタイプです。AIはメールや文章の下書きが得意なので、いちばん早く効果を感じられます。',
+        steps: ['よく書くメールの例を3つ用意する', '「この調子で返信案を作って」とAIに頼む', '自分らしい言い回しや決まりごとを、AIに覚えさせる（記憶の設定）', '返信案を確認して送る流れを、毎日の習慣にする'] },
+    docs: { icon: '📄', name: '書類・資料づくりタイプ', catch: 'いつもの書類を、AIが下書きしてくれます',
+        desc: '決まった形の書類や資料を、くり返し作っているタイプです。ひな形と手元の資料をAIに渡すと、下書きまで任せられます。',
+        steps: ['よく作る書類を1つ選び、ひな形を用意する', 'AIに作らせ、直した所を伝えて育てていく', 'Googleドライブなどにある資料を読ませて作らせる', 'PDFやWordに仕上げるところまで任せる'] },
+    data: { icon: '📇', name: 'データ整理・管理タイプ', catch: '顧客や営業の情報を、話すだけで整理',
+        desc: '情報があちこちに散らばっているタイプです。AIに整理させると、探す時間が減り、次にやることが見えてきます。',
+        steps: ['管理したい情報を1つ決める（顧客、営業先、在庫など）', 'いまあるExcelやメモを、AIに整理させる', 'スプレッドシートに一覧表を作らせる', '話すだけで、追加や更新ができるようにする'] },
+    web: { icon: '🌐', name: '発信・ホームページタイプ', catch: '自分のホームページを、自分の手で',
+        desc: '伝えたいこと、見せたいものがあるタイプです。AIに頼めば、ホームページの下書きから公開、更新まで進められます。',
+        steps: ['載せたい内容（自己紹介・作品・サービス）を箇条書きにする', 'AIにページの下書きを作らせる', '写真を入れながら、直したい所を伝えて仕上げる', '公開し、その後の更新も指示で行う'] },
+    builder: { icon: '🛠️', name: 'アプリ・仕組みづくりタイプ', catch: '毎日のくり返し作業を、自分専用のアプリに',
+        desc: '「もっと効率よくできるはず」と感じているタイプです。パソコンで作業できるAIを使うと、プログラミングを学ばずに仕組みが作れます。',
+        steps: ['毎日くり返している作業を1つ書き出す', 'パソコンで作業できるAIを入れる', 'チェックリストや入力画面など、小さなアプリから作る', '毎日使いながら、直してほしい所を伝えて育てる'] },
+    commander: { icon: '📱', name: 'スマホ指令塔タイプ', catch: '代表と同じ「第4段階」を目指せます',
+        desc: 'AIをすでに使いこなしているタイプです。スマホから指示を出し、パソコンに仕事を進めさせる段階に、もう手が届きます。',
+        steps: ['パソコンで作業できるAIを入れ、いつものやり方を記憶させる', 'メールやGoogleドライブとつなぐ', 'スマホから、事務所のパソコンへ指示を出せるようにする', '毎朝のメールチェックなど、決まった仕事を自動にする'] }
+};
+
+function judge(ans) {
+    const [purpose, level, freq, pc, , , goal] = ans;
+    if (level === 0 || (level <= 1 && freq <= 1)) return 'start';
+    if (goal >= 3 && level >= 3 && pc <= 2) return 'commander';
+    return ['writer', 'docs', 'data', 'web', 'builder'][purpose];
+}
+
+function envNotes(ans) {
+    const [, , , pc, pcage, time] = ans;
+    const n = [];
+    if (pc === 3 || pcage === 4) n.push('スマホだけでもAIは使えますが、仕事を任せる段階には、パソコン（Windows または Mac）があると大きく進みます。');
+    else if (pc === 4 || pcage === 3) n.push('お使いの機器は、オンラインの無料診断で一緒に確かめます。');
+    if (pcage === 2) n.push('5年以上前のパソコンは、動きが重くなることがあります。使えるかどうかは、無料診断で確かめます。');
+    if (time === 0) n.push('週1時間未満でも始められます。まずは1つの作業にしぼりましょう。');
+    return n;
+}
+
+const $ = id => document.getElementById(id);
+let info = {}, answers = [], cur = 0, busy = false;
+
+$('info-form').addEventListener('submit', e => {
+    e.preventDefault();
+    const f = e.target;
+    if (!f.checkValidity()) { $('info-err').classList.remove('hidden'); f.reportValidity(); return; }
+    $('info-err').classList.add('hidden');
+    info = { name: f.name.value.trim(), email: f.email.value.trim(), age: f.age.value, gender: f.gender.value || '未回答', pref: f.pref.value };
+    answers = []; cur = 0;
+    show('step-q'); renderQ();
+});
+
+function show(id) {
+    ['step-info', 'step-q', 'step-res'].forEach(s => $(s).classList.toggle('hidden', s !== id));
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function renderQ() {
+    const q = QUESTIONS[cur];
+    $('bar').style.width = (cur / QUESTIONS.length * 100) + '%';
+    $('qnum').textContent = `質問 ${cur + 1} / ${QUESTIONS.length}`;
+    $('qtext').textContent = q.q;
+    $('choices').innerHTML = q.a.map((t, i) =>
+        `<button type="button" class="choice${answers[cur] === i ? ' on' : ''}" data-i="${i}"><b>${i + 1}</b>${t}</button>`).join('');
+    $('qback').textContent = cur === 0 ? '← 入力にもどる' : '← 前の質問にもどる';
+}
+
+$('choices').addEventListener('click', e => {
+    const b = e.target.closest('.choice');
+    if (!b || busy) return;
+    busy = true;
+    answers[cur] = Number(b.dataset.i);
+    b.classList.add('on');
+    setTimeout(() => {
+        busy = false;
+        if (cur < QUESTIONS.length - 1) { cur++; renderQ(); }
+        else showResult();
+    }, 180);
+});
+
+$('qback').addEventListener('click', () => {
+    if (cur === 0) show('step-info');
+    else { cur--; renderQ(); }
+});
+
+function showResult() {
+    const key = judge(answers), t = TYPES[key];
+    $('r-user').textContent = info.name;
+    $('r-icon').textContent = t.icon;
+    $('r-name').textContent = t.name;
+    $('r-catch').textContent = t.catch;
+    $('r-desc').textContent = t.desc;
+    $('r-now').textContent = STAGES[answers[1]];
+    $('r-goal').textContent = GOALS[answers[6]];
+    $('r-steps').innerHTML = t.steps.map(s => `<li>${s}</li>`).join('');
+    $('r-notes').innerHTML = envNotes(answers).map(s => `<p>${s}</p>`).join('');
+    $('r-apply').href = '../?type=' + encodeURIComponent(t.name) + '#apply';
+    show('step-res');
+    send(t.name);
+}
+
+function send(typeName) {
+    const now = new Date();
+    const pad = n => String(n).padStart(2, '0');
+    const data = {
+        日時: `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())} ${pad(now.getHours())}:${pad(now.getMinutes())}`,
+        お名前: info.name, メール: info.email, 年代: info.age, 性別: info.gender, 居住地: info.pref,
+        タイプ: typeName, いまの段階: STAGES[answers[1]], 目指す段階: GOALS[answers[6]]
+    };
+    QUESTIONS.forEach((q, i) => { data[q.q] = q.a[answers[i]]; });
+    if (SHEET_URL) {
+        fetch(SHEET_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(data) }).catch(() => {});
+    }
+    fetch(FORMSPREE_URL, {
+        method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(Object.assign({ _subject: `【AI活用タイプ診断】${info.name}さん：${typeName}`, email: info.email }, data))
+    }).catch(() => {});
+}
+
+$('retry').addEventListener('click', () => { answers = []; cur = 0; show('step-q'); renderQ(); });
+</script>
+</body>
+</html>

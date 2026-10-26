@@ -690,7 +690,14 @@
             0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255,225,77,.9); background: #ffe14d; }
             50% { transform: scale(1.08); box-shadow: 0 0 0 12px rgba(255,225,77,0); background: #fff; }
         }
-        .nh-aibar:hover em { animation-play-state: paused; background: #fff; }
+        .nh-aibar .nh-ai-more:hover em { animation-play-state: paused; background: #fff; }
+        .nh-aibar .nh-ai-btns { flex-basis: 100%; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 14px 18px; }
+        .nh-aibar .nh-ai-btns a { text-decoration: none; }
+        .nh-aibar .nh-ai-more em { display: inline-block; }
+        .nh-aibar .nh-ai-shindan { display: inline-flex; flex-direction: column; align-items: center; background: #002a52; color: #fff; font-weight: 900;
+            font-size: 1.1rem; line-height: 1.4; border: 3px solid #ffe14d; border-radius: 16px; padding: 10px 24px; box-shadow: 0 6px 16px rgba(0,0,0,.25); transition: .2s; }
+        .nh-aibar .nh-ai-shindan small { font-size: .78rem; font-weight: 700; color: #ffe14d; }
+        .nh-aibar .nh-ai-shindan:hover { transform: translateY(-2px); background: #003a70; }
         @media (prefers-reduced-motion: reduce) { .nh-aibar > b, .nh-aibar em { animation: none; } }
         .nh-other { display: flex; flex-wrap: wrap; gap: 8px 18px; justify-content: center; font-size: .9rem; }
         .nh-other a { color: var(--main-blue); }
@@ -1057,11 +1064,15 @@
 
 
 <!-- AI活用セットアップ支援への案内 -->
-<a class="nh-aibar" href="ai/">
+<div class="nh-aibar">
     <b>📢 重要なお知らせ</b>
     <span class="nh-ai-txt">
         <span class="nh-ai-title">新サービス<span class="nh-nw">「AI活用セットアップ支援」</span><span class="nh-nw">開始</span></span>
         <span class="nh-ai-sub">スマホで指示すると、パソコンが仕事を進める環境を整えます　<strong>11月10日まで・先着10名 特別価格 50,000円</strong></span>
+    </span>
+    <span class="nh-ai-btns">
+        <a class="nh-ai-shindan" href="ai/shindan/">🔍 AI活用タイプ診断<small>無料・3分であなたのタイプがわかる</small></a>
+        <a class="nh-ai-more" href="ai/"><em>詳しく見る →</em></a>
     </span>
     <span class="nh-ai-can">
         <span class="nh-ai-can-h">代表の実例：こんなことができています</span>
@@ -1084,8 +1095,10 @@
             <span>📱 そのほか、<b>さまざまなアプリ</b>を作っています</span>
         </span>
     </span>
-    <em>詳しく見る →</em>
-</a>
+    <span class="nh-ai-btns">
+        <a class="nh-ai-more" href="ai/"><em>詳しく見る →</em></a>
+    </span>
+</div>
 
 <!-- ===== HERO（企業・登録支援機関・日本語学校 切替） ===== -->
 <section class="nh-hero" id="top">
