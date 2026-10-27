@@ -83,6 +83,12 @@
     .done .id { display: inline-block; margin: 10px 0; background: #fff3d6; border: 2px solid var(--accent-orange); border-radius: 10px; padding: 6px 18px; font-size: 1.3rem; font-weight: 900; color: var(--navy); letter-spacing: .04em; }
     .done p { font-size: .93rem; }
     .done .tl { color: var(--muted); font-size: .85rem; margin-top: 10px; }
+    .video { margin-top: 24px; padding-top: 22px; border-top: 1px solid var(--line); text-align: left; }
+    .video h3 { color: var(--navy); font-size: 1.05rem; font-weight: 900; }
+    .video .tl { margin-top: 0; margin-bottom: 10px; }
+    .video ul { margin: 10px 0 18px 20px; font-size: .88rem; display: grid; gap: 4px; }
+    .video .btn { display: flex; margin: 0 auto; max-width: 340px; }
+    .video .btn + .tl { text-align: center; margin-top: 10px; }
 
     footer { background: #333; color: #fff; text-align: center; padding: 26px 16px; font-size: .85rem; }
     footer a { color: #fff; }
@@ -124,6 +130,8 @@
             <span class="tl">Makakapagbigay kami ng payo tungkol sa inyong visa.</span></li>
         <li>We are preparing a job introduction service. We will let you know when it starts.
             <span class="tl">Naghahanda kami ng serbisyo para sa paghahanap ng trabaho. Ipapaalam namin kapag nagsimula na.</span></li>
+        <li>Your information is strictly protected under our Privacy Policy. Only our office staff can see it.
+            <span class="tl">Mahigpit naming pinoprotektahan ang inyong impormasyon.</span></li>
         <li>We never ask you to pay money through this form or by email.
             <span class="tl">Hindi kami humihingi ng bayad sa form na ito o sa email.</span></li>
     </ul>
@@ -219,9 +227,12 @@
         <input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
 
         <div class="privacy">
-            <b>How we use your information</b> — Second Penguin Planning (Kobe, Japan) keeps the information you send in our records,
-            and uses it only to answer your inquiry and to advise you on visa and work in Japan. We do not give it to companies or other people without your permission.
-            You can ask us to correct or delete it at any time. (<a href="../documents/privacy.html" target="_blank">Privacy Policy, Japanese</a>)
+            <b>Your information is strictly protected</b> — Everything you send us (this form, your documents, and your video if you send one)
+            is handled strictly under our <a href="../documents/privacy.html" target="_blank">Privacy Policy</a> (Japanese).
+            It is kept in our office's secure account, and only our office staff can see it.
+            We use it only to answer your inquiry and to advise you on visa and work in Japan.
+            We never give it to companies or other people without your permission.
+            You can ask us to correct or delete it at any time.
         </div>
         <label class="agree"><input type="checkbox" name="consent" required>
             <span>I agree to the above. <span style="color:var(--orange-dark);font-weight:700;">(Required)</span><br><span style="color:var(--muted);font-size:.8rem;">Sumasang-ayon ako sa nakasulat sa itaas.</span></span>
@@ -241,6 +252,20 @@
     <div class="id" id="done-id"></div>
     <p id="done-text">We sent a confirmation email to <b id="done-mail"></b>.<br>We will reply usually within 3 business days (Japan time).<br>If you cannot find our email, please check your spam folder.</p>
     <p class="tl">Salamat po! Natanggap namin ang inyong mensahe. Sasagot kami sa loob ng 3 araw ng trabaho.</p>
+
+    <div class="video hidden" id="video">
+        <h3>Next step (optional): send us a 1-minute video</h3>
+        <div class="tl">Susunod (opsyonal): magpadala ng 1-minutong video</div>
+        <p>A short self-introduction video helps us know you better. Any language is OK. A smartphone is enough — no editing needed.</p>
+        <ul>
+            <li>About 1 minute. Your name, where you are from, your work, and why you want to work in Japan.</li>
+            <li>Please do not show your passport, residence card, or other people's faces.</li>
+            <li>The video is protected under our Privacy Policy, the same as this form. Only our office staff can see it.
+                We never show it to companies without your permission.</li>
+        </ul>
+        <a class="btn" id="video-link" href="#" target="_blank" rel="noopener">Send my video<small>Ipadala ang video (Google account needed)</small></a>
+        <p class="tl">You can also send it later. The link is in our confirmation email.</p>
+    </div>
   </div>
 
 </div>
@@ -256,6 +281,8 @@
    空のあいだ、または送れなかったときはメール（Formspree）に送る */
 const SHEET_URL = 'https://script.google.com/macros/s/AKfycbzqOMT5f1Hay2Cybc_qbHuvnD3ZKstiVPuCtWAGNGNPIJMCv6p8tPC8zDX_yr_Jah1Q/exec';
 const FORMSPREE_URL = 'https://formspree.io/f/xbdaevyb';
+/* 自己紹介動画の Googleフォーム（事前入力URL。受付IDの入る所を {ID} にする）。空のあいだは動画の案内を出さない */
+const VIDEO_FORM_URL = '';
 const $ = id => document.getElementById(id);
 
 const ERR = {
@@ -289,6 +316,10 @@ $('form').addEventListener('submit', async e => {
         $('done-mail').textContent = d.email;
         if (!id) $('done-text').innerHTML = 'We will reply to <b></b> usually within 3 business days (Japan time).<br>If you cannot find our email, please check your spam folder.';
         if (!id) $('done-text').querySelector('b').textContent = d.email;
+        if (VIDEO_FORM_URL && id) {
+            $('video-link').href = VIDEO_FORM_URL.replace('{ID}', encodeURIComponent(id));
+            $('video').classList.remove('hidden');
+        }
         $('about').classList.add('hidden');
         $('step-form').classList.add('hidden');
         $('step-done').classList.remove('hidden');
