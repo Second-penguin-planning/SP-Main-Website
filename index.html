@@ -659,6 +659,13 @@
         .nh-for b { font-size: .7rem; background: var(--sky-blue); color: var(--main-blue); border-radius: 6px; padding: 1px 7px; }
         .nh-app a { margin-top: 12px; font-size: .88rem; font-weight: 700; color: var(--main-blue); text-decoration: none; }
         .nh-app a:hover { text-decoration: underline; }
+        .nh-aistrip { display: flex; flex-direction: column; align-items: center; gap: 2px; text-align: center; padding: 8px 16px;
+            background: linear-gradient(135deg, #ff8c00 0%, #e63c00 100%); color: #fff; font-size: clamp(.82rem, 2vw, .95rem); line-height: 1.6; }
+        .nh-aistrip b { background: #fff; color: #d63300; border-radius: 4px; padding: 0 8px; margin-right: 6px; font-size: .85em; }
+        .nh-aistrip strong { color: #ffe14d; white-space: nowrap; }
+        .nh-aistrip a { color: #fff; font-weight: 700; white-space: nowrap; }
+        .nh-aistrip a:hover { color: #ffe14d; }
+        @media (max-width: 600px) { .nh-aistrip-desc { display: none; } .nh-aistrip { padding: 6px 10px; } }
         .nh-aibar { display: flex; align-items: center; gap: 10px 22px; flex-wrap: wrap; justify-content: center; text-align: center;
             background: linear-gradient(135deg, #ff8c00 0%, #e63c00 100%); color: #fff; padding: 20px 16px; text-decoration: none;
             border-bottom: 4px solid #b32d00; box-shadow: inset 0 -1px 0 rgba(255,255,255,.2); }
@@ -1063,41 +1070,10 @@
 </div>
 
 
-<!-- AI活用セットアップ支援への案内 -->
-<div class="nh-aibar">
-    <b>📢 重要なお知らせ</b>
-    <span class="nh-ai-txt">
-        <span class="nh-ai-title">新サービス<span class="nh-nw">「AI活用セットアップ支援」</span><span class="nh-nw">開始</span></span>
-        <span class="nh-ai-sub">スマホで指示すると、パソコンが仕事を進める環境を整えます　<strong>11月10日まで・先着10名 特別価格 50,000円</strong></span>
-    </span>
-    <span class="nh-ai-btns">
-        <a class="nh-ai-shindan" href="ai/shindan/">🔍 AI活用タイプ診断<small>無料・3分であなたのタイプがわかる</small></a>
-        <a class="nh-ai-more" href="ai/"><em>詳しく見る →</em></a>
-    </span>
-    <span class="nh-ai-can">
-        <span class="nh-ai-can-h">代表の実例：こんなことができています</span>
-        <span class="nh-ai-chips">
-            <span>📄 資料の自動作成</span>
-            <span>📇 データベース作成</span>
-            <span>🌐 ホームページ作成</span>
-            <span>📱 仕事の大部分を、スマホからの指示で</span>
-        </span>
-        <span class="nh-ai-future">🚀 代表が目指すのは、すべての管理の自動化</span>
-    </span>
-    <span class="nh-ai-done">
-        <span class="nh-ai-done-h">代表は、AIでこんなことができるようになりました</span>
-        <span class="nh-ai-list">
-            <span>🌐 仕事と趣味のホームページを、<b>すべて1人で</b>作りました</span>
-            <span>🎤 Googleドライブのデータから、<b>スマホに話すだけ</b>で資料を作ってくれます</span>
-            <span>📇 顧客や営業の<b>データベース</b>も、話すだけで作れます</span>
-            <span>📧 毎日<b>自動でGmailをチェック</b>し、やるべきことを教えてくれます</span>
-            <span>⏰ メールの返信も、口頭で指示すれば<b>朝7時には自動で</b>作ってくれます</span>
-            <span>📱 そのほか、<b>さまざまなアプリ</b>を作っています</span>
-        </span>
-    </span>
-    <span class="nh-ai-btns">
-        <a class="nh-ai-more" href="ai/"><em>詳しく見る →</em></a>
-    </span>
+<!-- AI活用セットアップ支援のお知らせ（細い帯。詳しい案内はページ後半 #ai-intro） -->
+<div class="nh-aistrip">
+    <span><b>新サービス</b>「AI活用セットアップ支援」開始　<strong>11月30日まで・先着10名 特別価格 50,000円</strong></span>
+    <span><span class="nh-aistrip-desc">スマホで指示すると、パソコンが仕事を進める環境を整えます　</span><a href="ai/">詳しく見る →</a>　<a href="ai/shindan/">AI活用タイプ診断（無料）→</a></span>
 </div>
 
 <!-- ===== HERO（企業・登録支援機関・日本語学校 切替） ===== -->
@@ -1563,6 +1539,44 @@
         <a href="sectors/union.html">組合の方</a>
     </div>
 </section>
+
+
+<!-- AI活用セットアップ支援への案内（詳しい版） -->
+<div class="nh-aibar" id="ai-intro">
+    <b>📢 重要なお知らせ</b>
+    <span class="nh-ai-txt">
+        <span class="nh-ai-title">新サービス<span class="nh-nw">「AI活用セットアップ支援」</span><span class="nh-nw">開始</span></span>
+        <span class="nh-ai-sub">スマホで指示すると、パソコンが仕事を進める環境を整えます　<strong>11月30日まで・先着10名 特別価格 50,000円</strong></span>
+    </span>
+    <span class="nh-ai-btns">
+        <a class="nh-ai-shindan" href="ai/shindan/">🔍 AI活用タイプ診断<small>無料・3分であなたのタイプがわかる</small></a>
+        <a class="nh-ai-more" href="ai/"><em>詳しく見る →</em></a>
+    </span>
+    <span class="nh-ai-can">
+        <span class="nh-ai-can-h">代表の実例：こんなことができています</span>
+        <span class="nh-ai-chips">
+            <span>📄 資料の自動作成</span>
+            <span>📇 データベース作成</span>
+            <span>🌐 ホームページ作成</span>
+            <span>📱 仕事の大部分を、スマホからの指示で</span>
+        </span>
+        <span class="nh-ai-future">🚀 代表が目指すのは、すべての管理の自動化</span>
+    </span>
+    <span class="nh-ai-done">
+        <span class="nh-ai-done-h">代表は、AIでこんなことができるようになりました</span>
+        <span class="nh-ai-list">
+            <span>🌐 仕事と趣味のホームページを、<b>すべて1人で</b>作りました</span>
+            <span>🎤 Googleドライブのデータから、<b>スマホに話すだけ</b>で資料を作ってくれます</span>
+            <span>📇 顧客や営業の<b>データベース</b>も、話すだけで作れます</span>
+            <span>📧 毎日<b>自動でGmailをチェック</b>し、やるべきことを教えてくれます</span>
+            <span>⏰ メールの返信も、口頭で指示すれば<b>朝7時には自動で</b>作ってくれます</span>
+            <span>📱 そのほか、<b>さまざまなアプリ</b>を作っています</span>
+        </span>
+    </span>
+    <span class="nh-ai-btns">
+        <a class="nh-ai-more" href="ai/"><em>詳しく見る →</em></a>
+    </span>
+</div>
 
 
 <section id="message" class="fade-in">
