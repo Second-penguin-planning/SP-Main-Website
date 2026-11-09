@@ -401,6 +401,7 @@
         <p>ほかにも、仕事で毎日使っています（非公開）</p>
         <div><span>📧 メールの自動チェック</span><span>✉️ 返信案の自動作成</span><span>📇 顧客・営業データベース</span><span>📝 雇用契約書類メーカー</span><span>🧾 見積書・請求書</span><span>💴 経費アプリ</span><span>🎓 試験対策アプリ</span></div>
     </div>
+    <p style="text-align:center;margin-top:22px;"><a class="shindan-link" href="jirei/">📂 仕事で使っている<b>業務アプリの事例 6選</b>を見る →</a></p>
   </div>
 </section>
 
@@ -545,6 +546,7 @@
     <p class="sec-lead">折り返し、メールでご連絡します。</p>
     <form class="form" action="https://formspree.io/f/xbdaevyb" method="POST">
         <input type="hidden" name="_subject" value="【AI活用セットアップ支援】無料診断のお申込み">
+        <input type="hidden" name="流入元" id="from-field" value="直接">
         <label>ご相談者さま <span class="req">必須</span>
             <select name="type" required>
                 <option value="">選択してください</option>
@@ -651,6 +653,16 @@ document.querySelectorAll('.faq-q').forEach(btn => {
         btn.setAttribute('aria-expanded', item.classList.toggle('open'));
     });
 });
+
+/* どこから来たか（例：note の記事リンク ?from=note01）を覚えておき、申込みに添える */
+(function () {
+    const p = new URLSearchParams(location.search);
+    const v = p.get('from') || [p.get('utm_source'), p.get('utm_campaign')].filter(Boolean).join('_');
+    let from = v;
+    try { if (v) localStorage.setItem('sp_from', v); else from = localStorage.getItem('sp_from') || ''; } catch (e) {}
+    const f = document.getElementById('from-field');
+    if (f && from) f.value = from;
+})();
 
 /* AI活用タイプ診断から来たときは、結果をご相談欄に入れておく */
 const diagType = new URLSearchParams(location.search).get('type');

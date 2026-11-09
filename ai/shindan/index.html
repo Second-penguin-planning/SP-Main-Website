@@ -362,7 +362,8 @@ function send(typeName) {
     const data = {
         日時: `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())} ${pad(now.getHours())}:${pad(now.getMinutes())}`,
         お名前: info.name, メール: info.email, 年代: info.age, 性別: info.gender, 居住地: info.pref,
-        タイプ: typeName, いまの段階: STAGES[answers[1]], 目指す段階: GOALS[answers[6]]
+        タイプ: typeName, いまの段階: STAGES[answers[1]], 目指す段階: GOALS[answers[6]],
+        流入元: fromSource()
     };
     QUESTIONS.forEach((q, i) => { data[q.q] = q.a[answers[i]]; });
     if (SHEET_URL) {
@@ -373,6 +374,14 @@ function send(typeName) {
         body: JSON.stringify(Object.assign({ _subject: `【AI活用タイプ診断】${info.name}さん：${typeName}`, email: info.email }, data))
     }).catch(() => {});
 }
+
+/* どこから来たか（例：?from=note01）。直接このページに来たときも、前に見たページで覚えた値を使う */
+function fromSource() {
+    const p = new URLSearchParams(location.search);
+    const v = p.get('from') || [p.get('utm_source'), p.get('utm_campaign')].filter(Boolean).join('_');
+    try { if (v) { localStorage.setItem('sp_from', v); return v; } return localStorage.getItem('sp_from') || '直接'; } catch (e) { return v || '直接'; }
+}
+fromSource();
 
 $('retry').addEventListener('click', () => { answers = []; cur = 0; show('step-q'); renderQ(); });
 </script>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<link rel="icon" type="image/png" sizes="32x32" href="../../images/penguin_logo_192.png">
+<link rel="apple-touch-icon" sizes="192x192" href="../../images/penguin_logo_192.png">
+<meta name="theme-color" content="#002a52">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>業務アプリの事例 6選 | AI活用セットアップ支援 | セコンドペンギン企画</title>
+<meta name="description" content="行政書士事務所の代表がAIで作り、毎日の仕事で使っている業務アプリ6例。外国人社員との連絡板、雇用契約書類メーカー、申請書類チェックリスト、撮るだけPDF、月報、話すだけの運行記録。">
+<link rel="canonical" href="https://second-penguin.com/ai/jirei/">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://second-penguin.com/ai/jirei/">
+<meta property="og:title" content="業務アプリの事例 6選 | セコンドペンギン企画">
+<meta property="og:description" content="外国人雇用と事務の手間を、AIで作る小さな道具で減らしました。">
+<meta property="og:image" content="https://second-penguin.com/images/penguin_logo_192.png">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --main-blue: #005bac; --navy: #002a52; --sky-blue: #e0f4ff; --text-color: #333; --white: #fff;
+        --accent-orange: #ff8c00; --orange-dark: #e65c00; --gold: #ffc566; --line: #d5e6f3; --muted: #5b6b7c;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Noto Sans JP', sans-serif; line-height: 1.8; color: var(--text-color); background: var(--white); }
+    img { max-width: 100%; }
+    a { color: var(--main-blue); }
+
+    header { background: var(--white); padding: 8px 3%; display: flex; justify-content: space-between; align-items: center; gap: 10px;
+        position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,.1); }
+    .logo { display: flex; align-items: center; gap: 10px; font-weight: bold; font-size: 1.05rem; color: var(--main-blue); text-decoration: none; min-width: 0; }
+    .logo img { height: 36px; width: auto; }
+    .back-btn { padding: 7px 16px; background: var(--navy); color: #fff; text-decoration: none; border-radius: 20px; font-size: .82rem; font-weight: bold; white-space: nowrap; }
+
+    .hero { background: var(--navy); color: #fff; padding: 48px 5% 44px; }
+    .inner { max-width: 1000px; margin: 0 auto; }
+    .eyebrow { display: inline-block; font-size: .8rem; font-weight: 700; letter-spacing: .12em; color: var(--gold); margin-bottom: 10px; }
+    .hero h1 { font-size: clamp(1.6rem, 4.6vw, 2.4rem); font-weight: 900; line-height: 1.45; }
+    .hero h1 em { font-style: normal; color: var(--gold); }
+    .hero p { margin-top: 14px; max-width: 40em; opacity: .9; }
+
+    .sec { padding: 52px 5%; }
+    .sec.alt { background: var(--sky-blue); }
+    .sec h2 { font-size: clamp(1.35rem, 3.4vw, 1.8rem); color: var(--navy); font-weight: 900; text-align: center; }
+    .sec-lead { text-align: center; color: var(--muted); margin-top: 6px; }
+
+    .cases { margin-top: 30px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+    @media (max-width: 760px) { .cases { grid-template-columns: 1fr; } }
+    .case { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 22px; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+    .case-top { display: flex; justify-content: space-between; gap: 10px; font-size: .8rem; }
+    .case-top .who { color: var(--orange-dark); font-weight: 700; }
+    .case-top .no { color: var(--muted); font-weight: 700; }
+    .case h3 { font-size: 1.2rem; color: var(--navy); }
+    .case dl { display: grid; grid-template-columns: 5.4em minmax(0, 1fr); gap: 6px 12px; font-size: .93rem; }
+    .case dt { font-weight: 700; color: var(--muted); font-size: .82rem; padding-top: 2px; }
+    .case dd.after { border-left: 3px solid var(--accent-orange); padding-left: 10px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; }
+    .chips span { background: var(--sky-blue); color: var(--navy); font-size: .75rem; padding: 2px 10px; border-radius: 20px; }
+
+    .why { margin-top: 28px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+    @media (max-width: 760px) { .why { grid-template-columns: 1fr; } }
+    .why div { background: #fff; border-radius: 14px; padding: 20px; }
+    .why h3 { color: var(--navy); font-size: 1.02rem; margin-bottom: 6px; }
+    .why p { font-size: .92rem; color: var(--muted); }
+
+    .cta { background: var(--navy); color: #fff; text-align: center; padding: 52px 5%; }
+    .cta h2 { color: #fff; }
+    .cta p { opacity: .9; margin-top: 10px; }
+    .cta-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 24px; }
+    .btn { display: inline-flex; flex-direction: column; align-items: center; padding: 14px 28px; border-radius: 40px; font-weight: 900; text-decoration: none; font-size: 1.02rem; }
+    .btn small { font-weight: 400; font-size: .75rem; opacity: .9; }
+    .btn-main { background: var(--accent-orange); color: #fff; }
+    .btn-main:hover { background: var(--orange-dark); }
+    .btn-sub { background: rgba(255,255,255,.12); color: #fff; border: 2px solid var(--gold); }
+    .btn-line { background: #06c755; color: #fff; }
+    .note { font-size: .8rem; color: var(--muted); text-align: center; padding: 18px 5% 28px; }
+    footer { text-align: center; font-size: .8rem; color: var(--muted); padding: 0 5% 32px; }
+</style>
+</head>
+<body>
+<header>
+    <a href="../../index.html" class="logo"><img src="../../images/penguin_logo_192.png" alt="">セコンドペンギン企画</a>
+    <a href="../" class="back-btn">← AI活用セットアップ支援</a>
+</header>
+
+<section class="hero">
+  <div class="inner">
+    <span class="eyebrow">業務アプリの事例</span>
+    <h1>外国人雇用と事務の手間を、<br><em>AIで作る小さな道具</em>で減らしました</h1>
+    <p>行政書士事務所として受けた仕事の中で、実際に作って毎日使っている仕組みを6つ紹介します。どれも「現場の困りごと1つ」から始めて、数日〜数週間で形にしたものです。お客様の名前は伏せています。</p>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="inner">
+    <h2>作ったもの 6例</h2>
+    <p class="sec-lead">困りごと → 作ったもの → 変わったこと</p>
+    <div class="cases">
+
+      <article class="case">
+        <div class="case-top"><span class="who">受入企業 A社（外国人社員3名）</span><span class="no">事例1</span></div>
+        <h3>外国人社員との連絡板</h3>
+        <dl>
+          <dt>困りごと</dt><dd>お知らせや雇用書類を紙とLINEで渡していて、誰に何を渡したか分からなくなる。日本語だけでは伝わりにくい。</dd>
+          <dt>作ったもの</dt><dd>スマホで見られる日英切替の連絡板。お知らせと共通資料は全員に、雇用契約書類は本人と管理者だけがPINで開ける。</dd>
+          <dt>変わったこと</dt><dd class="after">渡し忘れ・言った言わないがなくなり、書類の最新版が常に1か所にある。</dd>
+        </dl>
+        <div class="chips"><span>多言語</span><span>本人だけ見られる書類</span><span>スマホ</span></div>
+      </article>
+
+      <article class="case">
+        <div class="case-top"><span class="who">特定技能の受入企業</span><span class="no">事例2</span></div>
+        <h3>特定技能 雇用契約書類メーカー</h3>
+        <dl>
+          <dt>困りごと</dt><dd>参考様式 第1-5号（雇用契約書）・第1-6号（雇用条件書）・賃金の別紙に、同じ名前や賃金を何度も手で書き写している。</dd>
+          <dt>作ったもの</dt><dd>入力フォームに一度入れると、3つの様式がA4でそろって出る仕組み。インドネシア語・タガログ語の様式を1つずつWordで落とせるページも用意。</dd>
+          <dt>変わったこと</dt><dd class="after">転記ミスがなくなり、内容の修正も1か所直せば全様式に反映される。</dd>
+        </dl>
+        <div class="chips"><span>入管様式</span><span>自動作成</span><span>インドネシア語・タガログ語</span></div>
+      </article>
+
+      <article class="case">
+        <div class="case-top"><span class="who">申請のお客様（個人・法人）</span><span class="no">事例3</span></div>
+        <h3>申請書類チェックリスト</h3>
+        <dl>
+          <dt>困りごと</dt><dd>永住・認定申請・補助金などで、どの書類がそろったか、誰が何を用意するかをメールで何往復も確認している。</dd>
+          <dt>作ったもの</dt><dd>お客様と事務所が同じ画面で見るチェックリスト。項目ごとに状態・担当・コメント・PDFや写真の添付ができる。</dd>
+          <dt>変わったこと</dt><dd class="after">「あと何が足りないか」がお客様にも一目で分かり、確認の連絡が減った。案件ごとに作り替えて使い回している。</dd>
+        </dl>
+        <div class="chips"><span>永住</span><span>認定申請</span><span>補助金</span><span>共有</span></div>
+      </article>
+
+      <article class="case">
+        <div class="case-top"><span class="who">事務所内</span><span class="no">事例4</span></div>
+        <h3>スマホで撮って、そのままPDF</h3>
+        <dl>
+          <dt>困りごと</dt><dd>預かった書類や領収書をスキャナまで持って行き、ファイル名を付けてフォルダに分ける作業が毎日ある。</dd>
+          <dt>作ったもの</dt><dd>スマホで撮ると、書類の四角を見つけて傾き・台形のゆがみを直し、A4のPDFにする。中の文字を読んで「日付_書類名」と名前を付け、共有ドライブに保存する。</dd>
+          <dt>変わったこと</dt><dd class="after">外出先でも、受け取ったその場で保存まで終わる。</dd>
+        </dl>
+        <div class="chips"><span>文字読み取り</span><span>自動の名前付け</span><span>Googleドライブ</span></div>
+      </article>
+
+      <article class="case">
+        <div class="case-top"><span class="who">業務委託先への月次報告</span><span class="no">事例5</span></div>
+        <h3>出勤簿・交通費・立替の月報</h3>
+        <dl>
+          <dt>困りごと</dt><dd>毎月20日締め（前月21日〜当月20日）の出勤簿・交通費精算書・立替経費精算書を、月末にまとめて思い出しながら作っている。</dd>
+          <dt>作ったもの</dt><dd>出勤・退勤はボタン1つ、領収書は撮るだけで日付・時刻・金額・支払先を読み取る。20日に3枚まとめたPDFを作ってフォルダに保存。</dd>
+          <dt>変わったこと</dt><dd class="after">締め日の作業がボタン1つになった。読み取りが怪しい時刻には「要確認」の印が付き、推測で埋めない。</dd>
+        </dl>
+        <div class="chips"><span>領収書読み取り</span><span>PDF自動作成</span><span>スプレッドシート</span></div>
+      </article>
+
+      <article class="case">
+        <div class="case-top"><span class="who">社用車を使う事業所</span><span class="no">事例6</span></div>
+        <h3>話すだけの運行記録</h3>
+        <dl>
+          <dt>困りごと</dt><dd>運転のたびに行き先・目的・メーターを紙に書くのが面倒で、記入漏れが出る。</dd>
+          <dt>作ったもの</dt><dd>「六甲アイランドへ出発します。私用です。今のキロ数は2145です」と話すと、日時・行き先・区分・メーターを記録。給油も「30.5リットル、単価168円」で記録できる。</dd>
+          <dt>変わったこと</dt><dd class="after">走行距離・燃費・月の集計が自動で出る。電波がない所でもスマホに貯めておける。</dd>
+        </dl>
+        <div class="chips"><span>音声入力</span><span>自動集計</span><span>スマホ</span></div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section class="sec alt">
+  <div class="inner">
+    <h2>行政書士が作るので、話が早い</h2>
+    <div class="why">
+      <div><h3>手続きの中身を知っている</h3><p>在留資格・特定技能・登録支援の書類や締め切りを毎日扱っているので、「何を入れれば何が出るべきか」を一から説明していただく必要がありません。</p></div>
+      <div><h3>自分の事務所で使っている</h3><p>ここにある道具はすべて、まず当事務所の仕事で使って直してきたものです。売るために作った見本ではありません。</p></div>
+      <div><h3>個人情報の置き場所を決めてから作る</h3><p>在留カードや雇用契約の情報は、誰が見られるか・どこに保存するかを先に決め、本人だけが開ける形にしています。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="inner">
+    <h2>「この作業、何とかならないか」からご相談ください</h2>
+    <p>まずは1つの作業から。オンラインの無料診断で、何ができるかをお伝えします。全国対応です。</p>
+    <div class="cta-row">
+      <a class="btn btn-main" href="../#apply">無料診断を申し込む<small>1分で入力</small></a>
+      <a class="btn btn-sub" href="../shindan/">AI活用タイプ診断<small>無料・3分で自分で試す</small></a>
+      <a class="btn btn-line" href="https://line.me/R/ti/p/@556fihjp/" target="_blank" rel="noopener">LINEで聞く<small>気軽な質問もどうぞ</small></a>
+    </div>
+  </div>
+</section>
+
+<p class="note">掲載の事例は、お客様が特定されないよう業種・人数などを一部まとめて記載しています。</p>
+<footer><p><a href="../../documents/privacy.html">プライバシーポリシー</a></p><p>© 2024-2026 Second Penguin Planning. All Rights Reserved.</p></footer>
+
+<script>
+/* どこから来たか（例：?from=note01）を覚えておき、申込みフォームに添える */
+(function(){var p=new URLSearchParams(location.search),v=p.get('from')||[p.get('utm_source'),p.get('utm_campaign')].filter(Boolean).join('_');try{if(v)localStorage.setItem('sp_from',v)}catch(e){}})();
+</script>
+</body>
+</html>
